@@ -6,8 +6,14 @@ using UnityEngine.UI;
 
 public class ButtonFunctions : MonoBehaviour
 {
+    #region Fields/Objects
+
     [SerializeField] GameManager gameManager;
     public Button targetButton;
+
+    #endregion
+
+    #region Buttons
     public void resume()
     {
         gameManager.stateUnPaused();
@@ -28,4 +34,5 @@ public class ButtonFunctions : MonoBehaviour
         Application.Quit();
 #endif
     }
+    #endregion
 }

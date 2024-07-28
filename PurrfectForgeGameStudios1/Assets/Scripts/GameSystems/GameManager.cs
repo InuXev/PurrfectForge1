@@ -1,21 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using JetBrains.Annotations;
+using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
+//using UnityEditor.Experimental.GraphView;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+
+    #region Fields/Objects
 
     [SerializeField] public GameObject pauseMenu;
+    [SerializeField] public GameObject loseMenu;
+    public Image playerHPBar;
+    public TMP_Text playerHPText;
+    public Image playerHP;
+    public static GameManager Instance;
     public GameObject activeMenu;
     public bool isPaused;
-    // Start is called before the first frame update
+
+    #endregion
+
+    #region Processes
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -34,6 +50,11 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    #endregion
+
+    #region Game States
+
     public void statePaused()
     {
         //
@@ -55,4 +76,19 @@ public class GameManager : MonoBehaviour
         activeMenu.SetActive(isPaused);
         activeMenu = null;
     }
+    public void youDead()
+    {
+        isPaused = true;
+        //keep cursor in the window
+        Cursor.lockState = CursorLockMode.Confined;
+        //hide cursor
+        Cursor.visible = true;
+        //reset time passed to zero
+        Time.timeScale = 0;
+        activeMenu = loseMenu;
+        loseMenu.SetActive(true);
+    }
+
+    #endregion
+
 }
