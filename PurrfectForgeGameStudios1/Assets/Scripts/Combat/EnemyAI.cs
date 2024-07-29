@@ -19,6 +19,7 @@ public class EnemyAI : MonoBehaviour, EDamage
     private float angleToPlayer;
     private bool isDead;
     public bool attacked;
+    Transform playerTransform;
     
 
     // Start is called before the first frame update
@@ -32,6 +33,8 @@ public class EnemyAI : MonoBehaviour, EDamage
     {
         EnemyDeathCheck();
         canSeePlayer();
+        LookAtPlayer();
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     public void takeDamage(float damage)
@@ -104,5 +107,15 @@ public class EnemyAI : MonoBehaviour, EDamage
         enemyAttack.weaponUsed = false;
         attacked = false;
 
+    }
+
+    public void LookAtPlayer()
+    {
+        if (playerInRange && meleeAttackRange)
+        {
+            Vector3 direction = (playerTransform.position - transform.position).normalized; // Get the direction to the player
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z)); // Create a rotation to face the player
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f); //smooth sphereical rotations
+        }
     }
 }

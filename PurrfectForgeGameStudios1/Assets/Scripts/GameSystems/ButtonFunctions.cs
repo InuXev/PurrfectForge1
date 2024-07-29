@@ -22,11 +22,12 @@ public class ButtonFunctions : MonoBehaviour
     public void restart()
     {
         //reload scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
+        SceneManager.LoadScene("MainWorld");
         gameManager.stateUnPaused();
-    }
 
-    public void quit2()
+    }
+       public void quit2()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;

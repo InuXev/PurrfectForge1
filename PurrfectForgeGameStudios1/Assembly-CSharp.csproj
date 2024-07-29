@@ -62,14 +62,15 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Combat\PlayerOutDamage\EDamage.cs" />
     <Compile Include="Assets\Scripts\Combat\WorldoutDamage\DeathObject.cs" />
+    <Compile Include="Assets\Scripts\Combat\PlayerOutDamage\SwordBehavior.cs" />
     <Compile Include="Assets\Scripts\GameSystems\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Combat\PlayerOutDamage\SwordDamage.cs" />
     <Compile Include="Assets\Scripts\Combat\EnemyOutDamage\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\GameSystems\ButtonFunctions.cs" />
     <Compile Include="Assets\Scripts\GameSystems\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Combat\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\Combat\EnemyOutDamage\PDamage.cs" />
+    <Compile Include="Assets\Scripts\Combat\PlayerOutDamage\ShieldBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

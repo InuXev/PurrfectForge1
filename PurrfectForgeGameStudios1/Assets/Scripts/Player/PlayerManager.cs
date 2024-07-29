@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
@@ -20,7 +21,7 @@ public class PlayerManager : MonoBehaviour, PDamage
     [SerializeField] GameObject currentShield;
     [SerializeField] Animator Anim;
 
-    private float panSpeed = 7.5F;
+    private float panSpeed = 6F;
     public float HP;
     public float HPOriginal = 10;
     public float moveSpeed;
@@ -30,9 +31,11 @@ public class PlayerManager : MonoBehaviour, PDamage
     public int jumpCounter;
     public float jumpSpeed;
     public int maxJumps;
+    public bool shieldUp;
     private Vector3 playerVelocity;
     private Vector3 moveDirection;
     private Vector3 playerPOS;
+    public float playerShieldMod;
 
     #endregion
 
@@ -103,7 +106,7 @@ public class PlayerManager : MonoBehaviour, PDamage
 
     public void Melee()
     {
-        if (currentWeapon != null)
+        if (currentWeapon != null && !shieldUp)
         {
             if (Input.GetButtonDown("Left Mouse"))
             {
@@ -113,39 +116,64 @@ public class PlayerManager : MonoBehaviour, PDamage
     }
     public void Defend()
     {
-        //if(currentShield != null)
-        //{
-        if (Input.GetButtonDown("Right Mouse"))
+        if (currentShield != null)
         {
-            currentShield.SetActive(true);
+            if (Input.GetButtonDown("Right Mouse"))
+            {
+                currentShield.SetActive(true);
+                shieldUp = true;
+                playerShieldMod = .2F;
+            }
+            if (Input.GetButtonUp("Right Mouse"))
+            {
+                currentShield.SetActive(false);
+                shieldUp = false;
+                playerShieldMod = 0;
+            }
         }
-        if (Input.GetButtonUp("Right Mouse"))
-        {
-            currentShield.SetActive(false);
-        }
-        //}
     }
     public void DeathCheck()
     {
         if (HP <= 0)
         {
             UpdatePlayerUI();
-            gameManager.statePaused();
+            //gameManager.statePaused();
             gameManager.youDead();
         }
     }
 
     public void takeDamage(float damage)
     {
-        HP -= damage;
-        DeathCheck();
-    }
+        if(shieldUp)
+        {
+            float damageReduction = damage * playerShieldMod;
+            float damageTaken = damage - damageReduction;
 
+            HP -= damageTaken;
+            StartCoroutine(HitFlash());
+            DeathCheck();
+        }
+        else
+        {
+            HP -= damage;
+            StartCoroutine(HitFlash());
+            DeathCheck();
+        }
+    }
+    IEnumerator HitFlash()
+    {
+        if(HP > 0)
+        {
+            gameManager.playerHitFlash.SetActive(true);
+            yield return new WaitForSeconds(.1F);
+            gameManager.playerHitFlash.SetActive(false);
+        }
+    }
     IEnumerator Swing()
     {
         currentWeapon.SetActive(true);
         Anim.SetTrigger("Attacking");
-        yield return new WaitForSeconds(.3F);
+        yield return new WaitForSeconds(.2F);
         currentWeapon.SetActive(false);
     }
 
@@ -157,10 +185,12 @@ public class PlayerManager : MonoBehaviour, PDamage
 
     public void UpdatePlayerUI()
     {
-        float hpFillAmount = HP / HPOriginal;
 
+        float hpFillAmount = HP / HPOriginal;
+        //convert hpFillAmount to a percentage for display
+        int hpPercentage = (int)(hpFillAmount * 100);
         gameManager.playerHP.fillAmount = hpFillAmount;
-        gameManager.playerHPText.text = HP.ToString();
+        gameManager.playerHPText.text = (hpPercentage.ToString() + "%");
     }
 
     #endregion

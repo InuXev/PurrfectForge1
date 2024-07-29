@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public GameObject pauseMenu;
     [SerializeField] public GameObject loseMenu;
+    [SerializeField] public GameObject playerHitFlash;
     public Image playerHPBar;
     public TMP_Text playerHPText;
     public Image playerHP;
@@ -57,7 +58,6 @@ public class GameManager : MonoBehaviour
 
     public void statePaused()
     {
-        //
         isPaused = true;
         //keep cursor in the window
         Cursor.lockState = CursorLockMode.Confined;
@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         activeMenu.SetActive(isPaused);
         activeMenu = null;
+        Debug.Log(isPaused);
     }
     public void youDead()
     {
@@ -84,11 +85,10 @@ public class GameManager : MonoBehaviour
         //hide cursor
         Cursor.visible = true;
         //reset time passed to zero
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         activeMenu = loseMenu;
         loseMenu.SetActive(true);
     }
-
     #endregion
 
 }

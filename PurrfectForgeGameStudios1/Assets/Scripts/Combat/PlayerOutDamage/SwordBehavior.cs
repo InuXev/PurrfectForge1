@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordDamage : MonoBehaviour
+public class SwordBehavior : MonoBehaviour
 {
     [SerializeField] float Damage;
 
