@@ -23,7 +23,7 @@ public class ButtonFunctions : MonoBehaviour
     {
         //reload scene
         
-        SceneManager.LoadScene("MainWorld");
+        SceneManager.LoadScene("Spiral");
         gameManager.stateUnPaused();
 
     }

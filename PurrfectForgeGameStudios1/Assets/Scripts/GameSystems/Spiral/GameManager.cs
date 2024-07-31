@@ -75,7 +75,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         activeMenu.SetActive(isPaused);
         activeMenu = null;
-        Debug.Log(isPaused);
     }
     public void youDead()
     {
