@@ -74,6 +74,7 @@ public class EshesGameManager : MonoBehaviour
     public bool inSelectError;
     public bool inConfirmBuild;
     public bool inConfrimRemove;
+    public bool buildON;
 
     #endregion
 
@@ -98,6 +99,7 @@ public class EshesGameManager : MonoBehaviour
     public void statePaused()
     {
         isPaused = true;
+        buildON = false;
         //keep cursor in the window
         Cursor.lockState = CursorLockMode.Confined;
         //hide cursor
@@ -124,27 +126,34 @@ public class EshesGameManager : MonoBehaviour
             {
                 activeMenu = buildMenu;
                 buildMenu.SetActive(true);
+                buildON = true;
             }
             else if (activeMenu == buildMenu)
             {
+                buildON = false;
                 activeMenu = null;
                 buildMenu.SetActive(false);
+                Debug.Log("Off");
             }
         }
     }
-    
     void Pause()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (activeMenu == null)
-            {                statePaused();
+            {
+                playerEye.RemovePreview();
+                buildON = false;
+                statePaused();
                 activeMenu = pauseMenu;
                 pauseMenu.SetActive(true);
 
             }
             else if (activeMenu != null)
             {
+                playerEye.RemovePreview();
+                buildON = false;
                 stateUnPaused();
             }
         }
@@ -412,17 +421,4 @@ public class EshesGameManager : MonoBehaviour
         selectToBuild.SetActive(false);
         inSelectError = false;
     }
-    public void ConfirmBuildOn()
-    {
-        buildConfirm.SetActive(true);
-    }
-    public void ConfirmBuildOff()
-    {
-        buildConfirm.SetActive(false);
-    }
-    public void ConfirmRemove()
-    {
-        
-    }
-
 }

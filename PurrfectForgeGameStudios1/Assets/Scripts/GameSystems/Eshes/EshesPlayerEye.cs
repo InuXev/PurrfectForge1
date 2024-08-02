@@ -13,19 +13,19 @@ public class EshesPlayerEye : MonoBehaviour
     [SerializeField] CharacterController characterControl;
     [SerializeField] Transform cameraEye;
     [SerializeField] public GameObject chosenObject;
+    private GameObject currentPreviewObject;
     [SerializeField] public Transform objectPreviewPOS;
     GameObject previewObject;
+    GameObject placedObject;
     private Vector3 moveDirection;
     public float moveSpeed;
     private float moveSpeedOriginal = 8;
     public float dashMult;
 
 
-    bool previewCreated;
-
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -69,10 +69,10 @@ public class EshesPlayerEye : MonoBehaviour
                 {
                     //places the object you have chosen from the build menu
                     //this needs a confirm
-                    if (chosenObject != null)
+                    if (chosenObject != null && gameManager.buildON)
                     {
-                        chosenObject.GetComponent<MeshCollider>().enabled = true;
                         Instantiate(chosenObject, hit.point, transform.rotation);
+                        chosenObject.GetComponent<MeshCollider>().enabled = true;
                     }
                     if (chosenObject == null)
                     {
@@ -95,27 +95,57 @@ public class EshesPlayerEye : MonoBehaviour
             }
         }
     }
-    void ObjectPreview()//creates the preview object at the chose POS
+
+
+
+    void ObjectPreview() // Creates or updates the preview object at the chosen position
     {
-        if (chosenObject != null)
+
+        if (chosenObject != null && gameManager.buildON)
         {
-            changePreview();
-            previewObject.GetComponent<MeshCollider>().enabled = false;
-            if(!previewCreated)
+            ChangePreview();
+
+            // Check if there's an existing preview object
+            if (currentPreviewObject != null)
             {
-                Instantiate(previewObject, objectPreviewPOS.position, transform.rotation, objectPreviewPOS);
-                previewCreated = true;
+                // Destroy the existing preview object if any
+                Destroy(currentPreviewObject);
             }
-            previewObject.transform.position = new Vector3(objectPreviewPOS.transform.position.x, objectPreviewPOS.transform.position.y);
+            Debug.Log("Creating Preview");
+            // Instantiate the new preview object and set its properties
+            currentPreviewObject = Instantiate(previewObject, objectPreviewPOS.position, transform.rotation, objectPreviewPOS);
+            currentPreviewObject.GetComponent<MeshCollider>().enabled = false;
         }
-    }
-    void changePreview()
-    {
-        if(chosenObject != previewObject)
-        {
-            
-            previewObject = chosenObject;
+        if(!gameManager.buildON)
+        { 
+            RemovePreview();
         }
 
+    }
+
+    public void ChangePreview()
+    {
+        if (chosenObject != previewObject)
+        {
+            previewObject = chosenObject;
+
+            // If a preview object already exists, it needs to be updated or destroyed and recreated
+            if (currentPreviewObject != null)
+            {
+                Destroy(currentPreviewObject); // Destroy existing preview object
+                currentPreviewObject = null;   // Reset the reference
+            }
+        }
+    }
+    public void RemovePreview()
+    {
+        Debug.Log("Removing Preview");
+
+            // If a preview object already exists, it needs to be updated or destroyed and recreated
+        if (currentPreviewObject != null)
+        {
+            Destroy(currentPreviewObject); // Destroy existing preview object
+            currentPreviewObject = null;   // Reset the reference
+        }
     }
 }

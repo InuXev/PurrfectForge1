@@ -10,11 +10,22 @@ public class EshesButtonFunctions : MonoBehaviour
     #region Fields/Objects
 
     [SerializeField] EshesGameManager gameManager;
+    [SerializeField] EshesPlayerEye playerEye;
     public Button targetButton;
 
     #endregion
 
     #region stateButtons
+
+    public void ClearPreviewButton()
+    {
+        gameManager.buildON = false;
+    }
+    public void CloseBuildWindowWindow()
+    {
+        gameManager.stateUnPaused();
+        playerEye.RemovePreview();
+    }
     public void resume()
     {
         gameManager.stateUnPaused();
@@ -50,6 +61,7 @@ public class EshesButtonFunctions : MonoBehaviour
     //trees
     public void Tree1()
     {
+        gameManager.buildON = true;
         gameManager.TreeSelection1();
     }
     //flowers
@@ -64,6 +76,7 @@ public class EshesButtonFunctions : MonoBehaviour
     }
     public void Bush1()
     {
+        gameManager.buildON = true;
         gameManager.BushSelection1();
     }
     //Grass
