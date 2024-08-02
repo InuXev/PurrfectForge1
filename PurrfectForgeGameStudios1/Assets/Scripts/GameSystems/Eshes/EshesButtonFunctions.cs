@@ -19,7 +19,6 @@ public class EshesButtonFunctions : MonoBehaviour
     {
         gameManager.stateUnPaused();
     }
-
     public void restart()
     {
         //reload scene
@@ -48,14 +47,26 @@ public class EshesButtonFunctions : MonoBehaviour
     {
         gameManager.FoliageTrees();
     }
+    //trees
+    public void Tree1()
+    {
+        gameManager.TreeSelection1();
+    }
+    //flowers
     public void FoliageFlowers()
     {
         gameManager.FoliageFlowers();
     }
+    //Bushes
     public void FoliageBushes()
     {
         gameManager.FoliageBushes();
     }
+    public void Bush1()
+    {
+        gameManager.BushSelection1();
+    }
+    //Grass
     public void FoliageGrass()
     {
         gameManager.FoliageGrass();

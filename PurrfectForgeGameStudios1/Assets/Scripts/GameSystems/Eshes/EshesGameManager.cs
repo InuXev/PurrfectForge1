@@ -13,17 +13,29 @@ public class EshesGameManager : MonoBehaviour
 {
 
     #region Fields/Objects
-
+    [SerializeField] EshesPlayerEye playerEye;
     [SerializeField] public GameObject pauseMenu;
     [SerializeField] public GameObject buildMenu;
+    [SerializeField] public GameObject selectToBuild;
+    [SerializeField] public GameObject buildConfirm;
+    [SerializeField] public GameObject removeConfirm;
     //foliage
     [SerializeField] public GameObject foliageTypeSelector;
     //trees, flowers, bushes, grass
     [SerializeField] public GameObject trees;
-    [SerializeField] public GameObject flowers;
-    [SerializeField] public GameObject bushes;
-    [SerializeField] public GameObject grass;
+    //trees
+    [SerializeField] public GameObject Tree1;
 
+
+    [SerializeField] public GameObject flowers;
+    //flowers
+
+    [SerializeField] public GameObject bushes;
+    //Bushes
+    [SerializeField] public GameObject Bush1;
+
+    [SerializeField] public GameObject grass;
+    //Grasses
 
     //buildings
     [SerializeField] public GameObject buildingsTypeSelector;
@@ -57,7 +69,11 @@ public class EshesGameManager : MonoBehaviour
     public GameObject activeMenu;
     public GameObject activeBuildSelection;
 
+
     public bool isPaused;
+    public bool inSelectError;
+    public bool inConfirmBuild;
+    public bool inConfrimRemove;
 
     #endregion
 
@@ -92,7 +108,7 @@ public class EshesGameManager : MonoBehaviour
     public void stateUnPaused()
     {
         isPaused = false;
-        Cursor.visible = false;
+        Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
         //allow time to pass again
         Time.timeScale = 1;
@@ -106,10 +122,8 @@ public class EshesGameManager : MonoBehaviour
         {
             if (activeMenu == null)
             {
-                statePaused();
                 activeMenu = buildMenu;
                 buildMenu.SetActive(true);
-
             }
             else if (activeMenu == buildMenu)
             {
@@ -118,15 +132,13 @@ public class EshesGameManager : MonoBehaviour
             }
         }
     }
-
+    
     void Pause()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (activeMenu == null)
-            {
-
-                statePaused();
+            {                statePaused();
                 activeMenu = pauseMenu;
                 pauseMenu.SetActive(true);
 
@@ -160,6 +172,11 @@ public class EshesGameManager : MonoBehaviour
         trees.SetActive(true);
         Debug.Log("Trees Selected");
     }
+    public void TreeSelection1()
+    {
+        playerEye.chosenObject = null;
+        playerEye.chosenObject = Tree1;
+    }
     public void FoliageFlowers()
     {
         SetAllInactive();
@@ -175,7 +192,11 @@ public class EshesGameManager : MonoBehaviour
         foliageTypeSelector.SetActive(true);
         bushes.SetActive(true);
         Debug.Log("Bushes Selected");
-
+    }
+    public void BushSelection1()
+    {
+        playerEye.chosenObject = null;
+        playerEye.chosenObject = Bush1;
     }
     public void FoliageGrass()
     {
@@ -288,8 +309,6 @@ public class EshesGameManager : MonoBehaviour
 
     #endregion
 
-
-
     #region Geographical
     public void GeologicalTop()
     {
@@ -377,6 +396,33 @@ public class EshesGameManager : MonoBehaviour
         ditches.SetActive(false);
         geoSpecial.SetActive(false);
 
+    }
+    public void selectSomethingToBuild()
+    {
+        if(!inSelectError)
+        {
+            StartCoroutine(nothingSelected());
+        }
+    }
+    IEnumerator nothingSelected()
+    {
+        inSelectError = true;
+        selectToBuild.SetActive(true);
+        yield return new WaitForSeconds(2F);
+        selectToBuild.SetActive(false);
+        inSelectError = false;
+    }
+    public void ConfirmBuildOn()
+    {
+        buildConfirm.SetActive(true);
+    }
+    public void ConfirmBuildOff()
+    {
+        buildConfirm.SetActive(false);
+    }
+    public void ConfirmRemove()
+    {
+        
     }
 
 }

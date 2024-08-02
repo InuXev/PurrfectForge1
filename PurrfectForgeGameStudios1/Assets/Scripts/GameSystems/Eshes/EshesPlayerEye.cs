@@ -1,23 +1,31 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class EshesPlayerEye : MonoBehaviour
 {
-
+    [SerializeField] EshesGameManager gameManager;
     [SerializeField] CharacterController characterControl;
     [SerializeField] Transform cameraEye;
-    [SerializeField] GameObject chosenObject;
+    [SerializeField] public GameObject chosenObject;
+    [SerializeField] public Transform objectPreviewPOS;
+    GameObject previewObject;
     private Vector3 moveDirection;
     public float moveSpeed;
     private float moveSpeedOriginal = 8;
     public float dashMult;
 
+
+    bool previewCreated;
+
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -26,6 +34,7 @@ public class EshesPlayerEye : MonoBehaviour
         Walk();
         Dash();
         GroundSearch();
+        ObjectPreview();
     }
 
     public void Walk()
@@ -58,11 +67,17 @@ public class EshesPlayerEye : MonoBehaviour
                 //can build an object at this hit
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-
                     //places the object you have chosen from the build menu
                     //this needs a confirm
-                    Instantiate(chosenObject, hit.point, transform.rotation);
-
+                    if (chosenObject != null)
+                    {
+                        chosenObject.GetComponent<MeshCollider>().enabled = true;
+                        Instantiate(chosenObject, hit.point, transform.rotation);
+                    }
+                    if (chosenObject == null)
+                    {
+                        gameManager.selectSomethingToBuild();
+                    }
                 }
             }
             else
@@ -75,10 +90,32 @@ public class EshesPlayerEye : MonoBehaviour
                         //destroy object but increase the corresponding amount in inventory
                         //this needs a confirm
                         Destroy(hit.collider.gameObject);
-
                     }
                 }
             }
         }
+    }
+    void ObjectPreview()//creates the preview object at the chose POS
+    {
+        if (chosenObject != null)
+        {
+            changePreview();
+            previewObject.GetComponent<MeshCollider>().enabled = false;
+            if(!previewCreated)
+            {
+                Instantiate(previewObject, objectPreviewPOS.position, transform.rotation, objectPreviewPOS);
+                previewCreated = true;
+            }
+            previewObject.transform.position = new Vector3(objectPreviewPOS.transform.position.x, objectPreviewPOS.transform.position.y);
+        }
+    }
+    void changePreview()
+    {
+        if(chosenObject != previewObject)
+        {
+            
+            previewObject = chosenObject;
+        }
+
     }
 }
