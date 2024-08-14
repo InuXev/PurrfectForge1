@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour, EDamage
 {
+    [SerializeField] ScriptableItems[] lootPool; 
     [SerializeField] float LineOfSight;
     [SerializeField] float meleeAttackDistance;
     [SerializeField] GameObject equipedWeapon;
@@ -16,6 +18,7 @@ public class EnemyAI : MonoBehaviour, EDamage
     public float enemyHP;
     public bool playerInRange;
     private Vector3 playerDir;
+    private Vector3 enemyPos;
     private float angleToPlayer;
     private bool isDead;
     public bool attacked;
@@ -89,10 +92,13 @@ public class EnemyAI : MonoBehaviour, EDamage
 
     public void EnemyDeathCheck()
     {
+        enemyPos = this.transform.position;
         if (enemyHP <= 0)
         {
             isDead = true;
+            Vector3 dropLocation = enemyPos;
             Destroy(gameObject);
+            LootPicker(dropLocation);
         }
     }
 
@@ -117,5 +123,23 @@ public class EnemyAI : MonoBehaviour, EDamage
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z)); // Create a rotation to face the player
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f); //smooth sphereical rotations
         }
+    }
+
+    public void LootPicker(Vector3 dropLocation)
+    {
+        ScriptableItems chosenItem;
+        //pick the loot from the loot pool and assign it to chosenItem
+        int randomItem = Random.Range(0, lootPool.Length);
+        chosenItem = lootPool[randomItem];
+        Debug.Log("Chosen Item: " + chosenItem.itemName);
+        lootDropper(chosenItem, dropLocation);
+    }
+    public void lootDropper(ScriptableItems chosenItem, Vector3 dropLocation)
+    {
+        GameObject droppingItem;
+        droppingItem = chosenItem.loot;
+        //at this location drop a random object that is in the loot pool
+        Instantiate(droppingItem, dropLocation, transform.rotation);
+        //drop the item from the headPOS
     }
 }
