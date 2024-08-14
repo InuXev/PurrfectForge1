@@ -12,6 +12,7 @@ public class ScriptableItems : ScriptableObject
     public string itemName;
     public Sprite icon;
     public string description;
+    public GameObject eshesBuildObject;
     public GameObject loot;
     public int amountHeld;
 

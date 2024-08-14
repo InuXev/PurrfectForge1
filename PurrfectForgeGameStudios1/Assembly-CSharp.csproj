@@ -60,11 +60,13 @@
     <Analyzer Include="C:\2022.3.28f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\GameSystems\Spiral\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\Combat\PlayerOutDamage\EDamage.cs" />
     <Compile Include="Assets\Scripts\Combat\WorldoutDamage\DeathObject.cs" />
     <Compile Include="Assets\Scripts\GameSystems\Spiral\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\GameSystems\Eshes\EshesCamera.cs" />
     <Compile Include="Assets\Scripts\Combat\PlayerOutDamage\SwordBehavior.cs" />
+    <Compile Include="Assets\Scripts\GameSystems\CrossScene\ItemData.cs" />
     <Compile Include="Assets\Scripts\GameSystems\Eshes\EshesGameManager.cs" />
     <Compile Include="Assets\Scripts\GameSystems\Spiral\ButtonFunctions.cs" />
     <Compile Include="Assets\Scripts\Combat\EnemyOutDamage\EnemyAttack.cs" />
@@ -73,6 +75,7 @@
     <Compile Include="Assets\Scripts\GameSystems\CrossScene\InventorySystem.cs" />
     <Compile Include="Assets\Scripts\GameSystems\Spiral\GameManager.cs" />
     <Compile Include="Assets\Scripts\Combat\EnemyAI.cs" />
+    <Compile Include="Assets\Scripts\GameSystems\Eshes\EshesPlayerLevel.cs" />
     <Compile Include="Assets\Scripts\GameSystems\Eshes\EshesButtonFunctions.cs" />
     <Compile Include="Assets\Scripts\GameSystems\Spiral\ItemPickup.cs" />
     <Compile Include="Assets\Scripts\Combat\EnemyOutDamage\PDamage.cs" />

@@ -33,7 +33,8 @@ public class EshesPlayerEye : MonoBehaviour
     {
         Walk();
         Dash();
-        GroundSearch();
+        GroundSearchPlace();
+        GroundSearchPickup();
         ObjectPreview();
     }
 
@@ -55,8 +56,7 @@ public class EshesPlayerEye : MonoBehaviour
             moveSpeed = moveSpeedOriginal;
         }
     }
-
-    void GroundSearch()
+    void GroundSearchPlace()
     {
         RaycastHit hit; // Create a raycast hit variable
         Debug.DrawRay(cameraEye.position, Vector3.down, Color.clear, 10000);
@@ -64,63 +64,156 @@ public class EshesPlayerEye : MonoBehaviour
         {
             if (hit.collider.CompareTag("EshesGround")) // Check if the object hit is the ground
             {
-                //can build an object at this hit
-                if (Input.GetKeyDown(KeyCode.E))
+                if (chosenObject != null)
                 {
-                    //places the object you have chosen from the build menu
-                    //this needs a confirm
-                    if (chosenObject != null && gameManager.buildON)
+                    ItemData itemData = chosenObject.GetComponent<ItemData>();
+                    ScriptableItems item = itemData.scriptableItems;
+                    // Can build an object at this hit
+                    if (Input.GetKeyDown(KeyCode.E) && item.amountHeld > 0)
                     {
-                        Instantiate(chosenObject, hit.point, transform.rotation);
-                        chosenObject.GetComponent<MeshCollider>().enabled = true;
-                    }
-                    if (chosenObject == null)
-                    {
-                        gameManager.selectSomethingToBuild();
+                        if (gameManager.buildON)
+                        {
+                            // Instantiate the chosen object
+                            GameObject placedObject = Instantiate(chosenObject, hit.point, transform.rotation);
+
+                            // Get the ItemData component from the chosenObject
+                            if (itemData != null)
+                            {
+                                // Access the ScriptableItems instance
+                                if (item != null)
+                                {
+                                    // Directly update the amountHeld property
+                                    item.amountHeld -= 1;
+                                    gameManager.UpdateItemCounts();
+                                    Debug.Log($"{item.itemName} amountHeld decreased to {item.amountHeld}");
+                                    if (item.amountHeld == 0)
+                                    {
+                                        RemovePreview();
+                                    }
+                                }
+                            }
+                            placedObject.GetComponent<MeshCollider>().enabled = true;
+                        }
+                        else if (chosenObject == null)
+                        {
+                            gameManager.selectSomethingToBuild();
+                        }
                     }
                 }
             }
-            else
+        }
+    }
+    void GroundSearchPickup()
+    {
+        RaycastHit hit; // Create a raycast hit variable
+        Debug.DrawRay(cameraEye.position, Vector3.down, Color.clear, 10000);
+
+        if (Physics.Raycast(cameraEye.position, Vector3.down, out hit)) // Check if the raycast hits something
+        {
+            if (hit.collider.CompareTag("WorldObject")) // Check if the object hit is a world object
             {
-                if (hit.collider.CompareTag("WorldObject")) // Check if the object hit is the ground
+                if (Input.GetKeyDown(KeyCode.R))
                 {
-                    //can build an object at this hit
-                    if (Input.GetKeyDown(KeyCode.R))
+                    // Get the ItemData component from the object that the raycast hit
+                    ItemData itemData = hit.collider.GetComponent<ItemData>();
+
+                    if (itemData != null)
                     {
-                        //destroy object but increase the corresponding amount in inventory
-                        //this needs a confirm
-                        Destroy(hit.collider.gameObject);
+                        ScriptableItems item = itemData.scriptableItems;
+
+                        if (item != null)
+                        {
+                            // Assuming you want to manage the picked-up item data:
+                            Debug.Log("Picked up object: " + item.itemName);
+
+                            // If you need to add the item to a player's inventory or similar:
+                            // Example: Add the item to the player's inventory or update relevant UI
+                            item.amountHeld += 1;
+
+                            // Destroy the object
+                            Destroy(hit.collider.gameObject);
+                        }
+                        else
+                        {
+                            Debug.LogError("ScriptableItems component is missing from the hit object!");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError("ItemData component is missing from the hit object!");
                     }
                 }
             }
         }
     }
 
+    //void GroundSearchPickup()
+    //{
+    //    RaycastHit hit; // Create a raycast hit variable
+    //    Debug.DrawRay(cameraEye.position, Vector3.down, Color.clear, 10000);
+    //    if (Physics.Raycast(cameraEye.position, Vector3.down, out hit)) // Check if the raycast hits something
+    //    {
+    //        if (hit.collider.CompareTag("WorldObject")) // Check if the object hit is the ground
+    //        {
+    //            if (Input.GetKeyDown(KeyCode.R))
+    //            {
+    //                ItemData itemData = chosenObject.GetComponent<ItemData>();
+    //                if (itemData != null)
+    //                {
+    //                    ScriptableItems item = itemData.scriptableItems;
+    //                    if (item != null)
+    //                    {
+    //                        Destroy(hit.collider.gameObject);
+    //                        Debug.Log("Object retrieved");
+    //                        item.amountHeld += 1;
+    //                        gameManager.UpdateItemCounts();
+    //                    }
+    //                }
 
+    //            }
+    //        }
 
+    //    }
+    //}
     void ObjectPreview() // Creates or updates the preview object at the chosen position
     {
-
         if (chosenObject != null && gameManager.buildON)
         {
-            ChangePreview();
-
-            // Check if there's an existing preview object
-            if (currentPreviewObject != null)
+            ItemData itemData = chosenObject.GetComponent<ItemData>();
+            if (itemData != null)
             {
-                // Destroy the existing preview object if any
-                Destroy(currentPreviewObject);
+                ScriptableItems item = itemData.scriptableItems;
+
+                // Only show preview if amountHeld is greater than zero
+                if (item.amountHeld > 0)
+                {
+                    ChangePreview();
+
+                    // Check if there's an existing preview object
+                    if (currentPreviewObject != null)
+                    {
+                        // Destroy the existing preview object if any
+                        Destroy(currentPreviewObject);
+                    }
+                    // Instantiate the new preview object and set its properties
+                    currentPreviewObject = Instantiate(previewObject, objectPreviewPOS.position, transform.rotation, objectPreviewPOS);
+                    currentPreviewObject.GetComponent<MeshCollider>().enabled = false;
+                }
+                else
+                {
+                    // If amountHeld is zero, remove the preview
+                    RemovePreview();
+                }
             }
-            Debug.Log("Creating Preview");
-            // Instantiate the new preview object and set its properties
-            currentPreviewObject = Instantiate(previewObject, objectPreviewPOS.position, transform.rotation, objectPreviewPOS);
-            currentPreviewObject.GetComponent<MeshCollider>().enabled = false;
+            else
+            {
+                Debug.LogError("ItemData component is missing from chosenObject!");
+            }
         }
-        if(!gameManager.buildON)
-        { 
+        else if (!gameManager.buildON)
+        {
             RemovePreview();
         }
-
     }
 
     public void ChangePreview()
@@ -139,9 +232,7 @@ public class EshesPlayerEye : MonoBehaviour
     }
     public void RemovePreview()
     {
-        Debug.Log("Removing Preview");
-
-            // If a preview object already exists, it needs to be updated or destroyed and recreated
+        // If a preview object already exists, it needs to be updated or destroyed and recreated
         if (currentPreviewObject != null)
         {
             Destroy(currentPreviewObject); // Destroy existing preview object

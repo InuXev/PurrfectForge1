@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class InventorySystem : MonoBehaviour
 {
-    private List<ScriptableItems> playerInventory; // Better to keep it private
-    public static InventorySystem Instance;
+    private List<ScriptableItems> playerInventory; // Keep it private
+    public static InventorySystem Instance { get; private set; }
 
     void Awake()
     {
@@ -16,6 +16,7 @@ public class InventorySystem : MonoBehaviour
         }
         else
         {
+            Debug.Log("Another instance of InventorySystem found, destroying this instance.");
             Destroy(gameObject);
         }
 
@@ -35,7 +36,7 @@ public class InventorySystem : MonoBehaviour
             item.amountHeld = 1; // Set initial amount held when a new item is added
             Debug.Log(item.itemName + " New Item Added");
         }
-        else
+        if (playerInventory.Contains(item))
         {
             item.amountHeld += 1;
             Debug.Log(item.itemName + " Incremented");
@@ -47,10 +48,30 @@ public class InventorySystem : MonoBehaviour
         if (item.amountHeld > 0)
         {
             item.amountHeld -= 1;
+            Debug.Log(item.itemName + " Decremented");
             if (item.amountHeld == 0)
             {
                 playerInventory.Remove(item);
             }
+        }
+    }
+
+    public ScriptableItems GetScriptableItem(GameObject obj)
+    {
+        foreach (var item in playerInventory)
+        {
+            if (item.eshesBuildObject == obj)
+            {
+                return item;
+            }
+        }
+        return null;
+    }
+    public void InventoryDisplay()
+    {
+        foreach (var item in playerInventory)
+        {
+            Debug.Log(item);
         }
     }
 }

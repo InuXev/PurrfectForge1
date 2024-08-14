@@ -24,7 +24,8 @@ public class EshesGameManager : MonoBehaviour
     //trees, flowers, bushes, grass
     [SerializeField] public GameObject trees;
     //trees
-    [SerializeField] public GameObject Tree1;
+    [SerializeField] public ScriptableItems Tree1;
+    [SerializeField] public TMP_Text Tree1AmountHeld;
 
 
     [SerializeField] public GameObject flowers;
@@ -32,7 +33,9 @@ public class EshesGameManager : MonoBehaviour
 
     [SerializeField] public GameObject bushes;
     //Bushes
-    [SerializeField] public GameObject Bush1;
+    [SerializeField] public ScriptableItems Bush1;
+    [SerializeField] public TMP_Text Bush1AmountHeld;
+
 
     [SerializeField] public GameObject grass;
     //Grasses
@@ -90,6 +93,7 @@ public class EshesGameManager : MonoBehaviour
 
         BuildMenu();
         Pause();
+        UpdateItemCounts();
     }
 
     #endregion
@@ -175,7 +179,15 @@ public class EshesGameManager : MonoBehaviour
     }
     public void FoliageTrees()
     {
+        //turn everything off to make sure only the following is open
         SetAllInactive();
+
+        //Item Counts
+        Tree1AmountHeld.text = Tree1.amountHeld.ToString();
+
+
+
+        //turn on this selection menu
         activeBuildSelection = foliageTypeSelector;
         foliageTypeSelector.SetActive(true);
         trees.SetActive(true);
@@ -183,8 +195,15 @@ public class EshesGameManager : MonoBehaviour
     }
     public void TreeSelection1()
     {
-        playerEye.chosenObject = null;
-        playerEye.chosenObject = Tree1;
+        if (Tree1.amountHeld == 0)
+        {
+            //say inventory is empty
+        }
+        else
+        {
+            playerEye.chosenObject = null;
+            playerEye.chosenObject = Tree1.eshesBuildObject;
+        }
     }
     public void FoliageFlowers()
     {
@@ -196,7 +215,14 @@ public class EshesGameManager : MonoBehaviour
     }
     public void FoliageBushes()
     {
+        //turn everything off to make sure only the following is open
         SetAllInactive();
+        //Item Counts
+        Bush1AmountHeld.text = Bush1.amountHeld.ToString();
+
+
+
+        //turn on this selection
         activeBuildSelection = foliageTypeSelector;
         foliageTypeSelector.SetActive(true);
         bushes.SetActive(true);
@@ -204,8 +230,16 @@ public class EshesGameManager : MonoBehaviour
     }
     public void BushSelection1()
     {
-        playerEye.chosenObject = null;
-        playerEye.chosenObject = Bush1;
+        if(Bush1.amountHeld == 0)
+        {
+            //say inventory is empty
+        }
+        else
+        {
+            playerEye.chosenObject = null;
+            playerEye.chosenObject = Bush1.eshesBuildObject;
+        }
+
     }
     public void FoliageGrass()
     {
@@ -367,6 +401,11 @@ public class EshesGameManager : MonoBehaviour
         Debug.Log("Special Selected");
     }
 
+    public void UpdateItemCounts()
+    {
+        Tree1AmountHeld.text = Tree1.amountHeld.ToString();
+        Bush1AmountHeld.text = Bush1.amountHeld.ToString();
+    }
 
     #endregion
     public void SetAllInactive()

@@ -693,6 +693,7 @@ GameObject:
   - component: {fileID: 4540989671553854363}
   - component: {fileID: 8334394731158186845}
   - component: {fileID: 2431731547254717162}
+  - component: {fileID: -2827722751494491457}
   m_Layer: 3
   m_Name: PlaceHolderTree
   m_TagString: WorldObject
@@ -758,6 +759,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8057561313584675475}
   m_Mesh: {fileID: -178542124117208488, guid: eb2952dc66a582d4e91857e838a42561, type: 3}
+--- !u!114 &-2827722751494491457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8057561313584675475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: a40a7972f6bc2174c87cc77348a5720f, type: 2}
 --- !u!1 &8137002941582742370
 GameObject:
   m_ObjectHideFlags: 0

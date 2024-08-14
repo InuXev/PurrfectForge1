@@ -230,6 +230,10 @@ public class PlayerManager : MonoBehaviour, PDamage
         }
     }
 
+    private void playerData()
+    {
+        
+    }
     #endregion
 
 }

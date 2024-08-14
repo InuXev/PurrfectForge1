@@ -1132,6 +1132,7 @@ GameObject:
   - component: {fileID: 6007318280143231140}
   - component: {fileID: 1928779460787907311}
   - component: {fileID: 8316846554995083729}
+  - component: {fileID: 3224329584406819543}
   m_Layer: 3
   m_Name: PlaceHolderBush
   m_TagString: WorldObject
@@ -1210,6 +1211,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 336437120154591169, guid: 4da9bfc9a00bd594db28d6baf1ca831d, type: 3}
+--- !u!114 &3224329584406819543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5400810543641331346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: b52b6bedd1696de49b65075548f1d57f, type: 2}
 --- !u!1 &5723776859053272027
 GameObject:
   m_ObjectHideFlags: 0
