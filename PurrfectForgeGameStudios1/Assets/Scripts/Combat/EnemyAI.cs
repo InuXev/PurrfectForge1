@@ -23,6 +23,7 @@ public class EnemyAI : MonoBehaviour, EDamage
     private bool isDead;
     public bool attacked;
     Transform playerTransform;
+    public float xpDrop;
     
 
     // Start is called before the first frame update
@@ -42,7 +43,7 @@ public class EnemyAI : MonoBehaviour, EDamage
 
     public void takeDamage(float damage)
     {
-        enemyHP -= damage;
+        enemyHP -= damage + (PlayerManager.Instance.Attack * .1F);
         EnemyDeathCheck();
     }
 
@@ -52,7 +53,6 @@ public class EnemyAI : MonoBehaviour, EDamage
         {
             return false; // Return false
         }
-
         playerDir = player.transform.position - headPOS.position; // Get the direction to the player
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, playerDir.y + 1, playerDir.z), transform.forward); // Get the angle to the player
         float distanceToPlayer = Vector3.Distance(player.transform.position, headPOS.position);
@@ -99,6 +99,7 @@ public class EnemyAI : MonoBehaviour, EDamage
             Vector3 dropLocation = enemyPos;
             Destroy(gameObject);
             LootPicker(dropLocation);
+            XPGiver();
         }
     }
 
@@ -141,5 +142,10 @@ public class EnemyAI : MonoBehaviour, EDamage
         //at this location drop a random object that is in the loot pool
         Instantiate(droppingItem, dropLocation, transform.rotation);
         //drop the item from the headPOS
+    }
+    public void XPGiver()
+    {
+        int xpDrop = Random.Range(1, 10);
+        PlayerManager.Instance.playerXP += (float)xpDrop;
     }
 }

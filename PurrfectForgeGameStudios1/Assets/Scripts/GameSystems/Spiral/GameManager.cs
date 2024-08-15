@@ -17,9 +17,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject pauseMenu;
     [SerializeField] public GameObject loseMenu;
     [SerializeField] public GameObject playerHitFlash;
+    public Image playerHP;
     public Image playerHPBar;
     public TMP_Text playerHPText;
-    public Image playerHP;
+    public Image playerXP;
+    public Image playerXPBar;
+    public Image playerStam;
+    public Image playerStamBar;
     public static GameManager Instance;
     public GameObject activeMenu;
     public bool isPaused;

@@ -38,6 +38,14 @@ public class EshesButtonFunctions : MonoBehaviour
         gameManager.stateUnPaused();
 
     }
+    public void spiralPort()
+    {
+        //reload scene
+
+        SceneManager.LoadScene("Spiral");
+        gameManager.stateUnPaused();
+
+    }
     public void quit2()
     {
 #if UNITY_EDITOR

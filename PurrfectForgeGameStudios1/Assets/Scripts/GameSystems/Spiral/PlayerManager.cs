@@ -3,11 +3,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using System.Security.Cryptography;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
 //using UnityEngine.UIElements;
 
@@ -21,21 +23,41 @@ public class PlayerManager : MonoBehaviour, PDamage
     [SerializeField] GameObject currentShield;
     [SerializeField] Animator Anim;
 
-    private float panSpeed = 6F;
+    public static PlayerManager Instance;
+
+
+    //player info
+    int playerLevel;
+    int playerLevelMax = 100;
     public float HP;
     public float HPOriginal = 10;
-    public float moveSpeed;
-    private float moveSpeedOriginal = 4;
+    public float Attack;
+    public float AttackOriginal = 5;
+    public float Def;
+    public float DefOriginal = 5;
+    public float MoveSpeed;
+    private float MoveSpeedOriginal = 4;
+    public float Stamina;
+    public float StaminaOriginal = 5;
     public float dashMult;
-    private float gravity = 20;
+    public bool dashing;
     public int jumpCounter;
     public float jumpSpeed;
     public int maxJumps;
     public bool shieldUp;
+    public float playerXP = 0;
+    public float playerXPReset = 0;
+    public float playerXPMax = 100;
+
+    public int maxBoost;
+
+    private float panSpeed = 6F;
+    private float gravity = 20;
     private Vector3 playerVelocity;
     private Vector3 moveDirection;
     private Vector3 playerPOS;
     public float playerShieldMod;
+
 
     #endregion
 
@@ -43,6 +65,14 @@ public class PlayerManager : MonoBehaviour, PDamage
     void Awake()
     {
         AwakenProcesses();
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     void Start()
     {
@@ -72,18 +102,22 @@ public class PlayerManager : MonoBehaviour, PDamage
 
         moveDirection = (Input.GetAxis("Horizontal") * transform.right) +
             (Input.GetAxis("Vertical") * transform.forward)/*.normalized*/;
-        characterControl.Move(moveDirection * moveSpeed * Time.deltaTime);
+        characterControl.Move(moveDirection * MoveSpeed * Time.deltaTime);
     }
 
     public void Dash()
     {
-        if (Input.GetButtonDown("Dash"))
+        if (Input.GetButtonDown("Dash") && !dashing)
         {
-            moveSpeed = moveSpeed * dashMult;
+            StartCoroutine(StaminaDrain());
+            MoveSpeed = MoveSpeed * dashMult;
         }
         if (Input.GetButtonUp("Dash"))
         {
-            moveSpeed = moveSpeedOriginal;
+            //stamina recharge
+            StopCoroutine(StaminaDrain());
+            MoveSpeed = MoveSpeedOriginal;
+            dashing = false;
         }
     }
 
@@ -122,7 +156,7 @@ public class PlayerManager : MonoBehaviour, PDamage
             {
                 currentShield.SetActive(true);
                 shieldUp = true;
-                playerShieldMod = .2F;
+                playerShieldMod = .75F;
             }
             if (Input.GetButtonUp("Right Mouse"))
             {
@@ -155,7 +189,8 @@ public class PlayerManager : MonoBehaviour, PDamage
         }
         else
         {
-            HP -= damage;
+            float defReduction = Def * .1F;
+            HP -= (damage - defReduction);
             StartCoroutine(HitFlash());
             DeathCheck();
         }
@@ -185,12 +220,24 @@ public class PlayerManager : MonoBehaviour, PDamage
 
     public void UpdatePlayerUI()
     {
-
+        //HP updater
         float hpFillAmount = HP / HPOriginal;
         //convert hpFillAmount to a percentage for display
         int hpPercentage = (int)(hpFillAmount * 100);
         gameManager.playerHP.fillAmount = hpFillAmount;
         gameManager.playerHPText.text = (hpPercentage.ToString() + "%");
+
+        //XP updater
+        float xpFillAmount = playerXP / playerXPMax;
+        //convert hpFillAmount to a percentage for display
+        int xpPercentage = (int)(xpFillAmount * 100);
+        gameManager.playerXPBar.fillAmount = xpFillAmount;
+
+        //StaminaUpdater
+        //float stamFillAmount = Stamina / StaminaOriginal;
+        ////convert hpFillAmount to a percentage for display
+        //int stamPercentage = (int)(stamFillAmount * 100);
+        ////gameManager.playerStamBar.fillAmount = stamFillAmount;
     }
 
     #endregion
@@ -199,8 +246,11 @@ public class PlayerManager : MonoBehaviour, PDamage
 
     private void StartUpProcesses()
     {
-        moveSpeed = moveSpeedOriginal;
         HP = HPOriginal;
+        Attack = AttackOriginal;
+        Def = DefOriginal;
+        MoveSpeed = MoveSpeedOriginal;
+        Stamina = StaminaOriginal;
     }
     private void AwakenProcesses()
     {
@@ -226,13 +276,54 @@ public class PlayerManager : MonoBehaviour, PDamage
 
             DeathCheck();
 
+            playerLevelUp();
+
             UpdatePlayerUI();
         }
     }
 
-    private void playerData()
+    private void playerLevelUp()
     {
-        
+        if(playerXP >= 100 && playerLevel < playerLevelMax)
+        {
+            //show the level up screen
+            //increase stats by random number
+            float randBoostHP = UnityEngine.Random.Range(1F, 10F);
+            float randBoostAttack = UnityEngine.Random.Range(1F, 3F);
+            float randBoostDef = UnityEngine.Random.Range(1F, 3F);
+            float randBoostMoveSpeed = UnityEngine.Random.Range(.01F, .05F);
+            float randBoostStamina = UnityEngine.Random.Range(1F, 3F);
+
+            HP += randBoostHP;
+            HPOriginal += randBoostHP;
+            Attack += randBoostAttack;
+            AttackOriginal += randBoostAttack;
+            Def += randBoostDef;
+            DefOriginal += randBoostDef;
+            MoveSpeed += randBoostMoveSpeed;
+            MoveSpeedOriginal += randBoostMoveSpeed;
+            Stamina += randBoostStamina;
+            StaminaOriginal += randBoostStamina;
+            playerLevel++;
+            UpdatePlayerUI();
+
+            playerXP = 0;
+            //reset playerXp to zero
+        }
+    }
+
+    IEnumerator StaminaDrain()
+    {
+        while (Stamina > 0 && dashing)
+        {
+            yield return new WaitForSeconds(1F);
+            Stamina--;
+            if (Stamina <= 0)
+            {
+                MoveSpeed = MoveSpeedOriginal;
+                dashing = false;
+            }
+        }
     }
     #endregion
 

@@ -11,7 +11,7 @@ public class ItemPickup : MonoBehaviour
         if (other.CompareTag("Player"))  // Check if the collider is the player
         {
             Debug.Log(item.itemName + " Being Added");
-            InventorySystem.Instance.AddToInventory(item);
+            item.amountHeld += 1;
             Destroy(gameObject); // Destroy the item after adding it to the inventory
         }
     }

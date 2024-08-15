@@ -22,10 +22,15 @@ public class ButtonFunctions : MonoBehaviour
     public void restart()
     {
         //reload scene
-        
         SceneManager.LoadScene("Spiral");
         gameManager.stateUnPaused();
 
+    }
+
+    public void eshesPort()
+    {
+        SceneManager.LoadScene("Eshes");
+        gameManager.stateUnPaused();
     }
        public void quit2()
     {
