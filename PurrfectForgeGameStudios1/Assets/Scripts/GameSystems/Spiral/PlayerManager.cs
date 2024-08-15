@@ -35,6 +35,8 @@ public class PlayerManager : MonoBehaviour, PDamage
     public float AttackOriginal = 5;
     public float Def;
     public float DefOriginal = 5;
+    public float Dex;
+    public float DexOriginal = 5;
     public float MoveSpeed;
     private float MoveSpeedOriginal = 4;
     public float Stamina;
@@ -58,6 +60,8 @@ public class PlayerManager : MonoBehaviour, PDamage
     private Vector3 playerPOS;
     public float playerShieldMod;
 
+    private Coroutine staminaDrainCoroutine;
+    private Coroutine staminaRefillCoroutine;
 
     #endregion
 
@@ -104,23 +108,38 @@ public class PlayerManager : MonoBehaviour, PDamage
             (Input.GetAxis("Vertical") * transform.forward)/*.normalized*/;
         characterControl.Move(moveDirection * MoveSpeed * Time.deltaTime);
     }
-
     public void Dash()
     {
-        if (Input.GetButtonDown("Dash") && !dashing)
+        if (Input.GetButtonDown("Dash") && !dashing && Stamina > 0)
         {
-            StartCoroutine(StaminaDrain());
-            MoveSpeed = MoveSpeed * dashMult;
+            dashing = true;
+            MoveSpeed *= dashMult;
+
+            // Start draining stamina
+            if (staminaDrainCoroutine != null)
+            {
+                StopCoroutine(staminaDrainCoroutine);
+            }
+            staminaDrainCoroutine = StartCoroutine(StaminaDrain());
         }
-        if (Input.GetButtonUp("Dash"))
+
+        if (Input.GetButtonUp("Dash") && dashing)
         {
-            //stamina recharge
-            StopCoroutine(StaminaDrain());
-            MoveSpeed = MoveSpeedOriginal;
             dashing = false;
+            MoveSpeed = MoveSpeedOriginal;
+            if (staminaDrainCoroutine != null)
+            {
+                StopCoroutine(staminaDrainCoroutine);
+                staminaDrainCoroutine = null;
+            }
+
+            if (staminaRefillCoroutine != null)
+            {
+                StopCoroutine(staminaRefillCoroutine);
+            }
+            staminaRefillCoroutine = StartCoroutine(StaminaRefill());
         }
     }
-
     public void Jump()
     {
         if (Input.GetButtonDown("Jump") && jumpCounter < maxJumps)
@@ -178,7 +197,7 @@ public class PlayerManager : MonoBehaviour, PDamage
 
     public void takeDamage(float damage)
     {
-        if(shieldUp)
+        if (shieldUp)
         {
             float damageReduction = damage * playerShieldMod;
             float damageTaken = damage - damageReduction;
@@ -197,7 +216,7 @@ public class PlayerManager : MonoBehaviour, PDamage
     }
     IEnumerator HitFlash()
     {
-        if(HP > 0)
+        if (HP > 0)
         {
             gameManager.playerHitFlash.SetActive(true);
             yield return new WaitForSeconds(.1F);
@@ -206,6 +225,7 @@ public class PlayerManager : MonoBehaviour, PDamage
     }
     IEnumerator Swing()
     {
+        Stamina -= 1;
         currentWeapon.SetActive(true);
         Anim.SetTrigger("Attacking");
         yield return new WaitForSeconds(.2F);
@@ -229,17 +249,90 @@ public class PlayerManager : MonoBehaviour, PDamage
 
         //XP updater
         float xpFillAmount = playerXP / playerXPMax;
-        //convert hpFillAmount to a percentage for display
         int xpPercentage = (int)(xpFillAmount * 100);
         gameManager.playerXPBar.fillAmount = xpFillAmount;
 
         //StaminaUpdater
-        //float stamFillAmount = Stamina / StaminaOriginal;
-        ////convert hpFillAmount to a percentage for display
-        //int stamPercentage = (int)(stamFillAmount * 100);
-        ////gameManager.playerStamBar.fillAmount = stamFillAmount;
+        float stamFillAmount = Stamina / StaminaOriginal;
+        int stamPercentage = (int)(stamFillAmount * 100);
+        gameManager.playerStamBar.fillAmount = stamFillAmount;
+    }
+    private void playerLevelUp()
+    {
+        if (playerXP >= 100 && playerLevel < playerLevelMax)
+        {
+            //show the level up screen
+            //increase stats by random number
+            float randBoostHP = UnityEngine.Random.Range(1F, 10F);
+            float randBoostAttack = UnityEngine.Random.Range(1F, 3F);
+            float randBoostDef = UnityEngine.Random.Range(1F, 3F);
+            float randBoostMoveSpeed = UnityEngine.Random.Range(.01F, .05F);
+            float randBoostStamina = UnityEngine.Random.Range(1F, 3F);
+            float randBoostDex = UnityEngine.Random.Range(1F, 3F);
+
+            HP += randBoostHP;
+            HPOriginal += randBoostHP;
+            Attack += randBoostAttack;
+            AttackOriginal += randBoostAttack;
+            Def += randBoostDef;
+            DefOriginal += randBoostDef;
+            Dex += randBoostDex;
+            DexOriginal += randBoostDex;
+            MoveSpeed += randBoostMoveSpeed;
+            MoveSpeedOriginal += randBoostMoveSpeed;
+            Stamina += randBoostStamina;
+            StaminaOriginal += randBoostStamina;
+            playerLevel++;
+            UpdatePlayerUI();
+
+            playerXP = 0;
+            //reset playerXp to zero
+        }
     }
 
+    IEnumerator StaminaDrain()
+    {
+        while (dashing && Stamina > 0)
+        {
+            yield return new WaitForSeconds(0.1F); // Adjust time to control the drain rate
+            Stamina -= 0.1F; // Adjust the amount drained per second
+            UpdatePlayerUI();
+            if (Stamina <= 0)
+            {
+                Stamina = 0;
+                dashing = false;
+                MoveSpeed = MoveSpeedOriginal; // Reset speed if stamina is depleted
+
+                // Stop the drain coroutine and start the refill coroutine
+                if (staminaDrainCoroutine != null)
+                {
+                    StopCoroutine(staminaDrainCoroutine);
+                    staminaDrainCoroutine = null;
+                }
+
+                // Start the stamina refill coroutine
+                if (staminaRefillCoroutine != null)
+                {
+                    StopCoroutine(staminaRefillCoroutine);
+                }
+                staminaRefillCoroutine = StartCoroutine(StaminaRefill());
+            }
+        }
+    }
+    IEnumerator StaminaRefill()
+    {
+        while (Stamina < StaminaOriginal)
+        {
+            // Gradually refill stamina
+            Stamina += 0.1F; // Adjust this value for desired refill speed
+            Stamina = Mathf.Clamp(Stamina, 0, StaminaOriginal); // Ensure stamina does not exceed the original amount
+            UpdatePlayerUI();
+            yield return new WaitForSeconds(0.2F); // Adjust this value to control the refill delay
+        }
+
+        // Ensure stamina is capped at maximum
+        Stamina = StaminaOriginal;
+    }
     #endregion
 
     #region Organizational Systems
@@ -251,6 +344,7 @@ public class PlayerManager : MonoBehaviour, PDamage
         Def = DefOriginal;
         MoveSpeed = MoveSpeedOriginal;
         Stamina = StaminaOriginal;
+        Dex = DexOriginal;
     }
     private void AwakenProcesses()
     {
@@ -282,49 +376,6 @@ public class PlayerManager : MonoBehaviour, PDamage
         }
     }
 
-    private void playerLevelUp()
-    {
-        if(playerXP >= 100 && playerLevel < playerLevelMax)
-        {
-            //show the level up screen
-            //increase stats by random number
-            float randBoostHP = UnityEngine.Random.Range(1F, 10F);
-            float randBoostAttack = UnityEngine.Random.Range(1F, 3F);
-            float randBoostDef = UnityEngine.Random.Range(1F, 3F);
-            float randBoostMoveSpeed = UnityEngine.Random.Range(.01F, .05F);
-            float randBoostStamina = UnityEngine.Random.Range(1F, 3F);
-
-            HP += randBoostHP;
-            HPOriginal += randBoostHP;
-            Attack += randBoostAttack;
-            AttackOriginal += randBoostAttack;
-            Def += randBoostDef;
-            DefOriginal += randBoostDef;
-            MoveSpeed += randBoostMoveSpeed;
-            MoveSpeedOriginal += randBoostMoveSpeed;
-            Stamina += randBoostStamina;
-            StaminaOriginal += randBoostStamina;
-            playerLevel++;
-            UpdatePlayerUI();
-
-            playerXP = 0;
-            //reset playerXp to zero
-        }
-    }
-
-    IEnumerator StaminaDrain()
-    {
-        while (Stamina > 0 && dashing)
-        {
-            yield return new WaitForSeconds(1F);
-            Stamina--;
-            if (Stamina <= 0)
-            {
-                MoveSpeed = MoveSpeedOriginal;
-                dashing = false;
-            }
-        }
-    }
     #endregion
 
 }
