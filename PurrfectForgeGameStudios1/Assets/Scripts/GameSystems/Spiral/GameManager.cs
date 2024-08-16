@@ -17,23 +17,49 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject pauseMenu;
     [SerializeField] public GameObject loseMenu;
     [SerializeField] public GameObject playerHitFlash;
+    [SerializeField] public GameObject statMenu;
+    [SerializeField] public GameObject inventoryMenu;
+    [SerializeField] public GameObject confirmMenu;
+    [SerializeField] public TMP_Text inventoryList;
+    [SerializeField] InventorySystem inventorySystem;
+    [SerializeField] PlayerManager playerManager;
     public Image playerHP;
     public Image playerHPBar;
     public TMP_Text playerHPText;
+    public TMP_Text playerLvLText;
+    public TMP_Text playerHPStat;
+    public TMP_Text playerAttStat;
+    public TMP_Text playerDefStat;
+    public TMP_Text playerDexStat;
+    public TMP_Text playerStamStat;
     public Image playerXP;
     public Image playerXPBar;
     public Image playerStam;
     public Image playerStamBar;
-    public static GameManager Instance;
+    public static GameManager Instance { get; private set; }
     public GameObject activeMenu;
     public bool isPaused;
 
     #endregion
 
     #region Processes
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     void Start()
     {
-        
+        if (inventoryList == null)
+        {
+            Debug.LogError("InventoryList is not assigned!");
+        }
     }
 
 
@@ -50,6 +76,37 @@ public class GameManager : MonoBehaviour
 
             }
             else if(activeMenu != null)
+            {
+                stateUnPaused();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (activeMenu == null)
+            {
+
+                statePaused();
+                activeMenu = statMenu;
+                statMenu.SetActive(true);
+
+            }
+            else if (activeMenu != null)
+            {
+                stateUnPaused();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (activeMenu == null)
+            {
+
+                statePaused();
+                activeMenu = inventoryMenu;
+                inventoryMenu.SetActive(true);
+                inventorySystem.InventoryDisplay();
+
+            }
+            else if (activeMenu != null)
             {
                 stateUnPaused();
             }
@@ -91,6 +148,26 @@ public class GameManager : MonoBehaviour
         //Time.timeScale = 0;
         activeMenu = loseMenu;
         loseMenu.SetActive(true);
+    }
+    public void SaveGame()
+    {
+        playerManager.SavePlayerPrefs();
+    }
+    public void LoadGame()
+    {
+        playerManager.GetPlayerPrefs();
+        SceneManager.LoadScene("Spiral");
+    }
+    public void NewGame()
+    {
+        playerManager.ResetSetPlayerPrefs();
+        playerManager.SavePlayerPrefs();
+        SceneManager.LoadScene("Spiral");
+    }
+    public void quitConfirm()
+    {
+        statePaused();
+        confirmMenu.SetActive(true);
     }
     #endregion
 

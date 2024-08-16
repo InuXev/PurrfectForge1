@@ -18,11 +18,22 @@ public class ButtonFunctions : MonoBehaviour
     {
         gameManager.stateUnPaused();
     }
-
+    public void SaveGame()
+    {
+        gameManager.SaveGame();
+    }
+    public void LoadGame()
+    {
+        gameManager.LoadGame();
+    }
+    public void NewGame()
+    {
+        gameManager.NewGame();
+    }
     public void restart()
     {
         //reload scene
-        SceneManager.LoadScene("Spiral");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().ToString());
         gameManager.stateUnPaused();
 
     }
@@ -34,11 +45,16 @@ public class ButtonFunctions : MonoBehaviour
     }
        public void quit2()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        gameManager.quitConfirm();
+    }
+    public void completeQuit()
+    {
+        SceneManager.LoadScene("GameStart");
+    }
+    public void resume2()
+    {
+        gameManager.stateUnPaused();
+        gameManager.confirmMenu.SetActive(false);
     }
     #endregion
 }

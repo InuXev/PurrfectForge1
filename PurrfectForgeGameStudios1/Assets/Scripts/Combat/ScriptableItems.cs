@@ -9,6 +9,7 @@ using static UnityEditor.Progress;
 public class ScriptableItems : ScriptableObject
 {
     // Start is called before the first frame update
+    public string type;
     public string itemName;
     public Sprite icon;
     public string description;

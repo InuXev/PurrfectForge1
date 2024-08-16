@@ -7,12 +7,12 @@ public class InventorySystem : MonoBehaviour
     private List<ScriptableItems> playerInventory; // Keep it private
     public static InventorySystem Instance { get; private set; }
 
+    [SerializeField] GameManager gameManager;
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);  // Make sure the inventory persists across scenes
         }
         else
         {
@@ -69,9 +69,39 @@ public class InventorySystem : MonoBehaviour
     }
     public void InventoryDisplay()
     {
-        foreach (var item in playerInventory)
+        string itemList = string.Empty;
+        if (playerInventory != null)
         {
-            Debug.Log(item);
+            foreach (var item in playerInventory)
+            {
+                if (item == null)
+                {
+                    Debug.LogWarning("Found a null item in playerInventory.");
+                    continue;
+                }
+
+                if (item.itemName == null)
+                {
+                    Debug.LogWarning("Item name is null for one of the items.");
+                    continue;
+                }
+                string stringAdder = item.itemName;
+                if (itemList == string.Empty)
+                {
+                    itemList = stringAdder;
+                }
+                else
+                {
+                    itemList = itemList + ", " + stringAdder; // Added comma for separation
+                }
+            }
         }
+        Debug.Log("Item List: " + itemList);
+        if (GameManager.Instance != null && GameManager.Instance.inventoryList != null)
+        {
+            GameManager.Instance.inventoryList.text = itemList;
+        }
+
     }
+
 }

@@ -148,4 +148,9 @@ public class EnemyAI : MonoBehaviour, EDamage
         int xpDrop = Random.Range(1, 10);
         PlayerManager.Instance.playerXP += (float)xpDrop;
     }
+
+    public void damageFormula()
+    {
+
+    }
 }
