@@ -79,9 +79,26 @@ public class EshesGameManager : MonoBehaviour
     public bool inConfrimRemove;
     public bool buildON;
 
+    int scene;
+
     #endregion
 
     #region Processes
+    private void Awake()
+    {
+        if(SceneManager.GetActiveScene().name == "GameStart")
+        {
+            scene = 0;
+        }
+        if (SceneManager.GetActiveScene().name == "Eshes")
+        {
+            scene = 1;
+        }
+        if (SceneManager.GetActiveScene().name == "Spiral")
+        {
+            scene = 2;
+        }
+    }
     void Start()
     {
         activeBuildSelection = null;
@@ -99,7 +116,18 @@ public class EshesGameManager : MonoBehaviour
     #endregion
 
     #region Game States
-
+    public void LoadGame()
+    {
+        //playerManager.GetPlayerPrefs();
+        SceneManager.LoadScene("Spiral");
+        Time.timeScale = 1;
+    }
+    public void NewGame()
+    {
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene("Spiral");
+        Time.timeScale = 1;
+    }
     public void statePaused()
     {
         isPaused = true;
@@ -403,8 +431,11 @@ public class EshesGameManager : MonoBehaviour
 
     public void UpdateItemCounts()
     {
-        Tree1AmountHeld.text = Tree1.amountHeld.ToString();
-        Bush1AmountHeld.text = Bush1.amountHeld.ToString();
+        if(scene == 1)
+        {
+            Tree1AmountHeld.text = Tree1.amountHeld.ToString();
+            Bush1AmountHeld.text = Bush1.amountHeld.ToString();
+        }
     }
 
     #endregion

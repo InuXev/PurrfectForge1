@@ -38,6 +38,14 @@ public class EshesButtonFunctions : MonoBehaviour
         gameManager.stateUnPaused();
 
     }
+    public void LoadGame()
+    {
+        gameManager.LoadGame();
+    }
+    public void NewGame()
+    {
+        gameManager.NewGame();
+    }
     public void spiralPort()
     {
         //reload scene

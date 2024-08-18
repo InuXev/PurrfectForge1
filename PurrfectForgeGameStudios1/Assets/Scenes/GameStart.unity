@@ -432,8 +432,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1636116423}
-        m_TargetAssemblyTypeName: GSButtonFunctions, Assembly-CSharp
+      - m_Target: {fileID: 1339356628}
+        m_TargetAssemblyTypeName: EshesButtonFunctions, Assembly-CSharp
         m_MethodName: quit2
         m_Mode: 1
         m_Arguments:
@@ -719,7 +719,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1107694528}
-  - component: {fileID: 1107694529}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -740,21 +739,9 @@ Transform:
   m_LocalScale: {x: 0.49327, y: 0.49327, z: 0.49327}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1636116422}
+  - {fileID: 1339356627}
   m_Father: {fileID: 1666899752}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1107694529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1107694526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38d6b79eccc8a884ba949db0ee950ef5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1125024767
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,8 +825,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1636116423}
-        m_TargetAssemblyTypeName: GSButtonFunctions, Assembly-CSharp
+      - m_Target: {fileID: 1339356628}
+        m_TargetAssemblyTypeName: EshesButtonFunctions, Assembly-CSharp
         m_MethodName: LoadGame
         m_Mode: 1
         m_Arguments:
@@ -1022,6 +1009,103 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1126042703}
   m_CullTransparentMesh: 1
+--- !u!1 &1339356626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1339356627}
+  - component: {fileID: 1339356629}
+  - component: {fileID: 1339356628}
+  m_Layer: 0
+  m_Name: EshesGameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1339356627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339356626}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1107694528}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1339356628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339356626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd70ee13fa43d864da533b0c21944653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 1339356629}
+  playerEye: {fileID: 0}
+  targetButton: {fileID: 0}
+--- !u!114 &1339356629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339356626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e68657b2c13c5d346a962481aa7e016f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerEye: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  buildMenu: {fileID: 0}
+  selectToBuild: {fileID: 0}
+  buildConfirm: {fileID: 0}
+  removeConfirm: {fileID: 0}
+  foliageTypeSelector: {fileID: 0}
+  trees: {fileID: 0}
+  Tree1: {fileID: 0}
+  Tree1AmountHeld: {fileID: 0}
+  flowers: {fileID: 0}
+  bushes: {fileID: 0}
+  Bush1: {fileID: 0}
+  Bush1AmountHeld: {fileID: 0}
+  grass: {fileID: 0}
+  buildingsTypeSelector: {fileID: 0}
+  buildings: {fileID: 0}
+  shops: {fileID: 0}
+  houses: {fileID: 0}
+  roads: {fileID: 0}
+  peopleTypeSelector: {fileID: 0}
+  shopOwners: {fileID: 0}
+  residents: {fileID: 0}
+  pets: {fileID: 0}
+  special: {fileID: 0}
+  geologicalTypeSelector: {fileID: 0}
+  rivers: {fileID: 0}
+  hills: {fileID: 0}
+  ditches: {fileID: 0}
+  geoSpecial: {fileID: 0}
+  activeMenu: {fileID: 0}
+  activeBuildSelection: {fileID: 0}
+  isPaused: 0
+  inSelectError: 0
+  inConfirmBuild: 0
+  inConfrimRemove: 0
+  buildON: 0
 --- !u!1 &1371395577
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,7 +1189,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1636116423}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GSButtonFunctions, Assembly-CSharp
         m_MethodName: quit2
         m_Mode: 1
@@ -1372,8 +1456,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1636116423}
-        m_TargetAssemblyTypeName: GSButtonFunctions, Assembly-CSharp
+      - m_Target: {fileID: 1339356628}
+        m_TargetAssemblyTypeName: EshesButtonFunctions, Assembly-CSharp
         m_MethodName: NewGame
         m_Mode: 1
         m_Arguments:
@@ -1422,65 +1506,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573187342}
   m_CullTransparentMesh: 1
---- !u!1 &1636116421
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1636116422}
-  - component: {fileID: 1636116424}
-  - component: {fileID: 1636116423}
-  m_Layer: 0
-  m_Name: GSGameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1636116422
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1636116421}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1107694528}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1636116423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1636116421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cfe61143c627a340b99da84f17ba701, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 1636116424}
-  targetButton: {fileID: 0}
---- !u!114 &1636116424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1636116421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38d6b79eccc8a884ba949db0ee950ef5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1666899748
 GameObject:
   m_ObjectHideFlags: 0
