@@ -40,6 +40,7 @@ public class ButtonFunctions : MonoBehaviour
 
     public void eshesPort()
     {
+        gameManager.SaveGame();
         SceneManager.LoadScene("Eshes");
         gameManager.stateUnPaused();
     }

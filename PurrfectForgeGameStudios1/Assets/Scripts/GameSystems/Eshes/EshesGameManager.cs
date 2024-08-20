@@ -16,6 +16,7 @@ public class EshesGameManager : MonoBehaviour
     [SerializeField] EshesPlayerEye playerEye;
     [SerializeField] public GameObject pauseMenu;
     [SerializeField] public GameObject buildMenu;
+    [SerializeField] public GameObject confirmMenu;
     [SerializeField] public GameObject selectToBuild;
     [SerializeField] public GameObject buildConfirm;
     [SerializeField] public GameObject removeConfirm;
@@ -530,5 +531,15 @@ public class EshesGameManager : MonoBehaviour
     IEnumerator WaitTimer()
     {
         yield return new WaitForSeconds(3F);
+    }
+    public void quitConfirm()
+    {
+        statePaused();
+        confirmMenu.SetActive(true);
+    }
+    public void resume2()
+    {
+        stateUnPaused();
+        confirmMenu.SetActive(false);
     }
 }

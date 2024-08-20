@@ -434,7 +434,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1339356628}
         m_TargetAssemblyTypeName: EshesButtonFunctions, Assembly-CSharp
-        m_MethodName: quit2
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1146,6 +1146,7 @@ MonoBehaviour:
   playerEye: {fileID: 0}
   pauseMenu: {fileID: 0}
   buildMenu: {fileID: 0}
+  confirmMenu: {fileID: 0}
   selectToBuild: {fileID: 0}
   buildConfirm: {fileID: 0}
   removeConfirm: {fileID: 0}

@@ -97,6 +97,7 @@ public class EshesButtonFunctions : MonoBehaviour
     }
     public void NewGame()
     {
+        saveLoadManager.ClearSaveData();
         gameManager.NewGame();
     }
     public void spiralPort()
@@ -109,11 +110,21 @@ public class EshesButtonFunctions : MonoBehaviour
     }
     public void quit2()
     {
+        gameManager.quitConfirm();
+    }
+    public void completeQuit()
+    {
+        SceneManager.LoadScene("GameStart");
+    }
+    public void QuitGame()
+    {
+
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
+
     }
     #endregion
 

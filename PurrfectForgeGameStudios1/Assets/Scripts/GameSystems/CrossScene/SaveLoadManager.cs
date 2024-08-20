@@ -99,4 +99,28 @@ public class SaveLoadManager : MonoBehaviour
             }
         }
     }
+    public void ClearSaveData()
+    {
+        // Ensure the directory exists
+        string directoryPath = Application.persistentDataPath + SaveDirectory;
+        if (!Directory.Exists(directoryPath))
+        {
+            Directory.CreateDirectory(directoryPath);
+        }
+
+        // Set the full path including the file name
+        string savePath = Path.Combine(directoryPath, FileName);
+
+        // Create an empty PrefabList
+        PrefabList emptyPrefabList = new PrefabList();
+        emptyPrefabList.items = new List<PrefabList.PrefabData>();
+
+        // Serialize the empty list to a JSON string
+        string emptyJson = JsonUtility.ToJson(emptyPrefabList, true);
+
+        // Write the empty JSON string to the file (overwrites the file)
+        File.WriteAllText(savePath, emptyJson);
+
+        Debug.Log("Save data cleared.");
+    }
 }
