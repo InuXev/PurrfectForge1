@@ -1020,6 +1020,7 @@ GameObject:
   - component: {fileID: 1339356627}
   - component: {fileID: 1339356629}
   - component: {fileID: 1339356628}
+  - component: {fileID: 1339356630}
   m_Layer: 0
   m_Name: EshesGameManager
   m_TagString: Untagged
@@ -1056,6 +1057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1339356629}
   playerEye: {fileID: 0}
+  saveLoadManager: {fileID: 1339356630}
   targetButton: {fileID: 0}
 --- !u!114 &1339356629
 MonoBehaviour:
@@ -1099,6 +1101,9 @@ MonoBehaviour:
   hills: {fileID: 0}
   ditches: {fileID: 0}
   geoSpecial: {fileID: 0}
+  prefabList:
+    items: []
+  saveLoadManager: {fileID: 1339356630}
   activeMenu: {fileID: 0}
   activeBuildSelection: {fileID: 0}
   isPaused: 0
@@ -1106,6 +1111,18 @@ MonoBehaviour:
   inConfirmBuild: 0
   inConfrimRemove: 0
   buildON: 0
+--- !u!114 &1339356630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339356626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e85e156d8cd4e9439279e5d390864d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1371395577
 GameObject:
   m_ObjectHideFlags: 0

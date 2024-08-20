@@ -67,6 +67,8 @@ public class EshesGameManager : MonoBehaviour
     [SerializeField] public GameObject geoSpecial;
 
 
+    public PrefabList prefabList;
+    [SerializeField] SaveLoadManager saveLoadManager;
 
     public static EshesGameManager Instance;
     public GameObject activeMenu;
@@ -101,6 +103,38 @@ public class EshesGameManager : MonoBehaviour
     }
     void Start()
     {
+        // Ensure the SaveLoadManager is referenced
+        saveLoadManager = FindObjectOfType<SaveLoadManager>();
+
+        if (saveLoadManager != null)
+        {
+            // Load the saved prefab list
+            PrefabList loadedPrefabList = saveLoadManager.Load();
+
+            // Replace the prefabs in the scene with the loaded data
+            if (loadedPrefabList != null)
+            {
+                saveLoadManager.ReplacePrefabs(loadedPrefabList);
+            }
+            else
+            {
+                Debug.LogWarning("No prefab data was loaded.");
+            }
+        }
+        else
+        {
+            Debug.LogError("SaveLoadManager not found in the scene.");
+        }
+        //// Test loading a prefab manually
+        //GameObject prefab = Resources.Load<GameObject>("Prefabs/PlaceHolderTree");
+        //if (prefab != null)
+        //{
+        //    Debug.Log("Prefab loaded successfully.");
+        //}
+        //else
+        //{
+        //    Debug.LogError("Prefab not found in Resources.");
+        //}
         activeBuildSelection = null;
     }
 
@@ -118,14 +152,16 @@ public class EshesGameManager : MonoBehaviour
     #region Game States
     public void LoadGame()
     {
-        //playerManager.GetPlayerPrefs();
-        SceneManager.LoadScene("Spiral");
+        SceneManager.LoadScene("Eshes");
+        WaitTimer();
+        saveLoadManager.Load();
+        WaitTimer();
         Time.timeScale = 1;
     }
     public void NewGame()
     {
         PlayerPrefs.DeleteAll();
-        SceneManager.LoadScene("Spiral");
+        SceneManager.LoadScene("Eshes");
         Time.timeScale = 1;
     }
     public void statePaused()
@@ -490,5 +526,9 @@ public class EshesGameManager : MonoBehaviour
         yield return new WaitForSeconds(2F);
         selectToBuild.SetActive(false);
         inSelectError = false;
+    }
+    IEnumerator WaitTimer()
+    {
+        yield return new WaitForSeconds(3F);
     }
 }
