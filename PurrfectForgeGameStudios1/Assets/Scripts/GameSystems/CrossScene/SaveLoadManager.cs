@@ -10,11 +10,6 @@ public class SaveLoadManager : MonoBehaviour
 
     public void Save(PrefabList prefabList)
     {
-        foreach (var item in prefabList.items)
-        {
-            Debug.Log($"Saving Prefab: {item.name}, Position: {item.position}, Rotation: {item.rotation}, ScriptableItemName: {item.scriptableItemName}, EshesBuildObjectName: {item.eshesBuildObjectName}");
-        }
-
         // Ensure the directory exists
         string directoryPath = Application.persistentDataPath + SaveDirectory;
         if (!Directory.Exists(directoryPath))
@@ -25,13 +20,33 @@ public class SaveLoadManager : MonoBehaviour
         // Set the full path including the file name
         string savePath = Path.Combine(directoryPath, FileName);
 
-        // Serialize the prefabList to a JSON string
-        string json = JsonUtility.ToJson(prefabList, true);
+        List<PrefabList.PrefabData> prefabDataList = new List<PrefabList.PrefabData>();
+
+        // Load existing data if the file exists
+        if (File.Exists(savePath))
+        {
+            string existingJson = File.ReadAllText(savePath);
+            PrefabList existingPrefabList = JsonUtility.FromJson<PrefabList>(existingJson);
+
+            // Add existing data to the list
+            prefabDataList.AddRange(existingPrefabList.items);
+        }
+
+        // Add new data to the list
+        prefabDataList.AddRange(prefabList.items);
+
+        // Create a new PrefabList with the combined data
+        PrefabList combinedPrefabList = new PrefabList();
+        combinedPrefabList.items = prefabDataList;
+
+        // Serialize the combinedPrefabList to a JSON string
+        string json = JsonUtility.ToJson(combinedPrefabList, true);
         GUIUtility.systemCopyBuffer = savePath;
 
         // Write the JSON string to a file
         File.WriteAllText(savePath, json);
-        Debug.Log("Data saved to " + savePath);
+
+        Debug.Log("Data appended and saved to " + savePath);
     }
 
     public PrefabList Load()
