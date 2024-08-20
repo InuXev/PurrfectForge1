@@ -143,11 +143,13 @@ public class EshesPlayerEye : MonoBehaviour
 
                         if (item != null)
                         {
-                            // Assuming you want to manage the picked-up item data:
-                            Debug.Log("Picked up object: " + item.itemName);
+                            // Log initial state
+                            Debug.Log("Before removal:");
+                            foreach (var prefab in prefabList.items)
+                            {
+                                Debug.Log("Prefab name: " + prefab.name + ", Position: " + prefab.position);
+                            }
 
-                            // If you need to add the item to a player's inventory or similar:
-                            // Example: Add the item to the player's inventory or update relevant UI
                             item.amountHeld += 1;
                             int indexToRemove = -1; // Default to an invalid index
 
@@ -171,14 +173,20 @@ public class EshesPlayerEye : MonoBehaviour
 
                                 // Log the removal after successfully removing it from the list
                                 Debug.Log("Removed prefab: " + removedPrefabName);
+
+                                // Log state after removal
+                                Debug.Log("After removal:");
+                                foreach (var prefab in prefabList.items)
+                                {
+                                    Debug.Log("Prefab name: " + prefab.name + ", Position: " + prefab.position);
+                                }
+
+                                // Save the updated prefabList
+                                saveLoadManager.Save(prefabList);
                             }
                             else
                             {
                                 Debug.LogError("Prefab not found for removal.");
-                            }
-                            foreach (var prefab in prefabList.items)
-                            {
-                                Debug.Log(prefab.name + " still in Prefab List.");
                             }
 
                             // Destroy the object
@@ -197,6 +205,8 @@ public class EshesPlayerEye : MonoBehaviour
             }
         }
     }
+
+
 
     void ObjectPreview() // Creates or updates the preview object at the chosen position
     {

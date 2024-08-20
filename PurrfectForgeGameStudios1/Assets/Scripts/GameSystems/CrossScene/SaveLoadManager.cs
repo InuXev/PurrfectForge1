@@ -81,6 +81,11 @@ public class SaveLoadManager : MonoBehaviour
             return;
         }
 
+        // Optionally clear existing prefabs before adding new ones
+        ClearAllInstantiatedPrefabs();
+
+        Debug.Log($"Replacing prefabs with {prefabList.items.Count} items.");
+
         foreach (var item in prefabList.items)
         {
             Debug.Log($"Attempting to load prefab: {item.eshesBuildObjectName}");
@@ -91,11 +96,26 @@ public class SaveLoadManager : MonoBehaviour
             {
                 // Instantiate the prefab at the saved position and rotation
                 GameObject instantiatedObject = Instantiate(prefab, item.position, item.rotation);
+                instantiatedObject.name = $"Prefab_{item.name}"; // Optional: Set a unique name for management
                 Debug.Log($"Prefab instantiated: {item.eshesBuildObjectName} at {item.position}");
             }
             else
             {
                 Debug.LogWarning($"Prefab not found in Resources: {item.eshesBuildObjectName}");
+            }
+        }
+    }
+
+    // Optional: Method to clear all previously instantiated prefabs
+    void ClearAllInstantiatedPrefabs()
+    {
+        var instantiatedPrefabs = GameObject.FindObjectsOfType<GameObject>();
+        foreach (var prefab in instantiatedPrefabs)
+        {
+            if (prefab.name.StartsWith("Prefab_")) // Use a naming convention or other criteria to identify
+            {
+                Destroy(prefab);
+                Debug.Log($"Destroyed prefab: {prefab.name}");
             }
         }
     }
