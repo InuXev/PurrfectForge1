@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using static PrefabList;
 
 public class SaveLoadManager : MonoBehaviour
 {
@@ -75,9 +76,21 @@ public class SaveLoadManager : MonoBehaviour
     }
     public void ReplacePrefabs(PrefabList prefabList)
     {
-        if (prefabList == null || prefabList.items.Count == 0)
+        if (prefabList == null)
         {
-            Debug.LogWarning("Prefab list is empty or null. No prefabs to replace.");
+            Debug.LogError("PrefabList is null. Cannot replace prefabs.");
+            return;
+        }
+
+        if (prefabList.items == null)
+        {
+            Debug.LogError("PrefabList items are null. Cannot replace prefabs.");
+            return;
+        }
+
+        if (prefabList.items.Count == 0)
+        {
+            Debug.LogWarning("Prefab list is empty. No prefabs to replace.");
             return;
         }
 
@@ -85,6 +98,9 @@ public class SaveLoadManager : MonoBehaviour
         ClearAllInstantiatedPrefabs();
 
         Debug.Log($"Replacing prefabs with {prefabList.items.Count} items.");
+
+        // Create a new list to track instantiated prefabs
+        List<PrefabData> instantiatedPrefabs = new List<PrefabData>();
 
         foreach (var item in prefabList.items)
         {
@@ -98,13 +114,85 @@ public class SaveLoadManager : MonoBehaviour
                 GameObject instantiatedObject = Instantiate(prefab, item.position, item.rotation);
                 instantiatedObject.name = $"Prefab_{item.name}"; // Optional: Set a unique name for management
                 Debug.Log($"Prefab instantiated: {item.eshesBuildObjectName} at {item.position}");
+
+                // Create a new PrefabData to track the instantiated prefab
+                PrefabData newPrefabData = new PrefabData(
+                    type: item.type,
+                    name: instantiatedObject.name,
+                    position: instantiatedObject.transform.position,
+                    rotation: instantiatedObject.transform.rotation,
+                    scriptableItemName: item.scriptableItemName,
+                    eshesBuildObjectName: item.eshesBuildObjectName
+                );
+
+                // Add the new PrefabData to the list
+                instantiatedPrefabs.Add(newPrefabData);
             }
             else
             {
                 Debug.LogWarning($"Prefab not found in Resources: {item.eshesBuildObjectName}");
             }
         }
+
+        // Update the prefabList with the newly instantiated prefabs
+        prefabList.items = instantiatedPrefabs;
+
+        Debug.Log("Prefab list updated with new instances.");
     }
+    //public void ReplacePrefabs(PrefabList prefabList)
+    //{
+    //    if (prefabList == null || prefabList.items.Count == 0)
+    //    {
+    //        Debug.LogWarning("Prefab list is empty or null. No prefabs to replace.");
+    //        return;
+    //    }
+
+    //    // Optionally clear existing prefabs before adding new ones
+    //    ClearAllInstantiatedPrefabs();
+
+    //    Debug.Log($"Replacing prefabs with {prefabList.items.Count} items.");
+
+    //    // Create a new list to track instantiated prefabs
+    //    List<PrefabData> instantiatedPrefabs = new List<PrefabData>();
+
+    //    foreach (var item in prefabList.items)
+    //    {
+    //        Debug.Log($"Attempting to load prefab: {item.eshesBuildObjectName}");
+
+    //        // Load the prefab using the eshesBuildObjectName field
+    //        GameObject prefab = Resources.Load<GameObject>($"Prefabs/{item.eshesBuildObjectName}");
+    //        if (prefab != null)
+    //        {
+    //            // Instantiate the prefab at the saved position and rotation
+    //            GameObject instantiatedObject = Instantiate(prefab, item.position, item.rotation);
+    //            instantiatedObject.name = $"Prefab_{item.name}"; // Optional: Set a unique name for management
+    //            Debug.Log($"Prefab instantiated: {item.eshesBuildObjectName} at {item.position}");
+
+    //            // Create a new PrefabData to track the instantiated prefab
+    //            PrefabData newPrefabData = new PrefabData(
+    //                type: item.type,
+    //                name: instantiatedObject.name,
+    //                position: instantiatedObject.transform.position,
+    //                rotation: instantiatedObject.transform.rotation,
+    //                scriptableItemName: item.scriptableItemName,
+    //                eshesBuildObjectName: item.eshesBuildObjectName
+    //            );
+
+    //            // Add the new PrefabData to the list
+    //            instantiatedPrefabs.Add(newPrefabData);
+    //        }
+    //        else
+    //        {
+    //            Debug.LogWarning($"Prefab not found in Resources: {item.eshesBuildObjectName}");
+    //        }
+    //    }
+
+    //    // Update the prefabList with the newly instantiated prefabs
+    //    prefabList.items = instantiatedPrefabs;
+
+    //    Debug.Log("Prefab list updated with new instances.");
+    //}
+
 
     // Optional: Method to clear all previously instantiated prefabs
     void ClearAllInstantiatedPrefabs()

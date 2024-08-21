@@ -89,7 +89,7 @@ public class EshesGameManager : MonoBehaviour
     #region Processes
     private void Awake()
     {
-        if(SceneManager.GetActiveScene().name == "GameStart")
+        if (SceneManager.GetActiveScene().name == "GameStart")
         {
             scene = 0;
         }
@@ -142,10 +142,22 @@ public class EshesGameManager : MonoBehaviour
 
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "GameStart")
+        {
+            scene = 0;
+        }
+        if (SceneManager.GetActiveScene().name == "Eshes")
+        {
+            BuildMenu();
+            Pause();
+            UpdateItemCounts();
+            scene = 1;
+        }
+        if (SceneManager.GetActiveScene().name == "Spiral")
+        {
+            scene = 2;
+        }
 
-        BuildMenu();
-        Pause();
-        UpdateItemCounts();
     }
 
     #endregion
@@ -178,13 +190,13 @@ public class EshesGameManager : MonoBehaviour
     }
     public void stateUnPaused()
     {
-        isPaused = false;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
-        //allow time to pass again
-        Time.timeScale = 1;
-        activeMenu.SetActive(isPaused);
-        activeMenu = null;
+            isPaused = false;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+            //allow time to pass again
+            Time.timeScale = 1;
+            activeMenu.SetActive(isPaused);
+            activeMenu = null;
     }
 
     void BuildMenu()
