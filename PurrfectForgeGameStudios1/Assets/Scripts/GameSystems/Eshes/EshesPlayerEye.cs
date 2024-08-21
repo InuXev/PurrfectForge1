@@ -94,25 +94,6 @@ public class EshesPlayerEye : MonoBehaviour
                                 }
                             }
                             placedObject.GetComponent<MeshCollider>().enabled = true;
-                            PrefabList.PrefabData data = new PrefabList.PrefabData
-                            {
-                                type = item.type,
-                                name = item.itemName,
-                                position = hit.point,
-                                rotation = transform.rotation,
-                                scriptableItemName = item.itemName, // Save the name of the ScriptableItem
-                                eshesBuildObjectName = item.eshesBuildObject ? item.eshesBuildObject.name : "" // Save the name of the GameObject
-                            };
-                            //AddPrefabToGame(data);
-                            gameManager.prefabList.items.Add(data);
-                            saveLoadManager.Save(prefabList);
-                            Debug.Log(data.name + " Added to Prefab List");
-                            Debug.Log(data.position + " Added to Prefab List");
-                            Debug.Log(data.rotation + " Added to Prefab List");
-                            foreach (PrefabList.PrefabData listItem in prefabList.items)
-                            {
-                                Debug.Log($"Name: {listItem.name}, Type: {listItem.type}, Position: {listItem.position}, Rotation: {listItem.rotation}, GameObjectName: {listItem.eshesBuildObjectName}");
-                            }
                         }
                         else if (chosenObject == null)
                         {
@@ -151,51 +132,12 @@ public class EshesPlayerEye : MonoBehaviour
                             }
 
                             item.amountHeld += 1;
-                            int indexToRemove = -1; // Default to an invalid index
-
-                            for (int i = 0; i < prefabList.items.Count; i++)
-                            {
-                                var prefab = prefabList.items[i];
-                                if (prefab.name == item.itemName && prefab.position == hit.collider.transform.position)
-                                {
-                                    indexToRemove = i;
-                                    break;
-                                }
-                            }
-
-                            if (indexToRemove >= 0)
-                            {
-                                // Store the name of the prefab before removing it
-                                string removedPrefabName = prefabList.items[indexToRemove].name;
-
-                                // Remove the prefab from the list
-                                prefabList.items.RemoveAt(indexToRemove);
-
-                                // Log the removal after successfully removing it from the list
-                                Debug.Log("Removed prefab: " + removedPrefabName);
-
-                                // Log state after removal
-                                Debug.Log("After removal:");
-                                foreach (var prefab in prefabList.items)
-                                {
-                                    Debug.Log("Prefab name: " + prefab.name + ", Position: " + prefab.position);
-                                }
-
-                                // Save the updated prefabList
-                                saveLoadManager.Save(prefabList);
-                            }
-                            else
-                            {
-                                Debug.LogError("Prefab not found for removal.");
-                            }
-
-                            // Destroy the object
                             Destroy(hit.collider.gameObject);
                         }
-                        else
-                        {
-                            Debug.LogError("ScriptableItems component is missing from the hit object!");
-                        }
+                        //else
+                        //{
+                        //    Debug.LogError("ScriptableItems component is missing from the hit object!");
+                        //}
                     }
                     else
                     {

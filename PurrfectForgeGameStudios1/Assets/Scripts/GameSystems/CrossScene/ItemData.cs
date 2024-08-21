@@ -5,4 +5,6 @@ using UnityEngine;
 public class ItemData : MonoBehaviour
 {
     public ScriptableItems scriptableItems;
+    public string type;
+    public string eshesBuildObjectName;
 }

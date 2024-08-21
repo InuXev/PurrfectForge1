@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using static PrefabList;
+using static UnityEditor.Progress;
 
 public class SaveLoadManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class SaveLoadManager : MonoBehaviour
     public const string SaveDirectory = "/SaveData/";
     public const string FileName = "SaveGame.save";
 
-    public void Save(PrefabList prefabList)
+    public void SaveEshesWorld()
     {
         // Ensure the directory exists
         string directoryPath = Application.persistentDataPath + SaveDirectory;
@@ -21,34 +22,99 @@ public class SaveLoadManager : MonoBehaviour
         // Set the full path including the file name
         string savePath = Path.Combine(directoryPath, FileName);
 
-        List<PrefabList.PrefabData> prefabDataList = new List<PrefabList.PrefabData>();
+        List<PrefabData> prefabDataList = new List<PrefabData>();
 
-        // Load existing data if the file exists
-        if (File.Exists(savePath))
+        // Find all objects with the tag "WorldObject"
+        GameObject[] eshesObjects = GameObject.FindGameObjectsWithTag("WorldObject"); // Adjust the tag as needed
+
+        // Collect data from each object
+        foreach (GameObject obj in eshesObjects)
         {
-            string existingJson = File.ReadAllText(savePath);
-            PrefabList existingPrefabList = JsonUtility.FromJson<PrefabList>(existingJson);
+            // Get the ItemData component attached to the GameObject
+            ItemData itemData = obj.GetComponent<ItemData>();
 
-            // Add existing data to the list
-            prefabDataList.AddRange(existingPrefabList.items);
+            if (itemData != null)
+            {
+                ScriptableItems item = itemData.scriptableItems;
+
+                // Retrieve data from ScriptableItems if available
+                string type = item != null ? item.type : "Unknown"; // Adjust based on actual fields
+                string scriptableItemName = item != null ? item.itemName : "Unknown"; // Adjust based on actual fields
+                string eshesBuildObjectName = item != null && item.eshesBuildObject != null ? item.eshesBuildObject.name : "Unknown"; // Adjust based on actual fields
+
+                // Create PrefabData instance using values from ItemData and ScriptableItems
+                PrefabData data = new PrefabData(
+                    type: type,
+                    name: obj.name,
+                    position: obj.transform.position,
+                    rotation: obj.transform.rotation,
+                    scriptableItemName: scriptableItemName,
+                    eshesBuildObjectName: eshesBuildObjectName
+                );
+
+                prefabDataList.Add(data);
+            }
+            else
+            {
+                Debug.LogWarning("ItemData component missing on GameObject: " + obj.name);
+            }
         }
 
-        // Add new data to the list
-        prefabDataList.AddRange(prefabList.items);
+        // Create a new PrefabList with the collected data
+        PrefabList newPrefabList = new PrefabList();
+        newPrefabList.items = prefabDataList;
 
-        // Create a new PrefabList with the combined data
-        PrefabList combinedPrefabList = new PrefabList();
-        combinedPrefabList.items = prefabDataList;
+        // Serialize the newPrefabList to a JSON string
+        string json = JsonUtility.ToJson(newPrefabList, true);
 
-        // Serialize the combinedPrefabList to a JSON string
-        string json = JsonUtility.ToJson(combinedPrefabList, true);
-        GUIUtility.systemCopyBuffer = savePath;
-
-        // Write the JSON string to a file
+        // Write the JSON string to a file, overwriting old data
         File.WriteAllText(savePath, json);
 
-        Debug.Log("Data appended and saved to " + savePath);
+        Debug.Log("Data saved to " + savePath);
     }
+
+
+
+//public void Save(PrefabList prefabList)
+//    {
+//        // Ensure the directory exists
+//        string directoryPath = Application.persistentDataPath + SaveDirectory;
+//        if (!Directory.Exists(directoryPath))
+//        {
+//            Directory.CreateDirectory(directoryPath);
+//        }
+
+//        // Set the full path including the file name
+//        string savePath = Path.Combine(directoryPath, FileName);
+
+//        List<PrefabList.PrefabData> prefabDataList = new List<PrefabList.PrefabData>();
+
+//        // Load existing data if the file exists
+//        if (File.Exists(savePath))
+//        {
+//            string existingJson = File.ReadAllText(savePath);
+//            PrefabList existingPrefabList = JsonUtility.FromJson<PrefabList>(existingJson);
+
+//            // Add existing data to the list
+//            prefabDataList.AddRange(existingPrefabList.items);
+//        }
+
+//        // Add new data to the list
+//        prefabDataList.AddRange(prefabList.items);
+
+//        // Create a new PrefabList with the combined data
+//        PrefabList combinedPrefabList = new PrefabList();
+//        combinedPrefabList.items = prefabDataList;
+
+//        // Serialize the combinedPrefabList to a JSON string
+//        string json = JsonUtility.ToJson(combinedPrefabList, true);
+//        GUIUtility.systemCopyBuffer = savePath;
+
+//        // Write the JSON string to a file
+//        File.WriteAllText(savePath, json);
+
+//        Debug.Log("Data appended and saved to " + savePath);
+//    }
 
     public PrefabList Load()
     {

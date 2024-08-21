@@ -53,42 +53,8 @@ public class EshesButtonFunctions : MonoBehaviour
     }
     public void SaveGame()
     {
-        Debug.Log("SaveGame method called.");
-
-        // Ensure SaveLoadManager is correctly assigned
-        if (saveLoadManager == null)
-        {
-            saveLoadManager = FindObjectOfType<SaveLoadManager>();
-            if (saveLoadManager == null)
-            {
-                Debug.LogError("Save operation failed: SaveLoadManager is missing in the scene.");
-                return;
-            }
-        }
-
-        // Check if the GameManager's prefabList is null
-        if (gameManager.prefabList == null)
-        {
-            Debug.LogError("GameManager's prefabList is null.");
-            return;
-        }
-
-        // Log the prefabList state before saving
-        Debug.Log("PrefabList state before saving:");
-        if (gameManager.prefabList.items == null || gameManager.prefabList.items.Count == 0)
-        {
-            Debug.Log("PrefabList.items is empty.");
-        }
-        else
-        {
-            foreach (var item in gameManager.prefabList.items)
-            {
-                Debug.Log($"Item: {item.name}, Position: {item.position}, Rotation: {item.rotation}, GameObjectName: {item.eshesBuildObjectName}");
-            }
-        }
-
         // Proceed to save
-        saveLoadManager.Save(gameManager.prefabList);
+        saveLoadManager.SaveEshesWorld();
         Debug.Log("Game saved successfully.");
     }
     public void LoadGame()

@@ -105,37 +105,28 @@ public class EshesGameManager : MonoBehaviour
     void Start()
     {
         // Ensure the SaveLoadManager is referenced
-        saveLoadManager = FindObjectOfType<SaveLoadManager>();
+        //saveLoadManager = FindObjectOfType<SaveLoadManager>();
 
-        if (saveLoadManager != null)
-        {
-            // Load the saved prefab list
-            PrefabList loadedPrefabList = saveLoadManager.Load();
-
-            // Replace the prefabs in the scene with the loaded data
-            if (loadedPrefabList != null)
-            {
-                saveLoadManager.ReplacePrefabs(loadedPrefabList);
-            }
-            else
-            {
-                Debug.LogWarning("No prefab data was loaded.");
-            }
-        }
-        else
-        {
-            Debug.LogError("SaveLoadManager not found in the scene.");
-        }
-        //// Test loading a prefab manually
-        //GameObject prefab = Resources.Load<GameObject>("Prefabs/PlaceHolderTree");
-        //if (prefab != null)
+        //if (saveLoadManager != null)
         //{
-        //    Debug.Log("Prefab loaded successfully.");
+        //    // Load the saved prefab list
+        //    PrefabList loadedPrefabList = saveLoadManager.Load();
+
+        //    // Replace the prefabs in the scene with the loaded data
+        //    if (loadedPrefabList != null)
+        //    {
+        //        saveLoadManager.ReplacePrefabs(loadedPrefabList);
+        //    }
+        //    else
+        //    {
+        //        Debug.LogWarning("No prefab data was loaded.");
+        //    }
         //}
         //else
         //{
-        //    Debug.LogError("Prefab not found in Resources.");
+        //    Debug.LogError("SaveLoadManager not found in the scene.");
         //}
+
         activeBuildSelection = null;
     }
 
