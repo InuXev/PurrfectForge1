@@ -77,6 +77,7 @@ public class EshesGameManager : MonoBehaviour
 
     public static EshesGameManager Instance;
     public GameObject activeMenu;
+    public GameObject mainMenuActiveMenu;
     public GameObject activeBuildSelection;
 
 
@@ -185,13 +186,13 @@ public class EshesGameManager : MonoBehaviour
     }
     public void stateUnPaused()
     {
-            isPaused = false;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.Confined;
-            //allow time to pass again
-            Time.timeScale = 1;
-            activeMenu.SetActive(isPaused);
-            activeMenu = null;
+        isPaused = false;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        //allow time to pass again
+        Time.timeScale = 1;
+        activeMenu.SetActive(isPaused);
+        activeMenu = null;
     }
 
     void BuildMenu()
@@ -302,7 +303,7 @@ public class EshesGameManager : MonoBehaviour
     }
     public void BushSelection1()
     {
-        if(Bush1.amountHeld == 0)
+        if (Bush1.amountHeld == 0)
         {
             //say inventory is empty
         }
@@ -475,7 +476,7 @@ public class EshesGameManager : MonoBehaviour
 
     public void UpdateItemCounts()
     {
-        if(scene == 1)
+        if (scene == 1)
         {
             Tree1AmountHeld.text = Tree1.amountHeld.ToString();
             Bush1AmountHeld.text = Bush1.amountHeld.ToString();
@@ -522,7 +523,7 @@ public class EshesGameManager : MonoBehaviour
     }
     public void selectSomethingToBuild()
     {
-        if(!inSelectError)
+        if (!inSelectError)
         {
             StartCoroutine(nothingSelected());
         }
@@ -551,24 +552,23 @@ public class EshesGameManager : MonoBehaviour
     }
     public void NewGameConfirm()
     {
-        statePaused();
+        //statePaused();
         NewGameMenu.SetActive(true);
     }
     public void NewGameCancel()
     {
-        stateUnPaused();
+        //stateUnPaused();
         NewGameMenu.SetActive(false);
     }
     public void TotalGameQuitConfirm()
     {
-
+        //statePaused();
         TotalQuitMenu.SetActive(true);
-        activeMenu = TotalQuitMenu;
     }
     public void TotalGameQuitCancel()
     {
+        //stateUnPaused();
         TotalQuitMenu.SetActive(false);
-        activeMenu = null;
     }
     public void SaveConfirm()
     {
