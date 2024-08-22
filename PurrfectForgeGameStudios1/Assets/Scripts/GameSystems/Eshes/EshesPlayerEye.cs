@@ -28,8 +28,6 @@ public class EshesPlayerEye : MonoBehaviour
     {
 
     }
-
-    // Update is called once per frame
     void Update()
     {
         Walk();
@@ -38,14 +36,12 @@ public class EshesPlayerEye : MonoBehaviour
         GroundSearchPickup();
         ObjectPreview();
     }
-
     public void Walk()
     {
         moveDirection = (Input.GetAxis("Horizontal") * transform.right) +
             (Input.GetAxis("Vertical") * transform.forward).normalized;
         characterControl.Move(moveDirection * moveSpeed * Time.deltaTime);
     }
-
     public void Dash()
     {
         if (Input.GetButtonDown("Dash"))
@@ -134,10 +130,6 @@ public class EshesPlayerEye : MonoBehaviour
                             item.amountHeld += 1;
                             Destroy(hit.collider.gameObject);
                         }
-                        //else
-                        //{
-                        //    Debug.LogError("ScriptableItems component is missing from the hit object!");
-                        //}
                     }
                     else
                     {
@@ -180,10 +172,6 @@ public class EshesPlayerEye : MonoBehaviour
                     RemovePreview();
                 }
             }
-            else
-            {
-                Debug.LogError("ItemData component is missing from chosenObject!");
-            }
         }
         else if (!gameManager.buildON)
         {
@@ -214,27 +202,4 @@ public class EshesPlayerEye : MonoBehaviour
             currentPreviewObject = null;   // Reset the reference
         }
     }
-    //void AddPrefabToGame(PrefabList.PrefabData prefabData)
-    //{
-    //    // Assume prefabList is already initialized somewhere in your GameManager or relevant script
-
-    //    // Create a new PrefabData item
-    //    prefabData = new PrefabList.PrefabData(
-    //        "Building",                  // Type of the prefab
-    //        "HousePrefab",               // Name or identifier
-    //        new Vector3(0, 0, 0),        // Position
-    //        Quaternion.identity,         // Rotation
-    //        "HouseScriptableItem",       // Scriptable Object Name
-    //        ""                           // Leave eshesBuildObjectName empty for now
-    //    );
-
-    //    // Set the correct path for the prefab within the Resources folder
-    //    prefabData.SetEshesBuildObjectName("Prefabs/Buildings", "HousePrefab");
-
-    //    // Add the prefab data to the list
-    //    prefabList.items.Add(prefabData);
-
-    //    // Save the list using your SaveLoadManager (assuming it's already initialized)
-    //    saveLoadManager.Save(prefabList);
-    //}
 }

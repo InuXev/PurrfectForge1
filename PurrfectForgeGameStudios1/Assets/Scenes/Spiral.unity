@@ -857,7 +857,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3255289578857201413, guid: a09b5a35a9f0c214ab647e6b9465e753, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -13.700003
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 3400891024304591875, guid: a09b5a35a9f0c214ab647e6b9465e753, type: 3}
       propertyPath: playerManager
@@ -963,17 +963,29 @@ PrefabInstance:
       propertyPath: m_text
       value: Save
       objectReference: {fileID: 0}
+    - target: {fileID: 5526476641049556170, guid: a09b5a35a9f0c214ab647e6b9465e753, type: 3}
+      propertyPath: m_text
+      value: Are you sure you want to return to Eshes?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5526476641049556170, guid: a09b5a35a9f0c214ab647e6b9465e753, type: 3}
+      propertyPath: m_fontSize
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5526476641049556170, guid: a09b5a35a9f0c214ab647e6b9465e753, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 5558238547655037112, guid: a09b5a35a9f0c214ab647e6b9465e753, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SaveGame
       objectReference: {fileID: 0}
     - target: {fileID: 5990711765488587106, guid: a09b5a35a9f0c214ab647e6b9465e753, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.6
+      value: -15.6
       objectReference: {fileID: 0}
     - target: {fileID: 6099161176964583780, guid: a09b5a35a9f0c214ab647e6b9465e753, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: eshesPort
+      value: quit2
       objectReference: {fileID: 0}
     - target: {fileID: 6751050560262012428, guid: a09b5a35a9f0c214ab647e6b9465e753, type: 3}
       propertyPath: m_IsActive
@@ -990,6 +1002,10 @@ PrefabInstance:
     - target: {fileID: 7411801115906728916, guid: a09b5a35a9f0c214ab647e6b9465e753, type: 3}
       propertyPath: m_Name
       value: SaveGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7411801115906728916, guid: a09b5a35a9f0c214ab647e6b9465e753, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7520772243366525894, guid: a09b5a35a9f0c214ab647e6b9465e753, type: 3}
       propertyPath: m_text

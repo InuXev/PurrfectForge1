@@ -54,14 +54,19 @@ public class EshesButtonFunctions : MonoBehaviour
     public void SaveGame()
     {
         // Proceed to save
-        saveLoadManager.SaveEshesWorld();
-        Debug.Log("Game saved successfully.");
+        gameManager.SaveConfirm();
     }
     public void LoadGame()
     {
         gameManager.LoadGame();
     }
-    public void NewGame()
+    public void SaveGameConfirmed()
+    {
+        saveLoadManager.SaveEshesWorld();
+        Debug.Log("Game saved successfully.");
+        gameManager.SaveCancel();
+    }
+    public void NewGameConfirmed()
     {
         saveLoadManager.ClearSaveData();
         gameManager.NewGame();
@@ -69,7 +74,13 @@ public class EshesButtonFunctions : MonoBehaviour
     public void spiralPort()
     {
         //reload scene
+        gameManager.SpiralConfirm();
 
+    }
+    public void spiralPortConfirmed()
+    {
+        //reload scene
+        saveLoadManager.SaveEshesWorld();
         SceneManager.LoadScene("Spiral");
         gameManager.stateUnPaused();
 
@@ -78,9 +89,17 @@ public class EshesButtonFunctions : MonoBehaviour
     {
         gameManager.quitConfirm();
     }
+    public void NewGameConfirm()
+    {
+        gameManager.quitConfirm();
+    }
     public void completeQuit()
     {
         SceneManager.LoadScene("GameStart");
+    }
+    public void TotalQuitConfirm()
+    {
+        gameManager.TotalGameQuitConfirm();
     }
     public void QuitGame()
     {

@@ -17,9 +17,13 @@ public class EshesGameManager : MonoBehaviour
     [SerializeField] public GameObject pauseMenu;
     [SerializeField] public GameObject buildMenu;
     [SerializeField] public GameObject confirmMenu;
+    [SerializeField] public GameObject NewGameMenu;
+    [SerializeField] public GameObject TotalQuitMenu;
+    [SerializeField] public GameObject SaveConfirmMenu;
     [SerializeField] public GameObject selectToBuild;
     [SerializeField] public GameObject buildConfirm;
     [SerializeField] public GameObject removeConfirm;
+    [SerializeField] public GameObject SpiralConfirmMenu;
     //foliage
     [SerializeField] public GameObject foliageTypeSelector;
     //trees, flowers, bushes, grass
@@ -545,4 +549,46 @@ public class EshesGameManager : MonoBehaviour
         stateUnPaused();
         confirmMenu.SetActive(false);
     }
+    public void NewGameConfirm()
+    {
+        statePaused();
+        NewGameMenu.SetActive(true);
+    }
+    public void NewGameCancel()
+    {
+        stateUnPaused();
+        NewGameMenu.SetActive(false);
+    }
+    public void TotalGameQuitConfirm()
+    {
+
+        TotalQuitMenu.SetActive(true);
+        activeMenu = TotalQuitMenu;
+    }
+    public void TotalGameQuitCancel()
+    {
+        TotalQuitMenu.SetActive(false);
+        activeMenu = null;
+    }
+    public void SaveConfirm()
+    {
+        statePaused();
+        SaveConfirmMenu.SetActive(true);
+    }
+    public void SaveCancel()
+    {
+        stateUnPaused();
+        SaveConfirmMenu.SetActive(false);
+    }
+    public void SpiralConfirm()
+    {
+        statePaused();
+        SpiralConfirmMenu.SetActive(true);
+    }
+    public void SpiralCancel()
+    {
+        stateUnPaused();
+        SpiralConfirmMenu.SetActive(false);
+    }
+
 }

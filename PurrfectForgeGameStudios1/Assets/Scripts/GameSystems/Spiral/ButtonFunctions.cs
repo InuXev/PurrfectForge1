@@ -50,7 +50,7 @@ public class ButtonFunctions : MonoBehaviour
     }
     public void completeQuit()
     {
-        SceneManager.LoadScene("GameStart");
+        SceneManager.LoadScene("Eshes");
     }
     public void resume2()
     {
