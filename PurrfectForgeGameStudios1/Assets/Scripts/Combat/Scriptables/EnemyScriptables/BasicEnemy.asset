@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44f849304f7feca4ba556550cc346ee2, type: 3}
+  m_Name: BasicEnemy
+  m_EditorClassIdentifier: 
+  type: 0
+  EnemyName: Basic Enemy
+  Level: 1
+  HP: 10
+  Defense: 0
+  LineOfSight: 12
+  MeleeAttackDistance: 3
+  XpDrop: 100
+  lootPool:
+  - {fileID: 11400000, guid: b52b6bedd1696de49b65075548f1d57f, type: 2}
+  - {fileID: 11400000, guid: a9513ee6645daa845a231ca7cef15eaf, type: 2}
+  - {fileID: 11400000, guid: a37107c5df7d92c4087ee346d6e95066, type: 2}
+  - {fileID: 11400000, guid: a40a7972f6bc2174c87cc77348a5720f, type: 2}

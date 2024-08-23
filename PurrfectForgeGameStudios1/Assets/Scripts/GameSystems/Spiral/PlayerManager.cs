@@ -28,6 +28,7 @@ public class PlayerManager : MonoBehaviour, PDamage
 
     //player info
     public int playerLevel = 1;
+    public int playerCoin;
     int playerLevelMax = 50;
     public float HP;
     public float HPOriginal = 5;
@@ -328,13 +329,15 @@ public class PlayerManager : MonoBehaviour, PDamage
         int stamPercentage = (int)(stamFillAmount * 100);
         gameManager.playerStamBar.fillAmount = stamFillAmount;
 
-        gameManager.playerLvLText.text = playerLevel.ToString();
+        playerCoin = gameManager.coinPurse.amountHeld;
 
+        gameManager.playerLvLText.text = playerLevel.ToString();
         gameManager.playerHPStat.text = HPOriginal.ToString();
         gameManager.playerAttStat.text = AttackOriginal.ToString();
         gameManager.playerDefStat.text = DefOriginal.ToString();
         gameManager.playerDexStat.text = DexOriginal.ToString();
         gameManager.playerStamStat.text = StaminaOriginal.ToString();
+        gameManager.playerCoins.text = playerCoin.ToString();
     }
     private void playerLevelUp()
     {
@@ -488,6 +491,7 @@ public class PlayerManager : MonoBehaviour, PDamage
         playerXP = PlayerPrefs.GetFloat("playerXP", playerXP);
         playerLevel = PlayerPrefs.GetInt("playerLevel", playerLevel);
         maxJumps = PlayerPrefs.GetInt("maxJumps", maxJumps);
+        playerCoin = PlayerPrefs.GetInt("playerCoin", playerCoin);
     }
     public void SavePlayerPrefs()
     {
@@ -501,6 +505,7 @@ public class PlayerManager : MonoBehaviour, PDamage
         PlayerPrefs.SetFloat("playerXP", playerXP);
         PlayerPrefs.SetInt("playerLevel", playerLevel);
         PlayerPrefs.SetInt("maxJumps", maxJumps);
+        PlayerPrefs.SetInt("playerCoin", playerCoin);
     }
     public void ResetSetPlayerPrefs()
     {
@@ -514,6 +519,8 @@ public class PlayerManager : MonoBehaviour, PDamage
         PlayerPrefs.SetFloat("playerXP", 0);
         PlayerPrefs.SetInt("playerLevel", 1);
         PlayerPrefs.SetInt("maxJumps", 1);
+        PlayerPrefs.SetInt("playerCoin", playerCoin);
+
     }
     #endregion
 

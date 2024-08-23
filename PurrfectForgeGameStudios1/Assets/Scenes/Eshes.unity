@@ -2835,6 +2835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerEye: {fileID: 610294812}
   pauseMenu: {fileID: 3843508810215593790}
+  coinPurse: {fileID: 11400000, guid: 9e0f2682f6443a845ad83749082f5d80, type: 2}
   buildMenu: {fileID: 7628113877569557562}
   confirmMenu: {fileID: 837976953}
   NewGameMenu: {fileID: 0}
@@ -2844,6 +2845,7 @@ MonoBehaviour:
   buildConfirm: {fileID: 180741995}
   removeConfirm: {fileID: 134635257}
   SpiralConfirmMenu: {fileID: 40066921}
+  scriptableList: []
   foliageTypeSelector: {fileID: 357971674}
   trees: {fileID: 1762943192}
   Tree1: {fileID: 11400000, guid: a40a7972f6bc2174c87cc77348a5720f, type: 2}
@@ -2872,6 +2874,7 @@ MonoBehaviour:
     items: []
   saveLoadManager: {fileID: 0}
   activeMenu: {fileID: 0}
+  mainMenuActiveMenu: {fileID: 0}
   activeBuildSelection: {fileID: 0}
   isPaused: 0
   inSelectError: 0

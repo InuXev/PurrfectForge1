@@ -15,6 +15,7 @@ public class EshesGameManager : MonoBehaviour
     #region Fields/Objects
     [SerializeField] EshesPlayerEye playerEye;
     [SerializeField] public GameObject pauseMenu;
+    [SerializeField] public ScriptableItems coinPurse;
     [SerializeField] public GameObject buildMenu;
     [SerializeField] public GameObject confirmMenu;
     [SerializeField] public GameObject NewGameMenu;
@@ -24,6 +25,7 @@ public class EshesGameManager : MonoBehaviour
     [SerializeField] public GameObject buildConfirm;
     [SerializeField] public GameObject removeConfirm;
     [SerializeField] public GameObject SpiralConfirmMenu;
+    public ScriptableItems[] scriptableList;
     //foliage
     [SerializeField] public GameObject foliageTypeSelector;
     //trees, flowers, bushes, grass
@@ -109,29 +111,6 @@ public class EshesGameManager : MonoBehaviour
     }
     void Start()
     {
-        // Ensure the SaveLoadManager is referenced
-        //saveLoadManager = FindObjectOfType<SaveLoadManager>();
-
-        //if (saveLoadManager != null)
-        //{
-        //    // Load the saved prefab list
-        //    PrefabList loadedPrefabList = saveLoadManager.Load();
-
-        //    // Replace the prefabs in the scene with the loaded data
-        //    if (loadedPrefabList != null)
-        //    {
-        //        saveLoadManager.ReplacePrefabs(loadedPrefabList);
-        //    }
-        //    else
-        //    {
-        //        Debug.LogWarning("No prefab data was loaded.");
-        //    }
-        //}
-        //else
-        //{
-        //    Debug.LogError("SaveLoadManager not found in the scene.");
-        //}
-
         activeBuildSelection = null;
     }
 
@@ -590,5 +569,11 @@ public class EshesGameManager : MonoBehaviour
         stateUnPaused();
         SpiralConfirmMenu.SetActive(false);
     }
-
+    public void ResetScriptables()
+    {
+        foreach (var scriptable in scriptableList)
+        {
+            scriptable.amountHeld = 0;
+        }
+    }
 }

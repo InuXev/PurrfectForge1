@@ -69,6 +69,7 @@ public class EshesButtonFunctions : MonoBehaviour
     public void NewGameConfirmed()
     {
         saveLoadManager.ClearSaveData();
+        gameManager.ResetScriptables();
         gameManager.NewGame();
     }
     public void spiralPort()

@@ -34,6 +34,11 @@ public class ItemPickup : MonoBehaviour
                     inventorySystem.AddToInventory(item);
                 }
             }
+            if (item.type == "Coin")
+            {
+                Debug.Log(item.itemName + " Being Added");
+                item.amountHeld += 1;
+            }
             Destroy(gameObject); // Destroy the item after adding it to the inventory
         }
     }

@@ -1,21 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour, EDamage
 {
-    [SerializeField] ScriptableItems[] lootPool; 
-    [SerializeField] float LineOfSight;
-    [SerializeField] float meleeAttackDistance;
+
+    [SerializeField] ScriptableEnemies enemyParams;
     [SerializeField] GameObject equipedWeapon;
     [SerializeField] EnemyAttack enemyAttack;
     public bool meleeAttackRange;
     public Transform player;
     public Transform headPOS;
     public NavMeshAgent agent;
-    public float enemyHP;
+    float enemyHP;
     public bool playerInRange;
     private Vector3 playerDir;
     private Vector3 enemyPos;
@@ -29,6 +29,7 @@ public class EnemyAI : MonoBehaviour, EDamage
     // Start is called before the first frame update
     void Start()
     {
+        enemyHP = enemyParams.HP;
         meleeAttackRange = false;
     }
 
@@ -43,7 +44,8 @@ public class EnemyAI : MonoBehaviour, EDamage
 
     public void takeDamage(float damage)
     {
-        enemyHP -= damage + (PlayerManager.Instance.Attack * .1F);
+        float defMod = enemyParams.Defense * .1F;
+        enemyHP -= damage + (PlayerManager.Instance.Attack * .1F) - defMod;
         EnemyDeathCheck();
     }
 
@@ -59,11 +61,11 @@ public class EnemyAI : MonoBehaviour, EDamage
         //wave AI
         //    agent.SetDestination(GameManager.Instance.player.transform.position); // Set the destination of the agent to the player's position
 
-        if(LineOfSight > distanceToPlayer) 
+        if(enemyParams.LineOfSight > distanceToPlayer) 
         { 
             playerInRange = true;
         }
-        if (distanceToPlayer <= meleeAttackDistance)
+        if (distanceToPlayer <= enemyParams.MeleeAttackDistance)
         {
             meleeAttackRange = true;
         }
@@ -130,8 +132,8 @@ public class EnemyAI : MonoBehaviour, EDamage
     {
         ScriptableItems chosenItem;
         //pick the loot from the loot pool and assign it to chosenItem
-        int randomItem = Random.Range(0, lootPool.Length);
-        chosenItem = lootPool[randomItem];
+        int randomItem = Random.Range(0, enemyParams.lootPool.Length);
+        chosenItem = enemyParams.lootPool[randomItem];
         Debug.Log("Chosen Item: " + chosenItem.itemName);
         lootDropper(chosenItem, dropLocation);
     }
@@ -139,14 +141,25 @@ public class EnemyAI : MonoBehaviour, EDamage
     {
         GameObject droppingItem;
         droppingItem = chosenItem.loot;
-        //at this location drop a random object that is in the loot pool
-        Instantiate(droppingItem, dropLocation, transform.rotation);
-        //drop the item from the headPOS
+        if(chosenItem.itemName == "Coin")
+        {
+            for (int i = 0; i < 1/*this will be enemies level on how many they drop*/; i++)
+            {
+                Instantiate(droppingItem, dropLocation, transform.rotation);
+            }
+        }
+        else
+        {
+            //at this location drop a random object that is in the loot pool
+            Instantiate(droppingItem, dropLocation, transform.rotation);
+            //drop the item from the headPOS
+        }
+
     }
     public void XPGiver()
     {
-        int xpDrop = Random.Range(1, 10);
-        PlayerManager.Instance.playerXP += (float)xpDrop;
+        float xpDrop = enemyParams.XpDrop;
+        PlayerManager.Instance.playerXP += xpDrop;
     }
 
     public void damageFormula()
