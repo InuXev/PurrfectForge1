@@ -16,6 +16,7 @@ public class EshesGameManager : MonoBehaviour
     [SerializeField] EshesPlayerEye playerEye;
     [SerializeField] public GameObject pauseMenu;
     [SerializeField] public ScriptableItems coinPurse;
+    [SerializeField] public TMP_Text coinPurseText;
     [SerializeField] public GameObject buildMenu;
     [SerializeField] public GameObject confirmMenu;
     [SerializeField] public GameObject NewGameMenu;
@@ -459,6 +460,8 @@ public class EshesGameManager : MonoBehaviour
         {
             Tree1AmountHeld.text = Tree1.amountHeld.ToString();
             Bush1AmountHeld.text = Bush1.amountHeld.ToString();
+
+            coinPurseText.text = coinPurse.amountHeld.ToString();
         }
     }
 
