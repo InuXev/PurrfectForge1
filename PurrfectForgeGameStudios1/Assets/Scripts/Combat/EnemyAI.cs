@@ -143,15 +143,22 @@ public class EnemyAI : MonoBehaviour, EDamage
         droppingItem = chosenItem.loot;
         if(chosenItem.itemName == "Coin")
         {
-            for (int i = 0; i < 1/*this will be enemies level on how many they drop*/; i++)
+            for (int i = 0; i < enemyParams.Level * 3; i++)
             {
-                Instantiate(droppingItem, dropLocation, transform.rotation);
+                int dropLocationX = Random.Range(0, 1);
+                int dropLocationZ = Random.Range(0, 1);
+                float dropLocationY = Random.Range(0, .2F);
+                Vector3 RandomVectorLocation = new Vector3(dropLocation.x + dropLocationX, dropLocation.y + dropLocationY, dropLocation.z + dropLocationZ);
+                Instantiate(droppingItem, RandomVectorLocation /*dropLocation*/, transform.rotation);
             }
         }
         else
         {
             //at this location drop a random object that is in the loot pool
-            Instantiate(droppingItem, dropLocation, transform.rotation);
+            int dropLocationX = Random.Range(0, 1);
+            int dropLocationZ = Random.Range(0, 2);
+            Vector3 RandomVectorLocation = new Vector3(dropLocation.x + dropLocationX, dropLocation.y + 0, dropLocation.z + dropLocationZ);
+            Instantiate(droppingItem, RandomVectorLocation, transform.rotation);
             //drop the item from the headPOS
         }
 
@@ -160,10 +167,5 @@ public class EnemyAI : MonoBehaviour, EDamage
     {
         float xpDrop = enemyParams.XpDrop;
         PlayerManager.Instance.playerXP += xpDrop;
-    }
-
-    public void damageFormula()
-    {
-
     }
 }
