@@ -153,6 +153,7 @@ public class GameManager : MonoBehaviour
     }
     public void SaveGame()
     {
+        playerManager.HasFloorKey = false;
         playerManager.SavePlayerPrefs();
     }
     public void LoadGame()

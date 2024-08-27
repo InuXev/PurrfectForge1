@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour, EDamage
 {
-
+    [SerializeField] GameObject Key;
     [SerializeField] ScriptableEnemies enemyParams;
     [SerializeField] GameObject equipedWeapon;
     [SerializeField] EnemyAttack enemyAttack;
@@ -141,7 +141,7 @@ public class EnemyAI : MonoBehaviour, EDamage
     {
         GameObject droppingItem;
         droppingItem = chosenItem.loot;
-        if(chosenItem.itemName == "Coin")
+        if (chosenItem.itemName == "Coin")
         {
             for (int i = 0; i < enemyParams.Level * 3; i++)
             {
@@ -160,6 +160,13 @@ public class EnemyAI : MonoBehaviour, EDamage
             Vector3 RandomVectorLocation = new Vector3(dropLocation.x + dropLocationX, dropLocation.y + 0, dropLocation.z + dropLocationZ);
             Instantiate(droppingItem, RandomVectorLocation, transform.rotation);
             //drop the item from the headPOS
+        }
+        if (Key != null)
+        {
+            int dropLocationX = Random.Range(0, 1);
+            int dropLocationZ = Random.Range(0, 2);
+            Vector3 RandomVectorLocation = new Vector3(dropLocation.x + dropLocationX, dropLocation.y + 0, dropLocation.z + dropLocationZ);
+            Instantiate(Key, RandomVectorLocation, transform.rotation);
         }
 
     }

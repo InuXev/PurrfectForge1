@@ -23,6 +23,10 @@ public class PlayerManager : MonoBehaviour, PDamage
     [SerializeField] GameObject currentShield;
     [SerializeField] Animator Anim;
 
+    [SerializeField] public Camera OverHeadCamera;
+    [SerializeField] public Camera FPCamera;
+    public bool FPActive;
+
     public static PlayerManager Instance;
 
 
@@ -63,6 +67,9 @@ public class PlayerManager : MonoBehaviour, PDamage
     private Coroutine staminaDrainCoroutine;
     private Coroutine staminaRefillCoroutine;
 
+    public bool HasFloorKey;
+
+
     #endregion
 
     #region Processes
@@ -77,14 +84,19 @@ public class PlayerManager : MonoBehaviour, PDamage
         {
             Destroy(gameObject);
         }
+        OverHeadCamera.enabled = true;
+        FPCamera.enabled = false;
+        FPActive = false;
     }
     void Start()
     {
         StartUpProcesses();
+
     }
     void Update()
     {
         UpdateProcesses();
+        ChangeView();
     }
     #endregion
 
@@ -149,7 +161,25 @@ public class PlayerManager : MonoBehaviour, PDamage
         }
     }
 
+    void ChangeView()
+    {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            if (OverHeadCamera.isActiveAndEnabled)
+            {
+                OverHeadCamera.enabled = false;
+                FPCamera.enabled = true;
+                FPActive = true;
+            }
+            else
+            {
+                OverHeadCamera.enabled = true;
+                FPCamera.enabled = false;
+                FPActive = false;
+            }
 
+        }
+    }
     public void Jump()
     {
         if (Input.GetButtonDown("Jump") && jumpCounter < maxJumps)

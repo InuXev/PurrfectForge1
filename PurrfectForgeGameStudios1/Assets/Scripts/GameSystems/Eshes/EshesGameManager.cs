@@ -26,6 +26,9 @@ public class EshesGameManager : MonoBehaviour
     [SerializeField] public GameObject buildConfirm;
     [SerializeField] public GameObject removeConfirm;
     [SerializeField] public GameObject SpiralConfirmMenu;
+    [SerializeField] public Camera OverHeadCamera;
+    [SerializeField] public Camera FPCamera;
+    [SerializeField] public GameObject eshesPlayer;
     public ScriptableItems[] scriptableList;
     //foliage
     [SerializeField] public GameObject foliageTypeSelector;
@@ -88,6 +91,7 @@ public class EshesGameManager : MonoBehaviour
     public bool inSelectError;
     public bool inConfirmBuild;
     public bool inConfrimRemove;
+    public bool FPActive;
     public bool buildON;
 
     int scene;
@@ -112,6 +116,13 @@ public class EshesGameManager : MonoBehaviour
     }
     void Start()
     {
+        if(scene == 1)
+        {
+            OverHeadCamera.enabled = true;
+            FPCamera.enabled = false;
+            FPActive = false;
+        }
+
         activeBuildSelection = null;
     }
 
@@ -127,6 +138,7 @@ public class EshesGameManager : MonoBehaviour
             BuildMenu();
             Pause();
             UpdateItemCounts();
+            ChangeView();
             scene = 1;
         }
         if (SceneManager.GetActiveScene().name == "Spiral")
@@ -192,6 +204,35 @@ public class EshesGameManager : MonoBehaviour
                 buildMenu.SetActive(false);
                 Debug.Log("Off");
             }
+        }
+    }
+    void ChangeView()
+    {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            if (OverHeadCamera.isActiveAndEnabled)
+            {
+                //keep cursor in the window
+                Cursor.lockState = CursorLockMode.Confined;
+                //hide cursor
+                Cursor.visible = false;
+                OverHeadCamera.enabled = false;
+                eshesPlayer.SetActive(true);
+                FPCamera.enabled = true;
+                FPActive = true;
+            }
+            else
+            {
+                //keep cursor in the window
+                Cursor.lockState = CursorLockMode.Confined;
+                //hide cursor
+                Cursor.visible = true;
+                eshesPlayer.SetActive(false);
+                OverHeadCamera.enabled = true;
+                FPCamera.enabled = false;
+                FPActive = false;
+            }
+
         }
     }
     void Pause()

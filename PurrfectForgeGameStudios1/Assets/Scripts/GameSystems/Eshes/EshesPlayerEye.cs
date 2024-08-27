@@ -22,8 +22,14 @@ public class EshesPlayerEye : MonoBehaviour
     public float moveSpeed;
     private float moveSpeedOriginal = 8;
     public float dashMult;
-
+    private Vector3 originalPosition;
+    private Quaternion originalRotation;
     public PrefabList prefabList;
+    private void Awake()
+    {
+        originalPosition = transform.position;
+        originalRotation = transform.rotation;
+    }
     void Start()
     {
 
@@ -142,7 +148,7 @@ public class EshesPlayerEye : MonoBehaviour
 
 
 
-    void ObjectPreview() // Creates or updates the preview object at the chosen position
+    public void ObjectPreview() // Creates or updates the preview object at the chosen position
     {
         if (chosenObject != null && gameManager.buildON)
         {
@@ -162,8 +168,9 @@ public class EshesPlayerEye : MonoBehaviour
                         // Destroy the existing preview object if any
                         Destroy(currentPreviewObject);
                     }
+
                     // Instantiate the new preview object and set its properties
-                    currentPreviewObject = Instantiate(previewObject, objectPreviewPOS.position, transform.rotation, objectPreviewPOS);
+                    currentPreviewObject = Instantiate(previewObject, objectPreviewPOS.position, Quaternion.identity, objectPreviewPOS);
                     currentPreviewObject.GetComponent<MeshCollider>().enabled = false;
                 }
                 else
@@ -201,5 +208,12 @@ public class EshesPlayerEye : MonoBehaviour
             Destroy(currentPreviewObject); // Destroy existing preview object
             currentPreviewObject = null;   // Reset the reference
         }
+    }
+    public void ResetPosition()
+    {
+        transform.position = originalPosition;
+        transform.rotation = originalRotation;
+
+        RemovePreview();
     }
 }

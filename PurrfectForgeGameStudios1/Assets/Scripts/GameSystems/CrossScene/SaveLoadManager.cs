@@ -82,7 +82,7 @@ public class SaveLoadManager : MonoBehaviour
         {
             // Read the JSON string from the file
             string json = File.ReadAllText(fullPath);
-            Debug.Log("Loaded JSON: " + json); // Log loaded JSON to verify
+            Debug.Log("Loaded Game");
 
             // Deserialize the JSON string back into a PrefabList object
             PrefabList prefabList = JsonUtility.FromJson<PrefabList>(json);
@@ -112,7 +112,6 @@ public class SaveLoadManager : MonoBehaviour
 
         if (prefabList.items.Count == 0)
         {
-            Debug.LogWarning("Prefab list is empty. No prefabs to replace.");
             return;
         }
 
