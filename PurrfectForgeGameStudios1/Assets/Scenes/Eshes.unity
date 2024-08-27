@@ -3549,9 +3549,8 @@ Transform:
   m_LocalScale: {x: 0.29, y: 0.29, z: 0.29}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 1018917291}
-  - {fileID: 1752601074}
   - {fileID: 1373560823}
+  - {fileID: 1018917291}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &610294812
@@ -3571,9 +3570,9 @@ MonoBehaviour:
   characterControl: {fileID: 610294810}
   cameraEye: {fileID: 1752601074}
   chosenObject: {fileID: 0}
+  eshesCamera: {fileID: 1018917290}
   objectPreviewPOS: {fileID: 1373560823}
-  moveSpeed: 8
-  dashMult: 2
+  moveSpeed: 16
   prefabList:
     items: []
 --- !u!1 &633563485
@@ -5013,9 +5012,9 @@ MonoBehaviour:
   gameManager: {fileID: 388832786}
   eyeCharacterControl: {fileID: 1018917293}
   eshesCharacterControl: {fileID: 1825418612}
-  eshesPlayerEye: {fileID: 0}
-  moveSpeed: 4
-  dashMult: 3
+  eshesPlayerEye: {fileID: 610294812}
+  moveSpeed: 6
+  dashMult: 2
 --- !u!20 &911419519
 Camera:
   m_ObjectHideFlags: 0
@@ -5833,7 +5832,7 @@ GameObject:
   - component: {fileID: 1018917292}
   - component: {fileID: 1018917293}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: EshesCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5910,7 +5909,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 1752601074}
   m_Father: {fileID: 610294811}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &1018917292
@@ -5928,7 +5928,7 @@ MonoBehaviour:
   gameManager: {fileID: 388832786}
   eyeCharacterControl: {fileID: 1018917293}
   eshesCharacterControl: {fileID: 1825418612}
-  eshesPlayerEye: {fileID: 0}
+  eshesPlayerEye: {fileID: 610294812}
   moveSpeed: 0
   dashMult: 0
 --- !u!143 &1018917293
@@ -7887,9 +7887,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373560822}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -102.8, z: 0}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -102.80002, z: 0}
+  m_LocalScale: {x: 3.5, y: 3.5000002, z: 3.5000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 610294811}
@@ -9846,12 +9846,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752601073}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.70710677, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -2.5, z: -0}
+  m_LocalRotation: {x: 0.00008156895, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.00040769577, z: 2.5000014}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 610294811}
+  m_Father: {fileID: 1018917291}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1758522414
 GameObject:

@@ -21,6 +21,7 @@ public class EshesCamera : MonoBehaviour
     private Quaternion originalRotation;
 
     private bool resetOverheadCamera = false;
+    private bool isResetting = false; 
 
     private float gravity = 20;
     private Vector3 playerVelocity;
@@ -54,12 +55,22 @@ public class EshesCamera : MonoBehaviour
     {
         HandleMouse();
         Turn();
+        Dash();
     }
 
     #endregion
-
     #region Camera Systems
-
+    void Dash()
+    {
+        if(Input.GetKeyDown("left shift"))
+        {
+            moveSpeed *= dashMult;
+        }
+        if(Input.GetKeyUp("left shift"))
+        {
+            moveSpeed /= dashMult;
+        }
+    }
     void HandleMouse()
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
@@ -76,7 +87,7 @@ public class EshesCamera : MonoBehaviour
         Camera.fieldOfView = Mathf.Clamp(Camera.fieldOfView - (offset * speed), ZoomBounds[0], ZoomBounds[1]);
     }
 
-    public void Turn() //turns player left or right
+    public void Turn() 
     {
         if (gameManager.FPActive)
         {
@@ -95,22 +106,39 @@ public class EshesCamera : MonoBehaviour
         }
         else
         {
-            if (!resetOverheadCamera)
+            if (!resetOverheadCamera && !isResetting)
             {
-                ResetOverheadCamera();
-                resetOverheadCamera = true;
+                StartCoroutine(PerformReset());
             }
-
 
             HandleOverheadMovement();
         }
     }
 
-    void ResetOverheadCamera()
+    IEnumerator PerformReset()
     {
+        isResetting = true; 
 
         transform.position = originalPosition;
         transform.rotation = originalRotation;
+
+        eshesPlayerEye.ResetPosition();
+
+        yield return null;
+
+        for (int i = 0; i < 5; i++)  
+        {
+            transform.position = originalPosition;
+            transform.rotation = originalRotation;
+            eshesPlayerEye.ResetPosition();
+            yield return new WaitForEndOfFrame(); 
+        }
+
+        // After ensuring everything is reset, update the preview
+        // eshesPlayerEye.UpdatePreviewAfterReset();
+
+        isResetting = false; 
+        resetOverheadCamera = true; 
     }
 
     void HandleOverheadMovement()
@@ -123,27 +151,6 @@ public class EshesCamera : MonoBehaviour
             transform.Translate(-h, -v, 0);
         }
     }
-    public void ResetCamera()
-    {
-        ResetOverheadCamera();
 
-        if (eshesPlayerEye != null)
-        {
-            eshesPlayerEye.ResetPosition(); // Reset player eye position
-
-            // Wait for the player position to reset before updating the preview
-            StartCoroutine(ResetPreviewAfterDelay(0.1f)); // Adjust delay if needed
-        }
-    }
-
-    IEnumerator ResetPreviewAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
-        if (eshesPlayerEye != null)
-        {
-            eshesPlayerEye.ObjectPreview(); // Recreate the preview after resetting
-        }
-    }
     #endregion
 }
