@@ -12,6 +12,7 @@ public class EshesCamera : MonoBehaviour
     [SerializeField] CharacterController eyeCharacterControl;
     [SerializeField] CharacterController eshesCharacterControl;
     [SerializeField] EshesPlayerEye eshesPlayerEye;
+    [SerializeField] Camera FPersonCam;
     private Vector3 moveDirection;
     public float moveSpeed;
     public float dashMult;
@@ -21,10 +22,12 @@ public class EshesCamera : MonoBehaviour
     private Quaternion originalRotation;
 
     private bool resetOverheadCamera = false;
-    private bool isResetting = false; 
+    private bool isResetting = false;
 
     private float gravity = 20;
     private Vector3 playerVelocity;
+
+    private float currentXRotation = 0.0f;
 
     #endregion
 
@@ -56,17 +59,18 @@ public class EshesCamera : MonoBehaviour
         HandleMouse();
         Turn();
         Dash();
+        //HandleLook();
     }
 
     #endregion
     #region Camera Systems
     void Dash()
     {
-        if(Input.GetKeyDown("left shift"))
+        if (Input.GetKeyDown("left shift"))
         {
             moveSpeed *= dashMult;
         }
-        if(Input.GetKeyUp("left shift"))
+        if (Input.GetKeyUp("left shift"))
         {
             moveSpeed /= dashMult;
         }
@@ -87,14 +91,13 @@ public class EshesCamera : MonoBehaviour
         Camera.fieldOfView = Mathf.Clamp(Camera.fieldOfView - (offset * speed), ZoomBounds[0], ZoomBounds[1]);
     }
 
-    public void Turn() 
+    public void Turn()
     {
         if (gameManager.FPActive)
         {
             resetOverheadCamera = false;
 
             float x = panSpeed * Input.GetAxis("Mouse X");
-            float y = panSpeed * Input.GetAxis("Mouse Y");
             transform.Rotate(0, x, 0);
 
             moveDirection = (Input.GetAxis("Horizontal") * transform.right) +
@@ -117,7 +120,7 @@ public class EshesCamera : MonoBehaviour
 
     IEnumerator PerformReset()
     {
-        isResetting = true; 
+        isResetting = true;
 
         transform.position = originalPosition;
         transform.rotation = originalRotation;
@@ -126,19 +129,17 @@ public class EshesCamera : MonoBehaviour
 
         yield return null;
 
-        for (int i = 0; i < 5; i++)  
+        for (int i = 0; i < 5; i++)
         {
             transform.position = originalPosition;
             transform.rotation = originalRotation;
             eshesPlayerEye.ResetPosition();
-            yield return new WaitForEndOfFrame(); 
+            yield return new WaitForEndOfFrame();
         }
+        eshesPlayerEye.UpdatePreviewAfterReset();
 
-        // After ensuring everything is reset, update the preview
-        // eshesPlayerEye.UpdatePreviewAfterReset();
-
-        isResetting = false; 
-        resetOverheadCamera = true; 
+        isResetting = false;
+        resetOverheadCamera = true;
     }
 
     void HandleOverheadMovement()
@@ -151,6 +152,15 @@ public class EshesCamera : MonoBehaviour
             transform.Translate(-h, -v, 0);
         }
     }
-
+    private void HandleLook()
+    {
+        if (gameManager.FPActive)
+        {
+            float y = panSpeed * Input.GetAxis("Mouse Y");
+            currentXRotation -= y;
+            currentXRotation = Mathf.Clamp(currentXRotation, -45, 45);
+            FPersonCam.transform.rotation = Quaternion.Euler(currentXRotation, 0, 0);
+        }
+    }
     #endregion
 }

@@ -183,8 +183,18 @@ public class EshesGameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         //allow time to pass again
         Time.timeScale = 1;
-        activeMenu.SetActive(isPaused);
-        activeMenu = null;
+        if(activeMenu != null && activeMenu != pauseMenu)
+        {
+            activeMenu.SetActive(false);
+            activeMenu = pauseMenu;
+            activeMenu.SetActive(true);
+
+        }
+        else
+        {
+            activeMenu.SetActive(isPaused);
+            activeMenu = null;
+        }
     }
 
     void BuildMenu()
@@ -567,6 +577,7 @@ public class EshesGameManager : MonoBehaviour
     {
         statePaused();
         confirmMenu.SetActive(true);
+        activeMenu = confirmMenu;
     }
     public void resume2()
     {
@@ -575,28 +586,29 @@ public class EshesGameManager : MonoBehaviour
     }
     public void NewGameConfirm()
     {
-        //statePaused();
+
         NewGameMenu.SetActive(true);
     }
     public void NewGameCancel()
     {
-        //stateUnPaused();
+
         NewGameMenu.SetActive(false);
     }
     public void TotalGameQuitConfirm()
     {
-        //statePaused();
+
         TotalQuitMenu.SetActive(true);
     }
     public void TotalGameQuitCancel()
     {
-        //stateUnPaused();
+
         TotalQuitMenu.SetActive(false);
     }
     public void SaveConfirm()
     {
         statePaused();
         SaveConfirmMenu.SetActive(true);
+        activeMenu = SaveConfirmMenu;
     }
     public void SaveCancel()
     {
@@ -607,6 +619,7 @@ public class EshesGameManager : MonoBehaviour
     {
         statePaused();
         SpiralConfirmMenu.SetActive(true);
+        activeMenu = SpiralConfirmMenu;
     }
     public void SpiralCancel()
     {

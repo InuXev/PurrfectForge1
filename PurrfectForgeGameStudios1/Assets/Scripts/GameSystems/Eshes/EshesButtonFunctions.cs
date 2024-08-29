@@ -86,7 +86,7 @@ public class EshesButtonFunctions : MonoBehaviour
         gameManager.stateUnPaused();
 
     }
-    public void quit2()
+    public void FrontQuit()
     {
         gameManager.quitConfirm();
     }

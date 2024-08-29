@@ -132,12 +132,22 @@ public class GameManager : MonoBehaviour
     public void stateUnPaused()
     {
         isPaused = false;
-        Cursor.visible = false;
+        Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
         //allow time to pass again
         Time.timeScale = 1;
-        activeMenu.SetActive(isPaused);
-        activeMenu = null;
+        if (activeMenu != null && activeMenu != pauseMenu)
+        {
+            activeMenu.SetActive(false);
+            activeMenu = pauseMenu;
+            activeMenu.SetActive(true);
+
+        }
+        else
+        {
+            activeMenu.SetActive(isPaused);
+            activeMenu = null;
+        }
     }
     public void youDead()
     {
@@ -170,7 +180,9 @@ public class GameManager : MonoBehaviour
     public void quitConfirm()
     {
         statePaused();
+        activeMenu = confirmMenu;
         confirmMenu.SetActive(true);
+        
     }
     #endregion
 

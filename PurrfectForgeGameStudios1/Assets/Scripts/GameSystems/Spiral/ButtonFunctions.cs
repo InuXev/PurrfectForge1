@@ -44,7 +44,7 @@ public class ButtonFunctions : MonoBehaviour
         SceneManager.LoadScene("Eshes");
         gameManager.stateUnPaused();
     }
-       public void quit2()
+       public void FrontQuit()
     {
         gameManager.quitConfirm();
     }

@@ -432,8 +432,8 @@ Transform:
   m_GameObject: {fileID: 51500297}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: 0, z: -53}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalPosition: {x: 6, y: 0, z: -1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2041571910}
@@ -5013,6 +5013,7 @@ MonoBehaviour:
   eyeCharacterControl: {fileID: 1018917293}
   eshesCharacterControl: {fileID: 1825418612}
   eshesPlayerEye: {fileID: 610294812}
+  FPersonCam: {fileID: 911419519}
   moveSpeed: 6
   dashMult: 2
 --- !u!20 &911419519
@@ -5929,6 +5930,7 @@ MonoBehaviour:
   eyeCharacterControl: {fileID: 1018917293}
   eshesCharacterControl: {fileID: 1825418612}
   eshesPlayerEye: {fileID: 610294812}
+  FPersonCam: {fileID: 911419519}
   moveSpeed: 0
   dashMult: 0
 --- !u!143 &1018917293
@@ -13737,7 +13739,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 388832787}
         m_TargetAssemblyTypeName: EshesButtonFunctions, Assembly-CSharp
-        m_MethodName: quit2
+        m_MethodName: FrontQuit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

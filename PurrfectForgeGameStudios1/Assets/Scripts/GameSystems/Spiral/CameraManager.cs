@@ -21,7 +21,6 @@ public class CameraManager : MonoBehaviour
     private Vector3 updatedPosition;
     private Quaternion updatedRotation;
     private float currentXRotation = 0.0f;
-    private bool resetOverheadCamera = false;
     #endregion
 
     #region Processes
@@ -55,19 +54,13 @@ public class CameraManager : MonoBehaviour
         HandleMouse();
         if (playerManager.FPActive)
         {
-            // First-person camera is active
+
             LookVertical();
-            resetOverheadCamera = false; // Reset the flag so it can trigger when switching back
+
         }
         else
         {
             FPerson.transform.rotation = Quaternion.Euler(0f, playerManager.transform.eulerAngles.y, 0f);
-            // First-person camera is not active (Overhead camera mode)
-            if (!resetOverheadCamera)
-            {
-                ResetOverheadCamera(); // Reset overhead camera position and rotation
-                resetOverheadCamera = true; // Ensure it only resets once
-            }
 
             HandleOverheadMovement();
         }
@@ -98,13 +91,6 @@ public class CameraManager : MonoBehaviour
         }
         else
         {
-            if (!resetOverheadCamera)
-            {
-                ResetOverheadCamera();
-                resetOverheadCamera = true;
-            }
-
-
             HandleOverheadMovement();
         }
     }
@@ -117,10 +103,6 @@ public class CameraManager : MonoBehaviour
         }
 
         OverHead.fieldOfView = Mathf.Clamp(OverHead.fieldOfView - (offset * speed), ZoomBounds[0], ZoomBounds[1]);
-    }
-    void ResetOverheadCamera()
-    {
-        
     }
     void HandleOverheadMovement()
     {
