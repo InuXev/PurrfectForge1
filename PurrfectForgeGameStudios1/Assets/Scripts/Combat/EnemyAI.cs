@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour, EDamage
     [SerializeField] ScriptableEnemies enemyParams;
     [SerializeField] GameObject equipedWeapon;
     [SerializeField] EnemyAttack enemyAttack;
+    [SerializeField] Transform ShootPos;
     public bool meleeAttackRange;
     public Transform player;
     public Transform headPOS;
@@ -24,7 +25,7 @@ public class EnemyAI : MonoBehaviour, EDamage
     public bool attacked;
     Transform playerTransform;
     public float xpDrop;
-    
+    public bool shooting = false;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +49,8 @@ public class EnemyAI : MonoBehaviour, EDamage
         enemyHP -= damage + (PlayerManager.Instance.Attack * .1F) - defMod;
         EnemyDeathCheck();
     }
+    //wave AI
+    //agent.SetDestination(GameManager.Instance.player.transform.position); // Set the destination of the agent to the player's position
 
     bool canSeePlayer()
     {
@@ -55,19 +58,22 @@ public class EnemyAI : MonoBehaviour, EDamage
         {
             return false; // Return false
         }
+
         playerDir = player.transform.position - headPOS.position; // Get the direction to the player
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, playerDir.y + 1, playerDir.z), transform.forward); // Get the angle to the player
         float distanceToPlayer = Vector3.Distance(player.transform.position, headPOS.position);
-        //wave AI
-        //    agent.SetDestination(GameManager.Instance.player.transform.position); // Set the destination of the agent to the player's position
 
         if(enemyParams.LineOfSight > distanceToPlayer) 
         { 
             playerInRange = true;
+
         }
         if (distanceToPlayer <= enemyParams.MeleeAttackDistance)
         {
-            meleeAttackRange = true;
+            if(enemyParams.type != ScriptableEnemies.Type.Ranged)
+            {
+                meleeAttackRange = true;
+            }
         }
         if (meleeAttackRange)
         {
@@ -84,10 +90,24 @@ public class EnemyAI : MonoBehaviour, EDamage
             {
                 if (hit.collider.CompareTag("Player") && playerInRange) // Check if the object hit is the player
                 {
-                    agent.SetDestination(player.transform.position); // Set the destination of the agent to the player's position
-                    return true; // Return true
+                    if (enemyParams.type == ScriptableEnemies.Type.Normal || enemyParams.type == ScriptableEnemies.Type.Boss)
+                    {
+                        agent.SetDestination(player.transform.position); // Set the destination of the agent to the player's position
+                        return true; // Return true
+                    }
+                    if(enemyParams.type == ScriptableEnemies.Type.Ranged && !shooting)
+                    {
+                        agent.stoppingDistance = 7;
+                        agent.SetDestination(player.transform.position);
+                        shooting = true;
+                        StartCoroutine(Shoot());
+                    }
                 }
             }
+        }
+        if(enemyParams.type == ScriptableEnemies.Type.Wave) 
+        {
+            agent.SetDestination(player.transform.position); // Set the destination of the agent to the player's position
         }
         return false; // Return false
     }
@@ -120,12 +140,25 @@ public class EnemyAI : MonoBehaviour, EDamage
 
     public void LookAtPlayer()
     {
-        if (playerInRange && meleeAttackRange)
+        if(enemyParams.type == ScriptableEnemies.Type.Normal || enemyParams.type == ScriptableEnemies.Type.Wave)
         {
-            Vector3 direction = (playerTransform.position - transform.position).normalized; // Get the direction to the player
-            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z)); // Create a rotation to face the player
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f); //smooth sphereical rotations
+            if (playerInRange && meleeAttackRange)
+            {
+                Vector3 direction = (playerTransform.position - transform.position).normalized; // Get the direction to the player
+                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z)); // Create a rotation to face the player
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f); //smooth sphereical rotations
+            }
         }
+        if(enemyParams.type == ScriptableEnemies.Type.Ranged)
+        {
+            if(playerInRange)
+            {
+                Vector3 direction = (playerTransform.position - transform.position).normalized; // Get the direction to the player
+                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z)); // Create a rotation to face the player
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+            }
+        }
+
     }
 
     public void LootPicker(Vector3 dropLocation)
@@ -174,5 +207,15 @@ public class EnemyAI : MonoBehaviour, EDamage
     {
         float xpDrop = enemyParams.XpDrop;
         PlayerManager.Instance.playerXP += xpDrop;
+    }
+
+    IEnumerator Shoot()
+    {
+        yield return new WaitForSeconds(enemyParams.ShootRate);
+        GameObject round = Instantiate(enemyParams.objectToShoot, ShootPos.position, ShootPos.rotation);
+        Rigidbody rb = round.GetComponent<Rigidbody>();
+        rb.velocity = playerDir * enemyParams.bulletSpeed;
+        Destroy(round, enemyParams.DestroyTime);
+        shooting = false;
     }
 }

@@ -10,18 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44f849304f7feca4ba556550cc346ee2, type: 3}
-  m_Name: BasicEnemy 3
+  m_Name: Boss1
   m_EditorClassIdentifier: 
-  type: 0
-  EnemyName: Basic Enemy
+  type: 2
+  EnemyName: Floor 1 Boss
   Level: 4
-  HP: 45
+  HP: 25
   Defense: 3
   LineOfSight: 12
   MeleeAttackDistance: 3
-  XpDrop: 30
+  XpDrop: 50
   lootPool:
   - {fileID: 11400000, guid: b52b6bedd1696de49b65075548f1d57f, type: 2}
   - {fileID: 11400000, guid: a9513ee6645daa845a231ca7cef15eaf, type: 2}
   - {fileID: 11400000, guid: a37107c5df7d92c4087ee346d6e95066, type: 2}
   - {fileID: 11400000, guid: a40a7972f6bc2174c87cc77348a5720f, type: 2}
+  objectToShoot: {fileID: 5611324289016691570, guid: a99e3c5e5dfec8e418f1e56e34217348, type: 3}
+  bulletSpeed: 5
+  DestroyTime: 0.3
+  ShootRate: 1

@@ -9,7 +9,7 @@ using static UnityEditor.Progress;
 public class ScriptableEnemies : ScriptableObject
 {
     // Start is called before the first frame update
-    public enum Type { Normal, Floating, Boss}
+    public enum Type { Normal, Ranged, Boss, Wave}
     public Type type;
     public string EnemyName;
     public float Level;
@@ -19,5 +19,9 @@ public class ScriptableEnemies : ScriptableObject
     public float MeleeAttackDistance;
     public float XpDrop;
     public ScriptableItems[] lootPool;
+    public GameObject objectToShoot;
+    public float bulletSpeed;
+    public float DestroyTime;
+    public float ShootRate;
 }
 

@@ -313,7 +313,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973011532720142669}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029504295}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0.3311408, y: 1, z: 8.159}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -334,17 +334,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 635a364cc7d967c4ca1a8103e8e65545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LineOfSight: 12
-  meleeAttackDistance: 3
+  Key: {fileID: 3236161303673466836, guid: 4ff0aabdb487de7408d0644c894d9227, type: 3}
+  enemyParams: {fileID: 11400000, guid: a6c9b4e9272983642acb3477be96ef6e, type: 2}
   equipedWeapon: {fileID: 9204482339731354864}
   enemyAttack: {fileID: 387189473687170384}
+  ShootPos: {fileID: 2552080932637430834}
   meleeAttackRange: 0
   player: {fileID: 0}
   headPOS: {fileID: 4662968215676879362}
   agent: {fileID: 6630459934190400312}
-  enemyHP: 5
   playerInRange: 0
   attacked: 0
+  xpDrop: 0
+  shooting: 0
 --- !u!33 &4868759518770393796
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -468,7 +470,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2552080932637430834}
   m_Father: {fileID: 4350768656703983533}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2160827739742331336
@@ -936,6 +939,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6886972932148401276}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4342739003595541063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2552080932637430834}
+  m_Layer: 3
+  m_Name: ShootPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2552080932637430834
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4342739003595541063}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.70710707, z: 0, w: 0.70710653}
+  m_LocalPosition: {x: 0.005, y: 0.20999998, z: 0.563}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4662968215676879362}
+  m_LocalEulerAnglesHint: {x: 0, y: 630, z: 0}
 --- !u!1 &4491388826809191914
 GameObject:
   m_ObjectHideFlags: 0
