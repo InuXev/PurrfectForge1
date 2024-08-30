@@ -48,8 +48,8 @@ public class PlayerBasics : MonoBehaviour
         float x = panSpeed * Input.GetAxis("Mouse X");
         transform.Rotate(0, x, 0);
 
-        moveDirection = (Input.GetAxis("Horizontal") * transform.right) +
-        (Input.GetAxis("Vertical") * transform.forward);
+        moveDirection = (Input.GetAxis("Horizontal") * transform.right).normalized +
+        (Input.GetAxis("Vertical") * transform.forward).normalized;
         characterControl.Move(moveDirection * moveSpeed * Time.deltaTime);
 
         playerVelocity.y -= gravity * Time.deltaTime;

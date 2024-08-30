@@ -103,10 +103,12 @@ public class EshesGameManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "GameStart")
         {
+            Cursor.lockState = CursorLockMode.Confined;
             scene = 0;
         }
         if (SceneManager.GetActiveScene().name == "Eshes")
         {
+            Cursor.lockState = CursorLockMode.Confined;
             scene = 1;
         }
         if (SceneManager.GetActiveScene().name == "Spiral")
@@ -140,6 +142,7 @@ public class EshesGameManager : MonoBehaviour
             UpdateItemCounts();
             ChangeView();
             scene = 1;
+
         }
         if (SceneManager.GetActiveScene().name == "Spiral")
         {
@@ -188,7 +191,6 @@ public class EshesGameManager : MonoBehaviour
             activeMenu.SetActive(false);
             activeMenu = pauseMenu;
             activeMenu.SetActive(true);
-
         }
         else
         {
@@ -248,7 +250,6 @@ public class EshesGameManager : MonoBehaviour
                 FPCamera.enabled = false;
                 FPActive = false;
             }
-
         }
     }
     void Pause()
@@ -285,7 +286,6 @@ public class EshesGameManager : MonoBehaviour
             foliageTypeSelector.SetActive(true);
             Debug.Log("Foliage Selection");
         }
-
     }
     public void FoliageTrees()
     {
@@ -329,8 +329,6 @@ public class EshesGameManager : MonoBehaviour
         SetAllInactive();
         //Item Counts
         Bush1AmountHeld.text = Bush1.amountHeld.ToString();
-
-
 
         //turn on this selection
         activeBuildSelection = foliageTypeSelector;
