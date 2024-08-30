@@ -201,7 +201,7 @@ public class EshesGameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            if (activeMenu == null)
+            if (activeMenu == null && !FPActive)
             {
                 activeMenu = buildMenu;
                 buildMenu.SetActive(true);
@@ -220,6 +220,12 @@ public class EshesGameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
+            if(buildON)
+            {
+                buildON = false;
+                activeMenu = null;
+                buildMenu.SetActive(false);
+            }
             if (OverHeadCamera.isActiveAndEnabled)
             {
                 //keep cursor in the window

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EshesCamera : MonoBehaviour
 {
@@ -10,7 +11,6 @@ public class EshesCamera : MonoBehaviour
     private Camera Camera;
     [SerializeField] EshesGameManager gameManager;
     [SerializeField] CharacterController eyeCharacterControl;
-    [SerializeField] CharacterController eshesCharacterControl;
     [SerializeField] EshesPlayerEye eshesPlayerEye;
     [SerializeField] Camera FPersonCam;
     private Vector3 moveDirection;
@@ -23,10 +23,6 @@ public class EshesCamera : MonoBehaviour
 
     private bool resetOverheadCamera = false;
     private bool isResetting = false;
-
-    private float gravity = 20;
-    private Vector3 playerVelocity;
-
     private float currentXRotation = 0.0f;
 
     #endregion
@@ -57,24 +53,12 @@ public class EshesCamera : MonoBehaviour
     private void UpdateProcesses()
     {
         HandleMouse();
-        Turn();
-        Dash();
-        //HandleLook();
+        VerticalLook();
     }
 
     #endregion
     #region Camera Systems
-    void Dash()
-    {
-        if (Input.GetKeyDown("left shift"))
-        {
-            moveSpeed *= dashMult;
-        }
-        if (Input.GetKeyUp("left shift"))
-        {
-            moveSpeed /= dashMult;
-        }
-    }
+
     void HandleMouse()
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
@@ -91,21 +75,12 @@ public class EshesCamera : MonoBehaviour
         Camera.fieldOfView = Mathf.Clamp(Camera.fieldOfView - (offset * speed), ZoomBounds[0], ZoomBounds[1]);
     }
 
-    public void Turn()
+    public void Movement()
     {
         if (gameManager.FPActive)
         {
             resetOverheadCamera = false;
-
-            float x = panSpeed * Input.GetAxis("Mouse X");
-            transform.Rotate(0, x, 0);
-
-            moveDirection = (Input.GetAxis("Horizontal") * transform.right) +
-            (Input.GetAxis("Vertical") * transform.forward).normalized;
-            eshesCharacterControl.Move(moveDirection * moveSpeed * Time.deltaTime);
-
-            playerVelocity.y -= gravity * Time.deltaTime;
-            eshesCharacterControl.Move(playerVelocity * Time.deltaTime);
+            VerticalLook();
         }
         else
         {
@@ -152,15 +127,12 @@ public class EshesCamera : MonoBehaviour
             transform.Translate(-h, -v, 0);
         }
     }
-    private void HandleLook()
+    private void VerticalLook()
     {
-        if (gameManager.FPActive)
-        {
-            float y = panSpeed * Input.GetAxis("Mouse Y");
-            currentXRotation -= y;
-            currentXRotation = Mathf.Clamp(currentXRotation, -45, 45);
-            FPersonCam.transform.rotation = Quaternion.Euler(currentXRotation, 0, 0);
-        }
+        float y = panSpeed * Input.GetAxis("Mouse Y");
+        currentXRotation -= y;
+        currentXRotation = Mathf.Clamp(currentXRotation, -45, 45);
+        FPersonCam.transform.localRotation = Quaternion.Euler(currentXRotation, 0, 0);
     }
     #endregion
 }
