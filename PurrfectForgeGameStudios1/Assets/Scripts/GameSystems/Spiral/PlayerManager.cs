@@ -363,7 +363,6 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage
 
     public float SwingCostCalc()
     {
-
         float cost;
         float costMod = Dex * .0025F;
         float baseCost = 3F - costMod;

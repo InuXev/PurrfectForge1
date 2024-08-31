@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public GameObject activeMenu;
     public bool isPaused;
-
+    int spiralLevel;
     #endregion
 
     #region Processes
@@ -62,6 +62,10 @@ public class GameManager : MonoBehaviour
         if (inventoryList == null)
         {
             Debug.LogError("InventoryList is not assigned!");
+        }
+        if (SceneManager.GetActiveScene().name == "Spiral")
+        {
+            Cursor.visible = false;
         }
     }
 
