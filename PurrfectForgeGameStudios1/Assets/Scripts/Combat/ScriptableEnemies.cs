@@ -18,7 +18,13 @@ public class ScriptableEnemies : ScriptableObject
     public float LineOfSight;
     public float MeleeAttackDistance;
     public float XpDrop;
+    public float BossAttackPause;
+
+
     public ScriptableItems[] lootPool;
+
+
+
     public GameObject objectToShoot;
     public float bulletSpeed;
     public float DestroyTime;

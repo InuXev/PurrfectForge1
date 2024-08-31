@@ -26,7 +26,7 @@ public class EnemyAI : MonoBehaviour, EDamage
     Transform playerTransform;
     public float xpDrop;
     public bool shooting = false;
-
+    int swingCount;
     // Start is called before the first frame update
     void Start()
     {
@@ -127,20 +127,28 @@ public class EnemyAI : MonoBehaviour, EDamage
 
     public IEnumerator Attack()
     {
-        attacked = true;
-        enemyAttack.weaponUsed = true;
-        equipedWeapon.SetActive(true);
-        yield return new WaitForSeconds(.1F);
-        equipedWeapon.SetActive(false);
-        yield return new WaitForSeconds(1F);
-        enemyAttack.weaponUsed = false;
-        attacked = false;
-
+        if (swingCount == 3 && enemyParams.type == ScriptableEnemies.Type.Boss)
+        {
+            yield return new WaitForSeconds(enemyParams.BossAttackPause);
+            swingCount = 0;
+        }
+        else
+        {
+            attacked = true;
+            swingCount++;
+            enemyAttack.weaponUsed = true;
+            equipedWeapon.SetActive(true);
+            yield return new WaitForSeconds(.1F);
+            equipedWeapon.SetActive(false);
+            yield return new WaitForSeconds(1F);
+            enemyAttack.weaponUsed = false;
+            attacked = false;
+        }
     }
 
     public void LookAtPlayer()
     {
-        if(enemyParams.type == ScriptableEnemies.Type.Normal || enemyParams.type == ScriptableEnemies.Type.Wave)
+        if(enemyParams.type != ScriptableEnemies.Type.Ranged)
         {
             if (playerInRange && meleeAttackRange)
             {

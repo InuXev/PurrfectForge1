@@ -13,7 +13,7 @@ using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
 //using UnityEngine.UIElements;
 
-public class PlayerManager : MonoBehaviour, PDamage, MDamage
+public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
 {
     #region Fields/Objects
 
@@ -69,6 +69,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage
 
     public bool HasFloorKey;
 
+    bool Healing = false;
 
     #endregion
 
@@ -244,7 +245,28 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage
             gameManager.youDead();
         }
     }
-
+    public void takeHeal()
+    {
+        if (!Healing)
+        {
+            StartCoroutine(Healer());
+        }
+    }
+    IEnumerator Healer()
+    {
+        Healing = true;
+        if (HP + 1 >= HPOriginal)
+        {
+            HP = HPOriginal;
+            StopCoroutine(Healer());
+        }
+        else
+        {
+            HP += 1;
+        }
+        yield return new WaitForSeconds(1F);
+        Healing = false;
+    }
     public void takeDamage(float damage)
     {
         if (shieldUp)
