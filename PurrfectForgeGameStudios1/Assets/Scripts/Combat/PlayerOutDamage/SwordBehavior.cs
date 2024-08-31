@@ -11,7 +11,7 @@ public class SwordBehavior : MonoBehaviour
         if (other.CompareTag("Enemy")) // Check if the collided object is the player
         {
             EDamage dmg = other.gameObject.GetComponent<EDamage>();
-            dmg.takeDamage(Damage); // Call the takeDamage function from the IDamage component
+            dmg.takeEDamage(Damage); // Call the takeDamage function from the IDamage component
         }
     }
 }

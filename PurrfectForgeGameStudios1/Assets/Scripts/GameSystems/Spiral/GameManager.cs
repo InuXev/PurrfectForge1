@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public TMP_Text inventoryList;
     [SerializeField] InventorySystem inventorySystem;
     [SerializeField] PlayerManager playerManager;
+    [SerializeField] GameObject playerDeathQuitConfirm;
     public Image playerHP;
     public Image playerHPBar;
     public TMP_Text playerHPText;
@@ -153,6 +154,7 @@ public class GameManager : MonoBehaviour
     {
         isPaused = true;
         //keep cursor in the window
+        //Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.Confined;
         //hide cursor
         Cursor.visible = true;
@@ -182,7 +184,21 @@ public class GameManager : MonoBehaviour
         statePaused();
         activeMenu = confirmMenu;
         confirmMenu.SetActive(true);
-        
+
+    }
+    public void DeathQuitConfirm()
+    {
+        statePaused();
+        playerDeathQuitConfirm.SetActive(true);
+        activeMenu = playerDeathQuitConfirm;
+    }
+    public void DeathQuitCancel()
+    {
+        stateUnPaused();
+        playerDeathQuitConfirm.SetActive(false);
+        activeMenu = null;
+        activeMenu = loseMenu;
+        activeMenu.SetActive(true);
     }
     #endregion
 

@@ -33,7 +33,7 @@ public class ButtonFunctions : MonoBehaviour
     public void restart()
     {
         //reload scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().ToString());
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name.ToString());
         gameManager.stateUnPaused();
 
     }
@@ -47,6 +47,14 @@ public class ButtonFunctions : MonoBehaviour
        public void FrontQuit()
     {
         gameManager.quitConfirm();
+    }
+    public void DeathQuit()
+    {
+        gameManager.DeathQuitConfirm();
+    }
+    public void DeathQuitCancel()
+    {
+        gameManager.DeathQuitCancel();
     }
     public void completeQuit()
     {

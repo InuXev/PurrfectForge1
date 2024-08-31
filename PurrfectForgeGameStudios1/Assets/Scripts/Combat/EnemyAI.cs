@@ -43,7 +43,7 @@ public class EnemyAI : MonoBehaviour, EDamage
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    public void takeDamage(float damage)
+    public void takeEDamage(float damage)
     {
         float defMod = enemyParams.Defense * .1F;
         enemyHP -= damage + (PlayerManager.Instance.Attack * .1F) - defMod;

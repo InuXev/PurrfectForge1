@@ -10,10 +10,10 @@ public class EnemyRangedDamage : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player")) // Check if the collided object is the player
         {
-            PDamage dmg = collision.gameObject.GetComponent<PDamage>();
+            MDamage dmg = collision.gameObject.GetComponent<MDamage>();
             if (dmg != null)
             {
-                dmg.takeDamage(Damage); // Call the takeDamage function from the PDamage component
+                dmg.takeMDamage(Damage); // Call the takeDamage function from the PDamage component
             }
         }
         Destroy(gameObject);

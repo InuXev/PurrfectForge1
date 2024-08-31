@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    [SerializeField] float Damage;
+    public float Damage;
     public static EnemyAttack Instance;
     public bool weaponUsed;
 

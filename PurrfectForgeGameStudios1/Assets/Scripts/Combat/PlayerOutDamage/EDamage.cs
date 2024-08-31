@@ -5,5 +5,6 @@ using UnityEngine;
 
 public interface EDamage
 {
-    void takeDamage(float damage);
+    //EnemyReceivesDamage
+    void takeEDamage(float damage);
 }

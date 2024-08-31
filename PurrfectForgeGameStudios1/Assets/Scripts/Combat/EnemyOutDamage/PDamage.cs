@@ -5,5 +5,6 @@ using UnityEngine;
 
 public interface PDamage
 {
+    //PhysicalDamage to player
     void takeDamage(float damage);
 }

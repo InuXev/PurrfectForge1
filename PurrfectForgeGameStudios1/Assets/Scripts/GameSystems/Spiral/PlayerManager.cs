@@ -13,7 +13,7 @@ using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
 //using UnityEngine.UIElements;
 
-public class PlayerManager : MonoBehaviour, PDamage
+public class PlayerManager : MonoBehaviour, PDamage, MDamage
 {
     #region Fields/Objects
 
@@ -241,7 +241,6 @@ public class PlayerManager : MonoBehaviour, PDamage
         if (HP <= 0)
         {
             UpdatePlayerUI();
-            //gameManager.statePaused();
             gameManager.youDead();
         }
     }
@@ -253,6 +252,35 @@ public class PlayerManager : MonoBehaviour, PDamage
             float damageTaken = DamageShieldUPCalc(damage);
             HP -= damageTaken;
             Stamina -= .1F;
+            if (staminaDrainCoroutine != null)
+            {
+                StopCoroutine(staminaDrainCoroutine);
+                staminaDrainCoroutine = null;
+            }
+
+            // Start the refill coroutine if not already running
+            if (staminaRefillCoroutine == null)
+            {
+                staminaRefillCoroutine = StartCoroutine(StaminaRefill());
+            }
+            StartCoroutine(HitFlash());
+            DeathCheck();
+        }
+        else
+        {
+            float damageTaken = DamageShieldDownCalc(damage);
+            HP -= damageTaken;
+            StartCoroutine(HitFlash());
+            DeathCheck();
+        }
+    }
+    public void takeMDamage(float damage)
+    {
+        if (shieldUp)
+        {
+            float damageTaken = MDamageShieldUPCalc(damage);
+            HP -= damageTaken;
+            Stamina -= .5F;
             if (staminaDrainCoroutine != null)
             {
                 StopCoroutine(staminaDrainCoroutine);
@@ -310,21 +338,29 @@ public class PlayerManager : MonoBehaviour, PDamage
         }
     }
 
-
+    public float MDamageShieldUPCalc(float damage)
+    {
+        float damageOut;
+        float damageReduction = playerShieldMod / 3;
+        damageOut = damage - damageReduction;
+        return damageOut;
+    }
     public float DamageShieldUPCalc(float damage)
     {
         float damageOut;
-        float damageReduction = damage * playerShieldMod;
+        float damageReduction = playerShieldMod / 2;
         damageOut = damage - damageReduction;
         return damageOut;
     }
     public float DamageShieldDownCalc(float damage)
     {
         float damageOut;
-        float damageReduction = damage * (Def * .025F);
+        float damageReduction = Def * .025F;
         damageOut = damage - damageReduction;
         return damageOut;
     }
+
+
     public float SwingCostCalc()
     {
 
