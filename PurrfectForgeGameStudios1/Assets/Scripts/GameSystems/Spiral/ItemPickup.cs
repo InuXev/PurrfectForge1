@@ -36,7 +36,7 @@ public class ItemPickup : MonoBehaviour
             }
             if (item.type == "Coin")
             {
-                Debug.Log(item.itemName + " Being Added");
+                Debug.Log("Coins being Added to purse");
                 item.amountHeld += 1;
             }
             Destroy(gameObject); // Destroy the item after adding it to the inventory

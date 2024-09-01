@@ -143,10 +143,17 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         if (activeMenu != null && activeMenu != pauseMenu)
         {
-            activeMenu.SetActive(false);
-            activeMenu = pauseMenu;
-            activeMenu.SetActive(true);
-
+            if(activeMenu == statMenu)
+            {
+                activeMenu.SetActive(isPaused);
+                activeMenu = null;
+            }
+            else
+            {
+                activeMenu.SetActive(false);
+                activeMenu = pauseMenu;
+                activeMenu.SetActive(true);
+            }
         }
         else
         {

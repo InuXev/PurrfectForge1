@@ -26,7 +26,8 @@ public class EnemyAI : MonoBehaviour, EDamage
     Transform playerTransform;
     public float xpDrop;
     public bool shooting = false;
-    int swingCount;
+    int swingCount = 0;
+    bool spinAttacking = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -63,24 +64,34 @@ public class EnemyAI : MonoBehaviour, EDamage
         angleToPlayer = Vector3.Angle(new Vector3(playerDir.x, playerDir.y + 1, playerDir.z), transform.forward); // Get the angle to the player
         float distanceToPlayer = Vector3.Distance(player.transform.position, headPOS.position);
 
-        if(enemyParams.LineOfSight > distanceToPlayer) 
-        { 
+        if (enemyParams.LineOfSight > distanceToPlayer)
+        {
             playerInRange = true;
 
         }
         if (distanceToPlayer <= enemyParams.MeleeAttackDistance)
         {
-            if(enemyParams.type != ScriptableEnemies.Type.Ranged)
+            if (enemyParams.type != ScriptableEnemies.Type.Ranged)
             {
                 meleeAttackRange = true;
             }
         }
         if (meleeAttackRange)
         {
-            if(!attacked)
+            if (!attacked && !spinAttacking)
             {
-                StartCoroutine(Attack());
-                enemyAttack.weaponUsed = false;
+                if (swingCount < 4)
+                {
+                    StartCoroutine(Attack());
+                    enemyAttack.weaponUsed = false;
+                }
+                else
+                {
+
+                    StartCoroutine(SpinAttack());
+                    swingCount = 0;
+                    enemyAttack.weaponUsed = false;
+                }
             }
         }
         if (playerInRange)
@@ -95,7 +106,7 @@ public class EnemyAI : MonoBehaviour, EDamage
                         agent.SetDestination(player.transform.position); // Set the destination of the agent to the player's position
                         return true; // Return true
                     }
-                    if(enemyParams.type == ScriptableEnemies.Type.Ranged && !shooting)
+                    if (enemyParams.type == ScriptableEnemies.Type.Ranged && !shooting)
                     {
                         agent.stoppingDistance = 7;
                         agent.SetDestination(player.transform.position);
@@ -105,7 +116,7 @@ public class EnemyAI : MonoBehaviour, EDamage
                 }
             }
         }
-        if(enemyParams.type == ScriptableEnemies.Type.Wave) 
+        if (enemyParams.type == ScriptableEnemies.Type.Wave)
         {
             agent.SetDestination(player.transform.position); // Set the destination of the agent to the player's position
         }
@@ -127,48 +138,84 @@ public class EnemyAI : MonoBehaviour, EDamage
 
     public IEnumerator Attack()
     {
-        if (swingCount == 3 && enemyParams.type == ScriptableEnemies.Type.Boss)
+        attacked = true;
+        swingCount++;
+        enemyAttack.weaponUsed = true;
+        equipedWeapon.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        equipedWeapon.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        enemyAttack.weaponUsed = false;
+        attacked = false;
+    }
+
+    public IEnumerator SpinAttack()
+    {
+        //yield return new WaitForSeconds(enemyParams.BossAttackPause);
+        spinAttacking = true;
+        enemyAttack.weaponUsed = true;
+        equipedWeapon.SetActive(true);
+
+        // Start the spinning rotation
+        float totalRotation = 360f; // Total degrees to rotate
+        float duration = .5f; // Duration in seconds
+        float rotationSpeed = totalRotation / duration; // Degrees per second
+
+        float rotationAmount = 0f;
+
+        // Perform the 360-degree rotation
+        while (rotationAmount < totalRotation)
         {
-            yield return new WaitForSeconds(enemyParams.BossAttackPause);
-            swingCount = 0;
+            float rotationStep = rotationSpeed * Time.deltaTime; // Calculate the rotation step
+
+            // Rotate the object
+            transform.Rotate(Vector3.up, rotationStep, Space.World);
+            rotationAmount += rotationStep;
+
+            // Prevent overshooting
+            if (rotationAmount > totalRotation)
+            {
+                float overshoot = rotationAmount - totalRotation;
+                transform.Rotate(Vector3.up, -overshoot, Space.World); // Correct overshoot
+                rotationAmount = totalRotation;
+            }
+
+            yield return null; // Wait for the next frame
         }
-        else
-        {
-            attacked = true;
-            swingCount++;
-            enemyAttack.weaponUsed = true;
-            equipedWeapon.SetActive(true);
-            yield return new WaitForSeconds(.1F);
-            equipedWeapon.SetActive(false);
-            yield return new WaitForSeconds(1F);
-            enemyAttack.weaponUsed = false;
-            attacked = false;
-        }
+
+        // Ensure facing the player directly
+        Vector3 direction = (playerTransform.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = lookRotation;
+
+        yield return new WaitForSeconds(.1f); // Adjust this duration as needed
+
+        equipedWeapon.SetActive(false);
+        spinAttacking = false;
     }
 
     public void LookAtPlayer()
     {
-        if(enemyParams.type != ScriptableEnemies.Type.Ranged)
+        if (enemyParams.type != ScriptableEnemies.Type.Ranged && !spinAttacking)
         {
             if (playerInRange && meleeAttackRange)
             {
-                Vector3 direction = (playerTransform.position - transform.position).normalized; // Get the direction to the player
-                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z)); // Create a rotation to face the player
-                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f); //smooth sphereical rotations
-            }
-        }
-        if(enemyParams.type == ScriptableEnemies.Type.Ranged)
-        {
-            if(playerInRange)
-            {
-                Vector3 direction = (playerTransform.position - transform.position).normalized; // Get the direction to the player
-                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z)); // Create a rotation to face the player
+                Vector3 direction = (playerTransform.position - transform.position).normalized;
+                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
             }
         }
 
+        if (enemyParams.type == ScriptableEnemies.Type.Ranged)
+        {
+            if (playerInRange)
+            {
+                Vector3 direction = (playerTransform.position - transform.position).normalized;
+                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+            }
+        }
     }
-
     public void LootPicker(Vector3 dropLocation)
     {
         ScriptableItems chosenItem;

@@ -35,7 +35,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     public int playerCoin;
     int playerLevelMax = 50;
     public float HP;
-    public float HPOriginal = 5;
+    public float HPOriginal = 15;
     public float Attack;
     public float AttackOriginal = 5;
     public float Def;
