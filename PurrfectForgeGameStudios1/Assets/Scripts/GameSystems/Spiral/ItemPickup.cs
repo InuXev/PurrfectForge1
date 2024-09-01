@@ -10,34 +10,34 @@ public class ItemPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))  // Check if the collider is the player
         {
-            if(item.type == "Orb")
+            if(item.type == "Orb") //if its an Orb type
             {
-                if (item.itemName == "HealthOrb")
+                if (item.itemName == "HealthOrb") //health orb
                 {
-                    PlayerManager.Instance.HP += PlayerManager.Instance.HPOriginal * .1F;
+                    PlayerManager.Instance.HP += PlayerManager.Instance.HPOriginal * .1F; //increase HP by 10%
                 }
-                if (item.itemName == "StaminaOrb")
+                if (item.itemName == "StaminaOrb") //stamina orb
                 {
-                    PlayerManager.Instance.Stamina += PlayerManager.Instance.StaminaOriginal * .1F;
+                    PlayerManager.Instance.Stamina += PlayerManager.Instance.StaminaOriginal * .1F; //increase stamina by 10%
                 }
             }
-            if (item.type == "Essence")
+            if (item.type == "Essence") //essence type
             {
                 Debug.Log(item.itemName + " Being Added");
-                item.amountHeld += 1;
+                item.amountHeld += 1; //increase its scriptable amountHeld by one
             }
-            if (item.type == "InventoryItem")
+            if (item.type == "InventoryItem") //Inventory Item 
             {
-                InventorySystem inventorySystem = other.GetComponent<InventorySystem>();
-                if (inventorySystem != null)
+                InventorySystem inventorySystem = other.GetComponent<InventorySystem>(); //create a list
+                if (inventorySystem != null) //if the invsys is not null
                 {
-                    inventorySystem.AddToInventory(item);
+                    inventorySystem.AddToInventory(item); //add the item to the list
                 }
             }
-            if (item.type == "Coin")
+            if (item.type == "Coin") //coin
             {
                 Debug.Log("Coins being Added to purse");
-                item.amountHeld += 1;
+                item.amountHeld += 1; //increase its scriptable amountHeld by one
             }
             Destroy(gameObject); // Destroy the item after adding it to the inventory
         }
