@@ -26,12 +26,15 @@ public class EshesPlayerEye : MonoBehaviour // Define the EshesPlayerEye class, 
     private void Awake() // Awake is called when the script instance is being loaded
     {
         fixedPreviewPosition = objectPreviewPOS.position; // Store the initial position of the preview object
-        originalPosition = transform.position; // Store the player's original position
-        originalRotation = transform.rotation; // Store the player's original rotation
+        originalPosition = transform.position; // Store the OverHeadEye's original position
+        originalRotation = transform.rotation; // Store the OverHeadEye's original rotation
         eyeOriginalPosition = cameraEye.position; // Store the camera's original position
         eyeOriginalRotation = cameraEye.rotation; // Store the camera's original rotation
     }
+    public void Start()
+    {
 
+    }
     void Update() // Update is called once per frame
     {
         Walk(); // Call the Walk method to handle player movement
@@ -39,7 +42,14 @@ public class EshesPlayerEye : MonoBehaviour // Define the EshesPlayerEye class, 
         GroundSearchPickup(); // Call the GroundSearchPickup method to handle picking up objects
         ObjectPreview(); // Call the ObjectPreview method to handle displaying object previews
     }
-
+    public void ResetPosition() // Method to reset the OverHeadEye's position and rotation
+    {
+        transform.position = originalPosition; // Reset the OverHeadEye's position to the original position
+        transform.rotation = originalRotation; // Reset the OverHeadEye's rotation to the original rotation
+        cameraEye.position = eyeOriginalPosition; // Reset the camera's position to the original position
+        cameraEye.rotation = eyeOriginalRotation; // Reset the camera's rotation to the original rotation
+        RemovePreview(); // Call the RemovePreview method to remove the object preview
+    }
     public void Walk() // Method to handle player movement
     {
         moveDirection = (Input.GetAxis("Horizontal") * transform.right) + (Input.GetAxis("Vertical") * transform.forward).normalized; // Calculate the movement direction based on player input
@@ -49,7 +59,7 @@ public class EshesPlayerEye : MonoBehaviour // Define the EshesPlayerEye class, 
     void GroundSearchPlace() // Method to handle placing objects on the ground
     {
         RaycastHit hit; // Declare a RaycastHit variable to store information about what the ray hits
-        Debug.DrawRay(cameraEye.position, Vector3.down, Color.clear, 10000); // Draw a debug ray downwards from the camera's position
+        Debug.DrawRay(cameraEye.position, Vector3.down, Color.red, 10000); // Draw a debug ray downwards from the camera's position
 
         if (Physics.Raycast(cameraEye.position, Vector3.down, out hit)) // Perform a raycast downwards from the camera's position
         {
@@ -183,14 +193,5 @@ public class EshesPlayerEye : MonoBehaviour // Define the EshesPlayerEye class, 
             Destroy(currentPreviewObject); // Destroy the preview object
             currentPreviewObject = null; // Clear the reference to the preview object
         }
-    }
-
-    public void ResetPosition() // Method to reset the player's position and rotation
-    {
-        transform.position = originalPosition; // Reset the player's position to the original position
-        transform.rotation = originalRotation; // Reset the player's rotation to the original rotation
-        cameraEye.position = eyeOriginalPosition; // Reset the camera's position to the original position
-        cameraEye.rotation = eyeOriginalRotation; // Reset the camera's rotation to the original rotation
-        RemovePreview(); // Call the RemovePreview method to remove the object preview
     }
 }

@@ -29,6 +29,7 @@ public class EshesGameManager : MonoBehaviour
     [SerializeField] public Camera OverHeadCamera;
     [SerializeField] public Camera FPCamera;
     [SerializeField] public GameObject eshesPlayer;
+    [SerializeField] public GameObject OverHeadToggle;
     public ScriptableItems[] scriptableList;
     //foliage
     [SerializeField] public GameObject foliageTypeSelector;
@@ -198,7 +199,14 @@ public class EshesGameManager : MonoBehaviour
             activeMenu = null;
         }
     }
-
+    void ShutOffOverHeadCam()
+    {
+        OverHeadToggle.SetActive(false);
+    }
+    void TurnOnOverHeadCam()
+    {
+        OverHeadToggle.SetActive(true);
+    }
     void BuildMenu()
     {
         if (Input.GetKeyDown(KeyCode.B))
@@ -235,6 +243,7 @@ public class EshesGameManager : MonoBehaviour
                 //hide cursor
                 Cursor.visible = false;
                 OverHeadCamera.enabled = false;
+                ShutOffOverHeadCam();
                 eshesPlayer.SetActive(true);
                 FPCamera.enabled = true;
                 FPActive = true;
@@ -246,6 +255,8 @@ public class EshesGameManager : MonoBehaviour
                 //hide cursor
                 Cursor.visible = true;
                 eshesPlayer.SetActive(false);
+                playerEye.ResetPosition();
+                TurnOnOverHeadCam();
                 OverHeadCamera.enabled = true;
                 FPCamera.enabled = false;
                 FPActive = false;

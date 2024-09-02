@@ -12,18 +12,13 @@ public class EshesCamera : MonoBehaviour
     [SerializeField] EshesGameManager gameManager;
     [SerializeField] CharacterController eyeCharacterControl;
     [SerializeField] EshesPlayerEye eshesPlayerEye;
-    [SerializeField] Camera FPersonCam;
     private Vector3 moveDirection;
-    public float moveSpeed;
-    public float dashMult;
     float panSpeed = 6f;
 
     private Vector3 originalPosition;
     private Quaternion originalRotation;
 
-    private bool resetOverheadCamera = false;
-    private bool isResetting = false;
-    private float currentXRotation = 0.0f;
+
 
     #endregion
 
@@ -53,7 +48,6 @@ public class EshesCamera : MonoBehaviour
     private void UpdateProcesses()
     {
         HandleMouse();
-        VerticalLook();
     }
 
     #endregion
@@ -77,25 +71,12 @@ public class EshesCamera : MonoBehaviour
 
     public void Movement()
     {
-        if (gameManager.FPActive)
-        {
-            resetOverheadCamera = false;
-            VerticalLook();
-        }
-        else
-        {
-            if (!resetOverheadCamera && !isResetting)
-            {
-                StartCoroutine(PerformReset());
-            }
 
-            HandleOverheadMovement();
-        }
+        HandleOverheadMovement();
     }
 
     IEnumerator PerformReset()
     {
-        isResetting = true;
 
         transform.position = originalPosition;
         transform.rotation = originalRotation;
@@ -113,8 +94,6 @@ public class EshesCamera : MonoBehaviour
         }
         eshesPlayerEye.UpdatePreviewAfterReset();
 
-        isResetting = false;
-        resetOverheadCamera = true;
     }
 
     void HandleOverheadMovement()
@@ -126,13 +105,6 @@ public class EshesCamera : MonoBehaviour
 
             transform.Translate(-h, -v, 0);
         }
-    }
-    private void VerticalLook()
-    {
-        float y = panSpeed * Input.GetAxis("Mouse Y");
-        currentXRotation -= y;
-        currentXRotation = Mathf.Clamp(currentXRotation, -45, 45);
-        FPersonCam.transform.localRotation = Quaternion.Euler(currentXRotation, 0, 0);
     }
     #endregion
 }

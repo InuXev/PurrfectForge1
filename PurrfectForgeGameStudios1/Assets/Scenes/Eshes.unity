@@ -2849,6 +2849,7 @@ MonoBehaviour:
   OverHeadCamera: {fileID: 1018917290}
   FPCamera: {fileID: 911419519}
   eshesPlayer: {fileID: 1967202220}
+  OverHeadToggle: {fileID: 615628346}
   scriptableList: []
   foliageTypeSelector: {fileID: 357971674}
   trees: {fileID: 1762943192}
@@ -3544,14 +3545,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610294809}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 30, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -960, y: -510, z: 0}
   m_LocalScale: {x: 0.29, y: 0.29, z: 0.29}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 1373560823}
   - {fileID: 1018917291}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 615628347}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &610294812
 MonoBehaviour:
@@ -3575,6 +3575,38 @@ MonoBehaviour:
   moveSpeed: 16
   prefabList:
     items: []
+--- !u!1 &615628346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 615628347}
+  m_Layer: 0
+  m_Name: EyeShutOffToggle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &615628347
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615628346}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 610294811}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &633563485
 GameObject:
   m_ObjectHideFlags: 0
@@ -4947,8 +4979,7 @@ GameObject:
   m_Component:
   - component: {fileID: 911419515}
   - component: {fileID: 911419519}
-  - component: {fileID: 911419517}
-  - component: {fileID: 911419516}
+  - component: {fileID: 911419520}
   m_Layer: 0
   m_Name: FPCamera
   m_TagString: MainCamera
@@ -4971,50 +5002,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1825418608}
   m_LocalEulerAnglesHint: {x: -0.009, y: 0, z: 0}
---- !u!143 &911419516
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911419514}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &911419517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911419514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a1df4fe3629eb449503d8f927da834, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 388832786}
-  eyeCharacterControl: {fileID: 1018917293}
-  eshesPlayerEye: {fileID: 610294812}
-  FPersonCam: {fileID: 911419519}
-  moveSpeed: 6
-  dashMult: 2
 --- !u!20 &911419519
 Camera:
   m_ObjectHideFlags: 0
@@ -5066,6 +5053,21 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &911419520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911419514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ef6eccbf9010e9438427f8a2469752e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 388832786}
+  eyeCharacterControl: {fileID: 1825418612}
+  FPersonCam: {fileID: 911419519}
 --- !u!1 &923628494
 GameObject:
   m_ObjectHideFlags: 0
@@ -5928,9 +5930,6 @@ MonoBehaviour:
   gameManager: {fileID: 388832786}
   eyeCharacterControl: {fileID: 1018917293}
   eshesPlayerEye: {fileID: 610294812}
-  FPersonCam: {fileID: 911419519}
-  moveSpeed: 0
-  dashMult: 0
 --- !u!143 &1018917293
 CharacterController:
   m_ObjectHideFlags: 0
@@ -7887,12 +7886,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373560822}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -102.80002, z: 0}
-  m_LocalScale: {x: 3.5, y: 3.5000002, z: 3.5000002}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 100.30006}
+  m_LocalScale: {x: 3.5, y: 3.4999995, z: 3.4999995}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 610294811}
+  m_Father: {fileID: 1752601074}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1377540446
 GameObject:
@@ -9188,7 +9187,6 @@ RectTransform:
   - {fileID: 180741998}
   - {fileID: 134635260}
   - {fileID: 107514743029468742}
-  - {fileID: 1922268154}
   - {fileID: 1042662926}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9850,7 +9848,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.00040769577, z: 2.5000014}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1373560823}
   m_Father: {fileID: 1018917291}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1758522414
@@ -10946,81 +10945,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1918256549}
-  m_CullTransparentMesh: 1
---- !u!1 &1922268153
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1922268154}
-  - component: {fileID: 1922268156}
-  - component: {fileID: 1922268155}
-  m_Layer: 5
-  m_Name: LoadingScreen
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1922268154
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1922268153}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1577643503}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1922268155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1922268153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1922268156
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1922268153}
   m_CullTransparentMesh: 1
 --- !u!1 &1931304716
 GameObject:
@@ -14467,5 +14391,5 @@ SceneRoots:
   - {fileID: 997351333}
   - {fileID: 51500301}
   - {fileID: 1967202221}
-  - {fileID: 610294811}
+  - {fileID: 615628347}
   - {fileID: 1577643503}
