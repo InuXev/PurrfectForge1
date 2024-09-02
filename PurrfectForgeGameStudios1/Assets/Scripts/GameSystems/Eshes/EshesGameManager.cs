@@ -102,43 +102,42 @@ public class EshesGameManager : MonoBehaviour
     #region Processes
     private void Awake()
     {
-        if (SceneManager.GetActiveScene().name == "GameStart")
+        if (SceneManager.GetActiveScene().name == "GameStart") //have scene manager check scene
         {
-            Cursor.lockState = CursorLockMode.Confined;
-            scene = 0;
+            Cursor.lockState = CursorLockMode.Confined; //lock cursor
+            scene = 0; //assign 0 to GameStart
         }
-        if (SceneManager.GetActiveScene().name == "Eshes")
+        if (SceneManager.GetActiveScene().name == "Eshes")//have scene manager check scene
         {
-            Cursor.lockState = CursorLockMode.Confined;
-            scene = 1;
+            Cursor.lockState = CursorLockMode.Confined; //lock cursor
+            scene = 1; //assign 1 to Eterius
         }
-        if (SceneManager.GetActiveScene().name == "Spiral")
+        if (SceneManager.GetActiveScene().name == "Spiral")//have scene manager check scene
         {
-            scene = 2;
+            scene = 2; //assign two to Spiral Floors
         }
     }
     void Start()
     {
-        if(scene == 1)
+        if(scene == 1) //if eterius
         {
-            OverHeadCamera.enabled = true;
-            FPCamera.enabled = false;
-            FPActive = false;
+            OverHeadCamera.enabled = true; //overhead cam on
+            FPCamera.enabled = false; //FpCam disabled
+            FPActive = false; //Fp bool false
         }
-
-        activeBuildSelection = null;
+        activeBuildSelection = null; //active build set to null
     }
 
 
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "GameStart")
+        if (SceneManager.GetActiveScene().name == "GameStart") //if gamestart
         {
-            scene = 0;
+            scene = 0; //scene 0
         }
-        if (SceneManager.GetActiveScene().name == "Eshes")
+        if (SceneManager.GetActiveScene().name == "Eshes") //if eterius
         {
-            BuildMenu();
+            BuildMenu(); 
             Pause();
             UpdateItemCounts();
             ChangeView();
@@ -147,7 +146,7 @@ public class EshesGameManager : MonoBehaviour
         }
         if (SceneManager.GetActiveScene().name == "Spiral")
         {
-            scene = 2;
+            scene = 2; //asign 2
         }
 
     }
@@ -157,71 +156,67 @@ public class EshesGameManager : MonoBehaviour
     #region Game States
     public void LoadGame()
     {
-        SceneManager.LoadScene("Eshes");
-        WaitTimer();
-        saveLoadManager.Load();
-        WaitTimer();
-        Time.timeScale = 1;
+        SceneManager.LoadScene("Eshes"); //load eterius
+        WaitTimer(); //wait for spawn
+        saveLoadManager.Load(); //load
+        WaitTimer(); //wait for load
+        Time.timeScale = 1; //time start
     }
-    public void NewGame()
+    public void NewGame() 
     {
-        PlayerPrefs.DeleteAll();
-        SceneManager.LoadScene("Eshes");
-        Time.timeScale = 1;
+        PlayerPrefs.DeleteAll(); //delete data in prefs
+        SceneManager.LoadScene("Eshes"); //load eterius
+        Time.timeScale = 1; //time start
     }
     public void statePaused()
     {
-        isPaused = true;
-        buildON = false;
-        //keep cursor in the window
-        Cursor.lockState = CursorLockMode.Confined;
-        //hide cursor
-        Cursor.visible = true;
-        //reset time passed to zero
-        Time.timeScale = 0;
+        isPaused = true; //paused on
+        buildON = false; //build set to off
+        Cursor.lockState = CursorLockMode.Confined; //keep cursor in the window
+        Cursor.visible = true; //show cursor
+        Time.timeScale = 0; //reset time passed to zero
     }
     public void stateUnPaused()
     {
-        isPaused = false;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
-        //allow time to pass again
-        Time.timeScale = 1;
-        if(activeMenu != null && activeMenu != pauseMenu)
+        isPaused = false; //paused off
+        Cursor.visible = true; //visible cursor
+        Cursor.lockState = CursorLockMode.Confined; //keep cursor in the window
+        Time.timeScale = 1; //allow time to pass again
+        if (activeMenu != null && activeMenu != pauseMenu) 
         {
-            activeMenu.SetActive(false);
-            activeMenu = pauseMenu;
-            activeMenu.SetActive(true);
+            activeMenu.SetActive(false); //what ever menu is active turned off
+            activeMenu = pauseMenu; //pause to active
+            activeMenu.SetActive(true); //pause to on
         }
         else
         {
-            activeMenu.SetActive(isPaused);
-            activeMenu = null;
+            activeMenu.SetActive(isPaused); //what ever menu active off
+            activeMenu = null; //active menu emptied
         }
     }
     void ShutOffOverHeadCam()
     {
-        OverHeadToggle.SetActive(false);
+        OverHeadToggle.SetActive(false); //shut off overhead cam
     }
     void TurnOnOverHeadCam()
     {
-        OverHeadToggle.SetActive(true);
+        OverHeadToggle.SetActive(true); //turn on overhead cam
     }
     void BuildMenu()
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            if (activeMenu == null && !FPActive)
+            if (activeMenu == null && !FPActive) //no meanu active and First person is off
             {
-                activeMenu = buildMenu;
-                buildMenu.SetActive(true);
-                buildON = true;
+                activeMenu = buildMenu; //active is buildMenu
+                buildMenu.SetActive(true); //active on
+                buildON = true; //bildOn flag on
             }
-            else if (activeMenu == buildMenu)
+            else if (activeMenu == buildMenu) //if build active
             {
-                buildON = false;
-                activeMenu = null;
-                buildMenu.SetActive(false);
+                buildON = false; //build flag off
+                activeMenu = null; //active null
+                buildMenu.SetActive(false); //biuld off
                 Debug.Log("Off");
             }
         }
@@ -232,34 +227,30 @@ public class EshesGameManager : MonoBehaviour
         {
             if(buildON)
             {
-                buildON = false;
-                activeMenu = null;
-                buildMenu.SetActive(false);
+                buildON = false; //build flag off
+                activeMenu = null; //active emptied
+                buildMenu.SetActive(false); //build off
             }
             if (OverHeadCamera.isActiveAndEnabled)
             {
-                //keep cursor in the window
-                Cursor.lockState = CursorLockMode.Confined;
-                //hide cursor
-                Cursor.visible = false;
-                OverHeadCamera.enabled = false;
-                ShutOffOverHeadCam();
-                eshesPlayer.SetActive(true);
-                FPCamera.enabled = true;
-                FPActive = true;
+                Cursor.lockState = CursorLockMode.Confined;//keep cursor in the window
+                Cursor.visible = false;//hide cursor
+                OverHeadCamera.enabled = false; //OverHead off
+                ShutOffOverHeadCam(); //Shut off Function
+                eshesPlayer.SetActive(true); //turn on character in eterius
+                FPCamera.enabled = true; //FP on
+                FPActive = true; //FP flag on
             }
             else
             {
-                //keep cursor in the window
-                Cursor.lockState = CursorLockMode.Confined;
-                //hide cursor
-                Cursor.visible = true;
-                eshesPlayer.SetActive(false);
-                playerEye.ResetPosition();
-                TurnOnOverHeadCam();
-                OverHeadCamera.enabled = true;
-                FPCamera.enabled = false;
-                FPActive = false;
+                Cursor.lockState = CursorLockMode.Confined;//keep cursor in the window
+                Cursor.visible = true; //hide cursor
+                eshesPlayer.SetActive(false); //eterius player off
+                playerEye.ResetPosition(); //reset overhead tools
+                TurnOnOverHeadCam(); //turn on overhead
+                OverHeadCamera.enabled = true; //enable overhead
+                FPCamera.enabled = false; //fp off
+                FPActive = false; //fp flag off
             }
         }
     }
@@ -269,18 +260,18 @@ public class EshesGameManager : MonoBehaviour
         {
             if (activeMenu == null)
             {
-                playerEye.RemovePreview();
-                buildON = false;
-                statePaused();
-                activeMenu = pauseMenu;
-                pauseMenu.SetActive(true);
+                playerEye.RemovePreview(); // turn off build preview
+                buildON = false; //build flag off
+                statePaused(); //pause
+                activeMenu = pauseMenu; //active is pauseMenu
+                pauseMenu.SetActive(true); //turn on pause
 
             }
             else if (activeMenu != null)
             {
-                playerEye.RemovePreview();
-                buildON = false;
-                stateUnPaused();
+                playerEye.RemovePreview(); //remove build preview
+                buildON = false; //build flag off
+                stateUnPaused(); //unpause
             }
         }
     }
@@ -292,19 +283,16 @@ public class EshesGameManager : MonoBehaviour
         //activate Foliage Type Selector
         if (activeBuildSelection == null || activeBuildSelection != null)
         {
-            SetAllInactive();
-            activeBuildSelection = foliageTypeSelector;
-            foliageTypeSelector.SetActive(true);
+            SetAllInactive(); //turn off all menus
+            activeBuildSelection = foliageTypeSelector; //active to foliage
+            foliageTypeSelector.SetActive(true); //turn it on
             Debug.Log("Foliage Selection");
         }
     }
     public void FoliageTrees()
     {
-        //turn everything off to make sure only the following is open
-        SetAllInactive();
-
-        //Item Counts
-        Tree1AmountHeld.text = Tree1.amountHeld.ToString();
+        SetAllInactive();//turn off all build menus
+        Tree1AmountHeld.text = Tree1.amountHeld.ToString(); //Item Counts
 
 
 
@@ -328,7 +316,7 @@ public class EshesGameManager : MonoBehaviour
     }
     public void FoliageFlowers()
     {
-        SetAllInactive();
+        SetAllInactive();//turn off all build menus
         activeBuildSelection = foliageTypeSelector;
         foliageTypeSelector.SetActive(true);
         flowers.SetActive(true);
@@ -337,7 +325,7 @@ public class EshesGameManager : MonoBehaviour
     public void FoliageBushes()
     {
         //turn everything off to make sure only the following is open
-        SetAllInactive();
+        SetAllInactive();//turn off all build menus
         //Item Counts
         Bush1AmountHeld.text = Bush1.amountHeld.ToString();
 
@@ -362,7 +350,7 @@ public class EshesGameManager : MonoBehaviour
     }
     public void FoliageGrass()
     {
-        SetAllInactive();
+        SetAllInactive();//turn off all build menus
         activeBuildSelection = foliageTypeSelector;
         foliageTypeSelector.SetActive(true);
         grass.SetActive(true);
@@ -377,7 +365,7 @@ public class EshesGameManager : MonoBehaviour
         //activate Building Type Selector
         if (activeBuildSelection == null || activeBuildSelection != null)
         {
-            SetAllInactive();
+            SetAllInactive();//turn off all build menus
             activeBuildSelection = buildingsTypeSelector;
             buildingsTypeSelector.SetActive(true);
             Debug.Log("Buildings Selection");
@@ -386,7 +374,7 @@ public class EshesGameManager : MonoBehaviour
     }
     public void BuildingsBuildings()
     {
-        SetAllInactive();
+        SetAllInactive();//turn off all build menus
         activeBuildSelection = buildingsTypeSelector;
         buildingsTypeSelector.SetActive(true);
         buildings.SetActive(true);
@@ -394,7 +382,7 @@ public class EshesGameManager : MonoBehaviour
     }
     public void BuildingsShops()
     {
-        SetAllInactive();
+        SetAllInactive();//turn off all build menus
         activeBuildSelection = buildingsTypeSelector;
         buildingsTypeSelector.SetActive(true);
         shops.SetActive(true);
@@ -402,7 +390,7 @@ public class EshesGameManager : MonoBehaviour
     }
     public void BuildingsHouses()
     {
-        SetAllInactive();
+        SetAllInactive();//turn off all build menus
         activeBuildSelection = buildingsTypeSelector;
         buildingsTypeSelector.SetActive(true);
         houses.SetActive(true);
@@ -410,7 +398,7 @@ public class EshesGameManager : MonoBehaviour
     }
     public void BuildingsRoads()
     {
-        SetAllInactive();
+        SetAllInactive();//turn off all build menus
         activeBuildSelection = buildingsTypeSelector;
         buildingsTypeSelector.SetActive(true);
         roads.SetActive(true);
@@ -426,7 +414,7 @@ public class EshesGameManager : MonoBehaviour
         //activate People Type Selector
         if (activeBuildSelection == null || activeBuildSelection != null)
         {
-            SetAllInactive();
+            SetAllInactive();//turn off all build menus
             activeBuildSelection = peopleTypeSelector;
             peopleTypeSelector.SetActive(true);
             Debug.Log("People Selection");
@@ -435,7 +423,7 @@ public class EshesGameManager : MonoBehaviour
     public void PeopleShopOwners()
     {
         //activate People Type Selector
-        SetAllInactive();
+        SetAllInactive();//turn off all build menus
         activeBuildSelection = peopleTypeSelector;
         peopleTypeSelector.SetActive(true);
         shopOwners.SetActive(true);
@@ -444,7 +432,7 @@ public class EshesGameManager : MonoBehaviour
     public void PeopleResidents()
     {
         //activate People Type Selector
-        SetAllInactive();
+        SetAllInactive();//turn off all build menus
         activeBuildSelection = peopleTypeSelector;
         peopleTypeSelector.SetActive(true);
         residents.SetActive(true);
@@ -453,7 +441,7 @@ public class EshesGameManager : MonoBehaviour
     public void PeoplePets()
     {
         //activate People Type Selector
-        SetAllInactive();
+        SetAllInactive();//turn off all build menus
         activeBuildSelection = peopleTypeSelector;
         peopleTypeSelector.SetActive(true);
         pets.SetActive(true);
@@ -462,7 +450,7 @@ public class EshesGameManager : MonoBehaviour
     public void PeopleSpecial()
     {
         //activate People Type Selector
-        SetAllInactive();
+        SetAllInactive();///turn off all build menus
         activeBuildSelection = peopleTypeSelector;
         peopleTypeSelector.SetActive(true);
         special.SetActive(true);
@@ -477,7 +465,7 @@ public class EshesGameManager : MonoBehaviour
         //activate Geological Type Selector
         if (activeBuildSelection == null || activeBuildSelection != null)
         {
-            SetAllInactive();
+            SetAllInactive();//turn off all build menus
             activeBuildSelection = geologicalTypeSelector;
             geologicalTypeSelector.SetActive(true);
             Debug.Log("Geological Selection");
@@ -486,7 +474,7 @@ public class EshesGameManager : MonoBehaviour
     public void GeologicalRivers()
     {
         //activate Geological Type Selector
-        SetAllInactive();
+        SetAllInactive();//turn off all menus
         activeBuildSelection = geologicalTypeSelector;
         geologicalTypeSelector.SetActive(true);
         rivers.SetActive(true);
@@ -495,7 +483,7 @@ public class EshesGameManager : MonoBehaviour
     public void GeologicalHills()
     {
         //activate Geological Type Selector
-        SetAllInactive();
+        SetAllInactive();//turn off build all menus
         activeBuildSelection = geologicalTypeSelector;
         geologicalTypeSelector.SetActive(true);
         hills.SetActive(true);
@@ -504,7 +492,7 @@ public class EshesGameManager : MonoBehaviour
     public void GeologicalDitches()
     {
         //activate Geological Type Selector
-        SetAllInactive();
+        SetAllInactive();//turn off all menus
         activeBuildSelection = geologicalTypeSelector;
         geologicalTypeSelector.SetActive(true);
         ditches.SetActive(true);
@@ -513,7 +501,7 @@ public class EshesGameManager : MonoBehaviour
     public void GeologicalSpecial()
     {
         //activate Geological Type Selector
-        SetAllInactive();
+        SetAllInactive();//turn off all build menus
         activeBuildSelection = geologicalTypeSelector;
         geologicalTypeSelector.SetActive(true);
         geoSpecial.SetActive(true);
