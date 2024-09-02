@@ -1,78 +1,83 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System.Collections; // Import the System.Collections namespace (not used in this script)
+using System.Collections.Generic; // Import the System.Collections.Generic namespace for using lists
+using UnityEngine; // Import the UnityEngine namespace for Unity-specific features like MonoBehaviour, GameObject, etc.
 
-public class EshesPlayerEye : MonoBehaviour
+public class EshesPlayerEye : MonoBehaviour // Define the EshesPlayerEye class, inheriting from MonoBehaviour
 {
-    [SerializeField] SaveLoadManager saveLoadManager;
-    [SerializeField] EshesGameManager gameManager;
-    [SerializeField] CharacterController characterControl;
-    [SerializeField] Transform cameraEye;
-    [SerializeField] public GameObject chosenObject;
-    [SerializeField] public Camera eshesCamera;
-    private GameObject currentPreviewObject;
-    [SerializeField] public Transform objectPreviewPOS;
-    GameObject previewObject;
-    GameObject placedObject;
-    private Vector3 moveDirection;
-    public float moveSpeed;
-    private Vector3 originalPosition;
-    private Quaternion originalRotation;
-    private Vector3 eyeOriginalPosition;
-    private Quaternion eyeOriginalRotation;
-    public PrefabList prefabList;
-    private Vector3 fixedPreviewPosition;
-    private void Awake()
+    [SerializeField] SaveLoadManager saveLoadManager; // Reference to the SaveLoadManager component, assigned via the Unity Editor
+    [SerializeField] EshesGameManager gameManager; // Reference to the EshesGameManager component, assigned via the Unity Editor
+    [SerializeField] CharacterController characterControl; // Reference to the CharacterController component, assigned via the Unity Editor
+    [SerializeField] Transform cameraEye; // Reference to the camera's Transform, assigned via the Unity Editor
+    [SerializeField] public GameObject chosenObject; // Public reference to the currently selected object, assigned via the Unity Editor
+    [SerializeField] public Camera eshesCamera; // Public reference to the Camera component, assigned via the Unity Editor
+    private GameObject currentPreviewObject; // Private variable to store the currently displayed preview object
+    [SerializeField] public Transform objectPreviewPOS; // Public reference to the position for preview objects, assigned via the Unity Editor
+    GameObject previewObject; // Private variable to store the object being previewed
+    GameObject placedObject; // Private variable to store the last placed object
+    private Vector3 moveDirection; // Private variable to store the player's movement direction
+    public float moveSpeed; // Public variable to set the player's movement speed
+    private Vector3 originalPosition; // Private variable to store the player's original position
+    private Quaternion originalRotation; // Private variable to store the player's original rotation
+    private Vector3 eyeOriginalPosition; // Private variable to store the camera's original position
+    private Quaternion eyeOriginalRotation; // Private variable to store the camera's original rotation
+    public PrefabList prefabList; // Public variable to reference a list of prefabs
+    private Vector3 fixedPreviewPosition; // Private variable to store the fixed preview position
+
+    private void Awake() // Awake is called when the script instance is being loaded
     {
-        fixedPreviewPosition = objectPreviewPOS.position;
-        originalPosition = transform.position;
-        originalRotation = transform.rotation;
-        eyeOriginalPosition = cameraEye.position;
-        eyeOriginalRotation = cameraEye.rotation;
+        fixedPreviewPosition = objectPreviewPOS.position; // Store the initial position of the preview object
+        originalPosition = transform.position; // Store the player's original position
+        originalRotation = transform.rotation; // Store the player's original rotation
+        eyeOriginalPosition = cameraEye.position; // Store the camera's original position
+        eyeOriginalRotation = cameraEye.rotation; // Store the camera's original rotation
     }
 
-    void Update()
+    void Update() // Update is called once per frame
     {
-        Walk();
-        GroundSearchPlace();
-        GroundSearchPickup();
-        ObjectPreview();
+        Walk(); // Call the Walk method to handle player movement
+        GroundSearchPlace(); // Call the GroundSearchPlace method to handle placing objects
+        GroundSearchPickup(); // Call the GroundSearchPickup method to handle picking up objects
+        ObjectPreview(); // Call the ObjectPreview method to handle displaying object previews
     }
 
-    public void Walk()
+    public void Walk() // Method to handle player movement
     {
-        moveDirection = (Input.GetAxis("Horizontal") * transform.right) +
-            (Input.GetAxis("Vertical") * transform.forward).normalized;
-        characterControl.Move(moveDirection * moveSpeed * Time.deltaTime);
+        moveDirection = (Input.GetAxis("Horizontal") * transform.right) + (Input.GetAxis("Vertical") * transform.forward).normalized; // Calculate the movement direction based on player input
+        characterControl.Move(moveDirection * moveSpeed * Time.deltaTime); // Move the player using the CharacterController component
     }
-    void GroundSearchPlace()
+
+    void GroundSearchPlace() // Method to handle placing objects on the ground
     {
-        RaycastHit hit;
-        Debug.DrawRay(cameraEye.position, Vector3.down, Color.clear, 10000);
-        if (Physics.Raycast(cameraEye.position, Vector3.down, out hit))
+        RaycastHit hit; // Declare a RaycastHit variable to store information about what the ray hits
+        Debug.DrawRay(cameraEye.position, Vector3.down, Color.clear, 10000); // Draw a debug ray downwards from the camera's position
+
+        if (Physics.Raycast(cameraEye.position, Vector3.down, out hit)) // Perform a raycast downwards from the camera's position
         {
-            if (hit.collider.CompareTag("EshesGround"))
+            if (hit.collider.CompareTag("EshesGround")) // Check if the ray hit an object tagged as "EshesGround"
             {
-                if (chosenObject != null)
+                if (chosenObject != null) // Check if a chosen object is selected
                 {
-                    ItemData itemData = chosenObject.GetComponent<ItemData>();
-                    ScriptableItems item = itemData.scriptableItems;
-                    if (Input.GetKeyDown(KeyCode.E) && item.amountHeld > 0)
+                    ItemData itemData = chosenObject.GetComponent<ItemData>(); // Get the ItemData component from the chosen object
+                    ScriptableItems item = itemData.scriptableItems; // Get the ScriptableItems reference from the ItemData component
+
+                    if (Input.GetKeyDown(KeyCode.E) && item.amountHeld > 0) // Check if the "E" key is pressed and if the item is available
                     {
-                        if (gameManager.buildON)
+                        if (gameManager.buildON) // Check if building mode is enabled in the game manager
                         {
-                            GameObject placedObject = Instantiate(chosenObject, hit.point, transform.rotation);
-                            item.amountHeld -= 1;
-                            gameManager.UpdateItemCounts();
-                            if (item.amountHeld == 0)
+                            GameObject placedObject = Instantiate(chosenObject, hit.point, transform.rotation); // Instantiate the chosen object at the hit point
+                            item.amountHeld -= 1; // Decrease the amount held for the item
+                            gameManager.UpdateItemCounts(); // Update the item counts in the game manager
+
+                            if (item.amountHeld == 0) // Check if the item is depleted
                             {
-                                RemovePreview();
+                                RemovePreview(); // Call the RemovePreview method to remove the object preview
                             }
-                            placedObject.GetComponent<MeshCollider>().enabled = true;
+
+                            placedObject.GetComponent<MeshCollider>().enabled = true; // Enable the MeshCollider on the placed object
                         }
-                        else if (chosenObject == null)
+                        else if (chosenObject == null) // If no object is selected
                         {
-                            gameManager.selectSomethingToBuild();
+                            gameManager.selectSomethingToBuild(); // Prompt the player to select something to build
                         }
                     }
                 }
@@ -80,111 +85,112 @@ public class EshesPlayerEye : MonoBehaviour
         }
     }
 
-    void GroundSearchPickup()
+    void GroundSearchPickup() // Method to handle picking up objects from the ground
     {
-        RaycastHit hit;
-        Debug.DrawRay(cameraEye.position, Vector3.down, Color.clear, 10000);
+        RaycastHit hit; // Declare a RaycastHit variable to store information about what the ray hits
+        Debug.DrawRay(cameraEye.position, Vector3.down, Color.clear, 10000); // Draw a debug ray downwards from the camera's position
 
-        if (Physics.Raycast(cameraEye.position, Vector3.down, out hit))
+        if (Physics.Raycast(cameraEye.position, Vector3.down, out hit)) // Perform a raycast downwards from the camera's position
         {
-            if (hit.collider.CompareTag("WorldObject"))
+            if (hit.collider.CompareTag("WorldObject")) // Check if the ray hit an object tagged as "WorldObject"
             {
-                if (Input.GetKeyDown(KeyCode.R))
+                if (Input.GetKeyDown(KeyCode.R)) // Check if the "R" key is pressed
                 {
-                    ItemData itemData = hit.collider.GetComponent<ItemData>();
+                    ItemData itemData = hit.collider.GetComponent<ItemData>(); // Get the ItemData component from the hit object
 
-                    if (itemData != null)
+                    if (itemData != null) // Check if the object has an ItemData component
                     {
-                        ScriptableItems item = itemData.scriptableItems;
-                        item.amountHeld += 1;
-                        Destroy(hit.collider.gameObject);
+                        ScriptableItems item = itemData.scriptableItems; // Get the ScriptableItems reference from the ItemData component
+                        item.amountHeld += 1; // Increase the amount held for the item
+                        Destroy(hit.collider.gameObject); // Destroy the picked-up object
                     }
                 }
             }
         }
     }
 
-    public void ObjectPreview()
+    public void ObjectPreview() // Method to handle the object preview display
     {
-        if (chosenObject != null && gameManager.buildON)
+        if (chosenObject != null && gameManager.buildON) // Check if an object is selected and building mode is enabled
         {
-            ItemData itemData = chosenObject.GetComponent<ItemData>();
-            if (itemData != null)
+            ItemData itemData = chosenObject.GetComponent<ItemData>(); // Get the ItemData component from the chosen object
+
+            if (itemData != null) // Check if the chosen object has an ItemData component
             {
-                ScriptableItems item = itemData.scriptableItems;
+                ScriptableItems item = itemData.scriptableItems; // Get the ScriptableItems reference from the ItemData component
 
-                if (item.amountHeld > 0)
+                if (item.amountHeld > 0) // Check if the item is available
                 {
-                    ChangePreview();
+                    ChangePreview(); // Call the ChangePreview method to update the object preview
 
-                    if (currentPreviewObject == null)
+                    if (currentPreviewObject == null) // If there is no current preview object
                     {
-                        currentPreviewObject = Instantiate(previewObject, objectPreviewPOS.position, Quaternion.identity);
-                        currentPreviewObject.GetComponent<MeshCollider>().enabled = false;
+                        currentPreviewObject = Instantiate(previewObject, objectPreviewPOS.position, Quaternion.identity); // Instantiate a new preview object at the preview position
+                        currentPreviewObject.GetComponent<MeshCollider>().enabled = false; // Disable the MeshCollider on the preview object
                     }
-                    else
+                    else // If there is an existing preview object
                     {
-                        currentPreviewObject.transform.position = objectPreviewPOS.position;
+                        currentPreviewObject.transform.position = objectPreviewPOS.position; // Update the preview object's position
                     }
                 }
-                else
+                else // If the item is not available
                 {
-                    RemovePreview();
+                    RemovePreview(); // Call the RemovePreview method to remove the object preview
                 }
             }
         }
-        else if (!gameManager.buildON)
+        else if (!gameManager.buildON) // If building mode is not enabled
         {
-            RemovePreview();
+            RemovePreview(); // Call the RemovePreview method to remove the object preview
         }
     }
 
-    public void UpdatePreviewAfterReset()
+    public void UpdatePreviewAfterReset() // Method to update the object preview after resetting the position
     {
-        if (chosenObject != null && gameManager.buildON)
+        if (chosenObject != null && gameManager.buildON) // Check if an object is selected and building mode is enabled
         {
-            if (currentPreviewObject != null)
+            if (currentPreviewObject != null) // If there is a current preview object
             {
-                currentPreviewObject.transform.position = objectPreviewPOS.position;
-                currentPreviewObject.transform.rotation = Quaternion.identity;
+                currentPreviewObject.transform.position = objectPreviewPOS.position; // Update the preview object's position
+                currentPreviewObject.transform.rotation = Quaternion.identity; // Reset the preview object's rotation
             }
-            else
+            else // If there is no current preview object
             {
-                ObjectPreview();
-            }
-        }
-    }
-
-    public void ChangePreview()
-    {
-        if (chosenObject != previewObject)
-        {
-            previewObject = chosenObject;
-
-            if (currentPreviewObject != null)
-            {
-                Destroy(currentPreviewObject);
-                currentPreviewObject = Instantiate(previewObject, objectPreviewPOS.position, Quaternion.identity);
-                currentPreviewObject.GetComponent<MeshCollider>().enabled = false;
+                ObjectPreview(); // Call the ObjectPreview method to create a new preview object
             }
         }
     }
 
-    public void RemovePreview()
+    public void ChangePreview() // Method to change the object preview
     {
-        if (currentPreviewObject != null)
+        if (chosenObject != previewObject) // Check if the selected object is different from the current preview object
         {
-            Destroy(currentPreviewObject);
-            currentPreviewObject = null;
+            previewObject = chosenObject; // Update the preview object to the selected object
+
+            if (currentPreviewObject != null) // If there is a current preview object
+            {
+                Destroy(currentPreviewObject); // Destroy the existing preview object
+                currentPreviewObject = Instantiate(previewObject, objectPreviewPOS.position, Quaternion.identity); // Instantiate a new preview object
+                currentPreviewObject.GetComponent<MeshCollider>().enabled = false; // Disable the MeshCollider on the new preview object
+            }
         }
     }
 
-    public void ResetPosition()
+    public void RemovePreview() // Method to remove the object preview
     {
-        transform.position = originalPosition;
-        transform.rotation = originalRotation;
-        cameraEye.position = eyeOriginalPosition;
-        cameraEye.rotation = eyeOriginalRotation;
-        RemovePreview();
+        if (currentPreviewObject != null) // If there is a current preview object
+        {
+            Destroy(currentPreviewObject); // Destroy the preview object
+            currentPreviewObject = null; // Clear the reference to the preview object
+        }
+    }
+
+    public void ResetPosition() // Method to reset the player's position and rotation
+    {
+        transform.position = originalPosition; // Reset the player's position to the original position
+        transform.rotation = originalRotation; // Reset the player's rotation to the original rotation
+        cameraEye.position = eyeOriginalPosition; // Reset the camera's position to the original position
+        cameraEye.rotation = eyeOriginalRotation; // Reset the camera's rotation to the original rotation
+        RemovePreview(); // Call the RemovePreview method to remove the object preview
     }
 }
