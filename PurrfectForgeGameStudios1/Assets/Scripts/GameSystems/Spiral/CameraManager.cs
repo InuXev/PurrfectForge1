@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class CameraManager : MonoBehaviour
 {
@@ -15,41 +14,55 @@ public class CameraManager : MonoBehaviour
 
     [SerializeField] Camera OverHead;
     [SerializeField] Camera FPerson;
+
+    private Vector3 originalPosition;
+    private Quaternion originalRotation;
+
+    private Vector3 updatedPosition;
+    private Quaternion updatedRotation;
     private float currentXRotation = 0.0f;
     #endregion
 
     #region Processes
     void Awake()
     {
-        AwakenProcesses(); //all awken processes
+        AwakenProcesses();
+        originalRotation = transform.rotation;
     }
 
     void Update()
     {
-
-        UpdateProcesses(); //all update processes
+        updatedRotation = transform.rotation;
+        UpdateProcesses();
     }
 
     #endregion
 
     #region Organzational Systems
 
-    private void AwakenProcesses() //awkens
+    private void AwakenProcesses()
     {
-        Camera = GetComponent<Camera>(); //grab camera
+        Camera = GetComponent<Camera>();
+    }
+    private void StartUpProcesses()
+    {
+
     }
 
-    private void UpdateProcesses() //updates
+    private void UpdateProcesses()
     {
-        HandleMouse(); //handled mouse work
-        if (playerManager.FPActive) //check for First Person
+        HandleMouse();
+        if (playerManager.FPActive)
         {
-            LookVertical(); //do vertical axis looking in First person
+
+            LookVertical();
+
         }
-        else //not in First person
+        else
         {
-            //FPerson.transform.rotation = Quaternion.Euler(0f, playerManager.transform.eulerAngles.y, 0f); //rotate FP cam
-            HandleOverheadMovement(); //handle trhe overheadcameras movement
+            FPerson.transform.rotation = Quaternion.Euler(0f, playerManager.transform.eulerAngles.y, 0f);
+
+            HandleOverheadMovement();
         }
     }
 
@@ -65,28 +78,40 @@ public class CameraManager : MonoBehaviour
     {
         if (playerManager.FPActive)
         {
-            float mouseY = panSpeed * Input.GetAxis("Mouse Y"); //grab y axis from mouse
+            float mouseY = panSpeed * Input.GetAxis("Mouse Y");
+
+            // Update the current rotation
             currentXRotation -= mouseY; // Invert to match input direction
-            currentXRotation = Mathf.Clamp(currentXRotation, -45, 45);// Clamp the rotation
-            FPerson.transform.localRotation = Quaternion.Euler(currentXRotation, 0, 0); // Apply the clamped rotation
+
+            // Clamp the rotation
+            currentXRotation = Mathf.Clamp(currentXRotation, -45, 45);
+
+            // Apply the clamped rotation
+            FPerson.transform.localRotation = Quaternion.Euler(currentXRotation, 0, 0);
+        }
+        else
+        {
+            HandleOverheadMovement();
         }
     }
 
     void ZoomCamera(float offset, float speed)
     {
-        if (offset == 0) //if no offset
+        if (offset == 0)
         {
             return;
         }
-        OverHead.fieldOfView = Mathf.Clamp(OverHead.fieldOfView - (offset * speed), ZoomBounds[0], ZoomBounds[1]); //xoom with clamp
+
+        OverHead.fieldOfView = Mathf.Clamp(OverHead.fieldOfView - (offset * speed), ZoomBounds[0], ZoomBounds[1]);
     }
-    void HandleOverheadMovement() //moveOver head cam
+    void HandleOverheadMovement()
     {
-        if (Input.GetMouseButton(2)) //mouse left right
+        if (Input.GetMouseButton(2))
         {
-            float h = Input.GetAxis("Mouse X") * panSpeed * Time.deltaTime; //grab mouse x
-            float v = Input.GetAxis("Mouse Y") * panSpeed * Time.deltaTime; //grab mouse y
-            transform.Translate(-h, -v, 0); //Rotate player
+            float h = Input.GetAxis("Mouse X") * panSpeed * Time.deltaTime;
+            float v = Input.GetAxis("Mouse Y") * panSpeed * Time.deltaTime;
+
+            transform.Translate(-h, -v, 0);
         }
     }
     #endregion 

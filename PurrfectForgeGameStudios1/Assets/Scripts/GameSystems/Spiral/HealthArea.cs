@@ -8,7 +8,7 @@ public class HealthArea : MonoBehaviour
     {
         if (other.CompareTag("Player")) // Check if the collided object is the player
         {
-            HealHit dmg = other.gameObject.GetComponent<HealHit>(); 
+            HealHit dmg = other.gameObject.GetComponent<HealHit>();
             dmg.takeHeal(); // Call the takeDamage function from the IDamage component
         }
     }

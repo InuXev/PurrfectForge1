@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class NextFloorPort : MonoBehaviour
 {
-    public string levelToLoad; //provides the next level
+    public string levelToLoad;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
-            PlayerManager.Instance.SavePlayerPrefs(); //save player stats
-            SceneManager.LoadScene(levelToLoad); //load the scene
+            PlayerManager.Instance.SavePlayerPrefs();
+            SceneManager.LoadScene(levelToLoad);
         }
     }
 }

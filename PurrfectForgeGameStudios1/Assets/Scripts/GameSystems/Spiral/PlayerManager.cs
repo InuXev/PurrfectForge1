@@ -76,111 +76,132 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     #region Processes
     void Awake()
     {
-        AwakenProcesses(); //all processes run in Awaken
+        AwakenProcesses();
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        OverHeadCamera.enabled = true;
+        FPCamera.enabled = false;
+        FPActive = false;
     }
     void Start()
     {
-        StartUpProcesses(); //start up processes
+        StartUpProcesses();
+
     }
     void Update()
     {
-        UpdateProcesses(); //update processes
+        UpdateProcesses();
+        ChangeView();
     }
     #endregion
 
     #region Movement Systems
 
-    public void Turn() //turns First person player left right
+    public void Turn()
     {
-        float x = panSpeed * Input.GetAxis("Mouse X"); //grabs left right on mouse
-        transform.Rotate(0, x, 0); //rotates player
+        float x = panSpeed * Input.GetAxis("Mouse X");
+        float y = panSpeed * Input.GetAxis("Mouse Y");
+        transform.Rotate(0, x, 0);
     }
-    public void Walk() //walks player
+    public void Walk()
     {
-        if (characterControl.isGrounded) //if the are on the ground
+        if (characterControl.isGrounded)
         {
-            jumpCounter = 0; //set jump to 0
-            playerVelocity = Vector3.zero; //stop their velocity
+            jumpCounter = 0;
+            playerVelocity = Vector3.zero;
         }
 
         moveDirection = (Input.GetAxis("Horizontal") * transform.right) +
-            (Input.GetAxis("Vertical") * transform.forward); //set the movedirection
-        characterControl.Move(moveDirection * MoveSpeed * Time.deltaTime); //move the player that direction
+            (Input.GetAxis("Vertical") * transform.forward)/*.normalized*/;
+        characterControl.Move(moveDirection * MoveSpeed * Time.deltaTime);
     }
-    public void Dash() //multiplies movespeed
+    public void Dash()
     {
-        if (Input.GetButtonDown("Dash") && !dashing && Stamina > 0) //if left shift is pressed and currently not dashing and enough stamina
+        if (Input.GetButtonDown("Dash") && !dashing && Stamina > 0)
         {
-            dashing = true; //set dashing to true
-            MoveSpeed *= dashMult; //apply mult to movespeed
+            dashing = true;
+            MoveSpeed *= dashMult;
 
-            if (staminaDrainCoroutine != null) //is stamina drain corountine is not ended
+            // Start draining stamina
+            if (staminaDrainCoroutine != null)
             {
-                StopCoroutine(staminaDrainCoroutine); // Stop draining stamina
+                StopCoroutine(staminaDrainCoroutine);
             }
-            staminaDrainCoroutine = StartCoroutine(StaminaDrain()); //start stamina drain
-            if (staminaRefillCoroutine != null) //if refil is not ended
+            staminaDrainCoroutine = StartCoroutine(StaminaDrain());
+
+            // Stop refill coroutine if it's running
+            if (staminaRefillCoroutine != null)
             {
-                StopCoroutine(staminaRefillCoroutine); //stop refill
-                staminaRefillCoroutine = null; //set stamina refill to null for next refill needed
+                StopCoroutine(staminaRefillCoroutine);
+                staminaRefillCoroutine = null;
             }
         }
 
-        if (Input.GetButtonUp("Dash") && dashing) //if im dashing and dashing is true
+        if (Input.GetButtonUp("Dash") && dashing)
         {
-            dashing = false; //set dashing false
-            MoveSpeed = MoveSpeedOriginal; //make movespeed normal
+            dashing = false;
+            MoveSpeed = MoveSpeedOriginal;
 
-            if (staminaDrainCoroutine != null) //is stamina drain corountine is not ended
+            if (staminaDrainCoroutine != null)
             {
-                StopCoroutine(staminaDrainCoroutine); // Stop draining stamina
-                staminaDrainCoroutine = null; //set to null for next drain
-            }
-            if (staminaRefillCoroutine == null) //if no refill occuring
-            {
-                staminaRefillCoroutine = StartCoroutine(StaminaRefill()); //start a refill
-            }
-        }
-    }
-
-    void ChangeView() //view changer
-    {
-        if (Input.GetKeyDown(KeyCode.V)) //on V key
-        {
-            if (OverHeadCamera.isActiveAndEnabled) //Overhead cam is on
-            {
-                OverHeadCamera.enabled = false; //turn it off
-                FPCamera.enabled = true; //turn on First person
-                FPActive = true; //set FirstPerson bool
-            }
-            else //First person is on
-            {
-                OverHeadCamera.enabled = true; //turn on OverHead
-                FPCamera.enabled = false; //turn off First person
-                FPActive = false; //First person flag false
+                StopCoroutine(staminaDrainCoroutine);
+                staminaDrainCoroutine = null;
             }
 
+            // Start the refill coroutine if not already running
+            if (staminaRefillCoroutine == null)
+            {
+                staminaRefillCoroutine = StartCoroutine(StaminaRefill());
+            }
         }
     }
-    public void Jump() //to jump
+
+    void ChangeView()
     {
-        if (Input.GetButtonDown("Jump") && jumpCounter < maxJumps) //on space bar and jump counter is under max jumps allowed
+        if (Input.GetKeyDown(KeyCode.V))
         {
-            jumpCounter++; //increase jump counter
-            playerVelocity.y = jumpSpeed;//add upwardsd velocity to player
-            Stamina -= 1; //use stamina
-            if (staminaDrainCoroutine != null) //is a refill hasnt stopped
+            if (OverHeadCamera.isActiveAndEnabled)
             {
-                StopCoroutine(staminaDrainCoroutine); //stop the refill
-                staminaDrainCoroutine = null; //null the coroutine
+                OverHeadCamera.enabled = false;
+                FPCamera.enabled = true;
+                FPActive = true;
             }
-            if (staminaRefillCoroutine == null) //if we arent fillinf
+            else
             {
-                staminaRefillCoroutine = StartCoroutine(StaminaRefill()); //start a fill
+                OverHeadCamera.enabled = true;
+                FPCamera.enabled = false;
+                FPActive = false;
+            }
+
+        }
+    }
+    public void Jump()
+    {
+        if (Input.GetButtonDown("Jump") && jumpCounter < maxJumps)
+        {
+            jumpCounter++;
+            playerVelocity.y = jumpSpeed;
+            Stamina -= 1;
+            if (staminaDrainCoroutine != null)
+            {
+                StopCoroutine(staminaDrainCoroutine);
+                staminaDrainCoroutine = null;
+            }
+
+            // Start the refill coroutine if not already running
+            if (staminaRefillCoroutine == null)
+            {
+                staminaRefillCoroutine = StartCoroutine(StaminaRefill());
             }
         }
-        playerVelocity.y -= gravity * Time.deltaTime; //this applies at ALL TIMES gravity downwards
-        characterControl.Move(playerVelocity * Time.deltaTime); //move player downward if able
+        playerVelocity.y -= gravity * Time.deltaTime;
+        characterControl.Move(playerVelocity * Time.deltaTime);
 
     }
 
@@ -188,274 +209,293 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
 
     #region Combat / Health Systems
 
-    public void Melee()//swing a weapon
+    public void Melee()
     {
-        if (currentWeapon != null && !shieldUp) //if there is a weapon and shield down
+        if (currentWeapon != null && !shieldUp)
         {
-            if (Input.GetButtonDown("Left Mouse")) //left mouse click
+            if (Input.GetButtonDown("Left Mouse"))
             {
-                StartCoroutine(Swing()); //start a swing
+                StartCoroutine(Swing());
             }
         }
     }
-    public void Defend() //pu shield up
+    public void Defend()
     {
-        if (currentShield != null) //if shield on
+        if (currentShield != null)
         {
-            if (Input.GetButtonDown("Right Mouse")) //on click
+            if (Input.GetButtonDown("Right Mouse"))
             {
-                currentShield.SetActive(true); //turn on shield
-                shieldUp = true; //shield flag true
-                playerShieldMod = .5F; //shield mod TO BE PULLED FROM SHIELD EVENTUALLY
+                currentShield.SetActive(true);
+                shieldUp = true;
+                playerShieldMod = .5F;
             }
-            if (Input.GetButtonUp("Right Mouse")) //on mouse up
+            if (Input.GetButtonUp("Right Mouse"))
             {
-                currentShield.SetActive(false); //turn shield off
-                shieldUp = false; //shield flag off
-                playerShieldMod = 0; //turn defense mod off 
+                currentShield.SetActive(false);
+                shieldUp = false;
+                playerShieldMod = 0;
             }
         }
     }
-    public void DeathCheck() //check to see if player is dead
+    public void DeathCheck()
     {
-        if (HP <= 0) //if hp <= 0 
+        if (HP <= 0)
         {
-            HP = 0;
-            UpdatePlayerUI(); //show it on UI
-            gameManager.youDead(); //throw death flags
+            UpdatePlayerUI();
+            gameManager.youDead();
         }
     }
-    public void takeHeal() //takes Heal from the HealHit script
+    public void takeHeal()
     {
-        if (!Healing) //if player not healing
+        if (!Healing)
         {
-            StartCoroutine(Healer()); //Start a heal 
+            StartCoroutine(Healer());
         }
     }
-    IEnumerator Healer() //heal routine
+    IEnumerator Healer()
     {
-        Healing = true;//flip the heal flag to prevent mult heals
-        if (HP + 1 >= HPOriginal) //if hp healed would be over Max
+        Healing = true;
+        if (HP + 1 >= HPOriginal)
         {
-            HP = HPOriginal; //hp is max
-            StopCoroutine(Healer()); //stop healing
+            HP = HPOriginal;
+            StopCoroutine(Healer());
         }
-        else //if player under max
+        else
         {
-            HP += 1;//add one
+            HP += 1;
         }
-        yield return new WaitForSeconds(1F); //one second between heals
-        Healing = false; //flip the flag to allow next heal
+        yield return new WaitForSeconds(1F);
+        Healing = false;
     }
-    public void takeDamage(float damage) //takeDamage from the PDamage(Physical DAmage from enemy to player) script
+    public void takeDamage(float damage)
     {
-        if (shieldUp)//if player blocking
+        if (shieldUp)
         {
-            float damageTaken = DamageShieldUPCalc(damage); //damage reduction called by calc function
-            HP -= damageTaken; //take health from player
-            Stamina -= .1F; //stamina tick for blacking
-            if (staminaDrainCoroutine != null) //if draining
+            float damageTaken = DamageShieldUPCalc(damage);
+            HP -= damageTaken;
+            Stamina -= .1F;
+            if (staminaDrainCoroutine != null)
             {
-                StopCoroutine(staminaDrainCoroutine); //stop draining
-                staminaDrainCoroutine = null; //draining null
+                StopCoroutine(staminaDrainCoroutine);
+                staminaDrainCoroutine = null;
             }
-            if (staminaRefillCoroutine == null) //if not refilling
+
+            // Start the refill coroutine if not already running
+            if (staminaRefillCoroutine == null)
             {
-                staminaRefillCoroutine = StartCoroutine(StaminaRefill()); //refill
+                staminaRefillCoroutine = StartCoroutine(StaminaRefill());
             }
-            StartCoroutine(HitFlash()); //start hit flash from being hit in UI
-            DeathCheck(); //check if this killed player
+            StartCoroutine(HitFlash());
+            DeathCheck();
         }
-        else //if player isnt blocking
+        else
         {
-            float damageTaken = DamageShieldDownCalc(damage); //damage calc
-            HP -= damageTaken; //take hp after calc
-            StartCoroutine(HitFlash()); //ouch flash in UI
-            DeathCheck(); //is player dead
+            float damageTaken = DamageShieldDownCalc(damage);
+            HP -= damageTaken;
+            StartCoroutine(HitFlash());
+            DeathCheck();
         }
     }
-    public void takeMDamage(float damage) //take magiv damage from enemy to player
+    public void takeMDamage(float damage)
     {
-        if (shieldUp) //blocking
+        if (shieldUp)
         {
-            float damageTaken = MDamageShieldUPCalc(damage); //magic damage with shield calc
-            HP -= damageTaken; //take hp
-            Stamina -= .5F; //take stamina
-            if (staminaDrainCoroutine != null) //draining
+            float damageTaken = MDamageShieldUPCalc(damage);
+            HP -= damageTaken;
+            Stamina -= .5F;
+            if (staminaDrainCoroutine != null)
             {
-                StopCoroutine(staminaDrainCoroutine);//stop drain
-                staminaDrainCoroutine = null;//drain null
+                StopCoroutine(staminaDrainCoroutine);
+                staminaDrainCoroutine = null;
             }
-            if (staminaRefillCoroutine == null)//not refilling
+
+            // Start the refill coroutine if not already running
+            if (staminaRefillCoroutine == null)
             {
-                staminaRefillCoroutine = StartCoroutine(StaminaRefill());//refill
+                staminaRefillCoroutine = StartCoroutine(StaminaRefill());
             }
-            StartCoroutine(HitFlash()); //ouch flash
-            DeathCheck();//did player die
+            StartCoroutine(HitFlash());
+            DeathCheck();
         }
-        else //not blocking
+        else
         {
-            float damageTaken = DamageShieldDownCalc(damage); //noraml calc EVENTUALLY WILL BE MDEF
-            HP -= damageTaken; //take hp
-            StartCoroutine(HitFlash()); //ouch flash in ui
-            DeathCheck(); //did player die
-        }
-    }
-    IEnumerator HitFlash() //when player is hit flash in UI
-    {
-        if (HP > 0) //if there is HP to take
-        {
-            gameManager.playerHitFlash.SetActive(true); //turn on flash
-            yield return new WaitForSeconds(.1F); //wait
-            gameManager.playerHitFlash.SetActive(false); //turn off flash
+            float damageTaken = DamageShieldDownCalc(damage);
+            HP -= damageTaken;
+            StartCoroutine(HitFlash());
+            DeathCheck();
         }
     }
-    IEnumerator Swing() //swing
+    IEnumerator HitFlash()
     {
-        if (Stamina >= SwingCostCalc()) //is enough stamina
+        if (HP > 0)
         {
-            float swingCost = SwingCostCalc(); //calc swing cost
-            Stamina -= swingCost; //take stamina
-            currentWeapon.SetActive(true); //turn on weapon
-            Anim.SetTrigger("Attacking");//turn on anim
-            yield return new WaitForSeconds(0.2F);//wait
-            currentWeapon.SetActive(false); //turn off weapon
-            if (staminaRefillCoroutine != null) //if refilling
+            gameManager.playerHitFlash.SetActive(true);
+            yield return new WaitForSeconds(.1F);
+            gameManager.playerHitFlash.SetActive(false);
+        }
+    }
+    IEnumerator Swing()
+    {
+        if (Stamina >= SwingCostCalc())
+        {
+            float swingCost = SwingCostCalc();
+            Stamina -= swingCost;
+            currentWeapon.SetActive(true);
+            Anim.SetTrigger("Attacking");
+            yield return new WaitForSeconds(0.2F);
+            currentWeapon.SetActive(false);
+
+            // Ensure the refill coroutine starts if needed
+            if (staminaRefillCoroutine != null)
             {
-                StopCoroutine(staminaRefillCoroutine); //stop refill
-                staminaRefillCoroutine = null; //refill null
+                StopCoroutine(staminaRefillCoroutine);
+                staminaRefillCoroutine = null;
             }
-            if (!dashing) //if im not dashing to prevent bugs in stamina not refilling
+
+            // Restart the refill coroutine after the swing action if dashing isn't active
+            if (!dashing)
             {
-                staminaRefillCoroutine = StartCoroutine(StaminaRefill()); //start the refill
+                staminaRefillCoroutine = StartCoroutine(StaminaRefill());
             }
         }
     }
 
-    public float MDamageShieldUPCalc(float damage) //calc magic damage
+    public float MDamageShieldUPCalc(float damage)
     {
-        float damageOut; //holder
-        float damageReduction = playerShieldMod / 3; //reduce damage on shield
-        damageOut = damage - damageReduction; //calc damage
-        return damageOut; //send damage
+        float damageOut;
+        float damageReduction = playerShieldMod / 3;
+        damageOut = damage - damageReduction;
+        return damageOut;
     }
-    public float DamageShieldUPCalc(float damage) //calc normal damage
+    public float DamageShieldUPCalc(float damage)
     {
-        float damageOut; //holder
-        float damageReduction = playerShieldMod / 2; //reduced damage calc
-        damageOut = damage - damageReduction; //calc damage
-        return damageOut; //send damage
+        float damageOut;
+        float damageReduction = playerShieldMod / 2;
+        damageOut = damage - damageReduction;
+        return damageOut;
     }
-    public float DamageShieldDownCalc(float damage) //no shield up damage
+    public float DamageShieldDownCalc(float damage)
     {
-        float damageOut; //holder
-        float damageReduction = Def * .025F; //def mod
-        damageOut = damage - damageReduction; //calc damage
-        return damageOut; //send damage
+        float damageOut;
+        float damageReduction = Def * .025F;
+        damageOut = damage - damageReduction;
+        return damageOut;
     }
-    public float SwingCostCalc()//calc swing cost
+
+
+    public float SwingCostCalc()
     {
-        float costMod = Dex * .0025F; //cost reducer
-        float baseCost = 3F - costMod; //cost minus reducer
-        return baseCost; //return cost
+        float cost;
+        float costMod = Dex * .0025F;
+        float baseCost = 3F - costMod;
+        cost = baseCost;
+        return cost;
     }
+
 
     #endregion
 
     #region UI Systems
 
-    public void UpdatePlayerUI() //updates everything on UI
+    public void UpdatePlayerUI()
     {
+        //HP updater
+        float hpFillAmount = HP / HPOriginal;
+        //convert hpFillAmount to a percentage for display
+        int hpPercentage = (int)(hpFillAmount * 100);
+        gameManager.playerHP.fillAmount = hpFillAmount;
+        gameManager.playerHPText.text = (hpPercentage.ToString() + "%");
 
-        float hpFillAmount = HP / HPOriginal; //HP updater
-        int hpPercentage = (int)(hpFillAmount * 100); //convert hpFillAmount to a percentage for display
-        gameManager.playerHP.fillAmount = hpFillAmount; //set fillamount
-        gameManager.playerHPText.text = (hpPercentage.ToString() + "%"); //assign the text 
+        //XP updater
+        float xpFillAmount = playerXP / (100 * playerLevel);
+        int xpPercentage = (int)(xpFillAmount * 100);
+        gameManager.playerXPBar.fillAmount = xpFillAmount;
 
+        //StaminaUpdater
+        float stamFillAmount = Stamina / StaminaOriginal;
+        int stamPercentage = (int)(stamFillAmount * 100);
+        gameManager.playerStamBar.fillAmount = stamFillAmount;
 
-        float xpFillAmount = playerXP / (100 * playerLevel); //XP updater
-        int xpPercentage = (int)(xpFillAmount * 100); //xp percentage
-        gameManager.playerXPBar.fillAmount = xpFillAmount; //set fill
+        playerCoin = gameManager.coinPurse.amountHeld;
 
-
-        float stamFillAmount = Stamina / StaminaOriginal;//StaminaUpdater
-        int stamPercentage = (int)(stamFillAmount * 100);//stam precent
-        gameManager.playerStamBar.fillAmount = stamFillAmount; //set fill amount
-
-        playerCoin = gameManager.coinPurse.amountHeld; //set player coin amount
-
-        gameManager.playerLvLText.text = playerLevel.ToString(); //set player level 
-        gameManager.playerHPStat.text = HPOriginal.ToString(); // set HP stat
-        gameManager.playerAttStat.text = AttackOriginal.ToString(); // set Attack stat
-        gameManager.playerDefStat.text = DefOriginal.ToString(); //set def stat
-        gameManager.playerDexStat.text = DexOriginal.ToString(); //set dex stat
-        gameManager.playerStamStat.text = StaminaOriginal.ToString(); //set stam stat
-        gameManager.playerCoins.text = playerCoin.ToString(); //set coin
+        gameManager.playerLvLText.text = playerLevel.ToString();
+        gameManager.playerHPStat.text = HPOriginal.ToString();
+        gameManager.playerAttStat.text = AttackOriginal.ToString();
+        gameManager.playerDefStat.text = DefOriginal.ToString();
+        gameManager.playerDexStat.text = DexOriginal.ToString();
+        gameManager.playerStamStat.text = StaminaOriginal.ToString();
+        gameManager.playerCoins.text = playerCoin.ToString();
     }
-    private void playerLevelUp() //level up process
+    private void playerLevelUp()
     {
-        if (playerXP >= (100 * playerLevel) && playerLevel < playerLevelMax) //if player has less than needed xp and not max level
+        if (playerXP >= (100 * playerLevel) && playerLevel < playerLevelMax)
         {
             //show the level up screen
+            //increase stats by random number
+            int randBoostHP = UnityEngine.Random.Range(1, 10);
+            int randBoostAttack = UnityEngine.Random.Range(1, 5);
+            int randBoostDef = UnityEngine.Random.Range(1, 3);
+            float randBoostMoveSpeed = UnityEngine.Random.Range(.01F, .05F);
+            int randBoostStamina = UnityEngine.Random.Range(1, 4);
+            int randBoostDex = UnityEngine.Random.Range(1, 3);
 
-            int randBoostHP = UnityEngine.Random.Range(1, 10); //increase stat by random number 1-10
-            int randBoostAttack = UnityEngine.Random.Range(1, 5); //increase stat by random number 1-5
-            int randBoostDef = UnityEngine.Random.Range(1, 3); //increase stat by random number 1-3
-            float randBoostMoveSpeed = UnityEngine.Random.Range(.01F, .05F); //increase stat by random number by small amount
-            int randBoostStamina = UnityEngine.Random.Range(1, 4); //increase stat by random number 1-4
-            int randBoostDex = UnityEngine.Random.Range(1, 3); //increase stat by random number 1-3
+            HP += randBoostHP;
+            HPOriginal += randBoostHP;
+            Attack += randBoostAttack;
+            AttackOriginal += randBoostAttack;
+            Def += randBoostDef;
+            DefOriginal += randBoostDef;
+            Dex += randBoostDex;
+            DexOriginal += randBoostDex;
+            MoveSpeed += randBoostMoveSpeed;
+            MoveSpeedOriginal += randBoostMoveSpeed;
+            Stamina += randBoostStamina;
+            StaminaOriginal += randBoostStamina;
+            playerLevel++;
+            UpdatePlayerUI();
 
-            HP += randBoostHP; //apply random boost
-            HPOriginal += randBoostHP;//apply random boost
-            Attack += randBoostAttack;//apply random boost
-            AttackOriginal += randBoostAttack;//apply random boost
-            Def += randBoostDef;//apply random boost
-            DefOriginal += randBoostDef;//apply random boost
-            Dex += randBoostDex;//apply random boost
-            DexOriginal += randBoostDex;//apply random boost
-            MoveSpeed += randBoostMoveSpeed;//apply random boost
-            MoveSpeedOriginal += randBoostMoveSpeed;//apply random boost
-            Stamina += randBoostStamina;//apply random boost
-            StaminaOriginal += randBoostStamina;//apply random boost
-            playerLevel++; //increase player level
-            playerXP = 0; //reset playerXp to zero
-            UpdatePlayerUI(); //update the UI with new stats
+            playerXP = 0;
+            //reset playerXp to zero
         }
     }
 
-    IEnumerator StaminaDrain() //Stamina drain 
+    IEnumerator StaminaDrain()
     {
-        while (dashing && Stamina > 0) //if dashing and stamina is above 0
+        while (dashing && Stamina > 0)
         {
             yield return new WaitForSeconds(0.1F); // Adjust time to control the drain rate
             Stamina -= 0.1F; // Adjust the amount drained per second
-            UpdatePlayerUI(); //update as we go
-            if (Stamina <= 0) //if stamina is empty
+            UpdatePlayerUI();
+            if (Stamina <= 0)
             {
-                Stamina = 0; //set it to empty
-                dashing = false; //stop dashing
+                Stamina = 0;
+                dashing = false;
                 MoveSpeed = MoveSpeedOriginal; // Reset speed if stamina is depleted
 
                 // Stop the drain coroutine
-                if (staminaDrainCoroutine != null) //draing
+                if (staminaDrainCoroutine != null)
                 {
-                    StopCoroutine(staminaDrainCoroutine); //stop draining
-                    staminaDrainCoroutine = null; //drain null
+                    StopCoroutine(staminaDrainCoroutine);
+                    staminaDrainCoroutine = null;
                 }
-                if (staminaRefillCoroutine == null) //refilling null
+
+                // Start the refill coroutine if not already running
+                if (staminaRefillCoroutine == null)
                 {
-                    staminaRefillCoroutine = StartCoroutine(StaminaRefill()); //start refill
+                    staminaRefillCoroutine = StartCoroutine(StaminaRefill());
                 }
+
                 yield break; // Exit the coroutine as the player has no stamina left
             }
         }
     }
 
-    IEnumerator StaminaRefill() //stamina refill
+    IEnumerator StaminaRefill()
     {
         Debug.Log("Starting StaminaRefill coroutine.");
 
-        while (Stamina < StaminaOriginal) // Continue refilling as long as stamina is below the maximum and not dashing
+        // Continue refilling as long as stamina is below the maximum and not dashing
+        while (Stamina < StaminaOriginal)
         {
             // Wait for a short period before refilling
             yield return new WaitForSeconds(0.1F); // Adjust this value to control the refill delay
@@ -463,98 +503,111 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
             // Gradually refill stamina
             Stamina += 0.1F + (Dex * .005F); // Adjust this value for desired refill speed
             Stamina = Mathf.Clamp(Stamina, 0, StaminaOriginal); // Ensure stamina does not exceed the original amount
-            UpdatePlayerUI(); //update UI
+            UpdatePlayerUI();
+
+            // Debug log to check refill progress
             Debug.Log($"Refilling stamina. Current stamina: {Stamina}");
+
+            // Stop refilling if the player starts dashing or attacking
+            //if (dashing || (staminaDrainCoroutine != null && Stamina <= 0))
+            //{
+            //    Debug.Log("Stopping refill coroutine due to dashing or attacking.");
+            //    yield break; // Exit the coroutine
+            //}
         }
-        Stamina = StaminaOriginal;// Ensure stamina is capped at maximum
+
+        // Ensure stamina is capped at maximum
+        Stamina = StaminaOriginal;
         Debug.Log("Stamina refill complete.");
+
         staminaRefillCoroutine = null; // Reset coroutine reference
     }
+
 
     #endregion
 
     #region Organizational Systems
-    private void StartUpProcesses() //all the provess on start
+
+    private void StartUpProcesses()
     {
-        GetPlayerPrefs(); //grabs player save data
+        GetPlayerPrefs();
     }
     private void AwakenProcesses()
     {
-        playerPOS = transform.position; //grabs player position
-        Cursor.lockState = CursorLockMode.Locked; //Locks cursor
-        Cursor.visible = false; //non visible cursor
-        if (Instance == null) //checks for player
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject); //extra player destoryed
-        }
-        OverHeadCamera.enabled = true; //turn on over head
-        FPCamera.enabled = false; //turn off first person
-        FPActive = false; //flip first person flag
+        playerPOS = transform.position;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
-    private void UpdateProcesses() //everything for update
+    private void UpdateProcesses()
     {
         if (!gameManager.isPaused)
         {
-            Melee(); //attack
-            Defend(); //block
-            Walk(); //move
-            Turn(); //left right turns
-            Jump(); //upwards velocity
-            Dash(); //dash mult
-            DeathCheck(); //checks for death
-            playerLevelUp(); //checks for player level up
-            UpdatePlayerUI(); //updates the ui constantly
-            ChangeView(); //checks to change view
+            Melee();
+
+            Defend();
+
+            Walk();
+
+            Turn();
+
+            Jump();
+
+            Dash();
+
+            DeathCheck();
+
+            playerLevelUp();
+
+            UpdatePlayerUI();
         }
     }
-    public void GetPlayerPrefs() //get player SPIRAL save data
+    public void GetPlayerPrefs()
     {
-        HPOriginal = PlayerPrefs.GetFloat("HPOringal", HPOriginal); //get stat
-        HP = HPOriginal; //set player stat
-        AttackOriginal = PlayerPrefs.GetFloat("AttackOriginal", AttackOriginal);//get stat
-        Attack = AttackOriginal;//set player stat
-        DefOriginal = PlayerPrefs.GetFloat("DefOriginal", DefOriginal);//get stat
-        Def = DefOriginal;//set player stat
-        MoveSpeedOriginal = PlayerPrefs.GetFloat("MoveSpeedOriginal", MoveSpeedOriginal);//get stat
-        MoveSpeed = MoveSpeedOriginal;//set player stat
-        StaminaOriginal = PlayerPrefs.GetFloat("StaminaOriginal", StaminaOriginal);//get stat
-        Stamina = StaminaOriginal;//set player stat
-        DexOriginal = PlayerPrefs.GetFloat("DexOriginal", DexOriginal);//get stat
-        Dex = DexOriginal;//set player stat
-        playerXP = PlayerPrefs.GetFloat("playerXP", playerXP); //get xp
-        playerLevel = PlayerPrefs.GetInt("playerLevel", playerLevel); //get level
-        maxJumps = PlayerPrefs.GetInt("maxJumps", maxJumps); //get max jumps
-        playerCoin = PlayerPrefs.GetInt("playerCoin", playerCoin); //get coins
+        HPOriginal = PlayerPrefs.GetFloat("HPOringal", HPOriginal);
+        HP = HPOriginal;
+        AttackOriginal = PlayerPrefs.GetFloat("AttackOriginal", AttackOriginal);
+        Attack = AttackOriginal;
+        DefOriginal = PlayerPrefs.GetFloat("DefOriginal", DefOriginal);
+        Def = DefOriginal;
+        MoveSpeedOriginal = PlayerPrefs.GetFloat("MoveSpeedOriginal", MoveSpeedOriginal);
+        MoveSpeed = MoveSpeedOriginal;
+        StaminaOriginal = PlayerPrefs.GetFloat("StaminaOriginal", StaminaOriginal);
+        Stamina = StaminaOriginal;
+        DexOriginal = PlayerPrefs.GetFloat("DexOriginal", DexOriginal);
+        Dex = DexOriginal;
+        playerXP = PlayerPrefs.GetFloat("playerXP", playerXP);
+        playerLevel = PlayerPrefs.GetInt("playerLevel", playerLevel);
+        maxJumps = PlayerPrefs.GetInt("maxJumps", maxJumps);
+        playerCoin = PlayerPrefs.GetInt("playerCoin", playerCoin);
     }
-    public void SavePlayerPrefs() //save SPIRAL player data
+    public void SavePlayerPrefs()
     {
-        PlayerPrefs.SetFloat("HPOringal", HPOriginal); //save stat
-        PlayerPrefs.SetFloat("AttackOriginal", AttackOriginal);//save stat
-        PlayerPrefs.SetFloat("DefOriginal", DefOriginal);//save stat
-        PlayerPrefs.SetFloat("DexOriginal", DexOriginal);//save stat
-        PlayerPrefs.SetFloat("MoveSpeedOriginal", MoveSpeedOriginal);//save stat
-        PlayerPrefs.SetFloat("StaminaOriginal", StaminaOriginal);//save stat
-        PlayerPrefs.SetFloat("playerXP", playerXP);//save stat
-        PlayerPrefs.SetInt("playerLevel", playerLevel);//save stat
-        PlayerPrefs.SetInt("maxJumps", maxJumps);//save stat
-        PlayerPrefs.SetInt("playerCoin", playerCoin);//save stat
+
+        PlayerPrefs.SetFloat("HPOringal", HPOriginal);
+        PlayerPrefs.SetFloat("AttackOriginal", AttackOriginal);
+        PlayerPrefs.SetFloat("DefOriginal", DefOriginal);
+        PlayerPrefs.SetFloat("DexOriginal", DexOriginal);
+        PlayerPrefs.SetFloat("MoveSpeedOriginal", MoveSpeedOriginal);
+        PlayerPrefs.SetFloat("StaminaOriginal", StaminaOriginal);
+        PlayerPrefs.SetFloat("playerXP", playerXP);
+        PlayerPrefs.SetInt("playerLevel", playerLevel);
+        PlayerPrefs.SetInt("maxJumps", maxJumps);
+        PlayerPrefs.SetInt("playerCoin", playerCoin);
     }
-    public void ResetSetPlayerPrefs() //resets for new game
+    public void ResetSetPlayerPrefs()
     {
-        PlayerPrefs.SetFloat("HPOringal", 15); //reset stat
-        PlayerPrefs.SetFloat("AttackOriginal", 5);//reset stat
-        PlayerPrefs.SetFloat("DefOriginal", 1);//reset stat
-        PlayerPrefs.SetFloat("DexOriginal", 1);//reset stat
-        PlayerPrefs.SetFloat("MoveSpeedOriginal", 4);//reset stat
-        PlayerPrefs.SetFloat("StaminaOriginal", 5);//reset stat
-        PlayerPrefs.SetFloat("playerXP", 0);//reset stat
-        PlayerPrefs.SetInt("playerLevel", 1);//reset stat
-        PlayerPrefs.SetInt("maxJumps", 1);//reset stat
-        PlayerPrefs.SetInt("playerCoin", playerCoin);//reset stat
+
+        PlayerPrefs.SetFloat("HPOringal", 5);
+        PlayerPrefs.SetFloat("AttackOriginal", 5);
+        PlayerPrefs.SetFloat("DefOriginal", 1);
+        PlayerPrefs.SetFloat("DexOriginal", 1);
+        PlayerPrefs.SetFloat("MoveSpeedOriginal", 4);
+        PlayerPrefs.SetFloat("StaminaOriginal", 5);
+        PlayerPrefs.SetFloat("playerXP", 0);
+        PlayerPrefs.SetInt("playerLevel", 1);
+        PlayerPrefs.SetInt("maxJumps", 1);
+        PlayerPrefs.SetInt("playerCoin", playerCoin);
+
     }
     #endregion
 

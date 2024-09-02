@@ -48,68 +48,74 @@ public class GameManager : MonoBehaviour
     #region Processes
     void Awake()
     {
-        if (Instance == null) //instance GM is null
+        if (Instance == null)
         {
-            Instance = this; //this GM
+            Instance = this;
         }
         else
         {
-            Destroy(gameObject); //Destroy the old one
+            Destroy(gameObject);
         }
     }
     void Start()
     {
-        if (inventoryList == null) //check for inventory
+        if (inventoryList == null)
         {
             Debug.LogError("InventoryList is not assigned!");
         }
-        if (SceneManager.GetActiveScene().name == "Spiral") //if im in the spiral
+        if (SceneManager.GetActiveScene().name == "Spiral")
         {
-            Cursor.visible = false; //cursor off
+            Cursor.visible = false;
         }
     }
 
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)) //pause menu
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if(activeMenu == null) //if active menu null
+            if(activeMenu == null)
             {
-                statePaused(); //call paused
-                activeMenu = pauseMenu; //set menu
-                pauseMenu.SetActive(true); //turn on menu
+
+                statePaused();
+                activeMenu = pauseMenu;
+                pauseMenu.SetActive(true);
+
             }
-            else if(activeMenu != null) //if a menu is up
+            else if(activeMenu != null)
             {
-                stateUnPaused(); //unpause the game
+                stateUnPaused();
             }
         }
-        if (Input.GetKeyDown(KeyCode.Tab)) //player stat window on tab
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (activeMenu == null) //no window active
+            if (activeMenu == null)
             {
-                statePaused(); //pause
-                activeMenu = statMenu; //asign stat to active
-                statMenu.SetActive(true); //turn it on
+
+                statePaused();
+                activeMenu = statMenu;
+                statMenu.SetActive(true);
+
             }
-            else if (activeMenu != null) //is something is in active on tab
+            else if (activeMenu != null)
             {
-                stateUnPaused(); //unpause
+                stateUnPaused();
             }
         }
-        if (Input.GetKeyDown(KeyCode.I)) //invnetory window
+        if (Input.GetKeyDown(KeyCode.I))
         {
-            if (activeMenu == null) //no active menu
+            if (activeMenu == null)
             {
-                statePaused(); //pause
-                activeMenu = inventoryMenu; //inv menu active
-                inventoryMenu.SetActive(true); //turn it on
-                inventorySystem.InventoryDisplay(); //display inventory items
+
+                statePaused();
+                activeMenu = inventoryMenu;
+                inventoryMenu.SetActive(true);
+                inventorySystem.InventoryDisplay();
+
             }
-            else if (activeMenu != null) //if something in active
+            else if (activeMenu != null)
             {
-                stateUnPaused(); //state unpaused
+                stateUnPaused();
             }
         }
     }
@@ -118,85 +124,92 @@ public class GameManager : MonoBehaviour
 
     #region Game States
 
-    public void statePaused() //pause
+    public void statePaused()
     {
-        isPaused = true; //pause flag 
-        Cursor.lockState = CursorLockMode.Confined; //keep cursor in the window
-        Cursor.visible = true; //hide cursor
-        Time.timeScale = 0; //reset time passed to zero
+        isPaused = true;
+        //keep cursor in the window
+        Cursor.lockState = CursorLockMode.Confined;
+        //hide cursor
+        Cursor.visible = true;
+        //reset time passed to zero
+        Time.timeScale = 0;
     }
     public void stateUnPaused()
     {
-        isPaused = false; //pause flag
-        Cursor.visible = true; //cursor on
-        Cursor.lockState = CursorLockMode.Confined; //lock cursor
-        Time.timeScale = 1; //allow time to pass again
-        if (activeMenu != null && activeMenu != pauseMenu) //if something other than pause menu is active
+        isPaused = false;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        //allow time to pass again
+        Time.timeScale = 1;
+        if (activeMenu != null && activeMenu != pauseMenu)
         {
-            if(activeMenu == statMenu) //if its the statmenu
+            if(activeMenu == statMenu)
             {
-                activeMenu.SetActive(isPaused); //turn it off
-                activeMenu = null; //set it to null
+                activeMenu.SetActive(isPaused);
+                activeMenu = null;
             }
             else
             {
-                activeMenu.SetActive(false); //turn off a menu
-                activeMenu = pauseMenu; //set it to pause
-                activeMenu.SetActive(true); //turn it on
+                activeMenu.SetActive(false);
+                activeMenu = pauseMenu;
+                activeMenu.SetActive(true);
             }
         }
         else
         {
-            activeMenu.SetActive(isPaused);//turn off
-            activeMenu = null; //null active menu
+            activeMenu.SetActive(isPaused);
+            activeMenu = null;
         }
     }
-    public void youDead() //prompt player death
+    public void youDead()
     {
-        isPaused = true; //pause flag
+        isPaused = true;
+        //keep cursor in the window
         //Time.timeScale = 0;
-        Cursor.lockState = CursorLockMode.Confined; //confine cursor
-        Cursor.visible = true; //hide cursor
-        activeMenu = loseMenu; //active to lose
-        loseMenu.SetActive(true); //turn it on
+        Cursor.lockState = CursorLockMode.Confined;
+        //hide cursor
+        Cursor.visible = true;
+        //reset time passed to zero
+        //Time.timeScale = 0;
+        activeMenu = loseMenu;
+        loseMenu.SetActive(true);
     }
-    public void SaveGame() 
+    public void SaveGame()
     {
-        playerManager.HasFloorKey = false;//reset floor key
-        playerManager.SavePlayerPrefs(); //set save data
+        playerManager.HasFloorKey = false;
+        playerManager.SavePlayerPrefs();
     }
     public void LoadGame()
     {
-        playerManager.GetPlayerPrefs(); //grab save data
-        SceneManager.LoadScene("Spiral"); //load main gameplay scene
+        playerManager.GetPlayerPrefs();
+        SceneManager.LoadScene("Spiral");
     }
     public void NewGame()
     {
-        playerManager.ResetSetPlayerPrefs(); //reset save data
-        playerManager.SavePlayerPrefs(); //save reset save data
-        SceneManager.LoadScene("Spiral"); //load main game play scene
+        playerManager.ResetSetPlayerPrefs();
+        playerManager.SavePlayerPrefs();
+        SceneManager.LoadScene("Spiral");
     }
-    public void quitConfirm() //quit confirm menu
+    public void quitConfirm()
     {
-        statePaused(); //pause
-        activeMenu = confirmMenu; //active to confirm menu
-        confirmMenu.SetActive(true); //turn it on
+        statePaused();
+        activeMenu = confirmMenu;
+        confirmMenu.SetActive(true);
 
     }
-    public void DeathQuitConfirm() //confirm death quit
+    public void DeathQuitConfirm()
     {
-        statePaused(); //paused
-        activeMenu = playerDeathQuitConfirm; //asign active
-        playerDeathQuitConfirm.SetActive(true); //turn on
-
+        statePaused();
+        playerDeathQuitConfirm.SetActive(true);
+        activeMenu = playerDeathQuitConfirm;
     }
-    public void DeathQuitCancel() //cancel death quit
+    public void DeathQuitCancel()
     {
-        stateUnPaused(); //unpause
-        playerDeathQuitConfirm.SetActive(false);//turn off death menu
-        activeMenu = null; //null active
-        activeMenu = loseMenu;//active deathmenu
-        activeMenu.SetActive(true);//turn on
+        stateUnPaused();
+        playerDeathQuitConfirm.SetActive(false);
+        activeMenu = null;
+        activeMenu = loseMenu;
+        activeMenu.SetActive(true);
     }
     #endregion
 

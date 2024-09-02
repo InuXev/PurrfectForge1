@@ -2904,19 +2904,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 530731269374659459, guid: a09b5a35a9f0c214ab647e6b9465e753, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375966185987026594, guid: a09b5a35a9f0c214ab647e6b9465e753, type: 3}
-      propertyPath: m_text
-      value: Are you sure you want to quit? Unsaved data will be lost and you will
-        be returned to Eterius.
-      objectReference: {fileID: 0}
-    - target: {fileID: 2461714916415791979, guid: a09b5a35a9f0c214ab647e6b9465e753, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EteriusPortConfirmCancel
-      objectReference: {fileID: 0}
     - target: {fileID: 5848165558851562394, guid: a09b5a35a9f0c214ab647e6b9465e753, type: 3}
       propertyPath: Damage
       value: 2.5
@@ -2925,21 +2912,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7266155655191291445, guid: a09b5a35a9f0c214ab647e6b9465e753, type: 3}
-      propertyPath: m_text
-      value: Eterius
-      objectReference: {fileID: 0}
     - target: {fileID: 7428117737809662368, guid: a09b5a35a9f0c214ab647e6b9465e753, type: 3}
       propertyPath: HPOriginal
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 7516125735149615147, guid: a09b5a35a9f0c214ab647e6b9465e753, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EteriusPort
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 4207820314538250268, guid: a09b5a35a9f0c214ab647e6b9465e753, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a09b5a35a9f0c214ab647e6b9465e753, type: 3}

@@ -14,43 +14,56 @@ public class ButtonFunctions : MonoBehaviour
     #endregion
 
     #region Buttons
-    public void resume() //unpause game from main menu
+    public void resume()
     {
-        gameManager.stateUnPaused(); //call from GM
+        gameManager.stateUnPaused();
     }
-    public void restart() //on death
+    public void SaveGame()
+    {
+        gameManager.SaveGame();
+    }
+    public void LoadGame()
+    {
+        gameManager.LoadGame();
+    }
+    public void NewGame()
+    {
+        gameManager.NewGame();
+    }
+    public void restart()
     {
         //reload scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name.ToString()); //grab surrent scene
-        gameManager.stateUnPaused();//call from GM
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name.ToString());
+        gameManager.stateUnPaused();
+
     }
-    public void EteriusPort() //port the Eterius
+
+    public void eshesPort()
     {
-        PlayerManager.Instance.HasFloorKey = false;
-        gameManager.SaveGame();//call from GM
-        SceneManager.LoadScene("Eshes"); //load eshes
-        gameManager.stateUnPaused();//call from GM
+        gameManager.SaveGame();
+        SceneManager.LoadScene("Eshes");
+        gameManager.stateUnPaused();
     }
-       public void FrontQuit() //main quit button
+       public void FrontQuit()
     {
-        gameManager.quitConfirm();//call from GM
+        gameManager.quitConfirm();
     }
-    public void DeathQuit() //on death quit
+    public void DeathQuit()
     {
-        gameManager.DeathQuitConfirm();//call from GM
+        gameManager.DeathQuitConfirm();
     }
-    public void DeathQuitCancel() //cancel death quit
+    public void DeathQuitCancel()
     {
-        gameManager.DeathQuitCancel();//call from GM
+        gameManager.DeathQuitCancel();
     }
-    public void completeQuit() //after quit confirmation in pause menu
+    public void completeQuit()
     {
-        SceneManager.LoadScene("Eshes"); //load Eterius
+        SceneManager.LoadScene("Eshes");
     }
-    public void EteriusPortConfirmCancel() //eterius port confirm cancel
+    public void resume2()
     {
-        gameManager.stateUnPaused();//call from GM
-        gameManager.confirmMenu.SetActive(false);//call from GM turn off confirm menu
+        gameManager.stateUnPaused();
+        gameManager.confirmMenu.SetActive(false);
     }
     #endregion
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FloorDoor : MonoBehaviour
 {
-    [SerializeField] PlayerManager playerManager; //to check key flag
+    [SerializeField] PlayerManager playerManager;
     [SerializeField] GameObject LeftDoor;
     [SerializeField] GameObject RightDoor;
     private void OnTriggerEnter(Collider other)
@@ -12,9 +12,9 @@ public class FloorDoor : MonoBehaviour
         if (other.CompareTag("Player") && playerManager.HasFloorKey)
         {
             //check for key here
-            LeftDoor.transform.Rotate(0, 100, 0); //rotate left door
-            RightDoor.transform.Rotate(0, -100, 0); //rotate right door
-            playerManager.HasFloorKey = false; //remove ket flag from player
+            LeftDoor.transform.Rotate(0, 100, 0);
+            RightDoor.transform.Rotate(0, -100, 0);
+            playerManager.HasFloorKey = false;
         }
     }
 }
