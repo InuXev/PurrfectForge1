@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class LevelKey : MonoBehaviour
 {
-    //[SerializeField] public PlayerManager playerManager;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
-            PlayerManager playerManager = other.GetComponent<PlayerManager>();
-            playerManager.HasFloorKey = true;
-            Destroy(gameObject);
+            PlayerManager playerManager = other.GetComponent<PlayerManager>(); //grab the players manager
+            playerManager.HasFloorKey = true; //set the player to have key for current floor
+            Destroy(gameObject); //destory key on pick up
         }
     }
 }
