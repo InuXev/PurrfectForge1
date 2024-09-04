@@ -12,6 +12,7 @@ public class DeathObject : MonoBehaviour
         {
             PDamage dmg = other.gameObject.GetComponent<PDamage>();
             dmg.takeDamage(Damage); // Call the takeDamage function from the IDamage component
+            Destroy(gameObject);
         }
     }
 }

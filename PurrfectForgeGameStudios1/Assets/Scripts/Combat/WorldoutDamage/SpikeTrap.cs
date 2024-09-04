@@ -12,7 +12,7 @@ public class SpikeTrap : MonoBehaviour
     private float moveSpeed = 20f;
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player") && !activated)
+        if (other.CompareTag("Player") && !activated)
         {
             StartCoroutine(TrapTriggerTime());
         }
