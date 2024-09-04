@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class EshesPlayerFPCamera : MonoBehaviour
+public class EteriusPlayerFPCamera : MonoBehaviour
 {
     #region Fields/Objects
 

@@ -31,6 +31,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
 
 
     //player info
+    public int highestFloorCompleted = 0;
     public int playerLevel = 1;
     public int playerCoin;
     int playerLevelMax = 50;
@@ -68,6 +69,10 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     private Coroutine staminaRefillCoroutine;
 
     public bool HasFloorKey;
+
+
+
+
 
     bool Healing = false;
 
@@ -529,6 +534,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
         playerLevel = PlayerPrefs.GetInt("playerLevel", playerLevel); //get level
         maxJumps = PlayerPrefs.GetInt("maxJumps", maxJumps); //get max jumps
         playerCoin = PlayerPrefs.GetInt("playerCoin", playerCoin); //get coins
+        highestFloorCompleted = PlayerPrefs.GetInt("highestFloorCompleted", highestFloorCompleted);//save stat
     }
     public void SavePlayerPrefs() //save SPIRAL player data
     {
@@ -542,6 +548,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
         PlayerPrefs.SetInt("playerLevel", playerLevel);//save stat
         PlayerPrefs.SetInt("maxJumps", maxJumps);//save stat
         PlayerPrefs.SetInt("playerCoin", playerCoin);//save stat
+        PlayerPrefs.SetInt("highestFloorCompleted", highestFloorCompleted);//save stat
     }
     public void ResetSetPlayerPrefs() //resets for new game
     {
@@ -555,6 +562,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
         PlayerPrefs.SetInt("playerLevel", 1);//reset stat
         PlayerPrefs.SetInt("maxJumps", 1);//reset stat
         PlayerPrefs.SetInt("playerCoin", playerCoin);//reset stat
+        PlayerPrefs.SetInt("highestFloorCompleted", 0);//save stat
     }
     #endregion
 

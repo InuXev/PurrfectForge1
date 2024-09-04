@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -13,7 +14,7 @@ public class EshesButtonFunctions : MonoBehaviour
     [SerializeField] EshesPlayerEye playerEye;
     [SerializeField] SaveLoadManager saveLoadManager;
     public Button targetButton;
-
+    public string clickedButton;
     #endregion
     public void Awake()
     {
@@ -70,6 +71,7 @@ public class EshesButtonFunctions : MonoBehaviour
     {
         saveLoadManager.ClearSaveData();
         gameManager.ResetScriptables();
+        gameManager.ResetCompleteFloors();
         gameManager.NewGame();
     }
     public void spiralPort()
@@ -78,6 +80,11 @@ public class EshesButtonFunctions : MonoBehaviour
         gameManager.SpiralConfirm();
 
     }
+    public void SpiralFloorSelect()
+    {
+        gameManager.SpiralFloorSelection();
+    }
+
     public void spiralPortConfirmed()
     {
         //reload scene
@@ -237,4 +244,28 @@ public class EshesButtonFunctions : MonoBehaviour
     }
 
     #endregion
+
+    #region SpiralFloorSelectionButtons
+
+    public void FloorButton()
+    {
+        GameObject clickButton = EventSystem.current.currentSelectedGameObject;
+        clickedButton = clickButton.name;
+        Debug.Log(clickedButton);
+        gameManager.SpiralFloorButtonClicked(clickedButton);
+    }
+    public void FloorConfirmed()
+    {
+        saveLoadManager.SaveEshesWorld();
+        SceneManager.LoadScene(clickedButton);
+        gameManager.stateUnPaused();
+        clickedButton = null;
+    }
+    public void FloorCancel()
+    {
+        gameManager.FloorConfirmPort.SetActive(false);
+        gameManager.SpiralFloorSelector.SetActive(true);
+        gameManager.activeMenu = gameManager.SpiralFloorSelector;
+    }
+    #endregion 
 }

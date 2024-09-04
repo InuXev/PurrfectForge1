@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 //using UnityEditor.Experimental.GraphView;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 public class EshesGameManager : MonoBehaviour
 {
@@ -31,6 +32,12 @@ public class EshesGameManager : MonoBehaviour
     [SerializeField] public GameObject eshesPlayer;
     [SerializeField] public GameObject OverHeadToggle;
     public ScriptableItems[] scriptableList;
+
+    //FloorSelection
+    [SerializeField] public ScriptableLevelCompleted HighestLevel;
+    [SerializeField] public GameObject SpiralFloorSelector;
+    [SerializeField] public GameObject FloorConfirmPort;
+
     //foliage
     [SerializeField] public GameObject foliageTypeSelector;
     //trees, flowers, bushes, grass
@@ -119,7 +126,7 @@ public class EshesGameManager : MonoBehaviour
     }
     void Start()
     {
-        if(scene == 1) //if eterius
+        if (scene == 1) //if eterius
         {
             OverHeadCamera.enabled = true; //overhead cam on
             FPCamera.enabled = false; //FpCam disabled
@@ -137,7 +144,7 @@ public class EshesGameManager : MonoBehaviour
         }
         if (SceneManager.GetActiveScene().name == "Eshes") //if eterius
         {
-            BuildMenu(); 
+            BuildMenu();
             Pause();
             UpdateItemCounts();
             ChangeView();
@@ -148,7 +155,6 @@ public class EshesGameManager : MonoBehaviour
         {
             scene = 2; //asign 2
         }
-
     }
 
     #endregion
@@ -162,7 +168,7 @@ public class EshesGameManager : MonoBehaviour
         WaitTimer(); //wait for load
         Time.timeScale = 1; //time start
     }
-    public void NewGame() 
+    public void NewGame()
     {
         PlayerPrefs.DeleteAll(); //delete data in prefs
         SceneManager.LoadScene("Eshes"); //load eterius
@@ -182,11 +188,12 @@ public class EshesGameManager : MonoBehaviour
         Cursor.visible = true; //visible cursor
         Cursor.lockState = CursorLockMode.Confined; //keep cursor in the window
         Time.timeScale = 1; //allow time to pass again
-        if (activeMenu != null && activeMenu != pauseMenu) 
+        if (activeMenu != null && activeMenu != pauseMenu)
         {
             activeMenu.SetActive(false); //what ever menu is active turned off
             activeMenu = pauseMenu; //pause to active
             activeMenu.SetActive(true); //pause to on
+            SpiralFloorSelector.SetActive(false);
         }
         else
         {
@@ -225,7 +232,7 @@ public class EshesGameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
-            if(buildON)
+            if (buildON)
             {
                 buildON = false; //build flag off
                 activeMenu = null; //active emptied
@@ -589,12 +596,10 @@ public class EshesGameManager : MonoBehaviour
     }
     public void NewGameConfirm()
     {
-
         NewGameMenu.SetActive(true);
     }
     public void NewGameCancel()
     {
-
         NewGameMenu.SetActive(false);
     }
     public void TotalGameQuitConfirm()
@@ -624,10 +629,26 @@ public class EshesGameManager : MonoBehaviour
         SpiralConfirmMenu.SetActive(true);
         activeMenu = SpiralConfirmMenu;
     }
+
     public void SpiralCancel()
     {
-        stateUnPaused();
-        SpiralConfirmMenu.SetActive(false);
+        Cursor.visible = true; //visible cursor
+        Cursor.lockState = CursorLockMode.Confined; //keep cursor in the window
+        Time.timeScale = 1; //allow time to pass again
+        activeMenu = SpiralFloorSelector; //active menu emptied
+        activeMenu.SetActive(true); //what ever menu active off
+
+    }
+    public void SpiralMenuCancel()
+    {
+        Cursor.visible = true; //visible cursor
+        Cursor.lockState = CursorLockMode.Confined; //keep cursor in the window
+        Time.timeScale = 1; //allow time to pass again
+        activeMenu = SpiralFloorSelector; //active menu emptied
+        activeMenu.SetActive(false); //what ever menu active off
+        activeMenu = pauseMenu;
+        activeMenu.SetActive(true);
+
     }
     public void ResetScriptables()
     {
@@ -636,4 +657,26 @@ public class EshesGameManager : MonoBehaviour
             scriptable.amountHeld = 0;
         }
     }
+    public void ResetCompleteFloors()
+    {
+        HighestLevel.highestLevelComplete = 0;
+    }
+    public void SpiralFloorSelection()
+    {
+        statePaused();
+        SpiralFloorSelector.SetActive(true);
+        activeMenu = SpiralFloorSelector;
+    }
+    public void SpiralFloorButtonClicked(string buttonName)
+    {
+        int floorNumber;
+        floorNumber = int.Parse(buttonName);
+        Debug.Log("Floor Number: " + floorNumber);
+        if (HighestLevel.highestLevelComplete >= floorNumber - 1)
+        {
+            FloorConfirmPort.SetActive(true);
+            activeMenu = FloorConfirmPort;
+        }
+    }
 }
+

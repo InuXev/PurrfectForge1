@@ -2299,13 +2299,7 @@ MonoBehaviour:
   playerEye: {fileID: 0}
   pauseMenu: {fileID: 0}
   coinPurse: {fileID: 0}
-  playerCoin: 0
-  scriptableList:
-  - {fileID: 11400000, guid: b52b6bedd1696de49b65075548f1d57f, type: 2}
-  - {fileID: 11400000, guid: 9e0f2682f6443a845ad83749082f5d80, type: 2}
-  - {fileID: 11400000, guid: a9513ee6645daa845a231ca7cef15eaf, type: 2}
-  - {fileID: 11400000, guid: a37107c5df7d92c4087ee346d6e95066, type: 2}
-  - {fileID: 11400000, guid: a40a7972f6bc2174c87cc77348a5720f, type: 2}
+  coinPurseText: {fileID: 0}
   buildMenu: {fileID: 0}
   confirmMenu: {fileID: 633838321}
   NewGameMenu: {fileID: 633838321}
@@ -2315,6 +2309,20 @@ MonoBehaviour:
   buildConfirm: {fileID: 0}
   removeConfirm: {fileID: 0}
   SpiralConfirmMenu: {fileID: 0}
+  OverHeadCamera: {fileID: 0}
+  FPCamera: {fileID: 0}
+  eshesPlayer: {fileID: 0}
+  OverHeadToggle: {fileID: 0}
+  scriptableList:
+  - {fileID: 11400000, guid: b52b6bedd1696de49b65075548f1d57f, type: 2}
+  - {fileID: 11400000, guid: 9e0f2682f6443a845ad83749082f5d80, type: 2}
+  - {fileID: 11400000, guid: a9513ee6645daa845a231ca7cef15eaf, type: 2}
+  - {fileID: 11400000, guid: a37107c5df7d92c4087ee346d6e95066, type: 2}
+  - {fileID: 11400000, guid: a40a7972f6bc2174c87cc77348a5720f, type: 2}
+  HighestLevel: {fileID: 11400000, guid: 04f2510ea45382f4287151f0638a84e1, type: 2}
+  SpiralFloorSelector: {fileID: 0}
+  FloorOneConfirmPort: {fileID: 0}
+  FloorTwoConfirmPort: {fileID: 0}
   foliageTypeSelector: {fileID: 0}
   trees: {fileID: 0}
   Tree1: {fileID: 0}
@@ -2349,6 +2357,7 @@ MonoBehaviour:
   inSelectError: 0
   inConfirmBuild: 0
   inConfrimRemove: 0
+  FPActive: 0
   buildON: 0
 --- !u!114 &1339356630
 MonoBehaviour:
