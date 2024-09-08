@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 //using UnityEditor.Experimental.GraphView;
 using System.Linq;
+using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text playerDefStat;
     public TMP_Text playerDexStat;
     public TMP_Text playerStamStat;
+    public TMP_Text playerAvailableSkillPts;
     [SerializeField] public ScriptableItems coinPurse;
     public TMP_Text playerCoins;
     public Image playerXP;
@@ -43,6 +45,18 @@ public class GameManager : MonoBehaviour
     public GameObject activeMenu;
     public bool isPaused;
     int spiralLevel;
+
+
+    [SerializeField] public GameObject FireNotAvailable; 
+    [SerializeField] public GameObject IceNotAvailable; 
+    [SerializeField] public GameObject LightningNotAvailable;
+    [SerializeField] public GameObject FireLockTierTwo;
+    [SerializeField] public GameObject FireLockTierThree;
+    [SerializeField] public GameObject IceLockTierTwo;
+    [SerializeField] public GameObject IceLockTierThree;
+    [SerializeField] public GameObject LightningLockTierTwo;
+    [SerializeField] public GameObject LightningLockTierThree;
+
     #endregion
 
     #region Processes
@@ -72,15 +86,15 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)) //pause menu
+        if (Input.GetKeyDown(KeyCode.Escape)) //pause menu
         {
-            if(activeMenu == null) //if active menu null
+            if (activeMenu == null) //if active menu null
             {
                 statePaused(); //call paused
                 activeMenu = pauseMenu; //set menu
                 pauseMenu.SetActive(true); //turn on menu
             }
-            else if(activeMenu != null) //if a menu is up
+            else if (activeMenu != null) //if a menu is up
             {
                 stateUnPaused(); //unpause the game
             }
@@ -112,6 +126,103 @@ public class GameManager : MonoBehaviour
                 stateUnPaused(); //state unpaused
             }
         }
+        if(playerManager.chosenElement == null)
+        {
+            IceNotAvailable.SetActive(false);
+            FireNotAvailable.SetActive(false);
+            LightningNotAvailable.SetActive(false);
+            FireLockTierTwo.SetActive(true);
+            FireLockTierThree.SetActive(true);
+            IceLockTierTwo.SetActive(true);
+            IceLockTierThree.SetActive(true);
+            LightningLockTierTwo.SetActive(true);
+            LightningLockTierThree.SetActive(true);
+        }
+        if (playerManager.chosenElement != null)
+        {
+            if(playerManager.chosenElement == "Fire")
+            {
+                IceNotAvailable.SetActive(true);
+                FireNotAvailable.SetActive(false);
+                LightningNotAvailable.SetActive(true);
+                if(playerManager.tierTwoUnlocked)
+                {
+                    //turn off tier two fire lock
+                    FireLockTierTwo.SetActive(false);
+                }
+                else if (!playerManager.tierTwoUnlocked)
+                {
+                    FireLockTierTwo.SetActive(true);
+                    //turn on tier two fire lock
+                }
+                if (playerManager.tierThreeUnlocked)
+                {
+                    FireLockTierThree.SetActive(false);
+                    //turn off tier three fire lock
+                }
+                else if (!playerManager.tierThreeUnlocked)
+                {
+                    FireLockTierThree.SetActive(true);
+                    //turn on tier three fire lock
+                }
+
+            }
+            else if(playerManager.chosenElement == "Ice")
+            {
+                IceNotAvailable.SetActive(false);
+                FireNotAvailable.SetActive(true);
+                LightningNotAvailable.SetActive(true);
+                if (playerManager.tierTwoUnlocked)
+                {
+                    //turn off tier two fire lock
+                    IceLockTierTwo.SetActive(false);
+                }
+                else if (!playerManager.tierTwoUnlocked)
+                {
+                    IceLockTierTwo.SetActive(true);
+                    //turn on tier two fire lock
+                }
+                if (playerManager.tierThreeUnlocked)
+                {
+                    IceLockTierThree.SetActive(false);
+                    //turn off tier three fire lock
+                }
+                else if (!playerManager.tierThreeUnlocked)
+                {
+                    IceLockTierThree.SetActive(true);
+                    //turn on tier three fire lock
+                }
+            }
+            else if (playerManager.chosenElement == "Lightning")
+            {
+                IceNotAvailable.SetActive(true);
+                FireNotAvailable.SetActive(true);
+                LightningNotAvailable.SetActive(false);
+                if (playerManager.tierTwoUnlocked)
+                {
+                    //turn off tier two fire lock
+                    LightningLockTierTwo.SetActive(false);
+                }
+                else if (!playerManager.tierTwoUnlocked)
+                {
+                    LightningLockTierTwo.SetActive(true);
+                    //turn on tier two fire lock
+                }
+                if (playerManager.tierThreeUnlocked)
+                {
+                    LightningLockTierThree.SetActive(false);
+                    //turn off tier three fire lock
+                }
+                else if (!playerManager.tierThreeUnlocked)
+                {
+                    LightningLockTierThree.SetActive(true);
+                    //turn on tier three fire lock
+                }
+            }
+        }
+        if (playerManager.chosenElement != null)
+        {
+        }
     }
 
     #endregion
@@ -133,7 +244,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1; //allow time to pass again
         if (activeMenu != null && activeMenu != pauseMenu) //if something other than pause menu is active
         {
-            if(activeMenu == statMenu) //if its the statmenu
+            if (activeMenu == statMenu) //if its the statmenu
             {
                 activeMenu.SetActive(isPaused); //turn it off
                 activeMenu = null; //set it to null
@@ -160,7 +271,7 @@ public class GameManager : MonoBehaviour
         activeMenu = loseMenu; //active to lose
         loseMenu.SetActive(true); //turn it on
     }
-    public void SaveGame() 
+    public void SaveGame()
     {
         playerManager.HasFloorKey = false;//reset floor key
         playerManager.SavePlayerPrefs(); //set save data
@@ -199,5 +310,83 @@ public class GameManager : MonoBehaviour
         activeMenu.SetActive(true);//turn on
     }
     #endregion
+    public int SkillPointCheck()
+    {
+        return playerManager.playerSkillPoints;
+    }
+    public void SkillPointUse()
+    {
+        playerManager.playerSkillPoints -= 1;
+    }
+    public void AssignElement(string element)
+    {
+        playerManager.chosenElement = element;
+    }
+    public void SkillPointReturn()
+    {
+        playerManager.playerSkillPoints += 1;
+    }
+    public int TierOneCheck()
+    {
+        int whichSkill = 0;
+        if (playerManager.tierOne == 1)
+        {
+            whichSkill = 1;
+        }
+        else if (playerManager.tierOne == 2)
+        {
+            whichSkill = 2;
+        }
+        return whichSkill;
+    }
+    public int TierThreeCheck()
+    {
+        int whichSkill = 0;
+        if (playerManager.tierThree == 1)
+        {
+            whichSkill = 1;
+        }
+        else if (playerManager.tierThree == 2)
+        {
+            whichSkill = 2;
+        }
+        return whichSkill;
+    }
+    public void AssignTierOne(int tier)
+    {
+        playerManager.tierOne = tier;
+    }
+    public void AssignTierThree(int tier)
+    {
+        playerManager.tierThree = tier;
+    }
 
+    public int SkillTierOneLevelCheck()
+    {
+        return playerManager.skillOneLevel;
+    }
+    public int SkillTierTwoLevelCheck()
+    {
+        return playerManager.skillTwoLevel;
+    }
+    public void SkillOneLevelUp()
+    {
+        playerManager.skillOneLevel += 1;
+    }
+    public void SkillTwoLevelUp()
+    {
+        playerManager.skillTwoLevel += 1;
+    }
+    public bool TierTwoUnlocked()
+    {
+        return playerManager.tierTwoUnlocked;
+    }
+    public bool TierThreeUnlocked()
+    {
+        return playerManager.tierThreeUnlocked;
+    }
+    public string AssignedElementCheck()
+    {
+        return playerManager.chosenElement;
+    }
 }

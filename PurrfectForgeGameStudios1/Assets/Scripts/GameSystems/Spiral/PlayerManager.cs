@@ -55,26 +55,37 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     public bool shieldUp;
     public float playerXP = 0;
     public float playerXPReset = 0;
-
     public int maxBoost;
-
     private float panSpeed = 6F;
     private float gravity = 20;
     private Vector3 playerVelocity;
     private Vector3 moveDirection;
     private Vector3 playerPOS;
     public float playerShieldMod;
-
     private Coroutine staminaDrainCoroutine;
     private Coroutine staminaRefillCoroutine;
-
     public bool HasFloorKey;
-
-
-
-
-
     bool Healing = false;
+
+
+    //skill systems
+
+    public string chosenElement;
+    public int playerSkillPoints = 0;
+    //which one of the either or skills are selecter 1 or 2, left or right
+    public int tierOne = 0;
+    public int tierThree = 0;
+  
+    //only skill tiers one and two can be leveled up
+    public int skillOneLevel = 0;
+    public int skillTwoLevel = 0;
+
+    //if the player has unlocked skill tier 2
+    public bool tierTwoUnlocked = false;
+    public bool tierThreeUnlocked = false;
+
+
+
 
     #endregion
 
@@ -396,13 +407,17 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
         gameManager.playerDexStat.text = DexOriginal.ToString(); //set dex stat
         gameManager.playerStamStat.text = StaminaOriginal.ToString(); //set stam stat
         gameManager.playerCoins.text = playerCoin.ToString(); //set coin
+        gameManager.playerAvailableSkillPts.text = playerSkillPoints.ToString();
     }
     private void playerLevelUp() //level up process
     {
         if (playerXP >= (100 * playerLevel) && playerLevel < playerLevelMax) //if player has less than needed xp and not max level
         {
             //show the level up screen
-
+            if(playerLevel % 6 == 0)
+            {
+                playerSkillPoints += 1;
+            }
             int randBoostHP = UnityEngine.Random.Range(1, 10); //increase stat by random number 1-10
             int randBoostAttack = UnityEngine.Random.Range(1, 5); //increase stat by random number 1-5
             int randBoostDef = UnityEngine.Random.Range(1, 3); //increase stat by random number 1-3
@@ -514,6 +529,19 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
             playerLevelUp(); //checks for player level up
             UpdatePlayerUI(); //updates the ui constantly
             ChangeView(); //checks to change view
+            TierUnlockedCheck();
+        }
+    }
+
+    public void TierUnlockedCheck()
+    {
+        if (skillOneLevel == 3)
+        {
+            tierTwoUnlocked = true;
+        }
+        if (skillTwoLevel == 2)
+        {
+            tierThreeUnlocked = true;
         }
     }
     public void GetPlayerPrefs() //get player SPIRAL save data
