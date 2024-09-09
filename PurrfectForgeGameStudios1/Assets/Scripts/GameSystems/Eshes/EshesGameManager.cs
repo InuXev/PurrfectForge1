@@ -32,6 +32,7 @@ public class EshesGameManager : MonoBehaviour
     [SerializeField] public GameObject eshesPlayer;
     [SerializeField] public GameObject OverHeadToggle;
     public ScriptableItems[] scriptableList;
+    public ScriptableSkill[] scriptableSkillList;
 
     //FloorSelection
     [SerializeField] public ScriptableLevelCompleted HighestLevel;
@@ -655,6 +656,10 @@ public class EshesGameManager : MonoBehaviour
         foreach (var scriptable in scriptableList)
         {
             scriptable.amountHeld = 0;
+        }
+        foreach (var scriptable in scriptableSkillList)
+        {
+            scriptable.SkillLevel = 0;
         }
     }
     public void ResetCompleteFloors()

@@ -57,6 +57,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject LightningLockTierTwo;
     [SerializeField] public GameObject LightningLockTierThree;
 
+    [SerializeField] public Image SkillSlotOneImage;
+    [SerializeField] public Image SkillSlotTwoImage;
+    [SerializeField] public Image SkillSlotThreeImage;
+
     #endregion
 
     #region Processes
@@ -220,9 +224,6 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        if (playerManager.chosenElement != null)
-        {
-        }
     }
 
     #endregion
@@ -317,6 +318,7 @@ public class GameManager : MonoBehaviour
     public void SkillPointUse()
     {
         playerManager.playerSkillPoints -= 1;
+        UpdatePlayerUI();
     }
     public void AssignElement(string element)
     {
@@ -325,6 +327,7 @@ public class GameManager : MonoBehaviour
     public void SkillPointReturn()
     {
         playerManager.playerSkillPoints += 1;
+        UpdatePlayerUI();
     }
     public int TierOneCheck()
     {
@@ -355,6 +358,10 @@ public class GameManager : MonoBehaviour
     public void AssignTierOne(int tier)
     {
         playerManager.tierOne = tier;
+    }
+    public void AssignTierTwo()
+    {
+        playerManager.tierTwo = 1;
     }
     public void AssignTierThree(int tier)
     {
@@ -388,5 +395,21 @@ public class GameManager : MonoBehaviour
     public string AssignedElementCheck()
     {
         return playerManager.chosenElement;
+    }
+    public void UpdatePlayerUI()
+    {
+        playerManager.UpdatePlayerUI();
+    }
+    public void AssignSkillImageOne(ScriptableSkill skill)
+    {
+        SkillSlotOneImage.sprite = skill.SkillSlotImage;
+    }
+    public void AssignSkillImageTwo(ScriptableSkill skill)
+    {
+        SkillSlotTwoImage.sprite = skill.SkillSlotImage;
+    }
+    public void AssignSkillImageThree(ScriptableSkill skill)
+    {
+        SkillSlotThreeImage.sprite = skill.SkillSlotImage;
     }
 }

@@ -6,6 +6,7 @@ using System.Net;
 using System.Security.Cryptography;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -28,7 +29,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     public bool FPActive;
 
     public static PlayerManager Instance;
-
+    [SerializeField] public Transform castPos;
 
     //player info
     public int highestFloorCompleted = 0;
@@ -74,8 +75,9 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     public int playerSkillPoints = 0;
     //which one of the either or skills are selecter 1 or 2, left or right
     public int tierOne = 0;
+    public int tierTwo = 0;
     public int tierThree = 0;
-  
+
     //only skill tiers one and two can be leveled up
     public int skillOneLevel = 0;
     public int skillTwoLevel = 0;
@@ -84,7 +86,11 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     public bool tierTwoUnlocked = false;
     public bool tierThreeUnlocked = false;
 
+    public ScriptableSkill activeSlotOneSkill;
+    public ScriptableSkill activeSlotTwoSkill;
+    public ScriptableSkill activeSlotThreeSkill;
 
+    [SerializeField] public List<ScriptableSkill> skillPool;
 
 
     #endregion
@@ -101,6 +107,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     void Update()
     {
         UpdateProcesses(); //update processes
+
     }
     #endregion
 
@@ -147,15 +154,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
             dashing = false; //set dashing false
             MoveSpeed = MoveSpeedOriginal; //make movespeed normal
 
-            if (staminaDrainCoroutine != null) //is stamina drain corountine is not ended
-            {
-                StopCoroutine(staminaDrainCoroutine); // Stop draining stamina
-                staminaDrainCoroutine = null; //set to null for next drain
-            }
-            if (staminaRefillCoroutine == null) //if no refill occuring
-            {
-                staminaRefillCoroutine = StartCoroutine(StaminaRefill()); //start a refill
-            }
+            StamSystem();
         }
     }
 
@@ -185,15 +184,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
             jumpCounter++; //increase jump counter
             playerVelocity.y = jumpSpeed;//add upwardsd velocity to player
             Stamina -= 1; //use stamina
-            if (staminaDrainCoroutine != null) //is a refill hasnt stopped
-            {
-                StopCoroutine(staminaDrainCoroutine); //stop the refill
-                staminaDrainCoroutine = null; //null the coroutine
-            }
-            if (staminaRefillCoroutine == null) //if we arent fillinf
-            {
-                staminaRefillCoroutine = StartCoroutine(StaminaRefill()); //start a fill
-            }
+            StamSystem();
         }
         playerVelocity.y -= gravity * Time.deltaTime; //this applies at ALL TIMES gravity downwards
         characterControl.Move(playerVelocity * Time.deltaTime); //move player downward if able
@@ -229,6 +220,47 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
                 currentShield.SetActive(false); //turn shield off
                 shieldUp = false; //shield flag off
                 playerShieldMod = 0; //turn defense mod off 
+            }
+        }
+    }
+
+    public void UseSkills()
+    {
+        if (activeSlotOneSkill != null)
+        {
+            if (Input.GetButtonDown("Skill1") && activeSlotOneSkill != null && Stamina - activeSlotOneSkill.SkillCost >= 0)
+            {
+                Debug.Log("Skill One Used");
+                Debug.Log(activeSlotOneSkill);
+                //logic to use skill
+                activeSlotOneSkill.SkillBehavior(castPos);
+                Stamina -= activeSlotOneSkill.SkillCost * activeSlotOneSkill.SkillLevel;
+                StamSystem();
+
+            }
+        }
+        if(activeSlotTwoSkill != null)
+        {
+            if (Input.GetButtonDown("Skill2") && activeSlotTwoSkill != null && Stamina - activeSlotTwoSkill.SkillCost >= 0)
+            {
+                Debug.Log("Skill Two Used");
+                Debug.Log(activeSlotTwoSkill);
+                //logic to use skill
+                activeSlotOneSkill.SkillBehavior(castPos);
+                Stamina -= activeSlotTwoSkill.SkillCost * activeSlotTwoSkill.SkillLevel;
+                StamSystem();
+            }
+        }
+        if(activeSlotThreeSkill != null)
+        {
+            if (Input.GetButtonDown("Skill3") && activeSlotThreeSkill != null && Stamina - activeSlotThreeSkill.SkillCost >= 0)
+            {
+                Debug.Log("Skill Three Used");
+                Debug.Log(activeSlotThreeSkill);
+                //logic to use skill
+                activeSlotOneSkill.SkillBehavior(castPos);
+                Stamina -= activeSlotThreeSkill.SkillCost * activeSlotThreeSkill.SkillLevel;
+                StamSystem();
             }
         }
     }
@@ -270,15 +302,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
             float damageTaken = DamageShieldUPCalc(damage); //damage reduction called by calc function
             HP -= damageTaken; //take health from player
             Stamina -= .1F; //stamina tick for blacking
-            if (staminaDrainCoroutine != null) //if draining
-            {
-                StopCoroutine(staminaDrainCoroutine); //stop draining
-                staminaDrainCoroutine = null; //draining null
-            }
-            if (staminaRefillCoroutine == null) //if not refilling
-            {
-                staminaRefillCoroutine = StartCoroutine(StaminaRefill()); //refill
-            }
+            StamSystem();
             StartCoroutine(HitFlash()); //start hit flash from being hit in UI
             DeathCheck(); //check if this killed player
         }
@@ -297,15 +321,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
             float damageTaken = MDamageShieldUPCalc(damage); //magic damage with shield calc
             HP -= damageTaken; //take hp
             Stamina -= .5F; //take stamina
-            if (staminaDrainCoroutine != null) //draining
-            {
-                StopCoroutine(staminaDrainCoroutine);//stop drain
-                staminaDrainCoroutine = null;//drain null
-            }
-            if (staminaRefillCoroutine == null)//not refilling
-            {
-                staminaRefillCoroutine = StartCoroutine(StaminaRefill());//refill
-            }
+            StamSystem();
             StartCoroutine(HitFlash()); //ouch flash
             DeathCheck();//did player die
         }
@@ -414,7 +430,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
         if (playerXP >= (100 * playerLevel) && playerLevel < playerLevelMax) //if player has less than needed xp and not max level
         {
             //show the level up screen
-            if(playerLevel % 6 == 0)
+            if (playerLevel % 8 == 0)
             {
                 playerSkillPoints += 1;
             }
@@ -457,15 +473,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
                 MoveSpeed = MoveSpeedOriginal; // Reset speed if stamina is depleted
 
                 // Stop the drain coroutine
-                if (staminaDrainCoroutine != null) //draing
-                {
-                    StopCoroutine(staminaDrainCoroutine); //stop draining
-                    staminaDrainCoroutine = null; //drain null
-                }
-                if (staminaRefillCoroutine == null) //refilling null
-                {
-                    staminaRefillCoroutine = StartCoroutine(StaminaRefill()); //start refill
-                }
+                StamSystem();
                 yield break; // Exit the coroutine as the player has no stamina left
             }
         }
@@ -527,12 +535,124 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
             Dash(); //dash mult
             DeathCheck(); //checks for death
             playerLevelUp(); //checks for player level up
-            UpdatePlayerUI(); //updates the ui constantly
+            UseSkills();
             ChangeView(); //checks to change view
             TierUnlockedCheck();
+            SkillAssigner();
+            UpdatePlayerUI(); //updates the ui constantly
+            SkillLevelUp();
         }
     }
-
+    public void SkillLevelUp()
+    {
+        if (activeSlotOneSkill != null)
+        {
+            activeSlotOneSkill.SkillLevel = skillOneLevel;
+        }
+        if (activeSlotTwoSkill != null)
+        {
+            activeSlotTwoSkill.SkillLevel = skillTwoLevel;
+        }
+    }
+    public void SkillAssigner()
+    {
+        if (chosenElement == "Fire")
+        {
+            if (tierOne == 1)
+            {
+                activeSlotOneSkill = skillPool[0];
+                AssignSkillImageOne(activeSlotOneSkill);
+            }
+            else if (tierOne == 2)
+            {
+                activeSlotOneSkill = skillPool[1];
+                AssignSkillImageOne(activeSlotOneSkill);
+            }
+            if (tierTwo == 1)
+            {
+                activeSlotTwoSkill = skillPool[2];
+                AssignSkillImageTwo(activeSlotTwoSkill);
+            }
+            if (tierThree == 1)
+            {
+                activeSlotThreeSkill = skillPool[3];
+                AssignSkillImageThree(activeSlotThreeSkill);
+            }
+            else if (tierThree == 2)
+            {
+                activeSlotThreeSkill = skillPool[4];
+                AssignSkillImageThree(activeSlotThreeSkill);
+            }
+        }
+        if (chosenElement == "Ice")
+        {
+            if (tierOne == 1)
+            {
+                activeSlotOneSkill = skillPool[5];
+                AssignSkillImageOne(activeSlotOneSkill);
+            }
+            else if (tierOne == 2)
+            {
+                activeSlotOneSkill = skillPool[6];
+                AssignSkillImageOne(activeSlotOneSkill);
+            }
+            if (tierTwo == 1)
+            {
+                activeSlotTwoSkill = skillPool[7];
+                AssignSkillImageTwo(activeSlotTwoSkill);
+            }
+            if (tierThree == 1)
+            {
+                activeSlotThreeSkill = skillPool[8];
+                AssignSkillImageThree(activeSlotThreeSkill);
+            }
+            else if (tierThree == 2)
+            {
+                activeSlotThreeSkill = skillPool[9];
+                AssignSkillImageThree(activeSlotThreeSkill);
+            }
+        }
+        if (chosenElement == "Lightning")
+        {
+            if (tierOne == 1)
+            {
+                activeSlotOneSkill = skillPool[10];
+                AssignSkillImageOne(activeSlotOneSkill);
+            }
+            else if (tierOne == 2)
+            {
+                activeSlotOneSkill = skillPool[11];
+                AssignSkillImageOne(activeSlotOneSkill);
+            }
+            if (tierTwo == 1)
+            {
+                activeSlotTwoSkill = skillPool[12];
+                AssignSkillImageTwo(activeSlotTwoSkill);
+            }
+            if (tierThree == 1)
+            {
+                activeSlotThreeSkill = skillPool[13];
+                AssignSkillImageThree(activeSlotThreeSkill);
+            }
+            else if (tierThree == 2)
+            {
+                activeSlotThreeSkill = skillPool[14];
+                AssignSkillImageThree(activeSlotThreeSkill);
+            }
+        }
+    }
+    public void AssignSkillImageOne(ScriptableSkill skill)
+    {
+        gameManager.AssignSkillImageOne(skill);
+    }
+    public void AssignSkillImageTwo(ScriptableSkill skill)
+    {
+        gameManager.AssignSkillImageTwo(skill);
+    }
+    public void AssignSkillImageThree(ScriptableSkill skill)
+    {
+        gameManager.AssignSkillImageThree(skill);
+    }
     public void TierUnlockedCheck()
     {
         if (skillOneLevel == 3)
@@ -542,6 +662,18 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
         if (skillTwoLevel == 2)
         {
             tierThreeUnlocked = true;
+        }
+    }
+    public void StamSystem()
+    {
+        if (staminaDrainCoroutine != null) //draing
+        {
+            StopCoroutine(staminaDrainCoroutine); //stop draining
+            staminaDrainCoroutine = null; //drain null
+        }
+        if (staminaRefillCoroutine == null) //refilling null
+        {
+            staminaRefillCoroutine = StartCoroutine(StaminaRefill()); //start refill
         }
     }
     public void GetPlayerPrefs() //get player SPIRAL save data
@@ -563,6 +695,14 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
         maxJumps = PlayerPrefs.GetInt("maxJumps", maxJumps); //get max jumps
         playerCoin = PlayerPrefs.GetInt("playerCoin", playerCoin); //get coins
         highestFloorCompleted = PlayerPrefs.GetInt("highestFloorCompleted", highestFloorCompleted);//save stat
+
+        chosenElement = PlayerPrefs.GetString("ElementChosen", chosenElement);
+        playerSkillPoints = PlayerPrefs.GetInt("PlayerSkillPoints", playerSkillPoints);
+        tierOne = PlayerPrefs.GetInt("TierOne", tierOne);
+        tierTwo = PlayerPrefs.GetInt("TierTwo", tierTwo);
+        tierThree = PlayerPrefs.GetInt("TierThree", tierThree);
+        skillOneLevel = PlayerPrefs.GetInt("SkillOneLevel", skillOneLevel);
+        skillTwoLevel = PlayerPrefs.GetInt("SkillTwoLevel", skillTwoLevel);
     }
     public void SavePlayerPrefs() //save SPIRAL player data
     {
@@ -577,6 +717,15 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
         PlayerPrefs.SetInt("maxJumps", maxJumps);//save stat
         PlayerPrefs.SetInt("playerCoin", playerCoin);//save stat
         PlayerPrefs.SetInt("highestFloorCompleted", highestFloorCompleted);//save stat
+
+        PlayerPrefs.SetString("ElementChosen", chosenElement);
+        PlayerPrefs.SetInt("PlayerSkillPoints", playerSkillPoints);
+        PlayerPrefs.SetInt("TierOne", tierOne);
+        PlayerPrefs.SetInt("TierTwo", tierTwo);
+        PlayerPrefs.SetInt("TierThree", tierThree);
+        PlayerPrefs.SetInt("SkillOneLevel", skillOneLevel);
+        PlayerPrefs.SetInt("SkillTwoLevel", skillTwoLevel);
+
     }
     public void ResetSetPlayerPrefs() //resets for new game
     {
@@ -591,6 +740,13 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
         PlayerPrefs.SetInt("maxJumps", 1);//reset stat
         PlayerPrefs.SetInt("playerCoin", playerCoin);//reset stat
         PlayerPrefs.SetInt("highestFloorCompleted", 0);//save stat
+        PlayerPrefs.SetString("ElementChosen", null);
+        PlayerPrefs.SetInt("PlayerSkillPoints", 0);
+        PlayerPrefs.SetInt("TierOne", 0);
+        PlayerPrefs.SetInt("TierTwo", 0);
+        PlayerPrefs.SetInt("TierThree", 0);
+        PlayerPrefs.SetInt("SkillOneLevel", 0);
+        PlayerPrefs.SetInt("SkillTwoLevel", 0);
     }
     #endregion
 

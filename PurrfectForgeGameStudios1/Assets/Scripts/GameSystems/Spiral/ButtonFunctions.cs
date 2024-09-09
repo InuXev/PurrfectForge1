@@ -120,6 +120,7 @@ public class ButtonFunctions : MonoBehaviour
     {
         if (gameManager.SkillPointCheck() >= 1 && gameManager.TierTwoUnlocked() && gameManager.AssignedElementCheck() != "Ice" && gameManager.AssignedElementCheck() == "Fire")
         {
+            gameManager.AssignTierTwo();
             switch (gameManager.SkillTierTwoLevelCheck())
             {
                 case 0:
@@ -217,6 +218,7 @@ public class ButtonFunctions : MonoBehaviour
     {
         if (gameManager.SkillPointCheck() >= 1 && gameManager.TierTwoUnlocked() && gameManager.AssignedElementCheck() == "Ice")
         {
+            gameManager.AssignTierTwo();
             switch (gameManager.SkillTierTwoLevelCheck())
             {
                 case 0:
@@ -313,6 +315,7 @@ public class ButtonFunctions : MonoBehaviour
     {
         if (gameManager.SkillPointCheck() >= 1 && gameManager.TierTwoUnlocked() && gameManager.AssignedElementCheck() == "Lightning")
         {
+            gameManager.AssignTierTwo();
             switch (gameManager.SkillTierTwoLevelCheck())
             {
                 case 0:

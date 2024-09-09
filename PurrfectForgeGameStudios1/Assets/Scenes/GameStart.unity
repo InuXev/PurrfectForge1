@@ -2284,6 +2284,7 @@ MonoBehaviour:
   playerEye: {fileID: 0}
   saveLoadManager: {fileID: 1339356630}
   targetButton: {fileID: 0}
+  clickedButton: 
 --- !u!114 &1339356629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2319,10 +2320,25 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a9513ee6645daa845a231ca7cef15eaf, type: 2}
   - {fileID: 11400000, guid: a37107c5df7d92c4087ee346d6e95066, type: 2}
   - {fileID: 11400000, guid: a40a7972f6bc2174c87cc77348a5720f, type: 2}
+  scriptableSkillList:
+  - {fileID: 11400000, guid: a70b37d54e583b2429c98ab3315ab3d3, type: 2}
+  - {fileID: 11400000, guid: 5b9a7c8066a2a59409db7923b38977c0, type: 2}
+  - {fileID: 11400000, guid: 0b12b83a9d2c82a4da163c160631f97f, type: 2}
+  - {fileID: 11400000, guid: a2d5d4c7c1b3a29439df21e45a1f6a51, type: 2}
+  - {fileID: 11400000, guid: 4cba7224054416c4f9d002a20016c710, type: 2}
+  - {fileID: 11400000, guid: 5e68d4295e6ae4743ba62bdb63ffa7e5, type: 2}
+  - {fileID: 11400000, guid: 2d1ec51cf2c58554e992e3e871007ef3, type: 2}
+  - {fileID: 11400000, guid: 03129f33407230c4992536fb45ca819b, type: 2}
+  - {fileID: 11400000, guid: 43e950c38baa9a6409b057f4a613ff8f, type: 2}
+  - {fileID: 11400000, guid: 29f8454549432ef4c9223e701ea6a60f, type: 2}
+  - {fileID: 11400000, guid: 1fa83a0a50b11a74f9cc6b5565bb046c, type: 2}
+  - {fileID: 11400000, guid: 6b370d0ffe7c24a4d8c33ab0e3eeb338, type: 2}
+  - {fileID: 11400000, guid: 36e6c9638fe26c14ca768965e607a3c3, type: 2}
+  - {fileID: 11400000, guid: 46070a588526df54d9acbaeb311b4cbb, type: 2}
+  - {fileID: 11400000, guid: f71b8ac7a8c0a2c41865accfd9329b04, type: 2}
   HighestLevel: {fileID: 11400000, guid: 04f2510ea45382f4287151f0638a84e1, type: 2}
   SpiralFloorSelector: {fileID: 0}
-  FloorOneConfirmPort: {fileID: 0}
-  FloorTwoConfirmPort: {fileID: 0}
+  FloorConfirmPort: {fileID: 0}
   foliageTypeSelector: {fileID: 0}
   trees: {fileID: 0}
   Tree1: {fileID: 0}
