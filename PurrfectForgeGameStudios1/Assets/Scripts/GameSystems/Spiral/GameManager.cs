@@ -130,6 +130,11 @@ public class GameManager : MonoBehaviour
                 stateUnPaused(); //state unpaused
             }
         }
+
+        if(activeMenu == null)
+        {
+            Cursor.visible = false;
+        }
         if(playerManager.chosenElement == null)
         {
             IceNotAvailable.SetActive(false);
@@ -240,7 +245,7 @@ public class GameManager : MonoBehaviour
     public void stateUnPaused()
     {
         isPaused = false; //pause flag
-        Cursor.visible = true; //cursor on
+        Cursor.visible = false; //cursor on
         Cursor.lockState = CursorLockMode.Confined; //lock cursor
         Time.timeScale = 1; //allow time to pass again
         if (activeMenu != null && activeMenu != pauseMenu) //if something other than pause menu is active
@@ -248,29 +253,32 @@ public class GameManager : MonoBehaviour
             if (activeMenu == statMenu) //if its the statmenu
             {
                 activeMenu.SetActive(isPaused); //turn it off
+                Cursor.visible = false; //cursor on
                 activeMenu = null; //set it to null
-            }
-            else
-            {
-                activeMenu.SetActive(false); //turn off a menu
-                activeMenu = pauseMenu; //set it to pause
-                activeMenu.SetActive(true); //turn it on
             }
         }
         else
         {
             activeMenu.SetActive(isPaused);//turn off
+            Cursor.visible = false; //cursor on
             activeMenu = null; //null active menu
         }
     }
     public void youDead() //prompt player death
     {
         isPaused = true; //pause flag
-        //Time.timeScale = 0;
+        Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.Confined; //confine cursor
         Cursor.visible = true; //hide cursor
         activeMenu = loseMenu; //active to lose
         loseMenu.SetActive(true); //turn it on
+    }
+    public void youAlive() //prompt player death
+    {
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Confined; //confine cursor
+        Cursor.visible = false; //hide cursor
+        activeMenu = null; //active to lose
     }
     public void SaveGame()
     {

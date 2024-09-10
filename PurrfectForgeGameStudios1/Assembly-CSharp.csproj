@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameSystems\Spiral\NextFloorPort.cs" />
+    <Compile Include="Assets\Scripts\SpinningObjectScript.cs" />
     <Compile Include="Assets\Scripts\Combat\PlayerOutDamage\EDamage.cs" />
     <Compile Include="Assets\Scripts\Combat\WorldoutDamage\DeathObject.cs" />
     <Compile Include="Assets\Scripts\GameSystems\Spiral\PlayerManager.cs" />
@@ -68,34 +69,36 @@
     <Compile Include="Assets\Scripts\GameSystems\Spiral\LevelKey.cs" />
     <Compile Include="Assets\Scripts\Combat\PlayerOutDamage\SwordBehavior.cs" />
     <Compile Include="Assets\Scripts\GameSystems\CrossScene\PrefabList.cs" />
+    <Compile Include="Assets\Scripts\StaticDamagingObject.cs" />
     <Compile Include="Assets\Scripts\GameSystems\CrossScene\ItemData.cs" />
+    <Compile Include="Assets\Scripts\Combat\ScriptableScripts\ScriptableItems.cs" />
+    <Compile Include="Assets\Scripts\LerpObject.cs" />
     <Compile Include="Assets\Scripts\GameSystems\Eshes\EteriusPlayerLevel.cs" />
     <Compile Include="Assets\Scripts\GameSystems\Eshes\EshesGameManager.cs" />
     <Compile Include="Assets\Scripts\GameSystems\Spiral\ButtonFunctions.cs" />
-    <Compile Include="Assets\Scripts\FollowMePet.cs" />
     <Compile Include="Assets\Scripts\Combat\EnemyOutDamage\MDamage.cs" />
     <Compile Include="Assets\Scripts\Combat\EnemyOutDamage\EnemyRangedDamage.cs" />
     <Compile Include="Assets\Scripts\Combat\EnemyOutDamage\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\GameSystems\Eshes\EshesPlayerEye.cs" />
-    <Compile Include="Assets\Scripts\Combat\ScriptableItems.cs" />
     <Compile Include="Assets\Scripts\GameSystems\CrossScene\InventorySystem.cs" />
-    <Compile Include="Assets\Scripts\Combat\ScriptableSkills.cs" />
     <Compile Include="Assets\Scripts\GameSystems\CrossScene\SaveLoadManager.cs" />
     <Compile Include="Assets\Scripts\GameSystems\Eshes\EshesPlayerFPCamera.cs" />
     <Compile Include="Assets\Scripts\GameSystems\CrossScene\ScriptableLevelCompleted.cs" />
     <Compile Include="Assets\Scripts\GameSystems\Spiral\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Combat\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\Combat\PlayerOutDamage\SpellHit.cs" />
     <Compile Include="Assets\Scripts\GameSystems\Eshes\EshesButtonFunctions.cs" />
     <Compile Include="Assets\Scripts\GameSystems\Spiral\HealthArea.cs" />
     <Compile Include="Assets\Scripts\Combat\Worldout\HealHit.cs" />
     <Compile Include="Assets\Scripts\Combat\WorldoutDamage\SpikeTrap.cs" />
-    <Compile Include="Assets\Scripts\Combat\ScriptableEnemies.cs" />
+    <Compile Include="Assets\Scripts\Combat\EnemyOutDamage\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\GameSystems\Spiral\FloorDoor.cs" />
+    <Compile Include="Assets\Scripts\Combat\ScriptableScripts\ScriptableSkills.cs" />
     <Compile Include="Assets\Scripts\GameSystems\Spiral\ItemPickup.cs" />
     <Compile Include="Assets\Scripts\Combat\EnemyOutDamage\PDamage.cs" />
     <Compile Include="Assets\Scripts\Combat\PlayerOutDamage\ShieldBehavior.cs" />
     <Compile Include="Assets\Scripts\GameSystems\Eshes\PlayerBasics.cs" />
+    <Compile Include="Assets\Scripts\GameSystems\CrossScene\FollowMePet.cs" />
+    <Compile Include="Assets\Scripts\Combat\ScriptableScripts\ScriptableEnemies.cs" />
     <Compile Include="Assets\Scripts\GameSystems\Spiral\CameraManager.cs" />
   </ItemGroup>
   <ItemGroup>

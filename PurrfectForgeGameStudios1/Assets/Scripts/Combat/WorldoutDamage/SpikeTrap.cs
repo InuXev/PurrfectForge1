@@ -32,7 +32,7 @@ public class SpikeTrap : MonoBehaviour
             GameObject dart = Instantiate(trapDart, shootHere.position, shootHere.rotation);
             sameHoleTwiceCheck = dart;
             Rigidbody rb = dart.GetComponent<Rigidbody>();
-            rb.velocity = Vector3.forward * moveSpeed; //give rigidbody velocity from enemy parameters
+            rb.velocity = shootHere.forward * moveSpeed; //give rigidbody velocity from enemy parameters
             Destroy(dart, destroyTime);
         }
         activated = false;

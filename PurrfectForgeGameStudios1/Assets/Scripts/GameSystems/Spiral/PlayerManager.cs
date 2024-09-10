@@ -184,7 +184,16 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
             jumpCounter++; //increase jump counter
             playerVelocity.y = jumpSpeed;//add upwardsd velocity to player
             Stamina -= 1; //use stamina
-            StamSystem();
+            if (staminaDrainCoroutine != null) //is stamina drain corountine is not ended
+            {
+                StopCoroutine(staminaDrainCoroutine); // Stop draining stamina
+            }
+            staminaDrainCoroutine = StartCoroutine(StaminaDrain()); //start stamina drain
+            //if (staminaRefillCoroutine != null) //if refil is not ended
+            //{
+            //    StopCoroutine(staminaRefillCoroutine); //stop refill
+            //    staminaRefillCoroutine = null; //set stamina refill to null for next refill needed
+            //}
         }
         playerVelocity.y -= gravity * Time.deltaTime; //this applies at ALL TIMES gravity downwards
         characterControl.Move(playerVelocity * Time.deltaTime); //move player downward if able
@@ -272,6 +281,11 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
             UpdatePlayerUI(); //show it on UI
             gameManager.youDead(); //throw death flags
         }
+        else
+        {
+            gameManager.youAlive();
+        }
+
     }
     public void takeHeal() //takes Heal from the HealHit script
     {

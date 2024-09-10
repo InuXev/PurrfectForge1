@@ -14,11 +14,29 @@ public class ItemPickup : MonoBehaviour
             {
                 if (item.itemName == "HealthOrb") //health orb
                 {
-                    PlayerManager.Instance.HP += PlayerManager.Instance.HPOriginal * .1F; //increase HP by 10%
+                    float amountToIncrease = PlayerManager.Instance.HPOriginal * .1F;
+                    if (PlayerManager.Instance.HP + amountToIncrease >= PlayerManager.Instance.HPOriginal)
+                    {
+                        PlayerManager.Instance.HP = PlayerManager.Instance.HPOriginal;
+                    }
+                    else
+                    {
+                        PlayerManager.Instance.HP += amountToIncrease; //increase HP by 10%
+                    }
+
                 }
                 if (item.itemName == "StaminaOrb") //stamina orb
                 {
-                    PlayerManager.Instance.Stamina += PlayerManager.Instance.StaminaOriginal * .1F; //increase stamina by 10%
+                    float amountToIncrease = PlayerManager.Instance.StaminaOriginal * .1F;
+                    if(PlayerManager.Instance.StaminaOriginal + amountToIncrease >= PlayerManager.Instance.StaminaOriginal)
+                    {
+                        PlayerManager.Instance.Stamina = PlayerManager.Instance.StaminaOriginal;
+                    }
+                    else
+                    {
+                        PlayerManager.Instance.Stamina += amountToIncrease; //increase stamina by 10%
+                    }
+
                 }
             }
             if (item.type == "Essence") //essence type
