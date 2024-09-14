@@ -72,6 +72,7 @@ public class EshesPlayerEye : MonoBehaviour // Define the EshesPlayerEye class, 
 
                     if (Input.GetKeyDown(KeyCode.E) && item.amountHeld > 0) // Check if the "E" key is pressed and if the item is available
                     {
+                        Debug.Log("placing");
                         if (gameManager.buildON) // Check if building mode is enabled in the game manager
                         {
                             GameObject placedObject = Instantiate(chosenObject, hit.point, transform.rotation); // Instantiate the chosen object at the hit point
