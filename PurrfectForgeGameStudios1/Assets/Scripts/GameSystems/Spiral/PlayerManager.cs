@@ -67,8 +67,12 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     private Coroutine staminaRefillCoroutine;
     public bool HasFloorKey;
     bool Healing = false;
-
-
+    Vector3 previousPosition;
+    Vector3 currentPosition;
+    float deltaTime;
+    bool swordDrawn;
+    bool jumping;
+    float currentSpeed;
     //skill systems
 
     public string chosenElement;
@@ -102,12 +106,17 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     }
     void Start()
     {
+        swordDrawn = false;
         StartUpProcesses(); //start up processes
     }
     void Update()
     {
-        UpdateProcesses(); //update processes
+        if (currentSpeed < 0.01f)
+        {
+            Anim.SetBool("Sprinting", false);
+        }
 
+        UpdateProcesses(); //update processes
     }
     #endregion
 
@@ -123,35 +132,50 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
         if (characterControl.isGrounded) //if the are on the ground
         {
             jumpCounter = 0; //set jump to 0
-            playerVelocity = Vector3.zero; //stop their velocity
+            jumping = false;
+            //playerVelocity = Vector3.zero; //stop their velocity
+        }
+        if (!characterControl.isGrounded) //if the are on the ground
+        {
+            jumping = true;
+            //playerVelocity = Vector3.zero; //stop their velocity
         }
 
         moveDirection = (Input.GetAxis("Horizontal") * transform.right) +
             (Input.GetAxis("Vertical") * transform.forward); //set the movedirection
         characterControl.Move(moveDirection * MoveSpeed * Time.deltaTime); //move the player that direction
+
+        currentSpeed = moveDirection.magnitude;
+
+        Anim.SetFloat("Speed", currentSpeed);
     }
     public void Dash() //multiplies movespeed
     {
         if (Input.GetButtonDown("Dash") && !dashing && Stamina > 0) //if left shift is pressed and currently not dashing and enough stamina
         {
             dashing = true; //set dashing to true
-            MoveSpeed *= dashMult; //apply mult to movespeed
+            if (currentSpeed > 0)
+            {
+                Anim.SetBool("Sprinting", true);
+                MoveSpeed *= dashMult; //apply mult to movespeed
 
-            if (staminaDrainCoroutine != null) //is stamina drain corountine is not ended
-            {
-                StopCoroutine(staminaDrainCoroutine); // Stop draining stamina
-            }
-            staminaDrainCoroutine = StartCoroutine(StaminaDrain()); //start stamina drain
-            if (staminaRefillCoroutine != null) //if refil is not ended
-            {
-                StopCoroutine(staminaRefillCoroutine); //stop refill
-                staminaRefillCoroutine = null; //set stamina refill to null for next refill needed
+                if (staminaDrainCoroutine != null) //is stamina drain corountine is not ended
+                {
+                    StopCoroutine(staminaDrainCoroutine); // Stop draining stamina
+                }
+                staminaDrainCoroutine = StartCoroutine(StaminaDrain()); //start stamina drain
+                if (staminaRefillCoroutine != null) //if refil is not ended
+                {
+                    StopCoroutine(staminaRefillCoroutine); //stop refill
+                    staminaRefillCoroutine = null; //set stamina refill to null for next refill needed
+                }
             }
         }
 
-        if (Input.GetButtonUp("Dash") && dashing) //if im dashing and dashing is true
+        if (Input.GetButtonUp("Dash") /*&& dashing*/) //if im dashing and dashing is true
         {
             dashing = false; //set dashing false
+            Anim.SetBool("Sprinting", false);
             MoveSpeed = MoveSpeedOriginal; //make movespeed normal
 
             StamSystem();
@@ -179,10 +203,11 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     }
     public void Jump() //to jump
     {
-        if (Input.GetButtonDown("Jump") && jumpCounter < maxJumps) //on space bar and jump counter is under max jumps allowed
+        if (Input.GetButtonDown("Jump") && jumpCounter < maxJumps && !jumping) //on space bar and jump counter is under max jumps allowed
         {
+            jumping = true;
+            StartCoroutine(JumpTime());
             jumpCounter++; //increase jump counter
-            playerVelocity.y = jumpSpeed;//add upwardsd velocity to player
             Stamina -= 1; //use stamina
             if (staminaDrainCoroutine != null) //is stamina drain corountine is not ended
             {
@@ -199,7 +224,13 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
         characterControl.Move(playerVelocity * Time.deltaTime); //move player downward if able
 
     }
+    IEnumerator JumpTime()
+    {
+        Anim.SetTrigger("Jump");
+        yield return new WaitForSeconds(.5f);
+        playerVelocity.y = jumpSpeed;//add upwardsd velocity to player
 
+    }
     #endregion
 
     #region Combat / Health Systems
@@ -208,11 +239,26 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     {
         if (currentWeapon != null && !shieldUp) //if there is a weapon and shield down
         {
-            if (Input.GetButtonDown("Left Mouse")) //left mouse click
+            if (Input.GetButtonDown("Left Mouse") && !swordDrawn) //left mouse click
             {
+                Anim.SetTrigger("DrawSword");
+                StartCoroutine(SwordSpawnTime());
+
+                swordDrawn = true;
+            }
+            else if (Input.GetButtonDown("Left Mouse") && swordDrawn) //left mouse click
+            {
+                Anim.SetTrigger("Swing");
                 StartCoroutine(Swing()); //start a swing
+                Anim.SetBool("Swinging", false);
             }
         }
+    }
+    IEnumerator SwordSpawnTime()
+    {
+        yield return new WaitForSeconds(.1f);
+        Anim.SetBool("SwordDrawn", true);
+        currentWeapon.SetActive(true); //turn on weapon
     }
     public void Defend() //pu shield up
     {
@@ -220,6 +266,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
         {
             if (Input.GetButtonDown("Right Mouse")) //on click
             {
+                Anim.SetBool("ShieldUp", true);
                 currentShield.SetActive(true); //turn on shield
                 shieldUp = true; //shield flag true
                 playerShieldMod = .5F; //shield mod TO BE PULLED FROM SHIELD EVENTUALLY
@@ -229,26 +276,28 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
                 currentShield.SetActive(false); //turn shield off
                 shieldUp = false; //shield flag off
                 playerShieldMod = 0; //turn defense mod off 
+                Anim.SetBool("ShieldUp", false);
             }
         }
     }
 
     public void UseSkills()
     {
-        if (activeSlotOneSkill != null)
+        if (activeSlotOneSkill != null && !shieldUp)
         {
             if (Input.GetButtonDown("Skill1") && activeSlotOneSkill != null && Stamina - activeSlotOneSkill.SkillCost >= 0)
             {
+                Anim.SetTrigger("Cast");
                 Debug.Log("Skill One Used");
                 Debug.Log(activeSlotOneSkill);
                 //logic to use skill
                 activeSlotOneSkill.SkillBehavior(castPos);
                 Stamina -= activeSlotOneSkill.SkillCost * activeSlotOneSkill.SkillLevel;
                 StamSystem();
-
             }
+            Anim.SetBool("Casting", false);
         }
-        if(activeSlotTwoSkill != null)
+        if (activeSlotTwoSkill != null && !shieldUp)
         {
             if (Input.GetButtonDown("Skill2") && activeSlotTwoSkill != null && Stamina - activeSlotTwoSkill.SkillCost >= 0)
             {
@@ -260,7 +309,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
                 StamSystem();
             }
         }
-        if(activeSlotThreeSkill != null)
+        if (activeSlotThreeSkill != null && !shieldUp)
         {
             if (Input.GetButtonDown("Skill3") && activeSlotThreeSkill != null && Stamina - activeSlotThreeSkill.SkillCost >= 0)
             {
@@ -273,19 +322,29 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
             }
         }
     }
+    IEnumerator CastTime()
+    {
+        yield return new WaitForSeconds(1);
+    }
     public void DeathCheck() //check to see if player is dead
     {
         if (HP <= 0) //if hp <= 0 
         {
             HP = 0;
-            UpdatePlayerUI(); //show it on UI
-            gameManager.youDead(); //throw death flags
+            StartCoroutine(DeathDramatics());
         }
         else
         {
             gameManager.youAlive();
         }
 
+    }
+    IEnumerator DeathDramatics()
+    {
+        Anim.SetTrigger("IsDead");
+        yield return new WaitForSeconds(4);
+        UpdatePlayerUI(); //show it on UI
+        gameManager.youDead(); //throw death flags
     }
     public void takeHeal() //takes Heal from the HealHit script
     {
@@ -360,12 +419,10 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     {
         if (Stamina >= SwingCostCalc()) //is enough stamina
         {
+            Anim.SetBool("Swing", true);
             float swingCost = SwingCostCalc(); //calc swing cost
             Stamina -= swingCost; //take stamina
-            currentWeapon.SetActive(true); //turn on weapon
-            Anim.SetTrigger("Attacking");//turn on anim
             yield return new WaitForSeconds(0.2F);//wait
-            currentWeapon.SetActive(false); //turn off weapon
             if (staminaRefillCoroutine != null) //if refilling
             {
                 StopCoroutine(staminaRefillCoroutine); //stop refill
