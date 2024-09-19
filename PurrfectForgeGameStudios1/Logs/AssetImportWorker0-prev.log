@@ -1,0 +1,780 @@
+Using pre-set license
+Built from '2022.3/staging' branch; Version is '2022.3.28f1 (6bae5ce6b222) revision 7056988'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22631) 64bit Professional' Language: 'en' Physical Memory: 16085 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\2022.3.28f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Repos/PurrfectForge1/PurrfectForgeGameStudios1
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+57336
+Successfully changed project path to: C:/Repos/PurrfectForge1/PurrfectForgeGameStudios1
+C:/Repos/PurrfectForge1/PurrfectForgeGameStudios1
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [1376] Host "[IP] 192.168.12.196 [Port] 0 [Flags] 2 [Guid] 3666796964 [EditorId] 3666796964 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [1376] Host "[IP] 192.168.12.196 [Port] 0 [Flags] 2 [Guid] 3666796964 [EditorId] 3666796964 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[Physics::Module] Initialized MultithreadedJobDispatcher with 23 workers.
+Refreshing native plugins compatible for Editor in 7.81 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.28f1 (6bae5ce6b222)
+[Subsystems] Discovering subsystems at path C:/2022.3.28f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Repos/PurrfectForge1/PurrfectForgeGameStudios1/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 4070 Laptop GPU (ID=0x2820)
+    Vendor:   NVIDIA
+    VRAM:     7948 MB
+    Driver:   32.0.15.6070
+Initialize mono
+Mono path[0] = 'C:/2022.3.28f1/Editor/Data/Managed'
+Mono path[1] = 'C:/2022.3.28f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/2022.3.28f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56732
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/2022.3.28f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.003860 seconds.
+- Loaded All Assemblies, in  0.262 seconds
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.195 seconds
+Domain Reload Profiling: 456ms
+	BeginReloadAssembly (90ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (42ms)
+	LoadAllAssembliesAndSetupDomain (98ms)
+		LoadAssemblies (88ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (96ms)
+			TypeCache.Refresh (95ms)
+				TypeCache.ScanAssembly (85ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (195ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (153ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (6ms)
+			SetLoadedEditorAssemblies (6ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (1ms)
+			ProcessInitializeOnLoadAttributes (106ms)
+			ProcessInitializeOnLoadMethodAttributes (34ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.478 seconds
+Refreshing native plugins compatible for Editor in 4.13 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.430 seconds
+Domain Reload Profiling: 907ms
+	BeginReloadAssembly (113ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (16ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (31ms)
+	LoadAllAssembliesAndSetupDomain (300ms)
+		LoadAssemblies (242ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (126ms)
+			TypeCache.Refresh (110ms)
+				TypeCache.ScanAssembly (99ms)
+			ScanForSourceGeneratedMonoScriptInfo (11ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (431ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (328ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (42ms)
+			ProcessInitializeOnLoadAttributes (258ms)
+			ProcessInitializeOnLoadMethodAttributes (15ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (4ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Refreshing native plugins compatible for Editor in 3.89 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3318 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 46 unused Assets / (131.7 KB). Loaded Objects now: 3804.
+Memory consumption went from 149.5 MB to 149.4 MB.
+Total: 2.476000 ms (FindLiveObjects: 0.179200 ms CreateObjectMapping: 0.073100 ms MarkObjects: 2.031800 ms  DeleteObjects: 0.191100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 81437.353774 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Plant_Bush_Leaves_01Orb.prefab
+  artifactKey: Guid(abc0c81f7a234034a81e6b40d80b38cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Plant_Bush_Leaves_01Orb.prefab using Guid(abc0c81f7a234034a81e6b40d80b38cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa1c76c064238c46555719a83b437755') in 0.088979 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 20
+========================================================================
+Received Import Request.
+  Time since last request: 163.982110 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Plant_Bush_Leaves_01Orb.prefab
+  artifactKey: Guid(abc0c81f7a234034a81e6b40d80b38cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Plant_Bush_Leaves_01Orb.prefab using Guid(abc0c81f7a234034a81e6b40d80b38cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '26bf10845601684a51c90a429029fbd2') in 0.032548 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 71
+========================================================================
+Received Import Request.
+  Time since last request: 139.299486 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Hut_01Orb.prefab
+  artifactKey: Guid(4e9358380601380409f07f7fd408d7ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Hut_01Orb.prefab using Guid(4e9358380601380409f07f7fd408d7ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0ab7b90cb583bf301ca7723906c983db') in 0.013730 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 64
+========================================================================
+Received Import Request.
+  Time since last request: 15.288200 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Hut_01Orb.prefab
+  artifactKey: Guid(4e9358380601380409f07f7fd408d7ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Hut_01Orb.prefab using Guid(4e9358380601380409f07f7fd408d7ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '02d18a6a9cc2e70b0009f2e01c24508f') in 0.013067 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 64
+========================================================================
+Received Import Request.
+  Time since last request: 22.479250 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Hut_01Orb.prefab
+  artifactKey: Guid(4e9358380601380409f07f7fd408d7ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Hut_01Orb.prefab using Guid(4e9358380601380409f07f7fd408d7ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '89fd20fea8b206b3732df91e42a8d3ef') in 0.011164 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 64
+========================================================================
+Received Import Request.
+  Time since last request: 27.568671 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_01Orb.prefab
+  artifactKey: Guid(28d11e02c59343541a5541da57438808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_01Orb.prefab using Guid(28d11e02c59343541a5541da57438808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c6b349fe62f5bfe84e0c308021bed76b') in 0.015640 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 13
+========================================================================
+Received Import Request.
+  Time since last request: 72.620849 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_01Orb.prefab
+  artifactKey: Guid(28d11e02c59343541a5541da57438808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_01Orb.prefab using Guid(28d11e02c59343541a5541da57438808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b21b0530be4ff0e129e2a2e1756cbc4d') in 0.013669 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 64
+========================================================================
+Received Import Request.
+  Time since last request: 22.238524 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_01Orb.prefab
+  artifactKey: Guid(28d11e02c59343541a5541da57438808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_01Orb.prefab using Guid(28d11e02c59343541a5541da57438808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5db628d4027c42512a84716a31acf772') in 0.011777 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 64
+========================================================================
+Received Import Request.
+  Time since last request: 19.539123 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Plant_Bush_Leaves_01Orb.prefab
+  artifactKey: Guid(abc0c81f7a234034a81e6b40d80b38cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Plant_Bush_Leaves_01Orb.prefab using Guid(abc0c81f7a234034a81e6b40d80b38cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '74b0e2fff9bab18a54f9655cf892790d') in 0.016477 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 71
+========================================================================
+Received Import Request.
+  Time since last request: 1.152412 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_01Orb.prefab
+  artifactKey: Guid(28d11e02c59343541a5541da57438808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_01Orb.prefab using Guid(28d11e02c59343541a5541da57438808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1eb74184c2229448f89442f9229319fb') in 0.015211 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 64
+========================================================================
+Received Import Request.
+  Time since last request: 13.924506 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_01Orb.prefab
+  artifactKey: Guid(28d11e02c59343541a5541da57438808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_01Orb.prefab using Guid(28d11e02c59343541a5541da57438808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '821d89502a74744d70f5e8e89acaaea6') in 0.014280 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 64
+========================================================================
+Received Import Request.
+  Time since last request: 16.998329 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_01Orb.prefab
+  artifactKey: Guid(28d11e02c59343541a5541da57438808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_01Orb.prefab using Guid(28d11e02c59343541a5541da57438808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d38a265ebe57bdd7d2ada91b80c5881') in 0.025030 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 64
+========================================================================
+Received Import Request.
+  Time since last request: 17.286901 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_01Orb.prefab
+  artifactKey: Guid(28d11e02c59343541a5541da57438808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_01Orb.prefab using Guid(28d11e02c59343541a5541da57438808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a1b6d4b74660c5a353fe87ec9ca6770') in 0.028104 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 64
+========================================================================
+Received Import Request.
+  Time since last request: 26.102941 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_01Orb.prefab
+  artifactKey: Guid(28d11e02c59343541a5541da57438808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_01Orb.prefab using Guid(28d11e02c59343541a5541da57438808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc09a06d4223f3294233d6284884035d') in 0.017999 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 64
+========================================================================
+Received Import Request.
+  Time since last request: 19.116720 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_01Orb.prefab
+  artifactKey: Guid(28d11e02c59343541a5541da57438808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_01Orb.prefab using Guid(28d11e02c59343541a5541da57438808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79b12eecafc633fd7de46bf4e17f786f') in 0.012827 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 64
+========================================================================
+Received Import Request.
+  Time since last request: 39.798763 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Hut_01Orb.prefab
+  artifactKey: Guid(4e9358380601380409f07f7fd408d7ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Hut_01Orb.prefab using Guid(4e9358380601380409f07f7fd408d7ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e8c3f48a0aeb9b7986c163ae8ecf811') in 0.015229 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 64
+========================================================================
+Received Import Request.
+  Time since last request: 39.202295 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_02Orb.prefab
+  artifactKey: Guid(6cbcfd2f22a363f46bd1001f35fd5722) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_02Orb.prefab using Guid(6cbcfd2f22a363f46bd1001f35fd5722) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '076f0336ef8757a5f625622fed77c2ad') in 0.008430 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 13
+========================================================================
+Received Import Request.
+  Time since last request: 3.260659 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_01Orb.prefab
+  artifactKey: Guid(28d11e02c59343541a5541da57438808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_01Orb.prefab using Guid(28d11e02c59343541a5541da57438808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a5df6da17e01c4025b197d05a7bde2f9') in 0.011950 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 64
+========================================================================
+Received Import Request.
+  Time since last request: 41.412852 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_02Orb.prefab
+  artifactKey: Guid(6cbcfd2f22a363f46bd1001f35fd5722) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_02Orb.prefab using Guid(6cbcfd2f22a363f46bd1001f35fd5722) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '052dd6a99c7c3bd6d7e7920eb33502a2') in 0.016734 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 64
+========================================================================
+Received Import Request.
+  Time since last request: 31.470006 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_02Orb.prefab
+  artifactKey: Guid(6cbcfd2f22a363f46bd1001f35fd5722) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_02Orb.prefab using Guid(6cbcfd2f22a363f46bd1001f35fd5722) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '610b58cea1cee2963eda8b239406139c') in 0.015020 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 64
+========================================================================
+Received Import Request.
+  Time since last request: 27.332609 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_02Orb.prefab
+  artifactKey: Guid(6cbcfd2f22a363f46bd1001f35fd5722) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_02Orb.prefab using Guid(6cbcfd2f22a363f46bd1001f35fd5722) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58948d9366e5f1a669a083879e81622c') in 0.012086 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 64
+========================================================================
+Received Import Request.
+  Time since last request: 17.009782 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_03Orb.prefab
+  artifactKey: Guid(ac0bac23d655caa42a3ff45254b6301d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_03Orb.prefab using Guid(ac0bac23d655caa42a3ff45254b6301d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea5c6c1da0091d31bd9af5bfd6b18645') in 0.011446 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 13
+========================================================================
+Received Import Request.
+  Time since last request: 45.123077 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_02Orb.prefab
+  artifactKey: Guid(6cbcfd2f22a363f46bd1001f35fd5722) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_02Orb.prefab using Guid(6cbcfd2f22a363f46bd1001f35fd5722) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e941dde7122e7ace33857572b2cb93f') in 0.015055 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 64
+========================================================================
+Received Import Request.
+  Time since last request: 21.733045 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_03Orb.prefab
+  artifactKey: Guid(ac0bac23d655caa42a3ff45254b6301d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_03Orb.prefab using Guid(ac0bac23d655caa42a3ff45254b6301d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a1025f93c1b7a201d0f4c9e662bdb8d') in 0.013297 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 64
+========================================================================
+Received Import Request.
+  Time since last request: 42.303366 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_04Orb.prefab
+  artifactKey: Guid(99ab902e4c1ddca418e5d608f49051e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Bld_Stall_04Orb.prefab using Guid(99ab902e4c1ddca418e5d608f49051e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cffc800874e1cbf5648013d55f66929b') in 0.009222 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 13
+========================================================================
+Received Import Request.
+  Time since last request: 142.629814 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Plant_Bush_Leaves_02Orb.prefab
+  artifactKey: Guid(2bbc43af0a7962f4bb45d4ad1c054e26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Plant_Bush_Leaves_02Orb.prefab using Guid(2bbc43af0a7962f4bb45d4ad1c054e26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '019800b7454bb1075917be5426a30947') in 0.012645 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 54.649015 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Plant_Bush_Leaves_02Orb.prefab
+  artifactKey: Guid(2bbc43af0a7962f4bb45d4ad1c054e26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Plant_Bush_Leaves_02Orb.prefab using Guid(2bbc43af0a7962f4bb45d4ad1c054e26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee3279dd6ade8490fca6c38b418ed325') in 0.021744 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 67
+========================================================================
+Received Import Request.
+  Time since last request: 17.121216 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Plant_Bush_Leaves_03Orb.prefab
+  artifactKey: Guid(5ca4e1e05eab9c8498a76f0cfcb77d63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Plant_Bush_Leaves_03Orb.prefab using Guid(5ca4e1e05eab9c8498a76f0cfcb77d63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8dd7d6391b7a303f4d013df6f953449d') in 0.011466 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 258
+========================================================================
+Received Import Request.
+  Time since last request: 131.623104 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Plant_Bush_Leaves_02Orb.prefab
+  artifactKey: Guid(2bbc43af0a7962f4bb45d4ad1c054e26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Plant_Bush_Leaves_02Orb.prefab using Guid(2bbc43af0a7962f4bb45d4ad1c054e26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c2b1bb182806e6c15169f765b773827') in 0.013896 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 67
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.317 seconds
+Refreshing native plugins compatible for Editor in 2.44 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.601 seconds
+Domain Reload Profiling: 916ms
+	BeginReloadAssembly (118ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (28ms)
+	RebuildCommonClasses (20ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (21ms)
+	LoadAllAssembliesAndSetupDomain (147ms)
+		LoadAssemblies (199ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (10ms)
+			TypeCache.Refresh (4ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (602ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (276ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (2ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (43ms)
+			ProcessInitializeOnLoadAttributes (210ms)
+			ProcessInitializeOnLoadMethodAttributes (13ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (4ms)
+Refreshing native plugins compatible for Editor in 3.31 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3290 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (102.8 KB). Loaded Objects now: 3828.
+Memory consumption went from 147.4 MB to 147.3 MB.
+Total: 3.172000 ms (FindLiveObjects: 0.214500 ms CreateObjectMapping: 0.121000 ms MarkObjects: 2.784300 ms  DeleteObjects: 0.050800 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 40.923727 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Plant_Fern_Leaves_01Orb.prefab
+  artifactKey: Guid(fb70f6a305271214f86225339ecfc803) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Plant_Fern_Leaves_01Orb.prefab using Guid(fb70f6a305271214f86225339ecfc803) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb9d62fc04d876c55b3a0a3ee08eb713') in 0.084254 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 17
+========================================================================
+Received Import Request.
+  Time since last request: 50.542476 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Plant_Fern_Leaves_02Orb.prefab
+  artifactKey: Guid(2ab4693badcb61840aad3d354dffd870) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Plant_Fern_Leaves_02Orb.prefab using Guid(2ab4693badcb61840aad3d354dffd870) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81d146664160edde80233ab8c82f1a6e') in 0.010927 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 17
+========================================================================
+Received Import Request.
+  Time since last request: 54.194112 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Plant_Grass_03Orb.prefab
+  artifactKey: Guid(0ffa4989393b2f14ab6bfc73c3c5fa7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Plant_Grass_03Orb.prefab using Guid(0ffa4989393b2f14ab6bfc73c3c5fa7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '793a6a556c3269494c0d007c04a94825') in 0.025215 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 32.844490 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Plant_Grass_03Orb.prefab
+  artifactKey: Guid(0ffa4989393b2f14ab6bfc73c3c5fa7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Plant_Grass_03Orb.prefab using Guid(0ffa4989393b2f14ab6bfc73c3c5fa7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd26285900f7650ea5c1ceec505cbcbeb') in 0.024710 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 61
+========================================================================
+Received Import Request.
+  Time since last request: 7.699162 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Plant_Grass_04Orb.prefab
+  artifactKey: Guid(f491d88d5a37c1746948d5b7fbcc4ffd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Plant_Grass_04Orb.prefab using Guid(f491d88d5a37c1746948d5b7fbcc4ffd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3919ef50f8ffb399a9a0d23ee0916bc9') in 0.008194 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 137.549960 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Plant_Grass_05Orb.prefab
+  artifactKey: Guid(976401eb9dd6b6e4597edced9e09e342) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Plant_Grass_05Orb.prefab using Guid(976401eb9dd6b6e4597edced9e09e342) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ff2b80cf4e28df514c36c406f941b84') in 0.041660 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 91.347083 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Plant_PurpleFlower_01Orb.prefab
+  artifactKey: Guid(d94cfac5ebbe27b47852817cbf002012) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Plant_PurpleFlower_01Orb.prefab using Guid(d94cfac5ebbe27b47852817cbf002012) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '57ce4cd198e1368e5b8fef86a95098fd') in 0.051339 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 17
+========================================================================
+Received Import Request.
+  Time since last request: 36.687905 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Plant_PurpleFlower_01Orb.prefab
+  artifactKey: Guid(d94cfac5ebbe27b47852817cbf002012) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Plant_PurpleFlower_01Orb.prefab using Guid(d94cfac5ebbe27b47852817cbf002012) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c23755dbfc2f34d9390a45fa04a39753') in 0.015650 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 68
+========================================================================
+Received Import Request.
+  Time since last request: 29.946913 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Plant_Undergrowth_01Orb.prefab
+  artifactKey: Guid(93d5c48941c434e44a973776786a53cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Plant_Undergrowth_01Orb.prefab using Guid(93d5c48941c434e44a973776786a53cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '15e58363940f111b11ef98e7803d48d3') in 0.008113 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 17
+========================================================================
+Received Import Request.
+  Time since last request: 59.135317 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Plant_Fern_Leaves_02Orb.prefab
+  artifactKey: Guid(2ab4693badcb61840aad3d354dffd870) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Plant_Fern_Leaves_02Orb.prefab using Guid(2ab4693badcb61840aad3d354dffd870) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3bf477bcf1ed92df3cabb6557585536') in 0.014377 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 68
+========================================================================
+Received Import Request.
+  Time since last request: 21.362489 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Plant_Undergrowth_01Orb.prefab
+  artifactKey: Guid(93d5c48941c434e44a973776786a53cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Plant_Undergrowth_01Orb.prefab using Guid(93d5c48941c434e44a973776786a53cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '523ef2d7f6bc99e7b37ba267a1b99ead') in 0.014884 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 68
+========================================================================
+Received Import Request.
+  Time since last request: 9.812613 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Plant_Undergrowth_01Orb.prefab
+  artifactKey: Guid(93d5c48941c434e44a973776786a53cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Plant_Undergrowth_01Orb.prefab using Guid(93d5c48941c434e44a973776786a53cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b1eb6f03b894802e74a203ade14196e0') in 0.012497 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 68
+========================================================================
+Received Import Request.
+  Time since last request: 50.921171 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Prop_Barrel_02Orb.prefab
+  artifactKey: Guid(ade09cb6fc7e15c4b8d5373a26224617) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Prop_Barrel_02Orb.prefab using Guid(ade09cb6fc7e15c4b8d5373a26224617) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6fde2eb97e8229fc29acb54ec10b66d9') in 0.013907 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 11
+========================================================================
+Received Import Request.
+  Time since last request: 84.509490 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Prop_Barrel_02Orb.prefab
+  artifactKey: Guid(ade09cb6fc7e15c4b8d5373a26224617) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Prop_Barrel_02Orb.prefab using Guid(ade09cb6fc7e15c4b8d5373a26224617) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7ccf381065149388fcc606b9907cbc3') in 0.016022 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 62
+========================================================================
+Received Import Request.
+  Time since last request: 10.412104 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Prop_Barrel_02Orb.prefab
+  artifactKey: Guid(ade09cb6fc7e15c4b8d5373a26224617) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Prop_Barrel_02Orb.prefab using Guid(ade09cb6fc7e15c4b8d5373a26224617) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f45279950535984771c651865bef957') in 0.014960 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 62
+========================================================================
+Received Import Request.
+  Time since last request: 8.349811 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Prop_Barrel_02Orb.prefab
+  artifactKey: Guid(ade09cb6fc7e15c4b8d5373a26224617) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Prop_Barrel_02Orb.prefab using Guid(ade09cb6fc7e15c4b8d5373a26224617) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aa7e3659f4396bce17333a578c98637c') in 0.013320 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 62
+========================================================================
+Received Import Request.
+  Time since last request: 22.246760 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Prop_Barrel_02Orb.prefab
+  artifactKey: Guid(ade09cb6fc7e15c4b8d5373a26224617) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Prop_Barrel_02Orb.prefab using Guid(ade09cb6fc7e15c4b8d5373a26224617) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d1a42a201241fecec66d3922a31b21c') in 0.012851 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 62
+========================================================================
+Received Import Request.
+  Time since last request: 27.687609 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Prop_Barrel_02Orb.prefab
+  artifactKey: Guid(ade09cb6fc7e15c4b8d5373a26224617) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Prop_Barrel_02Orb.prefab using Guid(ade09cb6fc7e15c4b8d5373a26224617) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b47f4f3b4c670eb6d8596f3395a80f84') in 0.012565 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 62
+========================================================================
+Received Import Request.
+  Time since last request: 76.539566 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Prop_Brazier_01Orb.prefab
+  artifactKey: Guid(b73f3c54e72fd324ca51aa6a56a1d221) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Prop_Brazier_01Orb.prefab using Guid(b73f3c54e72fd324ca51aa6a56a1d221) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed57ab978c3f14d61cb80830837b7544') in 0.009590 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 11
+========================================================================
+Received Import Request.
+  Time since last request: 129.892478 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Prop_Brazier_01Orb.prefab
+  artifactKey: Guid(b73f3c54e72fd324ca51aa6a56a1d221) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Prop_Brazier_01Orb.prefab using Guid(b73f3c54e72fd324ca51aa6a56a1d221) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c9c3b984995b9f03a08fd936108a294') in 0.019831 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 62
+========================================================================
+Received Import Request.
+  Time since last request: 31.316881 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Prop_Brazier_01Orb.prefab
+  artifactKey: Guid(b73f3c54e72fd324ca51aa6a56a1d221) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Prop_Brazier_01Orb.prefab using Guid(b73f3c54e72fd324ca51aa6a56a1d221) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08ad9fc8e838743af5f9841e553d1cca') in 0.014638 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 62
+========================================================================
+Received Import Request.
+  Time since last request: 14.807691 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Prop_Brazier_01Orb.prefab
+  artifactKey: Guid(b73f3c54e72fd324ca51aa6a56a1d221) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Prop_Brazier_01Orb.prefab using Guid(b73f3c54e72fd324ca51aa6a56a1d221) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6bf2d56ad344ad728a027d1917b7fd6a') in 0.013765 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 62
+========================================================================
+Received Import Request.
+  Time since last request: 62.167544 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Prop_Bridge_Curved_01Orb.prefab
+  artifactKey: Guid(792db1aaf0cc61f44b682479b290f150) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Prop_Bridge_Curved_01Orb.prefab using Guid(792db1aaf0cc61f44b682479b290f150) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8de8b208673955884a6f2d84e07eac9c') in 0.012409 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 40.811989 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Prop_Bridge_Curved_01Orb.prefab
+  artifactKey: Guid(792db1aaf0cc61f44b682479b290f150) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Prop_Bridge_Curved_01Orb.prefab using Guid(792db1aaf0cc61f44b682479b290f150) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8ec3b65bfd70ada1025f4256697e7a1') in 0.016486 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 61
+========================================================================
+Received Import Request.
+  Time since last request: 30.507653 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Prop_Bridge_Curved_01Orb.prefab
+  artifactKey: Guid(792db1aaf0cc61f44b682479b290f150) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Prop_Bridge_Curved_01Orb.prefab using Guid(792db1aaf0cc61f44b682479b290f150) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9492f48a60ed81bf53c534d625b77d6') in 0.038509 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 61
+========================================================================
+Received Import Request.
+  Time since last request: 40.108807 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Prop_Bridge_Curved_01Orb.prefab
+  artifactKey: Guid(792db1aaf0cc61f44b682479b290f150) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Prop_Bridge_Curved_01Orb.prefab using Guid(792db1aaf0cc61f44b682479b290f150) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad2b924b4be9bc275a4ce2886561f599') in 0.013038 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 61
+========================================================================
+Received Import Request.
+  Time since last request: 23.600417 seconds.
+  path: Assets/Resources/PrefabOrbPickups/SM_Prop_Bridge_Curved_01Orb.prefab
+  artifactKey: Guid(792db1aaf0cc61f44b682479b290f150) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/SM_Prop_Bridge_Curved_01Orb.prefab using Guid(792db1aaf0cc61f44b682479b290f150) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f273ba2b24c05f7503ea0afd72a85f04') in 0.010316 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 61
+========================================================================
+Received Import Request.
+  Time since last request: 46.576488 seconds.
+  path: Assets/Resources/Prefabs/BaseDarkRedHouse.prefab
+  artifactKey: Guid(55c5232b10c366f4e82741850ee312c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/BaseDarkRedHouse.prefab using Guid(55c5232b10c366f4e82741850ee312c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b69e2251cf576218654a599d1ef001bf') in 0.057007 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 157
+========================================================================
+Received Import Request.
+  Time since last request: 0.000062 seconds.
+  path: Assets/Resources/Prefabs/BaseGreenHouse.prefab
+  artifactKey: Guid(87f412833fd284e49a05678d7b10a846) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/BaseGreenHouse.prefab using Guid(87f412833fd284e49a05678d7b10a846) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0768cc34a71e78cbf9b9cd984156259a') in 0.030985 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 156
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/SyntyStudios/PolygonNature/FX/FX_Prefabs/Butterlies_Particle_01_Orange.prefab
+  artifactKey: Guid(5085f126b86c13f46937a2143b8935a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonNature/FX/FX_Prefabs/Butterlies_Particle_01_Orange.prefab using Guid(5085f126b86c13f46937a2143b8935a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e0aaefb2343c448f60c1d0eb08f2d72') in 0.027411 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 13
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/CustomAssests/BasicShield.fbx
+  artifactKey: Guid(774c31e045c8246439578ba654a12cbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CustomAssests/BasicShield.fbx using Guid(774c31e045c8246439578ba654a12cbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e0eb3295746964b07928d0ad48e944de') in 0.071844 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 26
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/SyntyStudios/PolygonNature/FX/FX_Prefabs/Butterlies_Particle_01_Blue.prefab
+  artifactKey: Guid(d6a9cc8f03380b2498b5e6d4500e0af6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonNature/FX/FX_Prefabs/Butterlies_Particle_01_Blue.prefab using Guid(d6a9cc8f03380b2498b5e6d4500e0af6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd947d6a1ef80434a3b54f440ffa3681') in 0.018577 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 13
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/SyntyStudios/PolygonNature/FX/FX_Models/ButterflyPipe.obj
+  artifactKey: Guid(e0cd9cf47227c67408d75c4c14a4a212) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonNature/FX/FX_Models/ButterflyPipe.obj using Guid(e0cd9cf47227c67408d75c4c14a4a212) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'afae439cf30e1d8b437b93fac4e4dd9a') in 0.019445 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/SyntyStudios/PolygonNature/FX/FX_Prefabs/Butterlies_Particle_01_White.prefab
+  artifactKey: Guid(4496bbb0544b6d64997370f08213712b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonNature/FX/FX_Prefabs/Butterlies_Particle_01_White.prefab using Guid(4496bbb0544b6d64997370f08213712b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '442756c6ccedd1794d22ce5faddcf490') in 0.013254 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 13
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Resources/PrefabOrbPickups/BaseRedHouseOrb.prefab
+  artifactKey: Guid(6eac70eff066bcd459772d15d3a798ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/BaseRedHouseOrb.prefab using Guid(6eac70eff066bcd459772d15d3a798ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '41d1ce4e33ce67a87b335ce5666c467d') in 0.027292 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 195
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/SyntyStudios/PolygonKnights/Prefabs/Characters/FixedScaleCharacters/Character_Knight_01_Black_FixedScale.prefab
+  artifactKey: Guid(c1bf78096101892488e2d81d47664125) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonKnights/Prefabs/Characters/FixedScaleCharacters/Character_Knight_01_Black_FixedScale.prefab using Guid(c1bf78096101892488e2d81d47664125) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5fa5ba8b6b0c2cee59a5e1d0deab61a6') in 0.026291 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 176
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Resources/PrefabOrbPickups/BaseGreenHouseOrb.prefab
+  artifactKey: Guid(39cf1c61c07a91245a286cc2f86aa258) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PrefabOrbPickups/BaseGreenHouseOrb.prefab using Guid(39cf1c61c07a91245a286cc2f86aa258) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab5129e61f25af755471d489d5dc947d') in 0.026450 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 207
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: The I/O operation has been aborted because of either a thread exit or an application request.
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
