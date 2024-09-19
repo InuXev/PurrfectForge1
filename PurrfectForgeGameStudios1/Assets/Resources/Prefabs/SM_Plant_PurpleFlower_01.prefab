@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 8035084774803259112}
   - component: {fileID: 2379168404524646012}
   - component: {fileID: 81373243047796026}
+  - component: {fileID: -1890758682758867255}
   m_Layer: 0
   m_Name: SM_Plant_PurpleFlower_01
   m_TagString: Untagged
@@ -191,3 +192,18 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7584777703277921328}
   m_Enabled: 1
+--- !u!114 &-1890758682758867255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310080029848434600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: a779ca46e3b13bc4e90b566e76f7833d, type: 2}
+  type: 
+  eshesBuildObjectName: 

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3180764455300032404}
   - component: {fileID: 3201421348713304184}
   - component: {fileID: 3747399914042311949}
+  - component: {fileID: 1938243234172650462}
+  - component: {fileID: 3769833206455783513}
   m_Layer: 0
   m_Name: SM_Plant_Bush_Leaves_01
   m_TagString: Untagged
@@ -108,6 +110,43 @@ LODGroup:
     renderers:
     - renderer: {fileID: 1003065399339775826}
   m_Enabled: 1
+--- !u!114 &1938243234172650462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858599265378730609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: b52b6bedd1696de49b65075548f1d57f, type: 2}
+  type: 
+  eshesBuildObjectName: 
+--- !u!64 &3769833206455783513
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858599265378730609}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: d37252cbe4c33f74eb0e5a7047a99984, type: 3}
 --- !u!1 &4800913093711750777
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4230141047083173961}
   - component: {fileID: 7846014990544627764}
   - component: {fileID: 4915269811496329302}
+  - component: {fileID: -927759043840622025}
   m_Layer: 0
   m_Name: SM_Prop_Sack_04
   m_TagString: Untagged
@@ -106,3 +107,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43859160610876734, guid: 4b3cc099e724a1040a6e89cca109a7b9, type: 2}
+--- !u!114 &-927759043840622025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760795679812208566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: d8376a12a2686d143a9f632eedd9d6bd, type: 2}
+  type: 
+  eshesBuildObjectName: 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8363229602316463050}
   - component: {fileID: 5886413715017858762}
   - component: {fileID: 7029298150775563884}
+  - component: {fileID: -7285173086526488610}
   m_Layer: 0
   m_Name: SM_Prop_RoadSign_01
   m_TagString: Untagged
@@ -105,3 +106,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.21514487, y: 2.3533754, z: 0.293198}
   m_Center: {x: 0.03615272, y: 1.0347075, z: -0.042390645}
+--- !u!114 &-7285173086526488610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859465137458829180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: 7e81bbc40e06872498359e6367ee8c1a, type: 2}
+  type: 
+  eshesBuildObjectName: 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8043684550204131141}
   - component: {fileID: 4142952376276380830}
   - component: {fileID: 962560303848128702}
+  - component: {fileID: 9074613647986953234}
   m_Layer: 0
   m_Name: SM_Prop_RoadSign_01 (1)
   m_TagString: Untagged
@@ -129,3 +130,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43847140304600080, guid: 4bd965536bc3fd043afffb92eb4ef0a5, type: 2}
+--- !u!114 &9074613647986953234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742237198910668913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: e1be723de25c96a42a4d72bc5405daa1, type: 2}
+  type: 
+  eshesBuildObjectName: 

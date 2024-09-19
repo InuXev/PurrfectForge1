@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4117041861782995770}
   - component: {fileID: 6296761971516767384}
   - component: {fileID: 8043749507202881938}
+  - component: {fileID: -2159505940952285497}
   m_Layer: 0
   m_Name: SM_Plant_Grass_04
   m_TagString: Untagged
@@ -83,3 +84,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-2159505940952285497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040103827081156260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: d1340ff6b552eaa43b6a8a4d1433ba9d, type: 2}
+  type: 
+  eshesBuildObjectName: 

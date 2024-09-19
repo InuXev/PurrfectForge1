@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 3972623943868874796}
   - component: {fileID: 8879432065019631314}
   - component: {fileID: 4714243073839834744}
+  - component: {fileID: -6307845267154010237}
   m_Layer: 0
   m_Name: SM_Plant_Fern_Leaves_01
   m_TagString: Untagged
@@ -191,3 +192,18 @@ LODGroup:
     renderers:
     - renderer: {fileID: 5065322949364901813}
   m_Enabled: 1
+--- !u!114 &-6307845267154010237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9043185628852345969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: 2efe9a7314687af4d95ff1745d8f0001, type: 2}
+  type: 
+  eshesBuildObjectName: 

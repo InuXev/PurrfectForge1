@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 7246101054371079015}
   - component: {fileID: 2389304335520229983}
   - component: {fileID: 5548023484065242901}
+  - component: {fileID: -1891148608616555618}
   m_Layer: 0
   m_Name: SM_Tree_Willow_Large_01
   m_TagString: Untagged
@@ -248,3 +249,18 @@ CapsuleCollider:
   m_Height: 3.907669
   m_Direction: 1
   m_Center: {x: 0, y: 1.6459765, z: 0}
+--- !u!114 &-1891148608616555618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6512338993568052613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: 41603ca3befa58348a20d150cb965b5d, type: 2}
+  type: 
+  eshesBuildObjectName: 

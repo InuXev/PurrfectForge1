@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2559888041330325024}
   - component: {fileID: 6837161641014429537}
   - component: {fileID: 3702553746515251193}
+  - component: {fileID: 5083747049696197790}
   m_Layer: 0
   m_Name: SM_Rock_Boulder_01
   m_TagString: Untagged
@@ -106,3 +107,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 3bf1797a1e906ed419074e5bd4b7ff3b, type: 3}
+--- !u!114 &5083747049696197790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173500274612953164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: 8bf1f5234c1c28b41ab5d6ebd07d1460, type: 2}
+  type: 
+  eshesBuildObjectName: 

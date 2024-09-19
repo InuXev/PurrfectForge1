@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 945934223425101900}
   - component: {fileID: 8121749295508690582}
   - component: {fileID: 1849527525010109701}
+  - component: {fileID: 3962473290283307494}
   m_Layer: 0
   m_Name: SM_Prop_Brazier_01
   m_TagString: Untagged
@@ -106,3 +107,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43730068239896198, guid: dc375fea83173a042bcd9e333245ca7a, type: 2}
+--- !u!114 &3962473290283307494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6668379219912715543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: 2c691604e7f332d4b9081b5072a3ef97, type: 2}
+  type: 
+  eshesBuildObjectName: 

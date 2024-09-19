@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2205491917932145767}
+  - component: {fileID: 1384862597202666605}
   m_Layer: 0
   m_Name: BaseGreenHouse
   m_TagString: Untagged
@@ -47,6 +48,21 @@ Transform:
   - {fileID: 3216408206121671030}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1384862597202666605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3699217249394529699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: e4faf5ff8b6dc8345a4fd6b75a8a9095, type: 2}
+  type: 
+  eshesBuildObjectName: 
 --- !u!1001 &25199938665816064
 PrefabInstance:
   m_ObjectHideFlags: 0

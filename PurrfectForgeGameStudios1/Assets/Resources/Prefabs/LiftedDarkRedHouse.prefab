@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8335740954372649150}
+  - component: {fileID: 7774375405672783414}
   m_Layer: 0
   m_Name: LiftedDarkRedHouse
   m_TagString: Untagged
@@ -69,6 +70,21 @@ Transform:
   - {fileID: 7363332330793343398}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+--- !u!114 &7774375405672783414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4258460662914036764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: c67074cf827facf4dad5d3e01ce3aa26, type: 2}
+  type: 
+  eshesBuildObjectName: 
 --- !u!1001 &193342391417987246
 PrefabInstance:
   m_ObjectHideFlags: 0

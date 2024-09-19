@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2395506970415220629}
   - component: {fileID: 4657358883035439081}
   - component: {fileID: 2547538149113526627}
+  - component: {fileID: -2118545076895822577}
   m_Layer: 0
   m_Name: SM_Prop_Bridge_Curved_01
   m_TagString: Untagged
@@ -106,3 +107,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 6d0246924bf2bfd4583cbe081c6d5ea6, type: 3}
+--- !u!114 &-2118545076895822577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2896134558405052121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: 5bff8acd3e2cf8b418c57ab258ec30c7, type: 2}
+  type: 
+  eshesBuildObjectName: 

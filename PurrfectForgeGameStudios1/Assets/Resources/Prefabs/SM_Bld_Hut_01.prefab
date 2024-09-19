@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5654233687991810595}
   - component: {fileID: 1742910855197552684}
   - component: {fileID: 5747440989141497241}
+  - component: {fileID: -319100928777853609}
   m_Layer: 0
   m_Name: SM_Bld_Hut_01
   m_TagString: Untagged
@@ -129,3 +130,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43466950791932432, guid: 645e672f93a1a14478b693736f184b56, type: 2}
+--- !u!114 &-319100928777853609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5250712440928695595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: b1421f3649ed0534cbd4743c562f8588, type: 2}
+  type: 
+  eshesBuildObjectName: 

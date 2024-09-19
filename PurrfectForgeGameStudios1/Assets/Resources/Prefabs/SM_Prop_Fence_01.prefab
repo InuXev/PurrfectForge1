@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1724857674308585136}
   - component: {fileID: 1116470938833037551}
   - component: {fileID: 2832928401047517059}
+  - component: {fileID: -576704773462406816}
   m_Layer: 0
   m_Name: SM_Prop_Fence_01
   m_TagString: Untagged
@@ -105,3 +106,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.9796362, y: 1.0852278, z: 0.25419128}
   m_Center: {x: -0.0006749034, y: 0.5426139, z: 0.009653658}
+--- !u!114 &-576704773462406816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2376434915219568871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: dd7defd04009721498d26cec5edd9770, type: 2}
+  type: 
+  eshesBuildObjectName: 

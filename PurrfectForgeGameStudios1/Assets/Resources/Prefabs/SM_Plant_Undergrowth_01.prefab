@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 7371631979788690072}
   - component: {fileID: 8262047402702808662}
   - component: {fileID: 2822212707415853022}
+  - component: {fileID: 7824245579439615822}
   m_Layer: 0
   m_Name: SM_Plant_Undergrowth_01
   m_TagString: Untagged
@@ -191,3 +192,18 @@ LODGroup:
     renderers:
     - renderer: {fileID: 912040667075621552}
   m_Enabled: 1
+--- !u!114 &7824245579439615822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361836498130091494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: f86d808d54c98da448a82d170d4a5e4f, type: 2}
+  type: 
+  eshesBuildObjectName: 

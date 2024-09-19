@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3003200592543040970}
+  - component: {fileID: -8536269749097456851}
   m_Layer: 0
   m_Name: Church
   m_TagString: Untagged
@@ -37,6 +38,21 @@ Transform:
   - {fileID: 4629834247050202987}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &-8536269749097456851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5743913464383204601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: 59c3d197290cbe7469d2bbca6d23dc60, type: 2}
+  type: 
+  eshesBuildObjectName: 
 --- !u!1001 &1588616718311673514
 PrefabInstance:
   m_ObjectHideFlags: 0

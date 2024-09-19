@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5338228282697078762}
   - component: {fileID: 7937754285044056208}
   - component: {fileID: 4109189419288327116}
+  - component: {fileID: 4018994442063809355}
   m_Layer: 0
   m_Name: SM_Prop_TorchStick_01
   m_TagString: Untagged
@@ -105,3 +106,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1549678, y: 1.8820719, z: 0.16626473}
   m_Center: {x: -0.0007843524, y: 0.815327, z: 0}
+--- !u!114 &4018994442063809355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15195965216772574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: 8b05b507295686046b379f4a1bdf4a88, type: 2}
+  type: 
+  eshesBuildObjectName: 

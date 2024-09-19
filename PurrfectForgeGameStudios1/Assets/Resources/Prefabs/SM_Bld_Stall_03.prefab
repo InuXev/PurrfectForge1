@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3003349132101364017}
   - component: {fileID: 2967802831242689397}
   - component: {fileID: 3907288754730300732}
+  - component: {fileID: 6918056413646855943}
   m_Layer: 0
   m_Name: SM_Bld_Stall_03
   m_TagString: Untagged
@@ -129,3 +130,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43873278378102456, guid: cddc7a78e3fda7c438445be347550aa5, type: 2}
+--- !u!114 &6918056413646855943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989872428561976210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: ac34dd135c041af42a04c366ff401635, type: 2}
+  type: 
+  eshesBuildObjectName: 
