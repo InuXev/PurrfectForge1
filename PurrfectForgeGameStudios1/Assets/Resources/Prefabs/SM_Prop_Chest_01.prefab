@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 7314272587258128904}
   - component: {fileID: 4187721188891444402}
   - component: {fileID: 3677517868075463367}
-  - component: {fileID: 1239062035649506075}
+  - component: {fileID: 7177320019047714477}
   - component: {fileID: -1509914460469865147}
   m_Layer: 0
   m_Name: SM_Prop_Chest_01
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,7 +86,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1239062035649506075
+--- !u!64 &7177320019047714477
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,9 +105,9 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 43231211540474392, guid: a98b0911cdf30a04c95f397995c4bf98, type: 2}
+  m_Mesh: {fileID: 4300000, guid: c81b8ecf325c3e64e8ff1eed31475146, type: 3}
 --- !u!114 &-1509914460469865147
 MonoBehaviour:
   m_ObjectHideFlags: 0

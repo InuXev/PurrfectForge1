@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 991377013038913896}
   - component: {fileID: 4178687594511593874}
   - component: {fileID: 6867900114460252956}
-  - component: {fileID: 7429935737915354912}
   - component: {fileID: -5469965198959985619}
   m_Layer: 0
   m_Name: SM_Prop_Logpile_01
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,28 +107,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43413967380918608, guid: 470081ba3ed8e6047983a9bb5b7b96a0, type: 2}
---- !u!64 &7429935737915354912
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1661829519309527959}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43350939152765738, guid: 470081ba3ed8e6047983a9bb5b7b96a0, type: 2}
 --- !u!114 &-5469965198959985619
 MonoBehaviour:
   m_ObjectHideFlags: 0

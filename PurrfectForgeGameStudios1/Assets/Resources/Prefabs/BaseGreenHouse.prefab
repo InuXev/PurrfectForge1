@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2205491917932145767}
   - component: {fileID: 1384862597202666605}
+  - component: {fileID: 501640923748119555}
   m_Layer: 0
   m_Name: BaseGreenHouse
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,6 +64,28 @@ MonoBehaviour:
   scriptableItems: {fileID: 11400000, guid: e4faf5ff8b6dc8345a4fd6b75a8a9095, type: 2}
   type: 
   eshesBuildObjectName: 
+--- !u!64 &501640923748119555
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3699217249394529699}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &25199938665816064
 PrefabInstance:
   m_ObjectHideFlags: 0

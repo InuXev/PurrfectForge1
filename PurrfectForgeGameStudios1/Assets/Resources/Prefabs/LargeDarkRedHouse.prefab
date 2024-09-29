@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 400286131553684989}
   - component: {fileID: 8372935718910996021}
+  - component: {fileID: 163649858048027864}
   m_Layer: 0
   m_Name: LargeDarkRedHouse
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,6 +74,28 @@ MonoBehaviour:
   scriptableItems: {fileID: 11400000, guid: 1a83f015004abd34fb652f9b52d2bd84, type: 2}
   type: 
   eshesBuildObjectName: 
+--- !u!64 &163649858048027864
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3104725521283755631}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &246320826222641176
 PrefabInstance:
   m_ObjectHideFlags: 0

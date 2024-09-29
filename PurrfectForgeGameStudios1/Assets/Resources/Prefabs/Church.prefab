@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3003200592543040970}
   - component: {fileID: -8536269749097456851}
+  - component: {fileID: 4501366765033234201}
   m_Layer: 0
   m_Name: Church
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,6 +54,28 @@ MonoBehaviour:
   scriptableItems: {fileID: 11400000, guid: 59c3d197290cbe7469d2bbca6d23dc60, type: 2}
   type: 
   eshesBuildObjectName: 
+--- !u!64 &4501366765033234201
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5743913464383204601}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &1588616718311673514
 PrefabInstance:
   m_ObjectHideFlags: 0

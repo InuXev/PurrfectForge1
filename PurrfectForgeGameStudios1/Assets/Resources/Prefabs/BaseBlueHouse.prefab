@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7269558781549322970}
   - component: {fileID: -1648326423821681848}
+  - component: {fileID: 7543867037733869335}
   m_Layer: 0
   m_Name: BaseBlueHouse
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,6 +63,28 @@ MonoBehaviour:
   scriptableItems: {fileID: 11400000, guid: 0c2d51bd7156aec45823e7d066f389f8, type: 2}
   type: 
   eshesBuildObjectName: 
+--- !u!64 &7543867037733869335
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713014113711639936}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &598720881836252376
 PrefabInstance:
   m_ObjectHideFlags: 0

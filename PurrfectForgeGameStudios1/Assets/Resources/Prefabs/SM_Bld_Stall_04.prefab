@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 1431747845427011273}
   - component: {fileID: 2058666217879044379}
   - component: {fileID: 8414485797743486919}
-  - component: {fileID: 6683999335503780001}
   - component: {fileID: 849356852329484950}
   m_Layer: 0
   m_Name: SM_Bld_Stall_04
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,28 +107,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43684190414481538, guid: 87ebff220a4a2eb4885e4440ef2bef6a, type: 2}
---- !u!64 &6683999335503780001
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5102066334823924493}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43021916174260370, guid: 87ebff220a4a2eb4885e4440ef2bef6a, type: 2}
 --- !u!114 &849356852329484950
 MonoBehaviour:
   m_ObjectHideFlags: 0

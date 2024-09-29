@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6135316132252652072}
   - component: {fileID: 8278181921991083989}
+  - component: {fileID: -5926884649709107877}
   m_Layer: 0
   m_Name: Apothecary
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 9204925311419796800}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071081, z: -0, w: 0.7071056}
-  m_LocalPosition: {x: 7.09, y: 12.36, z: -23.437}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3834839, y: 1.3834839, z: 1.3834839}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -69,6 +70,28 @@ MonoBehaviour:
   scriptableItems: {fileID: 11400000, guid: 10d0914e5cd87b448b429cd92a4a57b0, type: 2}
   type: 
   eshesBuildObjectName: 
+--- !u!64 &-5926884649709107877
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9204925311419796800}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &320642472723003864
 PrefabInstance:
   m_ObjectHideFlags: 0

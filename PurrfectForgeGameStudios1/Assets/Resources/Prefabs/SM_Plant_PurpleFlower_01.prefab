@@ -96,9 +96,10 @@ GameObject:
   - component: {fileID: 2379168404524646012}
   - component: {fileID: 81373243047796026}
   - component: {fileID: -1890758682758867255}
+  - component: {fileID: -5164759095068987627}
   m_Layer: 0
   m_Name: SM_Plant_PurpleFlower_01
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,3 +208,25 @@ MonoBehaviour:
   scriptableItems: {fileID: 11400000, guid: a779ca46e3b13bc4e90b566e76f7833d, type: 2}
   type: 
   eshesBuildObjectName: 
+--- !u!64 &-5164759095068987627
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310080029848434600}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: c993007ad8caaf84cb1eec69a4cf3a59, type: 3}

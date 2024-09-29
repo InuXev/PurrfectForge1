@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 1216156172314728637}
   - component: {fileID: 8043684550204131141}
   - component: {fileID: 4142952376276380830}
-  - component: {fileID: 962560303848128702}
   - component: {fileID: 9074613647986953234}
   m_Layer: 0
   m_Name: SM_Prop_RoadSign_01 (1)
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,28 +107,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43348403264331508, guid: 4bd965536bc3fd043afffb92eb4ef0a5, type: 2}
---- !u!64 &962560303848128702
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 742237198910668913}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43847140304600080, guid: 4bd965536bc3fd043afffb92eb4ef0a5, type: 2}
 --- !u!114 &9074613647986953234
 MonoBehaviour:
   m_ObjectHideFlags: 0

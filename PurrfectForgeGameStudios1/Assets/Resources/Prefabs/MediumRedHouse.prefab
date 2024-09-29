@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8786095382932016303}
   - component: {fileID: -6844768852501445269}
+  - component: {fileID: -7828810520695213105}
   m_Layer: 0
   m_Name: MediumRedHouse
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,6 +71,28 @@ MonoBehaviour:
   scriptableItems: {fileID: 11400000, guid: 0eab1d74bd004dd43b63661c820991ba, type: 2}
   type: 
   eshesBuildObjectName: 
+--- !u!64 &-7828810520695213105
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3108197679887696321}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &968228830117173980
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 6296761971516767384}
   - component: {fileID: 8043749507202881938}
   - component: {fileID: -2159505940952285497}
+  - component: {fileID: -8203922986573315812}
   m_Layer: 0
   m_Name: SM_Plant_Grass_04
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,3 +100,25 @@ MonoBehaviour:
   scriptableItems: {fileID: 11400000, guid: d1340ff6b552eaa43b6a8a4d1433ba9d, type: 2}
   type: 
   eshesBuildObjectName: 
+--- !u!64 &-8203922986573315812
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040103827081156260}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 9e83d711d4b07434996cf1ab95508652, type: 3}

@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8105622787904226884}
   - component: {fileID: 5563735377771305887}
-  - component: {fileID: 3970451163075998986}
   - component: {fileID: 198940265669570485}
+  - component: {fileID: 4653431247920697817}
   m_Layer: 0
   m_Name: SM_Tree_Willow_Small_01
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,8 +59,23 @@ LODGroup:
     renderers:
     - renderer: {fileID: 6762413220087450897}
   m_Enabled: 1
---- !u!136 &3970451163075998986
-CapsuleCollider:
+--- !u!114 &198940265669570485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334887205834288951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: 92e45bbd21a3ba444bc60e65d64536a4, type: 2}
+  type: 
+  eshesBuildObjectName: 
+--- !u!64 &4653431247920697817
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -77,26 +92,10 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.33469224
-  m_Height: 3.907669
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.6459765, z: 0}
---- !u!114 &198940265669570485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1334887205834288951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scriptableItems: {fileID: 11400000, guid: 92e45bbd21a3ba444bc60e65d64536a4, type: 2}
-  type: 
-  eshesBuildObjectName: 
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 6815c2213e8b85842b1fc80212901a1f, type: 3}
 --- !u!1 &1925591090748484558
 GameObject:
   m_ObjectHideFlags: 0

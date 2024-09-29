@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 835392907797795415}
   - component: {fileID: 686708526061622171}
   - component: {fileID: 1462194860991103758}
-  - component: {fileID: 1557035454783636508}
   - component: {fileID: 3095201899534978803}
+  - component: {fileID: 8565857706788937402}
   m_Layer: 0
   m_Name: SM_Prop_StoneWall_01
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,8 +85,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1557035454783636508
-BoxCollider:
+--- !u!114 &3095201899534978803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197564752345580364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: dd3d277284df7054aa1defa8d7cb4fc2, type: 2}
+  type: 
+  eshesBuildObjectName: 
+--- !u!64 &8565857706788937402
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,21 +118,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 5.129447, y: 1.0894413, z: 0.5070782}
-  m_Center: {x: 2.455996, y: 0.54472065, z: 0}
---- !u!114 &3095201899534978803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1197564752345580364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scriptableItems: {fileID: 11400000, guid: dd3d277284df7054aa1defa8d7cb4fc2, type: 2}
-  type: 
-  eshesBuildObjectName: 
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 83566b3fe600f364daa9d18fd667ea7f, type: 3}

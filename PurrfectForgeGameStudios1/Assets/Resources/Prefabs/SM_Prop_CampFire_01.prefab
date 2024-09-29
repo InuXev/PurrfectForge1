@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 4240053459079728432}
   - component: {fileID: 2489470049226203709}
   - component: {fileID: 7807987778125721522}
-  - component: {fileID: 5040876037966463813}
   - component: {fileID: 7257715775087206}
+  - component: {fileID: -8071397651771165408}
   m_Layer: 0
   m_Name: SM_Prop_CampFire_01
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,8 +85,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &5040876037966463813
-SphereCollider:
+--- !u!114 &7257715775087206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4338074897435328155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: eb719baf0d527574ebdc524999b776f9, type: 2}
+  type: 
+  eshesBuildObjectName: 
+--- !u!64 &-8071397651771165408
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,21 +118,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.56896544
-  m_Center: {x: 0, y: -0.11, z: 0}
---- !u!114 &7257715775087206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4338074897435328155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scriptableItems: {fileID: 11400000, guid: eb719baf0d527574ebdc524999b776f9, type: 2}
-  type: 
-  eshesBuildObjectName: 
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 5f9f6ec19ed9ec548a73b9775e5a7154, type: 3}

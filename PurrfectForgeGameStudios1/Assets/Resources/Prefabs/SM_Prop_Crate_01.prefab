@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 6867472275167793275}
   - component: {fileID: 4531940036327421665}
   - component: {fileID: 434519624569358968}
-  - component: {fileID: 5035088087294706195}
   - component: {fileID: -209765313580992744}
+  - component: {fileID: -2488214057726934134}
   m_Layer: 0
   m_Name: SM_Prop_Crate_01
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,8 +85,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5035088087294706195
-BoxCollider:
+--- !u!114 &-209765313580992744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8510215927137863304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 11400000, guid: f46e207d277f0174aa806c1132ccc57a, type: 2}
+  type: 
+  eshesBuildObjectName: 
+--- !u!64 &-2488214057726934134
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,21 +118,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.7665404, y: 0.76653725, z: 0.766537}
-  m_Center: {x: 0.000000059604645, y: 0.38326862, z: 0}
---- !u!114 &-209765313580992744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8510215927137863304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scriptableItems: {fileID: 11400000, guid: f46e207d277f0174aa806c1132ccc57a, type: 2}
-  type: 
-  eshesBuildObjectName: 
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: b63a43da9ab50d847ad7383d9176deb6, type: 3}
