@@ -2390,6 +2390,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f86d808d54c98da448a82d170d4a5e4f, type: 2}
   - {fileID: 11400000, guid: f46e207d277f0174aa806c1132ccc57a, type: 2}
   - {fileID: 11400000, guid: 3a94faa4805dbe546a835b553e9618cd, type: 2}
+  - {fileID: 11400000, guid: 10d0914e5cd87b448b429cd92a4a57b0, type: 2}
+  - {fileID: 11400000, guid: 72556be152760c142856143effd4b6d3, type: 2}
   scriptableSkillList:
   - {fileID: 11400000, guid: a70b37d54e583b2429c98ab3315ab3d3, type: 2}
   - {fileID: 11400000, guid: 5b9a7c8066a2a59409db7923b38977c0, type: 2}
@@ -2411,18 +2413,158 @@ MonoBehaviour:
   FloorConfirmPort: {fileID: 0}
   foliageTypeSelector: {fileID: 0}
   trees: {fileID: 0}
-  Tree1: {fileID: 0}
-  Tree1AmountHeld: {fileID: 0}
+  SmallBirch: {fileID: 0}
+  SmallBirchAmountHeld: {fileID: 0}
+  MediumBirch: {fileID: 0}
+  MediumBirchAmountHeld: {fileID: 0}
+  TallBirch: {fileID: 0}
+  TallBirchAmountHeld: {fileID: 0}
+  LargeBirch: {fileID: 0}
+  LargeBirchAmountHeld: {fileID: 0}
+  SmallWillow: {fileID: 0}
+  SmallWillowAmountHeld: {fileID: 0}
+  MediumWillow: {fileID: 0}
+  MediumWillowAmountHeld: {fileID: 0}
+  LargeWillow: {fileID: 0}
+  LargeWillowAmountHeld: {fileID: 0}
   flowers: {fileID: 0}
+  PurpleFlower: {fileID: 0}
+  PurpleFlowerAmountHeld: {fileID: 0}
+  SmallFern: {fileID: 0}
+  SmallFernAmountHeld: {fileID: 0}
+  LargeFern: {fileID: 0}
+  LargeFernAmountHeld: {fileID: 0}
   bushes: {fileID: 0}
-  Bush1: {fileID: 0}
-  Bush1AmountHeld: {fileID: 0}
+  SmallBush: {fileID: 0}
+  SmallBushAmountHeld: {fileID: 0}
+  MediumBush: {fileID: 0}
+  MediumBushAmountHeld: {fileID: 0}
+  LargeBush: {fileID: 0}
+  LargeBushAmountHeld: {fileID: 0}
   grass: {fileID: 0}
+  SmallGrass: {fileID: 0}
+  SmallGrassAmountHeld: {fileID: 0}
+  MediumGrass: {fileID: 0}
+  MediumGrassAmountHeld: {fileID: 0}
+  LargeGrass: {fileID: 0}
+  LargeGrassAmountHeld: {fileID: 0}
+  UnderGrowth: {fileID: 0}
+  UnderGrowthAmountHeld: {fileID: 0}
   buildingsTypeSelector: {fileID: 0}
   buildings: {fileID: 0}
+  Shed: {fileID: 0}
+  ShedAmountHeld: {fileID: 0}
+  RedStall: {fileID: 0}
+  RedStallAmountHeld: {fileID: 0}
+  GreenStall: {fileID: 0}
+  GreenStallAmountHeld: {fileID: 0}
+  OpenStall: {fileID: 0}
+  OpenStallAmountHeld: {fileID: 0}
+  YellowStall: {fileID: 0}
+  YellowStallAmountHeld: {fileID: 0}
   shops: {fileID: 0}
+  Apothecary: {fileID: 0}
+  ApothecaryAmountHeld: {fileID: 0}
+  Bakery: {fileID: 0}
+  BakeryAmountHeld: {fileID: 0}
+  BlackSmith: {fileID: 0}
+  BlackSmithAmountHeld: {fileID: 0}
+  Church: {fileID: 0}
+  ChurchAmountHeld: {fileID: 0}
+  LeonsInn: {fileID: 0}
+  LeonsInnAmountHeld: {fileID: 0}
+  Mayors: {fileID: 0}
+  MayorsAmountHeld: {fileID: 0}
   houses: {fileID: 0}
-  roads: {fileID: 0}
+  BaseRedHouse: {fileID: 0}
+  BaseRedHouseAmountHeld: {fileID: 0}
+  BaseDarkRedHouse: {fileID: 0}
+  BaseDarkRedHouseAmountHeld: {fileID: 0}
+  BaseGreenHouse: {fileID: 0}
+  BaseGreenHouseAmountHeld: {fileID: 0}
+  BaseBlueHouse: {fileID: 0}
+  BaseBlueHouseAmountHeld: {fileID: 0}
+  MediumRedHouse: {fileID: 0}
+  MediumRedHouseAmountHeld: {fileID: 0}
+  MediumDarkRedHouse: {fileID: 0}
+  MediumDarkRedHouseAmountHeld: {fileID: 0}
+  MediumGreenHouse: {fileID: 0}
+  MediumGreenHouseAmountHeld: {fileID: 0}
+  MediumBlueHouse: {fileID: 0}
+  MediumBlueHouseAmountHeld: {fileID: 0}
+  LiftedRedHouse: {fileID: 0}
+  LiftedRedHouseAmountHeld: {fileID: 0}
+  LiftedDarkRedHouse: {fileID: 0}
+  LiftedDarkRedHouseAmountHeld: {fileID: 0}
+  LiftedGreenHouse: {fileID: 0}
+  LiftedGreenHouseAmountHeld: {fileID: 0}
+  LiftedBlueHouse: {fileID: 0}
+  LiftedBlueHouseAmountHeld: {fileID: 0}
+  LargeRedHouse: {fileID: 0}
+  LargeRedHouseAmountHeld: {fileID: 0}
+  LargeDarkRedHouse: {fileID: 0}
+  LargeDarkRedHouseAmountHeld: {fileID: 0}
+  LargeGreenHouse: {fileID: 0}
+  LargeGreenHouseAmountHeld: {fileID: 0}
+  LargeBlueHouse: {fileID: 0}
+  LargeBlueHouseAmountHeld: {fileID: 0}
+  misc: {fileID: 0}
+  Brazier: {fileID: 0}
+  BrazierAmountHeld: {fileID: 0}
+  Bridge: {fileID: 0}
+  BridgeAmountHeld: {fileID: 0}
+  BrokenWall: {fileID: 0}
+  BrokenWallAmountHeld: {fileID: 0}
+  Campfire: {fileID: 0}
+  CampfireAmountHeld: {fileID: 0}
+  CampfireWithPot: {fileID: 0}
+  CampfireWithPotAmountHeld: {fileID: 0}
+  CurvedChest: {fileID: 0}
+  CurvedChestAmountHeld: {fileID: 0}
+  DoubleFence: {fileID: 0}
+  DoubleFenceAmountHeld: {fileID: 0}
+  EmptyCart: {fileID: 0}
+  EmptyCartAmountHeld: {fileID: 0}
+  FarmerCart: {fileID: 0}
+  FarmerCartAmountHeld: {fileID: 0}
+  FlatChest: {fileID: 0}
+  FlatChestAmountHeld: {fileID: 0}
+  HayCart: {fileID: 0}
+  HayCartAmountHeld: {fileID: 0}
+  LampPost: {fileID: 0}
+  LampPostAmountHeld: {fileID: 0}
+  LogPile: {fileID: 0}
+  LogPileAmountHeld: {fileID: 0}
+  MetalCrate: {fileID: 0}
+  MetalCrateAmountHeld: {fileID: 0}
+  OpenCrate: {fileID: 0}
+  OpenCrateAmountHeld: {fileID: 0}
+  ProduceCart: {fileID: 0}
+  ProduceCartAmountHeld: {fileID: 0}
+  RoadSign1: {fileID: 0}
+  RoadSign1AmountHeld: {fileID: 0}
+  RoadSign2: {fileID: 0}
+  RoadSign2AmountHeld: {fileID: 0}
+  Boat: {fileID: 0}
+  BoatAmountHeld: {fileID: 0}
+  SackPile: {fileID: 0}
+  SackPileAmountHeld: {fileID: 0}
+  StackOBarrels: {fileID: 0}
+  StackOBarrelsAmountHeld: {fileID: 0}
+  Statue: {fileID: 0}
+  StatueAmountHeld: {fileID: 0}
+  StoneWall: {fileID: 0}
+  StoneWallAmountHeld: {fileID: 0}
+  Torch: {fileID: 0}
+  TorchAmountHeld: {fileID: 0}
+  WaterWell: {fileID: 0}
+  WaterWellAmountHeld: {fileID: 0}
+  SmallRock: {fileID: 0}
+  SmallRockAmountHeld: {fileID: 0}
+  MediumRock: {fileID: 0}
+  MediumRockAmountHeld: {fileID: 0}
+  LargeRock: {fileID: 0}
+  LargeRockAmountHeld: {fileID: 0}
   peopleTypeSelector: {fileID: 0}
   shopOwners: {fileID: 0}
   residents: {fileID: 0}

@@ -15,7 +15,7 @@ C:/Repos/PurrfectForge1/PurrfectForgeGameStudios1
 -logFile
 Logs/AssetImportWorker3.log
 -srvPort
-49291
+58489
 Successfully changed project path to: C:/Repos/PurrfectForge1/PurrfectForgeGameStudios1
 C:/Repos/PurrfectForge1/PurrfectForgeGameStudios1
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -49,12 +49,12 @@ C:/Repos/PurrfectForge1/PurrfectForgeGameStudios1
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [29020] Host "[IP] 192.168.12.195 [Port] 0 [Flags] 2 [Guid] 902249987 [EditorId] 902249987 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [18356] Host "[IP] 192.168.12.195 [Port] 0 [Flags] 2 [Guid] 720757205 [EditorId] 720757205 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [29020] Host "[IP] 192.168.12.195 [Port] 0 [Flags] 2 [Guid] 902249987 [EditorId] 902249987 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [18356] Host "[IP] 192.168.12.195 [Port] 0 [Flags] 2 [Guid] 720757205 [EditorId] 720757205 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
 [Physics::Module] Initialized MultithreadedJobDispatcher with 23 workers.
-Refreshing native plugins compatible for Editor in 12.25 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 5.68 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.28f1 (6bae5ce6b222)
 [Subsystems] Discovering subsystems at path C:/2022.3.28f1/Editor/Data/Resources/UnitySubsystems
@@ -70,44 +70,44 @@ Initialize mono
 Mono path[0] = 'C:/2022.3.28f1/Editor/Data/Managed'
 Mono path[1] = 'C:/2022.3.28f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/2022.3.28f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56004
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56376
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/2022.3.28f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.003030 seconds.
-- Loaded All Assemblies, in  0.280 seconds
+Registered in 0.003125 seconds.
+- Loaded All Assemblies, in  0.241 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.224 seconds
-Domain Reload Profiling: 503ms
-	BeginReloadAssembly (93ms)
+- Finished resetting the current domain, in  0.181 seconds
+Domain Reload Profiling: 422ms
+	BeginReloadAssembly (85ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (27ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (42ms)
-	LoadAllAssembliesAndSetupDomain (108ms)
-		LoadAssemblies (92ms)
+	RebuildCommonClasses (22ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (36ms)
+	LoadAllAssembliesAndSetupDomain (90ms)
+		LoadAssemblies (83ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (106ms)
-			TypeCache.Refresh (104ms)
-				TypeCache.ScanAssembly (91ms)
+		AnalyzeDomain (89ms)
+			TypeCache.Refresh (88ms)
+				TypeCache.ScanAssembly (79ms)
 			ScanForSourceGeneratedMonoScriptInfo (0ms)
-			ResolveRequiredComponents (1ms)
-	FinalizeReload (224ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (182ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (174ms)
+		SetupLoadedEditorAssemblies (143ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (7ms)
+			InitializePlatformSupportModulesInManaged (5ms)
 			SetLoadedEditorAssemblies (6ms)
 			RefreshPlugins (0ms)
 			BeforeProcessingInitializeOnLoad (2ms)
-			ProcessInitializeOnLoadAttributes (118ms)
-			ProcessInitializeOnLoadMethodAttributes (42ms)
+			ProcessInitializeOnLoadAttributes (99ms)
+			ProcessInitializeOnLoadMethodAttributes (31ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -115,55 +115,55 @@ Domain Reload Profiling: 503ms
 ========================================================================
 Worker process is ready to serve import requests
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.708 seconds
-Refreshing native plugins compatible for Editor in 2.37 ms, found 3 plugins.
+- Loaded All Assemblies, in  0.452 seconds
+Refreshing native plugins compatible for Editor in 2.11 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 Package Manager log level set to [2]
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.482 seconds
-Domain Reload Profiling: 1188ms
-	BeginReloadAssembly (132ms)
+- Finished resetting the current domain, in  0.411 seconds
+Domain Reload Profiling: 862ms
+	BeginReloadAssembly (107ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (4ms)
+		DisableScriptedObjects (3ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (18ms)
-	RebuildCommonClasses (26ms)
-	RebuildNativeTypeToScriptingClass (8ms)
-	initialDomainReloadingComplete (33ms)
-	LoadAllAssembliesAndSetupDomain (507ms)
-		LoadAssemblies (435ms)
+		CreateAndSetChildDomain (15ms)
+	RebuildCommonClasses (21ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (31ms)
+	LoadAllAssembliesAndSetupDomain (282ms)
+		LoadAssemblies (217ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (157ms)
-			TypeCache.Refresh (141ms)
-				TypeCache.ScanAssembly (127ms)
+		AnalyzeDomain (130ms)
+			TypeCache.Refresh (114ms)
+				TypeCache.ScanAssembly (103ms)
 			ScanForSourceGeneratedMonoScriptInfo (11ms)
 			ResolveRequiredComponents (4ms)
-	FinalizeReload (483ms)
+	FinalizeReload (411ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (369ms)
+		SetupLoadedEditorAssemblies (314ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (4ms)
-			SetLoadedEditorAssemblies (3ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (2ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (43ms)
-			ProcessInitializeOnLoadAttributes (296ms)
+			BeforeProcessingInitializeOnLoad (39ms)
+			ProcessInitializeOnLoadAttributes (248ms)
 			ProcessInitializeOnLoadMethodAttributes (18ms)
-			AfterProcessingInitializeOnLoad (5ms)
+			AfterProcessingInitializeOnLoad (4ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (5ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
-Refreshing native plugins compatible for Editor in 8.56 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (4ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
+Refreshing native plugins compatible for Editor in 4.32 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3318 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 46 unused Assets / (131.7 KB). Loaded Objects now: 3804.
-Memory consumption went from 149.6 MB to 149.5 MB.
-Total: 4.287500 ms (FindLiveObjects: 0.290200 ms CreateObjectMapping: 0.176000 ms MarkObjects: 3.543600 ms  DeleteObjects: 0.275900 ms)
+Unloading 46 unused Assets / (131.6 KB). Loaded Objects now: 3804.
+Memory consumption went from 149.7 MB to 149.6 MB.
+Total: 3.799500 ms (FindLiveObjects: 0.251000 ms CreateObjectMapping: 0.140900 ms MarkObjects: 3.280600 ms  DeleteObjects: 0.125800 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
@@ -181,304 +181,102 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 115871.082040 seconds.
-  path: Assets/SyntyStudios/PolygonKnights/Models/ConvexCollisions/SM_Bld_ArrowSlit_01_Snow_Convex.asset
-  artifactKey: Guid(bd200c20779b53f4fa4e213a9dd126a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonKnights/Models/ConvexCollisions/SM_Bld_ArrowSlit_01_Snow_Convex.asset using Guid(bd200c20779b53f4fa4e213a9dd126a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd837113d7773fa4be78f83ba33fc5b5') in 0.114934 seconds
+  Time since last request: 171564.043626 seconds.
+  path: Assets/SyntyStudios/PolygonKnights/Models/ConvexCollisions/SM_Bld_House_Chimney_02_Convex.asset
+  artifactKey: Guid(e470db34280cf2843af0b145e63ff846) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonKnights/Models/ConvexCollisions/SM_Bld_House_Chimney_02_Convex.asset using Guid(e470db34280cf2843af0b145e63ff846) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f000973d365aa607dbd3aa8d06e1e888') in 0.096651 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 2
 ========================================================================
 Received Import Request.
   Time since last request: 0.000026 seconds.
-  path: Assets/SyntyStudios/PolygonKnights/Models/SM_Bld_Castle_Pillar_01.fbx
-  artifactKey: Guid(47268cdb983de1b4998a47ba731bf6bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonKnights/Models/SM_Bld_Castle_Pillar_01.fbx using Guid(47268cdb983de1b4998a47ba731bf6bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3205abfcda303cc13bc0a44a4e6ff18c') in 0.044771 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 7
-========================================================================
-Received Import Request.
-  Time since last request: 5.882581 seconds.
-  path: Assets/SyntyStudios/PolygonNature/Models/SM_Terrain_GrassEdge_02.fbx
-  artifactKey: Guid(0ffc7bd2da481474ba8219f772372cd2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonNature/Models/SM_Terrain_GrassEdge_02.fbx using Guid(0ffc7bd2da481474ba8219f772372cd2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8762c64a0e3c93a09971193686123c1c') in 0.024404 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 7
-========================================================================
-Received Import Request.
-  Time since last request: 0.002635 seconds.
-  path: Assets/SyntyStudios/PolygonNature/Models/SM_Terrain_Ground_Mound_Large_02.fbx
-  artifactKey: Guid(caa8de4c629685a4591c2e9a5a85f633) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonNature/Models/SM_Terrain_Ground_Mound_Large_02.fbx using Guid(caa8de4c629685a4591c2e9a5a85f633) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ccbc99cd0a1a3e3ab4842e63500306e7') in 0.022709 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 7
-========================================================================
-Received Import Request.
-  Time since last request: 0.015263 seconds.
-  path: Assets/SyntyStudios/PolygonNature/Models/SM_Terrain_RiverSide_01.fbx
-  artifactKey: Guid(e1c08a19521c1f741837f41e334f8d23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonNature/Models/SM_Terrain_RiverSide_01.fbx using Guid(e1c08a19521c1f741837f41e334f8d23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a6a59844636c303c90884a857a0a39e') in 0.019483 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 7
-========================================================================
-Received Import Request.
-  Time since last request: 0.000112 seconds.
-  path: Assets/SyntyStudios/PolygonNature/Models/SM_Terrain_Swamp_Growth_01.fbx
-  artifactKey: Guid(6f71dbacc2fd0de46b3b871c2f1ec19a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonNature/Models/SM_Terrain_Swamp_Growth_01.fbx using Guid(6f71dbacc2fd0de46b3b871c2f1ec19a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2537cf3fa38c662f607a0a66594a4e8') in 0.030141 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 7
-========================================================================
-Received Import Request.
-  Time since last request: 0.381979 seconds.
-  path: Assets/SyntyStudios/PolygonNature/Models/LODS/SM_Tree_Birch_01_LOD_01.fbx
-  artifactKey: Guid(dfd02d6fb40caa342b25650fd2b303ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonNature/Models/LODS/SM_Tree_Birch_01_LOD_01.fbx using Guid(dfd02d6fb40caa342b25650fd2b303ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b1be03c707186faa81fb03dbe4f0e83') in 0.021644 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 7
-========================================================================
-Received Import Request.
-  Time since last request: 0.000017 seconds.
-  path: Assets/SyntyStudios/PolygonNature/Models/LODS/SM_Tree_Birch_Small_01_LOD_01.fbx
-  artifactKey: Guid(235169d02c8243f459fe770950bb567d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonNature/Models/LODS/SM_Tree_Birch_Small_01_LOD_01.fbx using Guid(235169d02c8243f459fe770950bb567d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5bedfaf28ab1d0b10b49aa6bd28353f') in 0.019659 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 7
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/SyntyStudios/PolygonNature/Models/LODS/SM_Tree_Generic_01_LOD_01.fbx
-  artifactKey: Guid(9b5ad8e6201cd924a8e6dc39c9070b85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonNature/Models/LODS/SM_Tree_Generic_01_LOD_01.fbx using Guid(9b5ad8e6201cd924a8e6dc39c9070b85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91eb475bedd28467decbb0e7a2a4ecb5') in 0.025610 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 7
-========================================================================
-Received Import Request.
-  Time since last request: 0.000017 seconds.
-  path: Assets/SyntyStudios/PolygonNature/Models/LODS/SM_Tree_Birch_04_LOD_01.fbx
-  artifactKey: Guid(dbc549a480ae9f14caa84fa9e7b39cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonNature/Models/LODS/SM_Tree_Birch_04_LOD_01.fbx using Guid(dbc549a480ae9f14caa84fa9e7b39cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d35f98cbf35654c1d29f9a244e53cc8') in 0.021955 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 7
-========================================================================
-Received Import Request.
-  Time since last request: 29.725009 seconds.
-  path: Assets/SyntyStudios/PolygonAdventure/Models/Collision/SM_Env_TreeBirch_01_Snow_Convex.asset
-  artifactKey: Guid(bdd8b4c73772f61418303bc424ca659d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonAdventure/Models/Collision/SM_Env_TreeBirch_01_Snow_Convex.asset using Guid(bdd8b4c73772f61418303bc424ca659d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43655b6e84439b924e98b1558281fec6') in 0.018449 seconds
+  path: Assets/SyntyStudios/PolygonKnights/Models/ConvexCollisions/SM_Bld_House_Chimney_05_Snow_Convex.asset
+  artifactKey: Guid(62d6e4f3648dd7f428fdf67bef9f9295) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonKnights/Models/ConvexCollisions/SM_Bld_House_Chimney_05_Snow_Convex.asset using Guid(62d6e4f3648dd7f428fdf67bef9f9295) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '09ae5351119e8c05cbf35391afa1bab1') in 0.018352 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 2
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/SyntyStudios/PolygonAdventure/Models/Collision/SM_Env_TreeBirch_02_Convex.asset
-  artifactKey: Guid(f18c5ce2529d9cb4989da4e13053c0b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonAdventure/Models/Collision/SM_Env_TreeBirch_02_Convex.asset using Guid(f18c5ce2529d9cb4989da4e13053c0b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e1ce707930eb4e27b20faf8de419eab') in 0.022258 seconds
+  Time since last request: 0.000025 seconds.
+  path: Assets/SyntyStudios/PolygonKnights/Models/SM_Bld_House_Chimney_04_Snow.fbx
+  artifactKey: Guid(ad3cdbce97be8e4478f8e47e1cacd977) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonKnights/Models/SM_Bld_House_Chimney_04_Snow.fbx using Guid(ad3cdbce97be8e4478f8e47e1cacd977) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7fa0cd628c948f8f8403194f1a204bf1') in 0.042431 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 2.220218 seconds.
+  path: Assets/SyntyStudios/PolygonKnights/Models/SM_Bld_House_Foundation_06.fbx
+  artifactKey: Guid(072e5d23700f8164296946050bc2e618) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonKnights/Models/SM_Bld_House_Foundation_06.fbx using Guid(072e5d23700f8164296946050bc2e618) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8aa59af1b8a42c28a84016bb7a7bbd5') in 0.023481 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 3.188951 seconds.
+  path: Assets/SyntyStudios/PolygonKnights/Models/ConvexCollisions/SM_Bld_House_Room_01_Snow_Convex.asset
+  artifactKey: Guid(97d8e9e8aa55b2949bc2bbfb4f36c9bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonKnights/Models/ConvexCollisions/SM_Bld_House_Room_01_Snow_Convex.asset using Guid(97d8e9e8aa55b2949bc2bbfb4f36c9bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b98d20ce7e47cd57d443b7dd824b7a61') in 0.025586 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 2
 ========================================================================
 Received Import Request.
-  Time since last request: 0.007024 seconds.
-  path: Assets/SyntyStudios/PolygonAdventure/Models/Collision/SM_Env_TreeBirch_03_Convex 1.asset
-  artifactKey: Guid(2180e735c2be9434e964556bbb25c563) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonAdventure/Models/Collision/SM_Env_TreeBirch_03_Convex 1.asset using Guid(2180e735c2be9434e964556bbb25c563) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a93b41098f5649a9b5df7f34d6661f3') in 0.040928 seconds
+  Time since last request: 0.577264 seconds.
+  path: Assets/SyntyStudios/PolygonKnights/Models/ConvexCollisions/SM_Bld_House_Room_04_Convex 1.asset
+  artifactKey: Guid(8869114895ac1a84682ce57b34618e7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonKnights/Models/ConvexCollisions/SM_Bld_House_Room_04_Convex 1.asset using Guid(8869114895ac1a84682ce57b34618e7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a49c0d38c9cc2488bcd9f4b4c1733eee') in 0.045461 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 3
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.460 seconds
-Refreshing native plugins compatible for Editor in 3.45 ms, found 3 plugins.
+- Loaded All Assemblies, in  0.369 seconds
+Refreshing native plugins compatible for Editor in 2.47 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.277 seconds
-Domain Reload Profiling: 1735ms
-	BeginReloadAssembly (143ms)
+- Finished resetting the current domain, in  0.868 seconds
+Domain Reload Profiling: 1234ms
+	BeginReloadAssembly (141ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (3ms)
+		DisableScriptedObjects (5ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (41ms)
-	RebuildCommonClasses (27ms)
-	RebuildNativeTypeToScriptingClass (12ms)
+		CreateAndSetChildDomain (37ms)
+	RebuildCommonClasses (24ms)
+	RebuildNativeTypeToScriptingClass (8ms)
 	initialDomainReloadingComplete (25ms)
-	LoadAllAssembliesAndSetupDomain (250ms)
-		LoadAssemblies (301ms)
+	LoadAllAssembliesAndSetupDomain (167ms)
+		LoadAssemblies (228ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (19ms)
-			TypeCache.Refresh (11ms)
+		AnalyzeDomain (12ms)
+			TypeCache.Refresh (5ms)
 				TypeCache.ScanAssembly (0ms)
 			ScanForSourceGeneratedMonoScriptInfo (0ms)
 			ResolveRequiredComponents (6ms)
-	FinalizeReload (1277ms)
+	FinalizeReload (868ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (439ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (8ms)
-			SetLoadedEditorAssemblies (3ms)
-			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (58ms)
-			ProcessInitializeOnLoadAttributes (342ms)
-			ProcessInitializeOnLoadMethodAttributes (22ms)
-			AfterProcessingInitializeOnLoad (7ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (6ms)
-Refreshing native plugins compatible for Editor in 9.70 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3290 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 24 unused Assets / (101.9 KB). Loaded Objects now: 3831.
-Memory consumption went from 147.5 MB to 147.4 MB.
-Total: 5.347100 ms (FindLiveObjects: 0.594100 ms CreateObjectMapping: 0.460000 ms MarkObjects: 4.215400 ms  DeleteObjects: 0.075400 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
-  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 67.929782 seconds.
-  path: Assets/SyntyStudios/PolygonNature/Models/SM_Prop_Chest_Wood_01.fbx
-  artifactKey: Guid(51144326d8d668848b7cb552ddb441a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonNature/Models/SM_Prop_Chest_Wood_01.fbx using Guid(51144326d8d668848b7cb552ddb441a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e5eefb11aec5649c4326e708085e6481') in 0.111232 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 12
-========================================================================
-Received Import Request.
-  Time since last request: 42.033370 seconds.
-  path: Assets/SyntyStudios/PolygonAdventure/Models/Collision/SM_Env_TreeDead_02_Convex 6.asset
-  artifactKey: Guid(df7b13b5ac8ea2949b6da3b5a6d3de42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonAdventure/Models/Collision/SM_Env_TreeDead_02_Convex 6.asset using Guid(df7b13b5ac8ea2949b6da3b5a6d3de42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f08d6262585eecbb3815ec2b17a5cb9') in 0.054964 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 11
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/SyntyStudios/PolygonAdventure/Models/Collision/SM_Env_Tree_014_Snow_Convex 4.asset
-  artifactKey: Guid(ea3e4b6639241f44ea8fe06835de5ba5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonAdventure/Models/Collision/SM_Env_Tree_014_Snow_Convex 4.asset using Guid(ea3e4b6639241f44ea8fe06835de5ba5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0de9aae5838ca5ba90a0c85ee323225d') in 0.061255 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 13
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/SyntyStudios/PolygonAdventure/Models/Collision/SM_Env_Tree_014_Snow_Convex 3.asset
-  artifactKey: Guid(f21b1803f9761ec409b4c1079222f4c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonAdventure/Models/Collision/SM_Env_Tree_014_Snow_Convex 3.asset using Guid(f21b1803f9761ec409b4c1079222f4c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ed5851d75f938a3363e919e4f6a98e3') in 0.059983 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 11
-========================================================================
-Received Import Request.
-  Time since last request: 0.000046 seconds.
-  path: Assets/SyntyStudios/PolygonAdventure/Models/Collision/SM_Env_Tree_015_Snow_Convex 3.asset
-  artifactKey: Guid(abaf9fa7b2be2974d8f1aa098b3c4adc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonAdventure/Models/Collision/SM_Env_Tree_015_Snow_Convex 3.asset using Guid(abaf9fa7b2be2974d8f1aa098b3c4adc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fabc2d6dd99a3e6f9c498b786cb3a55d') in 0.068090 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 11
-========================================================================
-Received Import Request.
-  Time since last request: 0.000057 seconds.
-  path: Assets/SyntyStudios/PolygonAdventure/Models/Collision/SM_Env_TreeDead_01_Convex 2.asset
-  artifactKey: Guid(8b3f56d0740e0d84ba27921b461a3a2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonAdventure/Models/Collision/SM_Env_TreeDead_01_Convex 2.asset using Guid(8b3f56d0740e0d84ba27921b461a3a2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff6cdf625af809b41d3b1142e57920bd') in 0.046870 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 5
-========================================================================
-Received Import Request.
-  Time since last request: 0.000042 seconds.
-  path: Assets/SyntyStudios/PolygonAdventure/Models/Collision/SM_Env_Tree_014_Convex 2.asset
-  artifactKey: Guid(8de47c9191e7b324ea4db05f91b56107) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonAdventure/Models/Collision/SM_Env_Tree_014_Convex 2.asset using Guid(8de47c9191e7b324ea4db05f91b56107) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0078ae1c16133ec3673fb0d6e7ab8404') in 0.061498 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 9
-========================================================================
-Received Import Request.
-  Time since last request: 1.794015 seconds.
-  path: Assets/SyntyStudios/PolygonNature/Models/SM_Tree_Generic_Giant_01.fbx
-  artifactKey: Guid(2a09a12473720d545bc0108ca893e759) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonNature/Models/SM_Tree_Generic_Giant_01.fbx using Guid(2a09a12473720d545bc0108ca893e759) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '461eebc31621f6b9d000be54581db0da') in 0.034041 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 10
-========================================================================
-Received Import Request.
-  Time since last request: 33.447226 seconds.
-  path: Assets/SyntyStudios/PolygonKnights/Models/Characters/FixedScaleCharacters/Characters_POLYGON_Knights.fbx
-  artifactKey: Guid(32562d1256a1b3b4ca9be3d6ce7adf64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonKnights/Models/Characters/FixedScaleCharacters/Characters_POLYGON_Knights.fbx using Guid(32562d1256a1b3b4ca9be3d6ce7adf64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fd03dc1765ae049f100dd5193fecfcba') in 0.138931 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 174
-========================================================================
-Received Import Request.
-  Time since last request: 0.753358 seconds.
-  path: Assets/SyntyStudios/PolygonNature/Models/SM_Tree_Willow_Small_01.fbx
-  artifactKey: Guid(6815c2213e8b85842b1fc80212901a1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SyntyStudios/PolygonNature/Models/SM_Tree_Willow_Small_01.fbx using Guid(6815c2213e8b85842b1fc80212901a1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6675b2f55a924f767ae6b4e3817141b6') in 0.031986 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 9
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.479 seconds
-Refreshing native plugins compatible for Editor in 3.49 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.884 seconds
-Domain Reload Profiling: 1361ms
-	BeginReloadAssembly (157ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (4ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (42ms)
-	RebuildCommonClasses (34ms)
-	RebuildNativeTypeToScriptingClass (11ms)
-	initialDomainReloadingComplete (32ms)
-	LoadAllAssembliesAndSetupDomain (244ms)
-		LoadAssemblies (304ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (23ms)
-			TypeCache.Refresh (13ms)
-				TypeCache.ScanAssembly (0ms)
-			ScanForSourceGeneratedMonoScriptInfo (0ms)
-			ResolveRequiredComponents (8ms)
-	FinalizeReload (884ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (423ms)
+		SetupLoadedEditorAssemblies (418ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (6ms)
-			SetLoadedEditorAssemblies (3ms)
+			SetLoadedEditorAssemblies (4ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (52ms)
-			ProcessInitializeOnLoadAttributes (321ms)
-			ProcessInitializeOnLoadMethodAttributes (33ms)
-			AfterProcessingInitializeOnLoad (8ms)
+			BeforeProcessingInitializeOnLoad (56ms)
+			ProcessInitializeOnLoadAttributes (324ms)
+			ProcessInitializeOnLoadMethodAttributes (23ms)
+			AfterProcessingInitializeOnLoad (6ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (9ms)
-Refreshing native plugins compatible for Editor in 5.29 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (7ms)
+Refreshing native plugins compatible for Editor in 4.22 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3290 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 24 unused Assets / (102.0 KB). Loaded Objects now: 3847.
-Memory consumption went from 149.2 MB to 149.1 MB.
-Total: 5.992800 ms (FindLiveObjects: 1.361100 ms CreateObjectMapping: 0.608300 ms MarkObjects: 3.934000 ms  DeleteObjects: 0.087500 ms)
+Unloading 24 unused Assets / (102.0 KB). Loaded Objects now: 3831.
+Memory consumption went from 147.6 MB to 147.5 MB.
+Total: 4.212300 ms (FindLiveObjects: 0.350700 ms CreateObjectMapping: 0.226600 ms MarkObjects: 3.552100 ms  DeleteObjects: 0.080900 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 AssetImportParameters requested are different than current active one (requested -> active):
