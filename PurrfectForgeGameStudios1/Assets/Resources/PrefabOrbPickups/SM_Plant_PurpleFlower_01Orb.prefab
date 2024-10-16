@@ -95,6 +95,8 @@ GameObject:
   - component: {fileID: 8035084774803259112}
   - component: {fileID: 2379168404524646012}
   - component: {fileID: 81373243047796026}
+  - component: {fileID: 5394015773428823781}
+  - component: {fileID: 5409367978284332656}
   m_Layer: 0
   m_Name: SM_Plant_PurpleFlower_01Orb
   m_TagString: Untagged
@@ -192,6 +194,40 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7584777703277921328}
   m_Enabled: 1
+--- !u!114 &5394015773428823781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310080029848434600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa80e71e1e3b5d459b48c2e13074160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: a779ca46e3b13bc4e90b566e76f7833d, type: 2}
+--- !u!135 &5409367978284332656
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310080029848434600}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1001 &5768266761971356671
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -376,6 +376,7 @@ public class EshesGameManager : MonoBehaviour
                 buildON = false; //build flag off
                 activeMenu = null; //active null
                 buildMenu.SetActive(false); //biuld off
+                //playerEye.chosenObject = null;
                 Debug.Log("Off");
             }
         }
@@ -389,6 +390,7 @@ public class EshesGameManager : MonoBehaviour
                 buildON = false; //build flag off
                 activeMenu = null; //active emptied
                 buildMenu.SetActive(false); //build off
+                playerEye.RemovePreview();
             }
             if (OverHeadCamera.isActiveAndEnabled)
             {

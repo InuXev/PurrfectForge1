@@ -177,7 +177,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7246101054371079015}
   - component: {fileID: 2389304335520229983}
-  - component: {fileID: 5548023484065242901}
+  - component: {fileID: -5683173034854776425}
+  - component: {fileID: 651148481105584743}
   m_Layer: 0
   m_Name: SM_Tree_Willow_Large_01Orb
   m_TagString: Untagged
@@ -226,8 +227,21 @@ LODGroup:
     renderers:
     - renderer: {fileID: 9093301212902557616}
   m_Enabled: 1
---- !u!136 &5548023484065242901
-CapsuleCollider:
+--- !u!114 &-5683173034854776425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6512338993568052613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa80e71e1e3b5d459b48c2e13074160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 41603ca3befa58348a20d150cb965b5d, type: 2}
+--- !u!135 &651148481105584743
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -241,14 +255,12 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.33469224
-  m_Height: 3.907669
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.6459765, z: 0}
+  serializedVersion: 3
+  m_Radius: 6
+  m_Center: {x: 0, y: 3.79, z: 0}
 --- !u!1001 &2314138421566424497
 PrefabInstance:
   m_ObjectHideFlags: 0

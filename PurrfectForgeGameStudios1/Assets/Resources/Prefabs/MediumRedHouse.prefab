@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: -6844768852501445269}
   - component: {fileID: -7828810520695213105}
   - component: {fileID: 2163890042206107577}
+  - component: {fileID: -5277531211274700377}
   m_Layer: 0
   m_Name: MediumRedHouse
   m_TagString: WorldObject
@@ -351,6 +352,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3108197679887696321}
   m_Mesh: {fileID: 4300000, guid: 16cb45723aa6f864988029b4e3ccf67d, type: 3}
+--- !u!65 &-5277531211274700377
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3108197679887696321}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3146363093533357669
 GameObject:
   m_ObjectHideFlags: 0

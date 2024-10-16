@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4240053459079728432}
   - component: {fileID: 2489470049226203709}
   - component: {fileID: 7807987778125721522}
-  - component: {fileID: 5040876037966463813}
+  - component: {fileID: 2634747454977966453}
+  - component: {fileID: 327029769960595964}
   m_Layer: 0
   m_Name: SM_Prop_CampFire_01Orb
   m_TagString: Untagged
@@ -85,7 +86,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &5040876037966463813
+--- !u!114 &2634747454977966453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4338074897435328155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa80e71e1e3b5d459b48c2e13074160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: eb719baf0d527574ebdc524999b776f9, type: 2}
+--- !u!135 &327029769960595964
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,12 +114,12 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.56896544
-  m_Center: {x: 0, y: -0.11, z: 0}
+  m_Radius: 1.1
+  m_Center: {x: 0, y: 0.17, z: 0}
 --- !u!1001 &7021641423224978322
 PrefabInstance:
   m_ObjectHideFlags: 0

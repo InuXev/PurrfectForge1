@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4806828568465955607}
   - component: {fileID: 945934223425101900}
   - component: {fileID: 8121749295508690582}
-  - component: {fileID: 1849527525010109701}
+  - component: {fileID: 6759592951806113433}
+  - component: {fileID: 3954524031443614285}
   m_Layer: 0
   m_Name: SM_Prop_Brazier_01Orb
   m_TagString: Untagged
@@ -85,8 +86,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1849527525010109701
-MeshCollider:
+--- !u!114 &6759592951806113433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6668379219912715543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa80e71e1e3b5d459b48c2e13074160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 2c691604e7f332d4b9081b5072a3ef97, type: 2}
+--- !u!135 &3954524031443614285
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -100,13 +114,12 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43730068239896198, guid: dc375fea83173a042bcd9e333245ca7a, type: 2}
+  serializedVersion: 3
+  m_Radius: 2
+  m_Center: {x: 0, y: 0.69, z: 0}
 --- !u!1001 &7551496813237372711
 PrefabInstance:
   m_ObjectHideFlags: 0

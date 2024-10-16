@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 3180764455300032404}
   - component: {fileID: 3201421348713304184}
   - component: {fileID: 3747399914042311949}
+  - component: {fileID: 4821115123003695519}
+  - component: {fileID: 7505202110082811362}
   m_Layer: 0
   m_Name: SM_Plant_Bush_Leaves_01Orb
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,6 +111,40 @@ LODGroup:
     renderers:
     - renderer: {fileID: 1003065399339775826}
   m_Enabled: 1
+--- !u!114 &4821115123003695519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858599265378730609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa80e71e1e3b5d459b48c2e13074160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: b52b6bedd1696de49b65075548f1d57f, type: 2}
+--- !u!135 &7505202110082811362
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858599265378730609}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &4800913093711750777
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,8 +171,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4800913093711750777}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.003, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0030000408, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -256,7 +292,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EssenceOrb
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8907300784658907530, guid: aad61f27c85e8a64f95d0f6493c1bbaf, type: 3}
+    - {fileID: 8314747106412313211, guid: aad61f27c85e8a64f95d0f6493c1bbaf, type: 3}
+    - {fileID: 4877166852960415118, guid: aad61f27c85e8a64f95d0f6493c1bbaf, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

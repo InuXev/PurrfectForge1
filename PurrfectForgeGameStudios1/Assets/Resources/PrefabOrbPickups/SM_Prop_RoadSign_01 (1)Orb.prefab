@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8480021529833752172}
   - component: {fileID: 1216156172314728637}
   - component: {fileID: 8043684550204131141}
-  - component: {fileID: 4142952376276380830}
-  - component: {fileID: 962560303848128702}
+  - component: {fileID: 8355382728053393921}
+  - component: {fileID: 824131206006381094}
   m_Layer: 0
   m_Name: SM_Prop_RoadSign_01 (1)Orb
   m_TagString: Untagged
@@ -86,8 +86,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4142952376276380830
-MeshCollider:
+--- !u!114 &8355382728053393921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742237198910668913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa80e71e1e3b5d459b48c2e13074160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: e1be723de25c96a42a4d72bc5405daa1, type: 2}
+--- !u!135 &824131206006381094
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -101,35 +114,12 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43348403264331508, guid: 4bd965536bc3fd043afffb92eb4ef0a5, type: 2}
---- !u!64 &962560303848128702
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 742237198910668913}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43847140304600080, guid: 4bd965536bc3fd043afffb92eb4ef0a5, type: 2}
+  serializedVersion: 3
+  m_Radius: 2
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &348458686864151627
 PrefabInstance:
   m_ObjectHideFlags: 0

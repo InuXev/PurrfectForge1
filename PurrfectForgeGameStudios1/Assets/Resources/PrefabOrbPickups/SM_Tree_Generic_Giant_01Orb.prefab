@@ -178,7 +178,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6467279686601305895}
   - component: {fileID: 3282628072631721494}
-  - component: {fileID: 6687351559792292665}
+  - component: {fileID: 2123385966884308293}
+  - component: {fileID: 1763549495783302324}
   m_Layer: 0
   m_Name: SM_Tree_Generic_Giant_01Orb
   m_TagString: Untagged
@@ -227,8 +228,21 @@ LODGroup:
     renderers:
     - renderer: {fileID: 6968526610903488635}
   m_Enabled: 1
---- !u!136 &6687351559792292665
-CapsuleCollider:
+--- !u!114 &2123385966884308293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8207886989039710930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa80e71e1e3b5d459b48c2e13074160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 78778fd2b2d91404f9495c8d09db60c5, type: 2}
+--- !u!135 &1763549495783302324
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -242,14 +256,12 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.6329379
-  m_Height: 4.9203
-  m_Direction: 1
-  m_Center: {x: 0.10304499, y: 1.1396611, z: -0.0032272935}
+  serializedVersion: 3
+  m_Radius: 10
+  m_Center: {x: 0, y: 3.99, z: 0}
 --- !u!1001 &3855700174885548602
 PrefabInstance:
   m_ObjectHideFlags: 0

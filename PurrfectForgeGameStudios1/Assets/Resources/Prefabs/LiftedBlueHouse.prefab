@@ -6091,6 +6091,7 @@ GameObject:
   - component: {fileID: 6052222842537507166}
   - component: {fileID: 5698774454410402538}
   - component: {fileID: 3336008813984757710}
+  - component: {fileID: -7192785764901295249}
   m_Layer: 0
   m_Name: LiftedBlueHouse
   m_TagString: WorldObject
@@ -6196,6 +6197,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4348817757986018621}
   m_Mesh: {fileID: 4300000, guid: 513480471be7a4844ab359324bde66d2, type: 3}
+--- !u!65 &-7192785764901295249
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4348817757986018621}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4380033382568053790
 GameObject:
   m_ObjectHideFlags: 0

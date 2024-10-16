@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1058418052862238353}
   - component: {fileID: 2395506970415220629}
   - component: {fileID: 4657358883035439081}
-  - component: {fileID: 2547538149113526627}
+  - component: {fileID: 2837782304849151208}
+  - component: {fileID: 2121090852594203131}
   m_Layer: 0
   m_Name: SM_Prop_Bridge_Curved_01Orb
   m_TagString: Untagged
@@ -85,8 +86,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2547538149113526627
-MeshCollider:
+--- !u!114 &2837782304849151208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2896134558405052121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa80e71e1e3b5d459b48c2e13074160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 5bff8acd3e2cf8b418c57ab258ec30c7, type: 2}
+--- !u!135 &2121090852594203131
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -100,13 +114,12 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 6d0246924bf2bfd4583cbe081c6d5ea6, type: 3}
+  serializedVersion: 3
+  m_Radius: 6
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &7945966243307056342
 PrefabInstance:
   m_ObjectHideFlags: 0

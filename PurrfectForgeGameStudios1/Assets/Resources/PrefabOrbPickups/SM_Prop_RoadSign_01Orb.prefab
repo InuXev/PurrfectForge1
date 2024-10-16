@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 2748393478364473317}
   - component: {fileID: 8363229602316463050}
   - component: {fileID: 5886413715017858762}
-  - component: {fileID: 7029298150775563884}
+  - component: {fileID: 7115968622750511597}
+  - component: {fileID: 93747501825188221}
   m_Layer: 0
   m_Name: SM_Prop_RoadSign_01Orb
   m_TagString: Untagged
@@ -85,8 +86,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7029298150775563884
-BoxCollider:
+--- !u!114 &7115968622750511597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859465137458829180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa80e71e1e3b5d459b48c2e13074160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 7e81bbc40e06872498359e6367ee8c1a, type: 2}
+--- !u!135 &93747501825188221
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -100,12 +114,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.21514487, y: 2.3533754, z: 0.293198}
-  m_Center: {x: 0.03615272, y: 1.0347075, z: -0.042390645}
+  m_Radius: 2
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &4737985768316849490
 PrefabInstance:
   m_ObjectHideFlags: 0

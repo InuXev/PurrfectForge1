@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8286336812737552904}
   - component: {fileID: 1032708436616417328}
   - component: {fileID: 338516457095131856}
-  - component: {fileID: 4534096541676096693}
+  - component: {fileID: 1414607483607118674}
+  - component: {fileID: 6032193132480783717}
   m_Layer: 0
   m_Name: SM_Prop_Rowboat_01Orb
   m_TagString: Untagged
@@ -85,8 +86,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4534096541676096693
-MeshCollider:
+--- !u!114 &1414607483607118674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8694854699986792962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa80e71e1e3b5d459b48c2e13074160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: a3ba62d29d5c1ce4d9ed00594124284d, type: 2}
+--- !u!135 &6032193132480783717
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -100,13 +114,12 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43955223084370354, guid: 1587d64e9aa124542a268f980ec9ff59, type: 2}
+  serializedVersion: 3
+  m_Radius: 3
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1001 &2618151259852492798
 PrefabInstance:
   m_ObjectHideFlags: 0

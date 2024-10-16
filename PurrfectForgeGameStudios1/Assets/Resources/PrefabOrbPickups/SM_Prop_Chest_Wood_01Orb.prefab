@@ -116,7 +116,8 @@ GameObject:
   - component: {fileID: 5515097309562437832}
   - component: {fileID: 4087009539259699205}
   - component: {fileID: 2720803803044036628}
-  - component: {fileID: 3460027574543775618}
+  - component: {fileID: 1941034626472967068}
+  - component: {fileID: 5376525800791431476}
   m_Layer: 0
   m_Name: SM_Prop_Chest_Wood_01Orb
   m_TagString: Untagged
@@ -191,8 +192,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3460027574543775618
-BoxCollider:
+--- !u!114 &1941034626472967068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7914621397393262951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa80e71e1e3b5d459b48c2e13074160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: cfdcee91666b63f4490e54d54dec0672, type: 2}
+--- !u!135 &5376525800791431476
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -206,12 +220,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1647449, y: 0.468608, z: 0.8101473}
-  m_Center: {x: -0.00000032782555, y: 0.234304, z: -0.00000047683716}
+  m_Radius: 1
+  m_Center: {x: 0, y: 0.34, z: 0}
 --- !u!1001 &5161854274776387238
 PrefabInstance:
   m_ObjectHideFlags: 0

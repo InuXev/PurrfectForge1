@@ -1008,6 +1008,7 @@ GameObject:
   - component: {fileID: 8372935718910996021}
   - component: {fileID: 163649858048027864}
   - component: {fileID: 4074564484105982144}
+  - component: {fileID: 2356209924918851147}
   m_Layer: 0
   m_Name: LargeDarkRedHouse
   m_TagString: WorldObject
@@ -1101,6 +1102,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3104725521283755631}
   m_Mesh: {fileID: 4300000, guid: 16cb45723aa6f864988029b4e3ccf67d, type: 3}
+--- !u!65 &2356209924918851147
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3104725521283755631}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3648253837269111460
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 2662423498328800702}
   - component: {fileID: 3358868894713290863}
   - component: {fileID: 440984032468093524}
-  - component: {fileID: 6373075435056335086}
+  - component: {fileID: 5080060142699064064}
+  - component: {fileID: 8232492360543385115}
   m_Layer: 0
   m_Name: SM_Prop_CartHay_01Orb
   m_TagString: Untagged
@@ -85,8 +86,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6373075435056335086
-MeshCollider:
+--- !u!114 &5080060142699064064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4326621368575704335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa80e71e1e3b5d459b48c2e13074160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 494df3d531da0d24f873b9d23b6bfd72, type: 2}
+--- !u!135 &8232492360543385115
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -100,13 +114,12 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43101160833351442, guid: 8b34c3e571305a34483957743e0e7e82, type: 2}
+  serializedVersion: 3
+  m_Radius: 2.2
+  m_Center: {x: -0.04, y: 0.76, z: -0.02}
 --- !u!1001 &4507680530256531207
 PrefabInstance:
   m_ObjectHideFlags: 0

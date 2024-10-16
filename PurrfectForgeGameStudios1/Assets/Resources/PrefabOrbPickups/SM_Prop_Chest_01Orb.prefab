@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7314272587258128904}
   - component: {fileID: 4187721188891444402}
   - component: {fileID: 3677517868075463367}
-  - component: {fileID: 1239062035649506075}
+  - component: {fileID: 3372528653129374279}
+  - component: {fileID: 5080196784931370224}
   m_Layer: 0
   m_Name: SM_Prop_Chest_01Orb
   m_TagString: Untagged
@@ -86,8 +87,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1239062035649506075
-MeshCollider:
+--- !u!114 &3372528653129374279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350557290381093106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa80e71e1e3b5d459b48c2e13074160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 4c55c7be0fc40a245849c622525e7081, type: 2}
+--- !u!135 &5080196784931370224
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -101,13 +115,12 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43231211540474392, guid: a98b0911cdf30a04c95f397995c4bf98, type: 2}
+  serializedVersion: 3
+  m_Radius: 1
+  m_Center: {x: 0, y: 0.28, z: 0}
 --- !u!1 &3721372030582171804
 GameObject:
   m_ObjectHideFlags: 0

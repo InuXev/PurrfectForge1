@@ -1,5 +1,6 @@
 using System.Collections; // Import the System.Collections namespace (not used in this script)
 using System.Collections.Generic; // Import the System.Collections.Generic namespace for using lists
+using UnityEditor.Animations;
 using UnityEngine; // Import the UnityEngine namespace for Unity-specific features like MonoBehaviour, GameObject, etc.
 
 public class EshesPlayerEye : MonoBehaviour // Define the EshesPlayerEye class, inheriting from MonoBehaviour
@@ -21,8 +22,9 @@ public class EshesPlayerEye : MonoBehaviour // Define the EshesPlayerEye class, 
     private Vector3 eyeOriginalPosition; // Private variable to store the camera's original position
     private Quaternion eyeOriginalRotation; // Private variable to store the camera's original rotation
     public PrefabList prefabList; // Public variable to reference a list of prefabs
+    public Quaternion currentRotation;
     private Vector3 fixedPreviewPosition; // Private variable to store the fixed preview position
-
+    public Material previewMaterial;
     private void Awake() // Awake is called when the script instance is being loaded
     {
         fixedPreviewPosition = objectPreviewPOS.position; // Store the initial position of the preview object
@@ -41,6 +43,7 @@ public class EshesPlayerEye : MonoBehaviour // Define the EshesPlayerEye class, 
         GroundSearchPlace(); // Call the GroundSearchPlace method to handle placing objects
         GroundSearchPickup(); // Call the GroundSearchPickup method to handle picking up objects
         ObjectPreview(); // Call the ObjectPreview method to handle displaying object previews
+        PreviewRotate(); //Rotates the preview before placement
     }
     public void ResetPosition() // Method to reset the OverHeadEye's position and rotation
     {
@@ -75,7 +78,7 @@ public class EshesPlayerEye : MonoBehaviour // Define the EshesPlayerEye class, 
                         Debug.Log("placing");
                         if (gameManager.buildON) // Check if building mode is enabled in the game manager
                         {
-                            GameObject placedObject = Instantiate(chosenObject, hit.point, transform.rotation); // Instantiate the chosen object at the hit point
+                            GameObject placedObject = Instantiate(chosenObject, hit.point, currentPreviewObject.transform.rotation); // Instantiate the chosen object at the hit point
                             item.amountHeld -= 1; // Decrease the amount held for the item
                             gameManager.UpdateItemCounts(); // Update the item counts in the game manager
 
@@ -83,8 +86,14 @@ public class EshesPlayerEye : MonoBehaviour // Define the EshesPlayerEye class, 
                             {
                                 RemovePreview(); // Call the RemovePreview method to remove the object preview
                             }
-
-                            placedObject.GetComponent<MeshCollider>().enabled = true; // Enable the MeshCollider on the placed object
+                            if (placedObject.GetComponent<MeshCollider>() != null)
+                            {
+                                placedObject.GetComponent<MeshCollider>().enabled = true; // Enable the MeshCollider on the placed object
+                            }
+                            if (placedObject.GetComponent<BoxCollider>() != null)
+                            {
+                                placedObject.GetComponent<BoxCollider>().enabled = true; // Enable the MeshCollider on the placed object
+                            }
                         }
                         else if (chosenObject == null) // If no object is selected
                         {
@@ -119,6 +128,67 @@ public class EshesPlayerEye : MonoBehaviour // Define the EshesPlayerEye class, 
             }
         }
     }
+    public void ChangePreview() // Method to change the object preview
+    {
+        if (chosenObject != previewObject) // Check if the selected object is different from the current preview object
+        {
+            previewObject = chosenObject; // Update the preview object to the selected object
+
+            if (currentPreviewObject != null) // If there is a current preview object
+            {
+                Destroy(currentPreviewObject); // Destroy the existing preview object
+            }
+
+            // Instantiate a new preview object
+            currentPreviewObject = Instantiate(previewObject, objectPreviewPOS.position, Quaternion.identity);
+
+            // Change the material for all child MeshRenderer components
+            MeshRenderer[] childRenderers = currentPreviewObject.GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer renderer in childRenderers)
+            {
+                // Handle multiple material elements (e.g., trunk and leaves)
+                Material[] materials = renderer.materials;
+                for (int i = 0; i < materials.Length; i++)
+                {
+                    materials[i] = previewMaterial; // Assign the preview material to each element
+                }
+                renderer.materials = materials; // Reassign the updated materials array back to the renderer
+            }
+
+            // Handle LODGroups and change materials for LOD levels (trees or objects with LODs)
+            LODGroup[] lodGroups = currentPreviewObject.GetComponentsInChildren<LODGroup>();
+            foreach (LODGroup lodGroup in lodGroups)
+            {
+                LOD[] lods = lodGroup.GetLODs(); // Get all LOD levels
+                foreach (LOD lod in lods)
+                {
+                    foreach (Renderer lodRenderer in lod.renderers) // Loop through renderers in each LOD
+                    {
+                        if (lodRenderer is MeshRenderer meshRenderer) // Ensure it's a MeshRenderer
+                        {
+                            // Apply the preview material to each material element of the LOD renderer
+                            Material[] lodMaterials = meshRenderer.materials;
+                            for (int i = 0; i < lodMaterials.Length; i++)
+                            {
+                                lodMaterials[i] = previewMaterial; // Assign the preview material
+                            }
+                            meshRenderer.materials = lodMaterials; // Reassign the updated materials array back to the LOD renderer
+                        }
+                    }
+                }
+            }
+
+            // Disable colliders for the preview object
+            if (currentPreviewObject.GetComponent<MeshCollider>() != null)
+            {
+                currentPreviewObject.GetComponent<MeshCollider>().enabled = false; // Disable MeshCollider on the preview object
+            }
+            if (currentPreviewObject.GetComponent<BoxCollider>() != null)
+            {
+                currentPreviewObject.GetComponent<BoxCollider>().enabled = false; // Disable BoxCollider on the preview object
+            }
+        }
+    }
 
     public void ObjectPreview() // Method to handle the object preview display
     {
@@ -137,7 +207,51 @@ public class EshesPlayerEye : MonoBehaviour // Define the EshesPlayerEye class, 
                     if (currentPreviewObject == null) // If there is no current preview object
                     {
                         currentPreviewObject = Instantiate(previewObject, objectPreviewPOS.position, Quaternion.identity); // Instantiate a new preview object at the preview position
-                        currentPreviewObject.GetComponent<MeshCollider>().enabled = false; // Disable the MeshCollider on the preview object
+
+                        MeshRenderer[] childRenderers = currentPreviewObject.GetComponentsInChildren<MeshRenderer>();
+                        foreach (MeshRenderer renderer in childRenderers)
+                        {
+                            // Handle multiple material elements (e.g., trunk and leaves)
+                            Material[] materials = renderer.materials;
+                            for (int i = 0; i < materials.Length; i++)
+                            {
+                                materials[i] = previewMaterial; // Assign the preview material to each element
+                            }
+                            renderer.materials = materials; // Reassign the updated materials array back to the renderer
+                        }
+
+                        // Handle LODGroups and change materials for LOD levels (trees or objects with LODs)
+                        LODGroup[] lodGroups = currentPreviewObject.GetComponentsInChildren<LODGroup>();
+                        foreach (LODGroup lodGroup in lodGroups)
+                        {
+                            LOD[] lods = lodGroup.GetLODs(); // Get all LOD levels
+                            foreach (LOD lod in lods)
+                            {
+                                foreach (Renderer lodRenderer in lod.renderers) // Loop through renderers in each LOD
+                                {
+                                    if (lodRenderer is MeshRenderer meshRenderer) // Ensure it's a MeshRenderer
+                                    {
+                                        // Apply the preview material to each material element of the LOD renderer
+                                        Material[] lodMaterials = meshRenderer.materials;
+                                        for (int i = 0; i < lodMaterials.Length; i++)
+                                        {
+                                            lodMaterials[i] = previewMaterial; // Assign the preview material
+                                        }
+                                        meshRenderer.materials = lodMaterials; // Reassign the updated materials array back to the LOD renderer
+                                    }
+                                }
+                            }
+                        }
+
+                        // Disable colliders for the preview object
+                        if (currentPreviewObject.GetComponent<MeshCollider>() != null)
+                        {
+                            currentPreviewObject.GetComponent<MeshCollider>().enabled = false; // Disable MeshCollider on the preview object
+                        }
+                        if (currentPreviewObject.GetComponent<BoxCollider>() != null)
+                        {
+                            currentPreviewObject.GetComponent<BoxCollider>().enabled = false; // Disable BoxCollider on the preview object
+                        }
                     }
                     else // If there is an existing preview object
                     {
@@ -172,21 +286,6 @@ public class EshesPlayerEye : MonoBehaviour // Define the EshesPlayerEye class, 
         }
     }
 
-    public void ChangePreview() // Method to change the object preview
-    {
-        if (chosenObject != previewObject) // Check if the selected object is different from the current preview object
-        {
-            previewObject = chosenObject; // Update the preview object to the selected object
-
-            if (currentPreviewObject != null) // If there is a current preview object
-            {
-                Destroy(currentPreviewObject); // Destroy the existing preview object
-                currentPreviewObject = Instantiate(previewObject, objectPreviewPOS.position, Quaternion.identity); // Instantiate a new preview object
-                currentPreviewObject.GetComponent<MeshCollider>().enabled = false; // Disable the MeshCollider on the new preview object
-            }
-        }
-    }
-
     public void RemovePreview() // Method to remove the object preview
     {
         if (currentPreviewObject != null) // If there is a current preview object
@@ -195,4 +294,20 @@ public class EshesPlayerEye : MonoBehaviour // Define the EshesPlayerEye class, 
             currentPreviewObject = null; // Clear the reference to the preview object
         }
     }
+
+    public void PreviewRotate()
+    {
+        if (currentPreviewObject != null) // If there is a current preview object
+        {
+            if (Input.GetKey(KeyCode.X)) //checks continuously for Q to be down
+            {
+                currentPreviewObject.transform.Rotate(0f, 30f * Time.deltaTime, 0f, Space.Self); //rotates preview and provides the BUILT object with its rotation
+            }
+            if (Input.GetKey(KeyCode.Z)) //checks continuously for Q to be down
+            {
+                currentPreviewObject.transform.Rotate(0f, -30f * Time.deltaTime, 0f, Space.Self); //rotates preview and provides the BUILT object with its rotation
+            }
+        }
+    }
+
 }

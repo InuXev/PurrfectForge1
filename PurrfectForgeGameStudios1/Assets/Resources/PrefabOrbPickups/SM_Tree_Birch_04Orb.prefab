@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4223477915947733363}
   - component: {fileID: 6557598322921469157}
-  - component: {fileID: 421108038000858182}
+  - component: {fileID: 6249648636425316431}
+  - component: {fileID: 6809185249766395622}
   m_Layer: 0
   m_Name: SM_Tree_Birch_04Orb
   m_TagString: Untagged
@@ -59,8 +60,21 @@ LODGroup:
     renderers:
     - renderer: {fileID: 1124580646806954383}
   m_Enabled: 1
---- !u!136 &421108038000858182
-CapsuleCollider:
+--- !u!114 &6249648636425316431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876917458315296317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa80e71e1e3b5d459b48c2e13074160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 70dff751e00e2e44ca6a6ec301b8c4b6, type: 2}
+--- !u!135 &6809185249766395622
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -74,14 +88,12 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.14776587
-  m_Height: 3.907669
-  m_Direction: 1
-  m_Center: {x: 0.029341936, y: 1.6459765, z: 0}
+  serializedVersion: 3
+  m_Radius: 4
+  m_Center: {x: 0, y: 2.33, z: 0}
 --- !u!1 &3537975794876683065
 GameObject:
   m_ObjectHideFlags: 0

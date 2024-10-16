@@ -6792,6 +6792,7 @@ GameObject:
   - component: {fileID: 79277109484763556}
   - component: {fileID: -1347911046743037372}
   - component: {fileID: 8956523830998304796}
+  - component: {fileID: 8473368653332733300}
   m_Layer: 0
   m_Name: LargeGreenHouse
   m_TagString: WorldObject
@@ -6885,6 +6886,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8795266468012196582}
   m_Mesh: {fileID: 4300000, guid: 16cb45723aa6f864988029b4e3ccf67d, type: 3}
+--- !u!65 &8473368653332733300
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8795266468012196582}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8834605086838260142
 GameObject:
   m_ObjectHideFlags: 0

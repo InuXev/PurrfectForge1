@@ -7957,6 +7957,7 @@ GameObject:
   - component: {fileID: -4003327229286325910}
   - component: {fileID: 4640883709560503913}
   - component: {fileID: 5237797638558306458}
+  - component: {fileID: 6564046435352059357}
   m_Layer: 0
   m_Name: BlackSmith
   m_TagString: WorldObject
@@ -8061,6 +8062,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8206602176463475106}
   m_Mesh: {fileID: 4300000, guid: 38251776a33164a4d9c50a1546b670d9, type: 3}
+--- !u!65 &6564046435352059357
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8206602176463475106}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8667550809400818093
 GameObject:
   m_ObjectHideFlags: 0

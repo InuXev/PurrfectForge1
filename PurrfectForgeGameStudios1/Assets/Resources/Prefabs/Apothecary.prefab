@@ -7107,7 +7107,7 @@ GameObject:
   - component: {fileID: 8278181921991083989}
   - component: {fileID: -5926884649709107877}
   - component: {fileID: 7558168018359107244}
-  - component: {fileID: 5258372672069419967}
+  - component: {fileID: 1341026590454368555}
   m_Layer: 0
   m_Name: Apothecary
   m_TagString: WorldObject
@@ -7166,7 +7166,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scriptableItems: {fileID: 11400000, guid: 10d0914e5cd87b448b429cd92a4a57b0, type: 2}
   type: 
-  eshesBuildObjectName: 
+  eshesBuildObjectName: Apothecary
+  description: A Small tower where the Local Eterian Aopthecary works.
+  dropChance: 0
 --- !u!64 &-5926884649709107877
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7197,7 +7199,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9204925311419796800}
   m_Mesh: {fileID: 4300000, guid: 6a8877c15fd00014aa3f8364da545d98, type: 3}
---- !u!65 &5258372672069419967
+--- !u!65 &1341026590454368555
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7214,7 +7216,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.89, y: 7.56, z: 3.53}
-  m_Center: {x: 0, y: 3.7175555, z: -0.33}
+  m_Size: {x: 2.5752275, y: 5.073709, z: 2.214489}
+  m_Center: {x: 0.046271864, y: 2.5061717, z: 0.026600344}

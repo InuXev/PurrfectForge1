@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6135316132252652072}
+  - component: {fileID: 1520834821395669340}
+  - component: {fileID: 3501888325486926715}
   m_Layer: 0
   m_Name: ApothecaryOrb
   m_TagString: Untagged
@@ -25,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 9204925311419796800}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071081, z: -0, w: 0.7071056}
-  m_LocalPosition: {x: 7.09, y: 12.36, z: -23.437}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalPosition: {x: 7.1286, y: 12.506, z: -23.257}
+  m_LocalScale: {x: 0.078198, y: 0.078198, z: 0.078198}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2495014042548759690}
@@ -53,6 +55,40 @@ Transform:
   - {fileID: 4941827308132219860}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!135 &1520834821395669340
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9204925311419796800}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 9
+  m_Center: {x: -8.52, y: -3.86, z: 1.79}
+--- !u!114 &3501888325486926715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9204925311419796800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa80e71e1e3b5d459b48c2e13074160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 10d0914e5cd87b448b429cd92a4a57b0, type: 2}
 --- !u!1001 &320642472723003864
 PrefabInstance:
   m_ObjectHideFlags: 0
