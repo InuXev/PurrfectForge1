@@ -1,0 +1,653 @@
+Using pre-set license
+Built from '2022.3/staging' branch; Version is '2022.3.28f1 (6bae5ce6b222) revision 7056988'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22631) 64bit Professional' Language: 'en' Physical Memory: 16085 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\2022.3.28f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Repos/PurrfectForge1/PurrfectForgeGameStudios1
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+54286
+Successfully changed project path to: C:/Repos/PurrfectForge1/PurrfectForgeGameStudios1
+C:/Repos/PurrfectForge1/PurrfectForgeGameStudios1
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [14224] Host "[IP] 192.168.12.195 [Port] 0 [Flags] 2 [Guid] 2442424295 [EditorId] 2442424295 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [14224] Host "[IP] 192.168.12.195 [Port] 0 [Flags] 2 [Guid] 2442424295 [EditorId] 2442424295 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[Physics::Module] Initialized MultithreadedJobDispatcher with 23 workers.
+Refreshing native plugins compatible for Editor in 5.31 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.28f1 (6bae5ce6b222)
+[Subsystems] Discovering subsystems at path C:/2022.3.28f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Repos/PurrfectForge1/PurrfectForgeGameStudios1/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 4070 Laptop GPU (ID=0x2820)
+    Vendor:   NVIDIA
+    VRAM:     7948 MB
+    Driver:   32.0.15.6070
+Initialize mono
+Mono path[0] = 'C:/2022.3.28f1/Editor/Data/Managed'
+Mono path[1] = 'C:/2022.3.28f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/2022.3.28f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56820
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/2022.3.28f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.003763 seconds.
+- Loaded All Assemblies, in  0.497 seconds
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.228 seconds
+Domain Reload Profiling: 724ms
+	BeginReloadAssembly (205ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (2ms)
+	RebuildCommonClasses (36ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (57ms)
+	LoadAllAssembliesAndSetupDomain (188ms)
+		LoadAssemblies (204ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (185ms)
+			TypeCache.Refresh (183ms)
+				TypeCache.ScanAssembly (158ms)
+			ScanForSourceGeneratedMonoScriptInfo (1ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (228ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (183ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (6ms)
+			SetLoadedEditorAssemblies (6ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (2ms)
+			ProcessInitializeOnLoadAttributes (126ms)
+			ProcessInitializeOnLoadMethodAttributes (44ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.640 seconds
+Refreshing native plugins compatible for Editor in 2.80 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.500 seconds
+Domain Reload Profiling: 1139ms
+	BeginReloadAssembly (126ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (17ms)
+	RebuildCommonClasses (28ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (36ms)
+	LoadAllAssembliesAndSetupDomain (440ms)
+		LoadAssemblies (354ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (161ms)
+			TypeCache.Refresh (142ms)
+				TypeCache.ScanAssembly (130ms)
+			ScanForSourceGeneratedMonoScriptInfo (13ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (501ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (382ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (47ms)
+			ProcessInitializeOnLoadAttributes (304ms)
+			ProcessInitializeOnLoadMethodAttributes (18ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (5ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 3.06 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3318 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 46 unused Assets / (131.2 KB). Loaded Objects now: 3806.
+Memory consumption went from 154.5 MB to 154.3 MB.
+Total: 3.183700 ms (FindLiveObjects: 0.202000 ms CreateObjectMapping: 0.085500 ms MarkObjects: 2.789000 ms  DeleteObjects: 0.105800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 288169.549675 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_BR_Demon_01.prefab
+  artifactKey: Guid(13087e211b7388945b22bab7dd93cb8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_BR_Demon_01.prefab using Guid(13087e211b7388945b22bab7dd93cb8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '954e68bf0a540bdb7c45c2ab7b8e8054') in 0.331284 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 157
+========================================================================
+Received Import Request.
+  Time since last request: 3.493012 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_BR_Dwarf_Casual_Female_01.prefab
+  artifactKey: Guid(05ecb317a3ea6a147ac4b2eb6ced4dc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_BR_Dwarf_Casual_Female_01.prefab using Guid(05ecb317a3ea6a147ac4b2eb6ced4dc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab06291740a66e50726d267169de1135') in 0.104231 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 155
+========================================================================
+Received Import Request.
+  Time since last request: 0.753380 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_BR_Dwarf_Casual_Male_01.prefab
+  artifactKey: Guid(a2de6afb577847a41b73cb3acf8e835f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_BR_Dwarf_Casual_Male_01.prefab using Guid(a2de6afb577847a41b73cb3acf8e835f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '320d1b0e5fbbd50241ba39cc85b3332b') in 0.078591 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 165
+========================================================================
+Received Import Request.
+  Time since last request: 0.705218 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_BR_Dwarf_King_01.prefab
+  artifactKey: Guid(6483f7ec5894c384b9de01e9144a465a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_BR_Dwarf_King_01.prefab using Guid(6483f7ec5894c384b9de01e9144a465a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac0a60a5456ff0d7b5a99c8f82749873') in 0.090413 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 167
+========================================================================
+Received Import Request.
+  Time since last request: 0.719728 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_BR_Dwarf_Miner_01.prefab
+  artifactKey: Guid(9738a54760a896d4fad41d7e94b87958) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_BR_Dwarf_Miner_01.prefab using Guid(9738a54760a896d4fad41d7e94b87958) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b8fe980336cf6dcd564ac791e1c768c') in 0.062807 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 170
+========================================================================
+Received Import Request.
+  Time since last request: 0.797641 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_BR_Dwarf_Soldier_Female_01.prefab
+  artifactKey: Guid(9e880c5e179ee524bb8f0b639c5d34cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_BR_Dwarf_Soldier_Female_01.prefab using Guid(9e880c5e179ee524bb8f0b639c5d34cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'da1de15a331134944be92e3ef173a6ee') in 0.067583 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 163
+========================================================================
+Received Import Request.
+  Time since last request: 0.692360 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_BR_Dwarf_Soldier_Male_01.prefab
+  artifactKey: Guid(5e0e2eede99162942be359c7281e338f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_BR_Dwarf_Soldier_Male_01.prefab using Guid(5e0e2eede99162942be359c7281e338f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3a477898927032114de99722a400b7e') in 0.056481 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 167
+========================================================================
+Received Import Request.
+  Time since last request: 0.771844 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_BR_Dwarf_Worker_01.prefab
+  artifactKey: Guid(ff19450fca7dc8047840a8947343e429) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_BR_Dwarf_Worker_01.prefab using Guid(ff19450fca7dc8047840a8947343e429) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2da4bb9974376187a75309fab7858fce') in 0.054578 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 168
+========================================================================
+Received Import Request.
+  Time since last request: 0.698665 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_Hero_Female_01.prefab
+  artifactKey: Guid(06a217c3ea84f3647bb83f3656e3832b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_Hero_Female_01.prefab using Guid(06a217c3ea84f3647bb83f3656e3832b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd33909b96b36814a59445bf8f20893e4') in 0.077640 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 160
+========================================================================
+Received Import Request.
+  Time since last request: 2.583803 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_Hero_Male_01.prefab
+  artifactKey: Guid(d47d5ac7dfc19da419169847c76d638b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_Hero_Male_01.prefab using Guid(d47d5ac7dfc19da419169847c76d638b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0412fb5905126a854eadd3d75b64a067') in 0.112807 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 160
+========================================================================
+Received Import Request.
+  Time since last request: 11.388618 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_Nomad_Female_01.prefab
+  artifactKey: Guid(10202ef1ef7802a4a8bafb709626e655) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_Nomad_Female_01.prefab using Guid(10202ef1ef7802a4a8bafb709626e655) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9a474c0fb9b08409afa45ed474769337') in 0.055700 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 170
+========================================================================
+Received Import Request.
+  Time since last request: 0.820366 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_Nomad_Female_02.prefab
+  artifactKey: Guid(bf4a10fe2fa8b754f95c50c4d6edd531) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_Nomad_Female_02.prefab using Guid(bf4a10fe2fa8b754f95c50c4d6edd531) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1dc721e91ca7d5ab85ad608cbcb05e97') in 0.052738 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 170
+========================================================================
+Received Import Request.
+  Time since last request: 1.875597 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_Skeleton_01.prefab
+  artifactKey: Guid(908987278249b014f91c9e63dd7174e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_Skeleton_01.prefab using Guid(908987278249b014f91c9e63dd7174e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2dbbce6f322dc237a81b7a5da2a3dd09') in 0.077858 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 155
+========================================================================
+Received Import Request.
+  Time since last request: 2.879667 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_Skeleton_02.prefab
+  artifactKey: Guid(1e1312b383a084a42a9930f135c39ff7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_Skeleton_02.prefab using Guid(1e1312b383a084a42a9930f135c39ff7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '696256adf0dff6317c97954cf1bcb7f2') in 0.095265 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 155
+========================================================================
+Received Import Request.
+  Time since last request: 0.736606 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_Skeleton_03.prefab
+  artifactKey: Guid(3e4cf0221a0e8db41bcb50be99ebe457) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_Skeleton_03.prefab using Guid(3e4cf0221a0e8db41bcb50be99ebe457) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ef43e685c55214585250c7cfa39c421a') in 0.062394 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 155
+========================================================================
+Received Import Request.
+  Time since last request: 0.793549 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_Undead_Knight_01.prefab
+  artifactKey: Guid(cb4ff29f6f657bc4d94ed49c50a70be2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Chr_Undead_Knight_01.prefab using Guid(cb4ff29f6f657bc4d94ed49c50a70be2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc2b8d2c8d41b4d990ed39d91e71324d') in 0.046563 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 160
+========================================================================
+Received Import Request.
+  Time since last request: 12.522361 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Environments/SM_Env_Bramble_01.prefab
+  artifactKey: Guid(8b4f36b4159c2b54485db28da3403a33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Environments/SM_Env_Bramble_01.prefab using Guid(8b4f36b4159c2b54485db28da3403a33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '459ec041319697eb635f4189ffc11ef9') in 0.057275 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 12
+========================================================================
+Received Import Request.
+  Time since last request: 1.031941 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Environments/SM_Env_Bramble_02.prefab
+  artifactKey: Guid(8c73641373f39e842b21f84d113028e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Environments/SM_Env_Bramble_02.prefab using Guid(8c73641373f39e842b21f84d113028e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9a1cce69eb2f49b8698f441edf4efbc') in 0.087551 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 12
+========================================================================
+Received Import Request.
+  Time since last request: 1.597986 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Environments/SM_Env_Camp_Well_01.prefab
+  artifactKey: Guid(cfc9573ae38fc79419a8512559402ff4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Environments/SM_Env_Camp_Well_01.prefab using Guid(cfc9573ae38fc79419a8512559402ff4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '124e3f1cbdecee0a16b58b0ceeaa552c') in 0.059653 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 14
+========================================================================
+Received Import Request.
+  Time since last request: 6.315188 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Environments/SM_Env_Dwarf_Beam_01.prefab
+  artifactKey: Guid(66a745ff6a7efef42a71babd6004339d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Environments/SM_Env_Dwarf_Beam_01.prefab using Guid(66a745ff6a7efef42a71babd6004339d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b26dfe37b137c446f98d948737275fa2') in 0.052727 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 14
+========================================================================
+Received Import Request.
+  Time since last request: 0.629415 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Environments/SM_Env_Dwarf_Beam_02.prefab
+  artifactKey: Guid(9ac4913c244bc114480507b9706a37fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Environments/SM_Env_Dwarf_Beam_02.prefab using Guid(9ac4913c244bc114480507b9706a37fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94ab41986bbe2f7e722ba33d5a555410') in 0.046893 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 14
+========================================================================
+Received Import Request.
+  Time since last request: 11.222517 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Environments/SM_Env_Hell_Spikes_04.prefab
+  artifactKey: Guid(92064442806018f4095480c9d0700358) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Environments/SM_Env_Hell_Spikes_04.prefab using Guid(92064442806018f4095480c9d0700358) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b343d943daca8d14e2caacda971f5db') in 0.086246 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 14
+========================================================================
+Received Import Request.
+  Time since last request: 7.254348 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Environments/SM_Env_Rubble_Tile_01.prefab
+  artifactKey: Guid(89f930ca1d4b4274680af1f9c4851f77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Environments/SM_Env_Rubble_Tile_01.prefab using Guid(89f930ca1d4b4274680af1f9c4851f77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14732b90f6b07075478305684f2d2f45') in 0.053694 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 14
+========================================================================
+Received Import Request.
+  Time since last request: 3.080259 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Vehicles/SM_Veh_SandBoat_01.prefab
+  artifactKey: Guid(4f4c7544edbd3dd46a7b7467e5f071ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Vehicles/SM_Veh_SandBoat_01.prefab using Guid(4f4c7544edbd3dd46a7b7467e5f071ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54536d3d61a738cd9d31bd4d291413a1') in 0.082134 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 29
+========================================================================
+Received Import Request.
+  Time since last request: 4.301045 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Vehicles/SM_Veh_SandBoat_02.prefab
+  artifactKey: Guid(10b1d697ddf0bd44aaac5c25840cf485) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Vehicles/SM_Veh_SandBoat_02.prefab using Guid(10b1d697ddf0bd44aaac5c25840cf485) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '09aa1879ec78af032a0ea244820aeefe') in 0.052751 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 27
+========================================================================
+Received Import Request.
+  Time since last request: 41.981892 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Cart_Rail_01.prefab
+  artifactKey: Guid(69ebcf6f565ca8d4db25575f67b5821f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Cart_Rail_01.prefab using Guid(69ebcf6f565ca8d4db25575f67b5821f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb8a453d032eccbb9f4a4cf01a2258f2') in 0.074785 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 15
+========================================================================
+Received Import Request.
+  Time since last request: 0.560903 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Big_Sparkle_01.prefab
+  artifactKey: Guid(9f21036c7c5308c4797dc95d8aba17d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Big_Sparkle_01.prefab using Guid(9f21036c7c5308c4797dc95d8aba17d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e0cfda4f0bad34753e89e4e843a70bfa') in 0.021640 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 8
+========================================================================
+Received Import Request.
+  Time since last request: 0.006217 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Materials/Misc/Gold_Sparkle_Mat.mat
+  artifactKey: Guid(685aabbe2631d66469ea6e4fe8d17124) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Materials/Misc/Gold_Sparkle_Mat.mat using Guid(685aabbe2631d66469ea6e4fe8d17124) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a027d1b086ff7301305c34f8e25b6053') in 0.022779 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.849754 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Candle_Flame_01.prefab
+  artifactKey: Guid(d32281687553f8e47bafdbc91759c987) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Candle_Flame_01.prefab using Guid(d32281687553f8e47bafdbc91759c987) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3ddee68b404a661d63462548a55250ba') in 0.021093 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 8
+========================================================================
+Received Import Request.
+  Time since last request: 0.002262 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Models/FX_Candle_Mesh_01.fbx
+  artifactKey: Guid(ec0f507e83a4c0d469065873268c8ed1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Models/FX_Candle_Mesh_01.fbx using Guid(ec0f507e83a4c0d469065873268c8ed1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '18116cb2f4c8d59358ca675f4761ae00') in 0.036048 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 8.097608 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Sand_Waterfall_Base_01.prefab
+  artifactKey: Guid(93633ef99828be24cb54e1b6a1ea4df1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Sand_Waterfall_Base_01.prefab using Guid(93633ef99828be24cb54e1b6a1ea4df1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9531956c38614c5a262c757b3fe7ed8a') in 0.022361 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.001733 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Models/FX_Sphere_Simple_01.fbx
+  artifactKey: Guid(f876b5413874a764fa61bb243a959a1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Models/FX_Sphere_Simple_01.fbx using Guid(f876b5413874a764fa61bb243a959a1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37a8ed16f060b1f20b489e2c02cfb015') in 0.024727 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 2.269554 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Sand_Waterfall_Large_01.prefab
+  artifactKey: Guid(2d782bfc9ed42c24596439612f009665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Sand_Waterfall_Large_01.prefab using Guid(2d782bfc9ed42c24596439612f009665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84974212ac88ab78f9b8131051437b11') in 0.022725 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 7.122309 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Sand_Waterfall_Small_01.prefab
+  artifactKey: Guid(b169d051e8e7d154f811e6dfe9d0967f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Sand_Waterfall_Small_01.prefab using Guid(b169d051e8e7d154f811e6dfe9d0967f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9f772df3941f7798f46a8c72d74441e') in 0.021565 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 3.437719 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Lava_Rocks_Spread_01.prefab
+  artifactKey: Guid(275ce8159925c14489d0467d0e9ac9c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Lava_Rocks_Spread_01.prefab using Guid(275ce8159925c14489d0467d0e9ac9c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '159d385f166cbdb5c1934af3dc85187f') in 0.025628 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 11
+========================================================================
+Received Import Request.
+  Time since last request: 5.309339 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Lava_Rocks_Still_01.prefab
+  artifactKey: Guid(f9e7b57b787e04c458f5d932888b32e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Lava_Rocks_Still_01.prefab using Guid(f9e7b57b787e04c458f5d932888b32e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab7b22a855890747b971743c17e6ee2f') in 0.021604 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 11
+========================================================================
+Received Import Request.
+  Time since last request: 4.380052 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Lava_Rocks_Still_Large_01.prefab
+  artifactKey: Guid(d2f61431ccee79e45bbf1d8657199ff0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Lava_Rocks_Still_Large_01.prefab using Guid(d2f61431ccee79e45bbf1d8657199ff0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '446b9735f39a44bc74e28c8c990e5602') in 0.023157 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 11
+========================================================================
+Received Import Request.
+  Time since last request: 3.129467 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/Misc
+  artifactKey: Guid(27d287a64d83b9a48aeda1dfec32bc55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/Misc using Guid(27d287a64d83b9a48aeda1dfec32bc55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5fa155f157436da5153196f0851e00d0') in 0.000684 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 4.504124 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Dust_Embers_Small_01.prefab
+  artifactKey: Guid(12cbaea427fa02d48bd63062e66a8a0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Dust_Embers_Small_01.prefab using Guid(12cbaea427fa02d48bd63062e66a8a0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17787944221143f4a0d4b146ae440a98') in 0.024584 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 8
+========================================================================
+Received Import Request.
+  Time since last request: 0.001000 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Materials/Misc/FX_Circle_Mat.mat
+  artifactKey: Guid(5a1ea726969f8784292b2da4647f0623) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Materials/Misc/FX_Circle_Mat.mat using Guid(5a1ea726969f8784292b2da4647f0623) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0422fc39a23b55418fecbeb2f6853de3') in 0.030524 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 2.389162 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Electric_01.prefab
+  artifactKey: Guid(89170cefb4a33d5408fa646571f347c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/FX/FX_Electric_01.prefab using Guid(89170cefb4a33d5408fa646571f347c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b07fed4afd3b0cffdb0d533f4388e217') in 0.015769 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 109.071896 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Weapons
+  artifactKey: Guid(75b2759b7843c21489f41e6a4ae6e9cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Weapons using Guid(75b2759b7843c21489f41e6a4ae6e9cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4620f19aae8aa8a9c5377d1c99c49fb') in 0.000497 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 1.074653 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Weapons/SM_Wep_Axe_Large_01.prefab
+  artifactKey: Guid(3e9cb18c8fcf9f04b88ef01ef0b10e5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Weapons/SM_Wep_Axe_Large_01.prefab using Guid(3e9cb18c8fcf9f04b88ef01ef0b10e5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7edaacf8669d9839315ed2b10e445cd') in 0.074915 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 14
+========================================================================
+Received Import Request.
+  Time since last request: 1.111764 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Weapons/SM_Wep_Axe_Large_02.prefab
+  artifactKey: Guid(d0ef630caefee3d46b0165e6c98ed0e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Weapons/SM_Wep_Axe_Large_02.prefab using Guid(d0ef630caefee3d46b0165e6c98ed0e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d3d97543f800725d29cf676892d558a') in 0.056463 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 14
+========================================================================
+Received Import Request.
+  Time since last request: 0.444769 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Weapons/SM_Wep_Axe_Large_05.prefab
+  artifactKey: Guid(278760ec1f39bc54893388c173386a23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Weapons/SM_Wep_Axe_Large_05.prefab using Guid(278760ec1f39bc54893388c173386a23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '52b621ec59a67089246cac7f017ad698') in 0.057346 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 14
+========================================================================
+Received Import Request.
+  Time since last request: 3.515613 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Runes/SM_Rune_Letter_05.prefab
+  artifactKey: Guid(556214ec9b5c57848b6a4246ce4ddb15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Runes/SM_Rune_Letter_05.prefab using Guid(556214ec9b5c57848b6a4246ce4ddb15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9cbad415d1df676ac88343109e227788') in 0.075407 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 12
+========================================================================
+Received Import Request.
+  Time since last request: 0.573040 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Runes/SM_Rune_Letter_09.prefab
+  artifactKey: Guid(2d1b8503d6c608d4c9f4da5070961efc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Runes/SM_Rune_Letter_09.prefab using Guid(2d1b8503d6c608d4c9f4da5070961efc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08ae369e4d2c0b4d5f0cacae5af51b3e') in 0.080032 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 12
+========================================================================
+Received Import Request.
+  Time since last request: 9.311734 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/BR_Attachmnets
+  artifactKey: Guid(274e87270f3c3ee48938eaaa8bf71c1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/BR_Attachmnets using Guid(274e87270f3c3ee48938eaaa8bf71c1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa00a1229c1b4fb5834b2a11b5866343') in 0.000845 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.837894 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/BR_Attachmnets/SM_Chr_Attach_Dwarf_Beard_01.prefab
+  artifactKey: Guid(d7b046e74f34b0845821320cf113a7e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/BR_Attachmnets/SM_Chr_Attach_Dwarf_Beard_01.prefab using Guid(d7b046e74f34b0845821320cf113a7e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9add5cb74324eb1c77df9114d702917a') in 0.053995 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 12
+========================================================================
+Received Import Request.
+  Time since last request: 0.829751 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/BR_Attachmnets/SM_Chr_Attach_Dwarf_Beard_02.prefab
+  artifactKey: Guid(8f288e6e820a0e6468780856104375c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/BR_Attachmnets/SM_Chr_Attach_Dwarf_Beard_02.prefab using Guid(8f288e6e820a0e6468780856104375c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea69491c4e68f25a3659dd6a9211c521') in 0.085022 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 12
+========================================================================
+Received Import Request.
+  Time since last request: 0.652167 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/BR_Attachmnets/SM_Chr_Attach_Dwarf_Beard_05.prefab
+  artifactKey: Guid(e77060229d13cd346a7dcc090bba4a97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/BR_Attachmnets/SM_Chr_Attach_Dwarf_Beard_05.prefab using Guid(e77060229d13cd346a7dcc090bba4a97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb31293afb20b3d1ccf76f811a3d81ca') in 0.053489 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 12
+========================================================================
+Received Import Request.
+  Time since last request: 1.621232 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/BR_Attachmnets/SM_Chr_Attach_Dwarf_Bandana_01.prefab
+  artifactKey: Guid(d329317082cee2a4d8c662b9b4df89b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/BR_Attachmnets/SM_Chr_Attach_Dwarf_Bandana_01.prefab using Guid(d329317082cee2a4d8c662b9b4df89b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6ef206c513fabd8f67dd00f1d4fda0f') in 0.062565 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 12
+========================================================================
+Received Import Request.
+  Time since last request: 2.964911 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/BR_Attachmnets/SM_Chr_Attach_Dwarf_Helmet_Soldier_01.prefab
+  artifactKey: Guid(773270c6212a40a45a6fbcb377bbb332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/BR_Attachmnets/SM_Chr_Attach_Dwarf_Helmet_Soldier_01.prefab using Guid(773270c6212a40a45a6fbcb377bbb332) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fee0e4a78f98ec8a22ebd4f3eab71559') in 0.073970 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 12
+========================================================================
+Received Import Request.
+  Time since last request: 0.626051 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/BR_Attachmnets/SM_Chr_Attach_Dwarf_Helmet_Light_03.prefab
+  artifactKey: Guid(989be26e0f52441489bcaf353d0b81db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/BR_Attachmnets/SM_Chr_Attach_Dwarf_Helmet_Light_03.prefab using Guid(989be26e0f52441489bcaf353d0b81db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '82292756913dbdd6586bacc73f643617') in 0.079531 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 12
+========================================================================
+Received Import Request.
+  Time since last request: 1.989618 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/BR_Attachmnets/SM_Chr_Attach_Dwarf_Shoulder_Soldier_L_01.prefab
+  artifactKey: Guid(8638a83bd78f1ca4f88ba388e120275a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/BR_Attachmnets/SM_Chr_Attach_Dwarf_Shoulder_Soldier_L_01.prefab using Guid(8638a83bd78f1ca4f88ba388e120275a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '44a88bf4ffdcb1544fc86d678c86fd71') in 0.045869 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 12
+========================================================================
+Received Import Request.
+  Time since last request: 2.677404 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Attachments/SM_Chr_Attach_Hood_02.prefab
+  artifactKey: Guid(004f3a8213951434aaba2a7fbdc0aced) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Attachments/SM_Chr_Attach_Hood_02.prefab using Guid(004f3a8213951434aaba2a7fbdc0aced) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3475e08b8ad43edbe98c97076d60ce52') in 0.055964 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 12
+========================================================================
+Received Import Request.
+  Time since last request: 1.477383 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Attachments/SM_Chr_Attach_Mask_03.prefab
+  artifactKey: Guid(b3dc448bf8a300c4cbd6e5d215184510) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Attachments/SM_Chr_Attach_Mask_03.prefab using Guid(b3dc448bf8a300c4cbd6e5d215184510) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8658625209a91089febb0ef6e468b5f7') in 0.036263 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 12
+========================================================================
+Received Import Request.
+  Time since last request: 1.469350 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Attachments/SM_Chr_Attach_Undead_Knight_AnimalSkull_01.prefab
+  artifactKey: Guid(27c8f6533249d0843a85a693a1db2008) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Attachments/SM_Chr_Attach_Undead_Knight_AnimalSkull_01.prefab using Guid(27c8f6533249d0843a85a693a1db2008) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e82305c8e6247aac0e8554b74aa93c86') in 0.054230 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 12
+========================================================================
+Received Import Request.
+  Time since last request: 1.228946 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Attachments/SM_Chr_Attach_Undead_Knight_Crown_01.prefab
+  artifactKey: Guid(93a859ddb6e288c4ab74e3d8632ed6f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Characters/Attachments/SM_Chr_Attach_Undead_Knight_Crown_01.prefab using Guid(93a859ddb6e288c4ab74e3d8632ed6f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'adc8233fd7a8f72130bdb5e75c7bea45') in 0.049987 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 12

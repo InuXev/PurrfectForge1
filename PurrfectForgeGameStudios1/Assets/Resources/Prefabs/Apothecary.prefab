@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 298968670499019512}
   m_Layer: 0
   m_Name: SM_Tree_Vines_01 (2)
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,9 +94,10 @@ GameObject:
   - component: {fileID: 1094701949517346617}
   - component: {fileID: 1094701949516617523}
   - component: {fileID: 1094701949515393521}
+  - component: {fileID: 2777352916124929026}
   m_Layer: 0
   m_Name: SM_Bld_House_RoomTall_01
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,6 +167,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2777352916124929026
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094701949517576351}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 06fd45a151372564997037a75807e0a6, type: 3}
 --- !u!1 &1545080223577565647
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +202,7 @@ GameObject:
   - component: {fileID: 1523778694291785449}
   m_Layer: 0
   m_Name: SM_Tree_Vines_02 (1)
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -262,7 +285,7 @@ GameObject:
   - component: {fileID: 1604159478552973218}
   m_Layer: 0
   m_Name: SM_Tree_Vines_01
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -345,7 +368,7 @@ GameObject:
   - component: {fileID: 1654137773805755659}
   m_Layer: 0
   m_Name: SM_Tree_Vines_04 (2)
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -428,7 +451,7 @@ GameObject:
   - component: {fileID: 2173655855630727853}
   m_Layer: 0
   m_Name: SM_Tree_Vines_02
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -509,9 +532,10 @@ GameObject:
   - component: {fileID: 2495014042548759690}
   - component: {fileID: 2495014042545892386}
   - component: {fileID: 2495014042546915066}
+  - component: {fileID: 5576171486935069926}
   m_Layer: 0
   m_Name: SM_Bld_House_Tower_01
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -581,6 +605,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5576171486935069926
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2495014042549052942}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 6a8877c15fd00014aa3f8364da545d98, type: 3}
 --- !u!1 &2724089953872403772
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,7 +640,7 @@ GameObject:
   - component: {fileID: 2710021696033900120}
   m_Layer: 0
   m_Name: SM_Tree_Vines_04 (1)
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -677,7 +723,7 @@ GameObject:
   - component: {fileID: 2858249821077900819}
   m_Layer: 0
   m_Name: SM_Tree_Vines_01 (1)
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -926,7 +972,7 @@ GameObject:
   - component: {fileID: 3308769268817254123}
   m_Layer: 0
   m_Name: SM_Tree_Birch_04 (3)
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -984,7 +1030,7 @@ GameObject:
   - component: {fileID: 3763772296811666657}
   m_Layer: 0
   m_Name: SM_Tree_Vines_04
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1150,7 +1196,7 @@ GameObject:
   - component: {fileID: 3780083040981320287}
   m_Layer: 0
   m_Name: SM_Tree_Birch_04
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1291,7 +1337,7 @@ GameObject:
   - component: {fileID: 3979320900234990102}
   m_Layer: 0
   m_Name: SM_Tree_Vines_04 (3)
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1374,7 +1420,7 @@ GameObject:
   - component: {fileID: 4293650983209292908}
   m_Layer: 0
   m_Name: SM_Tree_Vines_02 (2)
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1457,7 +1503,7 @@ GameObject:
   - component: {fileID: 4461134363126940263}
   m_Layer: 0
   m_Name: FX_Smoke_White_01
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6244,7 +6290,7 @@ GameObject:
   - component: {fileID: 4421931115908741628}
   m_Layer: 0
   m_Name: SM_Tree_Birch_04 (2)
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6467,9 +6513,10 @@ GameObject:
   - component: {fileID: 5205748628261258036}
   - component: {fileID: 5205748628257851520}
   - component: {fileID: 5205748628258843414}
+  - component: {fileID: 4314931347101258548}
   m_Layer: 0
   m_Name: SM_Bld_House_Door_01
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6539,6 +6586,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4314931347101258548
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5205748628261028542}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: a6b188fb7aea5624fa40ae7535d6f6f8, type: 3}
 --- !u!1 &5954188328309695975
 GameObject:
   m_ObjectHideFlags: 0
@@ -6550,9 +6619,10 @@ GameObject:
   - component: {fileID: 5954188328309540121}
   - component: {fileID: 5954188328308800559}
   - component: {fileID: 5954188328307280705}
+  - component: {fileID: 7611167301857798185}
   m_Layer: 0
   m_Name: SM_Bld_House_Chimney_04
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6622,6 +6692,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7611167301857798185
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5954188328309695975}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: a4d13205cfca5c14fb21d1d7c909092c, type: 3}
 --- !u!1 &6035996036525368450
 GameObject:
   m_ObjectHideFlags: 0
@@ -6635,7 +6727,7 @@ GameObject:
   - component: {fileID: 6021693979810579846}
   m_Layer: 0
   m_Name: SM_Tree_Vines_03 (2)
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6718,7 +6810,7 @@ GameObject:
   - component: {fileID: 8162752298241799429}
   m_Layer: 0
   m_Name: SM_Tree_Vines_03
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6884,7 +6976,7 @@ GameObject:
   - component: {fileID: 8509881880532265028}
   m_Layer: 0
   m_Name: SM_Tree_Birch_04 (1)
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7025,7 +7117,7 @@ GameObject:
   - component: {fileID: 9171646708570932888}
   m_Layer: 0
   m_Name: SM_Tree_Vines_03 (1)
-  m_TagString: Untagged
+  m_TagString: WorldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7104,10 +7196,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6135316132252652072}
-  - component: {fileID: 8278181921991083989}
-  - component: {fileID: -5926884649709107877}
   - component: {fileID: 7558168018359107244}
-  - component: {fileID: 1341026590454368555}
+  - component: {fileID: -1529581770899440770}
   m_Layer: 0
   m_Name: Apothecary
   m_TagString: WorldObject
@@ -7152,7 +7242,15 @@ Transform:
   - {fileID: 6038254556423861680}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &8278181921991083989
+--- !u!33 &7558168018359107244
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9204925311419796800}
+  m_Mesh: {fileID: 4300000, guid: 6a8877c15fd00014aa3f8364da545d98, type: 3}
+--- !u!114 &-1529581770899440770
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7166,57 +7264,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scriptableItems: {fileID: 11400000, guid: 10d0914e5cd87b448b429cd92a4a57b0, type: 2}
   type: 
-  eshesBuildObjectName: Apothecary
-  description: A Small tower where the Local Eterian Aopthecary works.
+  eshesBuildObjectName: 
+  description: 
   dropChance: 0
---- !u!64 &-5926884649709107877
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9204925311419796800}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 6a8877c15fd00014aa3f8364da545d98, type: 3}
---- !u!33 &7558168018359107244
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9204925311419796800}
-  m_Mesh: {fileID: 4300000, guid: 6a8877c15fd00014aa3f8364da545d98, type: 3}
---- !u!65 &1341026590454368555
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9204925311419796800}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.5752275, y: 5.073709, z: 2.214489}
-  m_Center: {x: 0.046271864, y: 2.5061717, z: 0.026600344}

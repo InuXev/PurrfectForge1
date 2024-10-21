@@ -86,14 +86,6 @@ public class EshesPlayerEye : MonoBehaviour // Define the EshesPlayerEye class, 
                             {
                                 RemovePreview(); // Call the RemovePreview method to remove the object preview
                             }
-                            if (placedObject.GetComponent<MeshCollider>() != null)
-                            {
-                                placedObject.GetComponent<MeshCollider>().enabled = true; // Enable the MeshCollider on the placed object
-                            }
-                            if (placedObject.GetComponent<BoxCollider>() != null)
-                            {
-                                placedObject.GetComponent<BoxCollider>().enabled = true; // Enable the MeshCollider on the placed object
-                            }
                         }
                         else if (chosenObject == null) // If no object is selected
                         {
@@ -112,17 +104,34 @@ public class EshesPlayerEye : MonoBehaviour // Define the EshesPlayerEye class, 
 
         if (Physics.Raycast(cameraEye.position, Vector3.down, out hit)) // Perform a raycast downwards from the camera's position
         {
+            Debug.Log("Hit Object: " + hit.collider.name);
             if (hit.collider.CompareTag("WorldObject")) // Check if the ray hit an object tagged as "WorldObject"
             {
                 if (Input.GetKeyDown(KeyCode.R)) // Check if the "R" key is pressed
                 {
-                    ItemData itemData = hit.collider.GetComponent<ItemData>(); // Get the ItemData component from the hit object
+                    // Get the parent of the hit object
+                    Transform parentTransform = hit.collider.transform.parent;
 
-                    if (itemData != null) // Check if the object has an ItemData component
+                    // Check if the parent exists and has the ItemData component
+                    if (parentTransform != null)
                     {
-                        ScriptableItems item = itemData.scriptableItems; // Get the ScriptableItems reference from the ItemData component
-                        item.amountHeld += 1; // Increase the amount held for the item
-                        Destroy(hit.collider.gameObject); // Destroy the picked-up object
+                        ItemData itemData = parentTransform.GetComponent<ItemData>(); // Get the ItemData component from the parent
+
+                        if (itemData != null) // Check if the parent object has an ItemData component
+                        {
+                            ScriptableItems item = itemData.scriptableItems; // Get the ScriptableItems reference from the ItemData component
+                            item.amountHeld += 1; // Increase the amount held for the item
+
+                            Destroy(parentTransform.gameObject); // Destroy the parent object and all its children
+                        }
+                        else
+                        {
+                            Debug.LogWarning("No ItemData component found on parent object.");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Object has no parent or ItemData on the parent.");
                     }
                 }
             }
@@ -179,13 +188,10 @@ public class EshesPlayerEye : MonoBehaviour // Define the EshesPlayerEye class, 
             }
 
             // Disable colliders for the preview object
-            if (currentPreviewObject.GetComponent<MeshCollider>() != null)
+            MeshCollider[] childColliders = currentPreviewObject.GetComponentsInChildren<MeshCollider>();
+            foreach (MeshCollider colliders in childColliders)
             {
-                currentPreviewObject.GetComponent<MeshCollider>().enabled = false; // Disable MeshCollider on the preview object
-            }
-            if (currentPreviewObject.GetComponent<BoxCollider>() != null)
-            {
-                currentPreviewObject.GetComponent<BoxCollider>().enabled = false; // Disable BoxCollider on the preview object
+                colliders.GetComponent<MeshCollider>().enabled = false; // Reassign the updated materials array back to the renderer
             }
         }
     }
@@ -244,13 +250,10 @@ public class EshesPlayerEye : MonoBehaviour // Define the EshesPlayerEye class, 
                         }
 
                         // Disable colliders for the preview object
-                        if (currentPreviewObject.GetComponent<MeshCollider>() != null)
+                        MeshCollider[] childColliders = currentPreviewObject.GetComponentsInChildren<MeshCollider>();
+                        foreach (MeshCollider colliders in childColliders)
                         {
-                            currentPreviewObject.GetComponent<MeshCollider>().enabled = false; // Disable MeshCollider on the preview object
-                        }
-                        if (currentPreviewObject.GetComponent<BoxCollider>() != null)
-                        {
-                            currentPreviewObject.GetComponent<BoxCollider>().enabled = false; // Disable BoxCollider on the preview object
+                            colliders.GetComponent<MeshCollider>().enabled = false; // Reassign the updated materials array back to the renderer
                         }
                     }
                     else // If there is an existing preview object
