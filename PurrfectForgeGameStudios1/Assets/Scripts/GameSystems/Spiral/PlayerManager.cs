@@ -30,7 +30,8 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
 
     public static PlayerManager Instance;
     [SerializeField] public Transform castPos;
-
+    [SerializeField] public Transform interactionCastPos;
+    [SerializeField] public Transform interactionCastGroundPos;
     //player info
     public int highestFloorCompleted = 0;
     public int playerLevel = 1;
@@ -66,6 +67,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     private Coroutine staminaDrainCoroutine;
     private Coroutine staminaRefillCoroutine;
     public bool HasFloorKey;
+    public bool HasBossKey;
     bool Healing = false;
     Vector3 previousPosition;
     Vector3 currentPosition;
@@ -612,6 +614,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
             SkillAssigner();
             UpdatePlayerUI(); //updates the ui constantly
             SkillLevelUp();
+            CanInteract();
         }
     }
     public void SkillLevelUp()
@@ -820,6 +823,39 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
         PlayerPrefs.SetInt("SkillTwoLevel", 0);
     }
     #endregion
+    void CanInteract() // Method to handle placing objects on the ground
+    {
+        RaycastHit hit; // Declare a RaycastHit variable to store information about what the ray hits
+
+        // Cast rays and store whether either hit an object
+        bool isHitPos = Physics.Raycast(interactionCastPos.position, interactionCastPos.forward, out hit);
+        bool isHitGroundPos = Physics.Raycast(interactionCastGroundPos.position, interactionCastGroundPos.forward, out hit);
+
+        // Draw the debug rays for both positions
+        Debug.DrawRay(interactionCastPos.position, interactionCastPos.forward, Color.red, 15);
+        Debug.DrawRay(interactionCastGroundPos.position, interactionCastGroundPos.forward, Color.red, 20);
+
+        GameObject hitObject = hit.collider.gameObject;
+        // If either ray hits something, check for "Interactable" tag
+        if (isHitPos || isHitGroundPos)
+        {
+            if (hit.collider != null && hit.collider.CompareTag("Interactable"))
+            {
+                Debug.Log(hit);
+                gameManager.InteractableTag.SetActive(true); // Activate the interactable tag
+                if(Input.GetKeyDown(KeyCode.E))
+                {
+                    Debug.Log("Interacting");
+                    hitObject.GetComponent<Interactable>().Interact();
+                }
+                return; // Exit the function once we find an interactable object
+            }
+        }
+
+        // If no hit or no "Interactable" tag, deactivate the interactable tag
+        gameManager.InteractableTag.SetActive(false);
+    }
+
 
 }
 

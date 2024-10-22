@@ -27,6 +27,7 @@ public class ButtonFunctions : MonoBehaviour
     public void EteriusPort() //port the Eterius
     {
         PlayerManager.Instance.HasFloorKey = false;
+        PlayerManager.Instance.HasBossKey = false;
         gameManager.SaveGame();//call from GM
         SceneManager.LoadScene("Eshes"); //load eshes
         gameManager.stateUnPaused();//call from GM

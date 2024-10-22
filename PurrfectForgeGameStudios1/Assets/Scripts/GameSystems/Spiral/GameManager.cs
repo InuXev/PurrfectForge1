@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Image SkillSlotTwoImage;
     [SerializeField] public Image SkillSlotThreeImage;
 
+    [SerializeField] public GameObject InteractableTag;
+
     #endregion
 
     #region Processes
