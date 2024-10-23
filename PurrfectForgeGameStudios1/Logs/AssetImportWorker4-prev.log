@@ -1,0 +1,680 @@
+Using pre-set license
+Built from '2022.3/staging' branch; Version is '2022.3.28f1 (6bae5ce6b222) revision 7056988'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22631) 64bit Professional' Language: 'en' Physical Memory: 16085 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\2022.3.28f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker4
+-projectPath
+C:/Repos/PurrfectForge1/PurrfectForgeGameStudios1
+-logFile
+Logs/AssetImportWorker4.log
+-srvPort
+54506
+Successfully changed project path to: C:/Repos/PurrfectForge1/PurrfectForgeGameStudios1
+C:/Repos/PurrfectForge1/PurrfectForgeGameStudios1
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [6556] Host "[IP] 192.168.12.195 [Port] 0 [Flags] 2 [Guid] 155245059 [EditorId] 155245059 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [6556] Host "[IP] 192.168.12.195 [Port] 0 [Flags] 2 [Guid] 155245059 [EditorId] 155245059 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[Physics::Module] Initialized MultithreadedJobDispatcher with 23 workers.
+Refreshing native plugins compatible for Editor in 334.25 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.28f1 (6bae5ce6b222)
+[Subsystems] Discovering subsystems at path C:/2022.3.28f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Repos/PurrfectForge1/PurrfectForgeGameStudios1/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 4070 Laptop GPU (ID=0x2820)
+    Vendor:   NVIDIA
+    VRAM:     7948 MB
+    Driver:   32.0.15.6070
+Initialize mono
+Mono path[0] = 'C:/2022.3.28f1/Editor/Data/Managed'
+Mono path[1] = 'C:/2022.3.28f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/2022.3.28f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56512
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/2022.3.28f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.008713 seconds.
+- Loaded All Assemblies, in  2.004 seconds
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.349 seconds
+Domain Reload Profiling: 2351ms
+	BeginReloadAssembly (350ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (705ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (72ms)
+	LoadAllAssembliesAndSetupDomain (865ms)
+		LoadAssemblies (345ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (863ms)
+			TypeCache.Refresh (860ms)
+				TypeCache.ScanAssembly (828ms)
+			ScanForSourceGeneratedMonoScriptInfo (1ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (349ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (267ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			SetLoadedEditorAssemblies (12ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (3ms)
+			ProcessInitializeOnLoadAttributes (177ms)
+			ProcessInitializeOnLoadMethodAttributes (65ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.568 seconds
+Refreshing native plugins compatible for Editor in 3.79 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.204 seconds
+Domain Reload Profiling: 2769ms
+	BeginReloadAssembly (240ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (8ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (31ms)
+	RebuildCommonClasses (45ms)
+	RebuildNativeTypeToScriptingClass (16ms)
+	initialDomainReloadingComplete (64ms)
+	LoadAllAssembliesAndSetupDomain (1199ms)
+		LoadAssemblies (868ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (483ms)
+			TypeCache.Refresh (447ms)
+				TypeCache.ScanAssembly (269ms)
+			ScanForSourceGeneratedMonoScriptInfo (23ms)
+			ResolveRequiredComponents (10ms)
+	FinalizeReload (1205ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1004ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			SetLoadedEditorAssemblies (5ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (79ms)
+			ProcessInitializeOnLoadAttributes (867ms)
+			ProcessInitializeOnLoadMethodAttributes (34ms)
+			AfterProcessingInitializeOnLoad (10ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (8ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.33 seconds
+Refreshing native plugins compatible for Editor in 16.13 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3320 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 46 unused Assets / (131.4 KB). Loaded Objects now: 3808.
+Memory consumption went from 154.6 MB to 154.5 MB.
+Total: 5.925700 ms (FindLiveObjects: 0.366300 ms CreateObjectMapping: 0.150300 ms MarkObjects: 5.092700 ms  DeleteObjects: 0.314600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 451475.118513 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Models/Materials/MothWing_01.mat
+  artifactKey: Guid(2e7e39e2274c73b409d3b3dd0b19883d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Models/Materials/MothWing_01.mat using Guid(2e7e39e2274c73b409d3b3dd0b19883d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39e1fa264f8a425e34f48157a78daf5d') in 0.164583 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 5.927342 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Materials/Misc/Lava.mat
+  artifactKey: Guid(695590087dadf804aaaaa358b1238b0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Materials/Misc/Lava.mat using Guid(695590087dadf804aaaaa358b1238b0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5597ae750ab3117d67c99fc9eff14f3') in 0.027267 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.059860 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Materials/Misc/FX_Standard_Soft.mat
+  artifactKey: Guid(0c361341e05282547b4b27a461b09071) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Materials/Misc/FX_Standard_Soft.mat using Guid(0c361341e05282547b4b27a461b09071) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36555aaab3ab2f7b11cc86cff45a60f8') in 0.022040 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.349488 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Materials/Misc/FX_Portal_Dark.mat
+  artifactKey: Guid(72d2a33fe53d19a4291867c41161e735) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Materials/Misc/FX_Portal_Dark.mat using Guid(72d2a33fe53d19a4291867c41161e735) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd76f5330ac17ac4f1576a590b1425617') in 0.039686 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.025353 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Materials/Misc/FX_Circle_Soft_Mat.mat
+  artifactKey: Guid(46039b43339edf0479d93cf146b4c178) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Materials/Misc/FX_Circle_Soft_Mat.mat using Guid(46039b43339edf0479d93cf146b4c178) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '25be81b5f95fca274bd24cd5376f1e21') in 0.039015 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 20.354912 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2114a0767980820704bcc620dd13226c') in 0.224888 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 30
+========================================================================
+Received Import Request.
+  Time since last request: 0.887251 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22f9f6153d810ae785895a23cc80e490') in 0.055574 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 30
+========================================================================
+Received Import Request.
+  Time since last request: 1.356515 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4221a785339bfe2585ca38c7e0f0d093') in 0.054716 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 30
+========================================================================
+Received Import Request.
+  Time since last request: 1.556700 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee7c3dce46514d6c842727d535b31bcd') in 0.105935 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 31
+========================================================================
+Received Import Request.
+  Time since last request: 1.761286 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2334e5e96e5e3e2301cc24cf78e232e') in 0.055296 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 31
+========================================================================
+Received Import Request.
+  Time since last request: 0.524149 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f10f9ab5c474b11dbc44c49a44e4ad16') in 0.052310 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 30
+========================================================================
+Received Import Request.
+  Time since last request: 5.708086 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c6844d4b7433fe43f8b554e8397b224') in 0.091684 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 32
+========================================================================
+Received Import Request.
+  Time since last request: 0.526055 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ff210b6b955c888775a56318a10048c') in 0.119669 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 32
+========================================================================
+Received Import Request.
+  Time since last request: 0.823661 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d8a052d2011e3d3b656f074308537a0') in 0.086132 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 32
+========================================================================
+Received Import Request.
+  Time since last request: 6.165681 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '160f7b39bdc72f3a1806806aa1e47f58') in 0.067327 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 32
+========================================================================
+Received Import Request.
+  Time since last request: 0.875113 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd00f4f712ad3f2fb44b07bfa2c7cac9a') in 0.064099 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 32
+========================================================================
+Received Import Request.
+  Time since last request: 2.709737 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f9f92d3545a8fd0ea5eb1243c41d3f7') in 0.063037 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 32
+========================================================================
+Received Import Request.
+  Time since last request: 0.906912 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a47bb751b958bab3a3da5b116a17652') in 0.090862 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 32
+========================================================================
+Received Import Request.
+  Time since last request: 14.388626 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '377be749964ddcfb69f7bc7539d25c2c') in 0.078790 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 31
+========================================================================
+Received Import Request.
+  Time since last request: 0.769652 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad91fbcb426331ae428e751352a8b3e3') in 0.042146 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 31
+========================================================================
+Received Import Request.
+  Time since last request: 0.412675 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aef257c51a3e5a5ab57ec4ed558cf340') in 0.059212 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 31
+========================================================================
+Received Import Request.
+  Time since last request: 0.493501 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ce26167d35f24163c484fb28922931d') in 0.042599 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 31
+========================================================================
+Received Import Request.
+  Time since last request: 1.125461 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Materials/Misc/Dust.mat
+  artifactKey: Guid(64c73c6fe6d961949b00b00a1567ee9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Materials/Misc/Dust.mat using Guid(64c73c6fe6d961949b00b00a1567ee9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebe85f28c93bd14d5151af4fa44b32bf') in 0.025878 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.010573 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Materials/Misc/Cloud.mat
+  artifactKey: Guid(cd5cd0e33e502ec4f896c632dcdfcabc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Materials/Misc/Cloud.mat using Guid(cd5cd0e33e502ec4f896c632dcdfcabc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8877209c939fa6ff625a2786f1352995') in 0.050783 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 1.626691 seconds.
+  path: Assets/Materials/BuildPreview.mat
+  artifactKey: Guid(b57094c5d2865bb4cbc7b3c97714d3fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/BuildPreview.mat using Guid(b57094c5d2865bb4cbc7b3c97714d3fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2665c24eddf6d185632bab73884ee257') in 0.018120 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 1.046203 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb4457e55142e9b42b3672023c8d5058') in 0.056166 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 31
+========================================================================
+Received Import Request.
+  Time since last request: 1.033004 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4cdfebf30ec06adda432e2a440a85bfe') in 0.053252 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 31
+========================================================================
+Received Import Request.
+  Time since last request: 0.303851 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b244954db721b2c2b4977e43bf222384') in 0.054727 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 31
+========================================================================
+Received Import Request.
+  Time since last request: 4.218032 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '524b9090c6bec3aaf48b1039ac479638') in 0.132759 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 31
+========================================================================
+Received Import Request.
+  Time since last request: 0.679458 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '010de6520bc0c1d1f10c7803c06ed686') in 0.066782 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 32
+========================================================================
+Received Import Request.
+  Time since last request: 0.435008 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab
+  artifactKey: Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Prefabs/Props/SM_Prop_Dwarf_TreasureChest_01.prefab using Guid(9e5799f59c22759429ff5f1d34cd1330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0ba9f68b4eeefba1a984f9cbf5fe5e6f') in 0.072230 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 32
+========================================================================
+Received Import Request.
+  Time since last request: 24.023601 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Materials/Misc/SimpleSky_Mat.mat
+  artifactKey: Guid(2dfd8e9e494c2f74286f825fc0cd8112) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Materials/Misc/SimpleSky_Mat.mat using Guid(2dfd8e9e494c2f74286f825fc0cd8112) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a89f03b0dbabc8af87b1d6988882688f') in 0.033512 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.074 seconds
+Refreshing native plugins compatible for Editor in 6.24 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.708 seconds
+Domain Reload Profiling: 3780ms
+	BeginReloadAssembly (395ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (13ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (1ms)
+		CreateAndSetChildDomain (194ms)
+	RebuildCommonClasses (36ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (39ms)
+	LoadAllAssembliesAndSetupDomain (591ms)
+		LoadAssemblies (680ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (32ms)
+			TypeCache.Refresh (17ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (12ms)
+	FinalizeReload (2710ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (864ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (17ms)
+			SetLoadedEditorAssemblies (10ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (119ms)
+			ProcessInitializeOnLoadAttributes (648ms)
+			ProcessInitializeOnLoadMethodAttributes (57ms)
+			AfterProcessingInitializeOnLoad (13ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (15ms)
+Refreshing native plugins compatible for Editor in 5.46 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3292 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (102.8 KB). Loaded Objects now: 3864.
+Memory consumption went from 151.8 MB to 151.7 MB.
+Total: 9.677800 ms (FindLiveObjects: 0.535400 ms CreateObjectMapping: 0.382300 ms MarkObjects: 8.613300 ms  DeleteObjects: 0.144200 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.526 seconds
+Refreshing native plugins compatible for Editor in 7.50 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.179 seconds
+Domain Reload Profiling: 3705ms
+	BeginReloadAssembly (273ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (8ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (64ms)
+	RebuildCommonClasses (35ms)
+	RebuildNativeTypeToScriptingClass (15ms)
+	initialDomainReloadingComplete (51ms)
+	LoadAllAssembliesAndSetupDomain (1152ms)
+		LoadAssemblies (1278ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (27ms)
+			TypeCache.Refresh (14ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (12ms)
+	FinalizeReload (2179ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (713ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (11ms)
+			SetLoadedEditorAssemblies (9ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (113ms)
+			ProcessInitializeOnLoadAttributes (541ms)
+			ProcessInitializeOnLoadMethodAttributes (31ms)
+			AfterProcessingInitializeOnLoad (7ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (10ms)
+Refreshing native plugins compatible for Editor in 10.53 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3293 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 25 unused Assets / (103.0 KB). Loaded Objects now: 3879.
+Memory consumption went from 152.1 MB to 152.0 MB.
+Total: 6.610200 ms (FindLiveObjects: 0.723700 ms CreateObjectMapping: 0.238900 ms MarkObjects: 5.499100 ms  DeleteObjects: 0.146100 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 351.234188 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Models/SM_Env_GiantGolem_Chest_01.fbx
+  artifactKey: Guid(93565062db39b824590b681e02b0b5c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Models/SM_Env_GiantGolem_Chest_01.fbx using Guid(93565062db39b824590b681e02b0b5c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97c9a6e3d02c63a23b410a6b219508af') in 0.200120 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Models/SM_Prop_Dwarf_TreasureChest_01.fbx
+  artifactKey: Guid(36bd06fe0f9278643b3beecd9d7a4ed5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Models/SM_Prop_Dwarf_TreasureChest_01.fbx using Guid(36bd06fe0f9278643b3beecd9d7a4ed5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16821713bf02780d14c34beeffb3d3f7') in 0.065142 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Models/Collision/Convex/SM_Prop_Dwarf_TreasureChest_01_Convex.asset
+  artifactKey: Guid(142f51bfcced80547a22524abae325d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Models/Collision/Convex/SM_Prop_Dwarf_TreasureChest_01_Convex.asset using Guid(142f51bfcced80547a22524abae325d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6eb3c5c15c089056b7b09661e580576e') in 0.022888 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Models/Collision/Convex/SM_Prop_Camp_Chest_01_Convex.asset
+  artifactKey: Guid(4b96065e2cca9ed49bf2fce481d80878) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Models/Collision/Convex/SM_Prop_Camp_Chest_01_Convex.asset using Guid(4b96065e2cca9ed49bf2fce481d80878) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e290769b7e14f9ebb436e6ac6a82d388') in 0.021032 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000068 seconds.
+  path: Assets/SyntyStudios/PolygonDungeonRealms/Models/SM_Prop_Dwarf_Forge_Golem_Chest_01.fbx
+  artifactKey: Guid(03f27c6d50a716f4d86bd4a992507f93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SyntyStudios/PolygonDungeonRealms/Models/SM_Prop_Dwarf_Forge_Golem_Chest_01.fbx using Guid(03f27c6d50a716f4d86bd4a992507f93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a08a40f5968b0ee5c9d4683cb34f29d1') in 0.028369 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  5.403 seconds
+Refreshing native plugins compatible for Editor in 13.87 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  3.940 seconds
+Domain Reload Profiling: 9387ms
+	BeginReloadAssembly (2550ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (42ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (1ms)
+		CreateAndSetChildDomain (1505ms)
+	RebuildCommonClasses (117ms)
+	RebuildNativeTypeToScriptingClass (22ms)
+	initialDomainReloadingComplete (91ms)
+	LoadAllAssembliesAndSetupDomain (2664ms)
+		LoadAssemblies (3367ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (86ms)
+			TypeCache.Refresh (44ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (1ms)
+			ResolveRequiredComponents (38ms)
+	FinalizeReload (3942ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1112ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (30ms)
+			SetLoadedEditorAssemblies (24ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (201ms)
+			ProcessInitializeOnLoadAttributes (776ms)
+			ProcessInitializeOnLoadMethodAttributes (69ms)
+			AfterProcessingInitializeOnLoad (12ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (20ms)
+Refreshing native plugins compatible for Editor in 8.98 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3292 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 24 unused Assets / (102.0 KB). Loaded Objects now: 3898.
+Memory consumption went from 152.0 MB to 151.9 MB.
+Total: 4.873900 ms (FindLiveObjects: 0.246900 ms CreateObjectMapping: 0.100900 ms MarkObjects: 4.296800 ms  DeleteObjects: 0.227600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: The I/O operation has been aborted because of either a thread exit or an application request.
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
