@@ -23,6 +23,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     [SerializeField] GameObject currentWeapon;
     [SerializeField] GameObject currentShield;
     [SerializeField] Animator Anim;
+    [SerializeField] GameObject WeaponHitBox;
 
     [SerializeField] public Camera OverHeadCamera;
     [SerializeField] public Camera FPCamera;
@@ -59,7 +60,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     public float playerXPReset = 0;
     public int maxBoost;
     private float panSpeed = 6F;
-    private float gravity = 20;
+    private float gravity = 25;
     private Vector3 playerVelocity;
     private Vector3 moveDirection;
     private Vector3 playerPOS;
@@ -75,6 +76,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     bool swordDrawn;
     bool jumping;
     float currentSpeed;
+    
     //skill systems
 
     public string chosenElement;
@@ -142,7 +144,6 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
             jumping = true;
             //playerVelocity = Vector3.zero; //stop their velocity
         }
-
         moveDirection = (Input.GetAxis("Horizontal") * transform.right) +
             (Input.GetAxis("Vertical") * transform.forward); //set the movedirection
         characterControl.Move(moveDirection * MoveSpeed * Time.deltaTime); //move the player that direction
@@ -229,7 +230,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     IEnumerator JumpTime()
     {
         Anim.SetTrigger("Jump");
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.75f);
         playerVelocity.y = jumpSpeed;//add upwardsd velocity to player
 
     }
@@ -245,7 +246,6 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
             {
                 Anim.SetTrigger("DrawSword");
                 StartCoroutine(SwordSpawnTime());
-
                 swordDrawn = true;
             }
             else if (Input.GetButtonDown("Left Mouse") && swordDrawn) //left mouse click
@@ -422,9 +422,11 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
         if (Stamina >= SwingCostCalc()) //is enough stamina
         {
             Anim.SetBool("Swing", true);
+            WeaponHitBox.SetActive(true);
             float swingCost = SwingCostCalc(); //calc swing cost
             Stamina -= swingCost; //take stamina
-            yield return new WaitForSeconds(0.2F);//wait
+            yield return new WaitForSeconds(2F);//wait
+            WeaponHitBox.SetActive(false);
             if (staminaRefillCoroutine != null) //if refilling
             {
                 StopCoroutine(staminaRefillCoroutine); //stop refill

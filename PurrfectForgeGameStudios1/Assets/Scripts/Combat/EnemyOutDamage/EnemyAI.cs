@@ -7,11 +7,13 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour, EDamage
 {
-    [SerializeField] GameObject Key; 
-    [SerializeField] ScriptableEnemies enemyParams; 
-    [SerializeField] GameObject equipedWeapon; 
+    [SerializeField] GameObject Key;
+    [SerializeField] ScriptableEnemies enemyParams;
+    [SerializeField] GameObject equipedWeapon;
     [SerializeField] EnemyAttack enemyAttack;
     [SerializeField] Transform ShootPos;
+    [SerializeField] Animator anim;
+    [SerializeField] GameObject WeaponHitBox;
     public bool meleeAttackRange;
     public Transform player;
     public Transform headPOS;
@@ -41,6 +43,10 @@ public class EnemyAI : MonoBehaviour, EDamage
         EnemyDeathCheck(); //checks for enemys death
         canSeePlayer(); //checks if the player can be seen and what to do
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform; //grabs player Transform for loaction info
+        float animSpeed = agent.velocity.normalized.magnitude; // Get the speed of the agent
+        float targetAnimSpeed = agent.velocity.magnitude / agent.speed;
+        animSpeed = Mathf.MoveTowards(animSpeed, targetAnimSpeed, agent.acceleration * Time.deltaTime);
+        anim.SetFloat("Speed", animSpeed);
     }
 
     public void takeEDamage(float damage) //player takes damage from enemy
@@ -53,6 +59,8 @@ public class EnemyAI : MonoBehaviour, EDamage
 
     bool canSeePlayer()
     {
+        anim.SetBool("Attacked", false);
+
         if (isDead) // Check if the enemy is dead
         {
             return false; // Return false
@@ -74,22 +82,21 @@ public class EnemyAI : MonoBehaviour, EDamage
                 meleeAttackRange = true; //flip the attack flag
             }
         }
+        if (distanceToPlayer > enemyParams.MeleeAttackDistance) //checks to see if they are in attack distance
+        {
+            if (enemyParams.type != ScriptableEnemies.Type.Ranged) //if they are anytype but ranged
+            {
+                meleeAttackRange = false; //flip the attack flag
+                anim.SetBool("MeleeAttRange", false);
+            }
+        }
         if (meleeAttackRange) //if the attack flag is true
         {
             if (!attacked && !spinAttacking) //if we arent attacking or spinattacking
             {
-                if (swingCount < 4) //if the sweingCount is under 4(3)
-                {
-                    StartCoroutine(Attack()); //normal attack
-                    enemyAttack.weaponUsed = false; //flip the weapon is used so the anim on the enemy knows 
-                }
-                else //if the swing count is 3
-                {
 
-                    StartCoroutine(SpinAttack()); //spin attack
-                    swingCount = 0; //reset swingCount 
-                    enemyAttack.weaponUsed = false; //show weapon is not longer being used and put it away
-                }
+              StartCoroutine(BasicAttackSequence());
+
             }
         }
         if (playerInRange) //if the player is in range
@@ -120,38 +127,55 @@ public class EnemyAI : MonoBehaviour, EDamage
         }
         return false; // Return false
     }
+    IEnumerator BasicAttackSequence()
+    {
+        attacked = true;
+        anim.SetBool("MeleeAttRange", true); // Trigger attack animation
+        yield return new WaitForSeconds(1f); // Allow the hitbox to detect a hit
+        anim.SetBool("Attacked", true); // Set flag to indicate that attack has been performed
+        swingCount++; // Increment the attack count
+        yield return new WaitForSeconds(.17f); // Allow the hitbox to detect a hit
+        enemyAttack.weaponUsed = false; // Reset weaponUsed for the next attack
+        attacked = false;
+    }
 
     public void EnemyDeathCheck() //checks enemy death
     {
         enemyPos = this.transform.position; //grab enemy position
         if (enemyHP <= 0) //is enemy at 0 health
         {
-            isDead = true; //they dead
-            Vector3 dropLocation = enemyPos; //set this for a itemdrop location
-            Destroy(gameObject); //destroy enemy
-            LootPicker(dropLocation); //pick and drop the item from lootpool in unity
-            XPGiver(); //call the xp give
+            StartCoroutine(EnemyDeathSequence());
         }
     }
-
-    public IEnumerator Attack() //attack
+    IEnumerator EnemyDeathSequence()
     {
-        attacked = true; //flip to prevent multi attacks
-        swingCount++; //increase swing count
-        enemyAttack.weaponUsed = true; //show weapon being used
-        equipedWeapon.SetActive(true); //turn on the weapon to be used
-        yield return new WaitForSeconds(0.1f); //wait for a moment to flash the weapon
-        equipedWeapon.SetActive(false); //turn off the weapon
-        yield return new WaitForSeconds(1f); //wait another second to prevent quick attacks
-        enemyAttack.weaponUsed = false; //turn the attack flag off to allow next attack
-        attacked = false; //set attack to false to allow next attack
+        isDead = true; //they dead
+        anim.SetTrigger("isDead");
+        yield return new WaitForSeconds(3);
+        Vector3 dropLocation = enemyPos; //set this for a itemdrop location
+        Destroy(gameObject); //destroy enemy
+        LootPicker(dropLocation); //pick and drop the item from lootpool in unity
+        XPGiver(); //call the xp give
     }
+
+    //public IEnumerator Attack() //attack
+    //{
+    //    attacked = true; //flip to prevent multi attacks
+    //    swingCount++; //increase swing count
+    //    enemyAttack.weaponUsed = true; //show weapon being used
+    //    equipedWeapon.SetActive(true); //turn on the weapon to be used
+    //    yield return new WaitForSeconds(0.1f); //wait for a moment to flash the weapon
+    //    equipedWeapon.SetActive(false); //turn off the weapon
+    //    yield return new WaitForSeconds(1f); //wait another second to prevent quick attacks
+    //    enemyAttack.weaponUsed = false; //turn the attack flag off to allow next attack
+    //    attacked = false; //set attack to false to allow next attack
+    //}
 
     public IEnumerator SpinAttack()
     {
         //yield return new WaitForSeconds(enemyParams.BossAttackPause);
         spinAttacking = true; //set spinng attack to true to lock into this attack
-        enemyAttack.weaponUsed = true; //show weapon being used
+        //enemyAttack.weaponUsed = true; //show weapon being used
         equipedWeapon.SetActive(true);//turn on weapon
 
         // Start the spinning rotation

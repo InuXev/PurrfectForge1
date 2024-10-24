@@ -6,14 +6,18 @@ public class EnemyAttack : MonoBehaviour
 {
     public float Damage;
     public static EnemyAttack Instance;
-    public bool weaponUsed;
+    public bool weaponUsed = false;
 
     private void OnTriggerEnter(Collider other)
     {
-            if (other.CompareTag("Player") && !weaponUsed) // Check if the collided object is the player
+        if (other.CompareTag("Player") && !weaponUsed) // Check if the collided object is the player and weapon hasn't been used
+        {
+            PDamage dmg = other.gameObject.GetComponent<PDamage>();
+            if (dmg != null)
             {
-                PDamage dmg = other.gameObject.GetComponent<PDamage>();
-                dmg.takeDamage(Damage); // Call the takeDamage function from the IDamage component
+                dmg.takeDamage(Damage); // Apply damage to the player
+                weaponUsed = true;
             }
+        }
     }
 }
