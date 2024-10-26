@@ -9,11 +9,9 @@ public class EnemyAI : MonoBehaviour, EDamage
 {
     [SerializeField] GameObject Key;
     [SerializeField] ScriptableEnemies enemyParams;
-    [SerializeField] GameObject equipedWeapon;
     [SerializeField] EnemyAttack enemyAttack;
     [SerializeField] Transform ShootPos;
     [SerializeField] Animator anim;
-    [SerializeField] GameObject WeaponHitBox;
     public bool meleeAttackRange;
     public Transform player;
     public Transform headPOS;
@@ -116,6 +114,7 @@ public class EnemyAI : MonoBehaviour, EDamage
                         agent.stoppingDistance = 7; //stopping distance set to 7
                         agent.SetDestination(player.transform.position); //agent heads to player
                         shooting = true; //shooting flag is set to true to prevent multi shots
+                        StartCoroutine(BasicCastSequence());
                         StartCoroutine(Shoot()); //shoot
                     }
                 }
@@ -138,12 +137,23 @@ public class EnemyAI : MonoBehaviour, EDamage
         enemyAttack.weaponUsed = false; // Reset weaponUsed for the next attack
         attacked = false;
     }
-
+    IEnumerator BasicCastSequence()
+    {
+        attacked = true;
+        anim.SetBool("CastAttRange", true); // Trigger attack animation
+        yield return new WaitForSeconds(1f); // Allow the hitbox to detect a hit
+        anim.SetBool("Attacked", true); // Set flag to indicate that attack has been performed
+        swingCount++; // Increment the attack count
+        yield return new WaitForSeconds(.17f); // Allow the hitbox to detect a hit
+        enemyAttack.weaponUsed = false; // Reset weaponUsed for the next attack
+        attacked = false;
+    }
     public void EnemyDeathCheck() //checks enemy death
     {
         enemyPos = this.transform.position; //grab enemy position
         if (enemyHP <= 0) //is enemy at 0 health
         {
+            agent.enabled = false;
             StartCoroutine(EnemyDeathSequence());
         }
     }
@@ -158,60 +168,6 @@ public class EnemyAI : MonoBehaviour, EDamage
         XPGiver(); //call the xp give
     }
 
-    //public IEnumerator Attack() //attack
-    //{
-    //    attacked = true; //flip to prevent multi attacks
-    //    swingCount++; //increase swing count
-    //    enemyAttack.weaponUsed = true; //show weapon being used
-    //    equipedWeapon.SetActive(true); //turn on the weapon to be used
-    //    yield return new WaitForSeconds(0.1f); //wait for a moment to flash the weapon
-    //    equipedWeapon.SetActive(false); //turn off the weapon
-    //    yield return new WaitForSeconds(1f); //wait another second to prevent quick attacks
-    //    enemyAttack.weaponUsed = false; //turn the attack flag off to allow next attack
-    //    attacked = false; //set attack to false to allow next attack
-    //}
-
-    public IEnumerator SpinAttack()
-    {
-        //yield return new WaitForSeconds(enemyParams.BossAttackPause);
-        spinAttacking = true; //set spinng attack to true to lock into this attack
-        //enemyAttack.weaponUsed = true; //show weapon being used
-        equipedWeapon.SetActive(true);//turn on weapon
-
-        // Start the spinning rotation
-        float totalRotation = 360f; // Total degrees to rotate
-        float duration = .5f; // Duration in seconds
-        float rotationSpeed = totalRotation / duration; // Degrees per second
-        float rotationAmount = 0f; //how far into the rotation enemy is
-
-        // Perform the 360-degree rotation
-        while (rotationAmount < totalRotation) //if rotation is less than wanted
-        {
-            float rotationStep = rotationSpeed * Time.deltaTime; // Calculate the rotation step
-            transform.Rotate(Vector3.up, rotationStep, Space.World); //rotate the object
-            rotationAmount += rotationStep; //increase current rotation by step
-
-            // Prevent overshooting
-            if (rotationAmount > totalRotation) //if rotation is greater than wanted
-            {
-                float overshoot = rotationAmount - totalRotation; //amount wanted
-                transform.Rotate(Vector3.up, -overshoot, Space.World); // Correct overshoot
-                rotationAmount = totalRotation; //set 
-            }
-
-            yield return null; // Wait for the next frame
-        }
-
-        // Ensure facing the player directly
-        Vector3 direction = (playerTransform.position - transform.position).normalized; //grab direction to player
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z)); //grab rotation to player
-        transform.rotation = lookRotation; //set the rotation 
-
-        yield return new WaitForSeconds(.1f); // Adjust this duration as needed
-
-        equipedWeapon.SetActive(false); //turn off the weapon
-        spinAttacking = false; //flip spinning flag for next spin
-    }
 
     public void LookAtPlayer() //looks at player
     {
@@ -254,7 +210,7 @@ public class EnemyAI : MonoBehaviour, EDamage
                 int dropLocationX = Random.Range(0, 1); //calc random X
                 int dropLocationZ = Random.Range(0, 1); //calc random z
                 float dropLocationY = Random.Range(0, .2F); //calc random y
-                Vector3 RandomVectorLocation = new Vector3(dropLocation.x + dropLocationX, dropLocation.y + dropLocationY, dropLocation.z + dropLocationZ); //randomized drop location
+                Vector3 RandomVectorLocation = new Vector3(dropLocation.x + dropLocationX, dropLocation.y + 0, dropLocation.z + dropLocationZ); //randomized drop location
                 Instantiate(droppingItem, RandomVectorLocation /*dropLocation*/, transform.rotation); //drop it
             }
         }
@@ -262,7 +218,7 @@ public class EnemyAI : MonoBehaviour, EDamage
         {
             int dropLocationX = Random.Range(0, 1); //random X
             int dropLocationZ = Random.Range(0, 2); //ranfom y
-            Vector3 RandomVectorLocation = new Vector3(dropLocation.x + dropLocationX, dropLocation.y + 0, dropLocation.z + dropLocationZ);//randomized drop location
+            Vector3 RandomVectorLocation = new Vector3(dropLocation.x + dropLocationX, dropLocation.y + 2, dropLocation.z + dropLocationZ);//randomized drop location
             Instantiate(droppingItem, RandomVectorLocation, transform.rotation); //drop it
 
         }
@@ -270,7 +226,7 @@ public class EnemyAI : MonoBehaviour, EDamage
         {
             int dropLocationX = Random.Range(0, 1); //random x
             int dropLocationZ = Random.Range(0, 2); //random y
-            Vector3 RandomVectorLocation = new Vector3(dropLocation.x + dropLocationX, dropLocation.y + 0, dropLocation.z + dropLocationZ);//randomized drop location
+            Vector3 RandomVectorLocation = new Vector3(dropLocation.x + dropLocationX, dropLocation.y + 2, dropLocation.z + dropLocationZ);//randomized drop location
             Instantiate(Key, RandomVectorLocation, transform.rotation);//drop it
         }
 
@@ -283,11 +239,16 @@ public class EnemyAI : MonoBehaviour, EDamage
 
     IEnumerator Shoot() //shoot
     {
-        yield return new WaitForSeconds(enemyParams.ShootRate); //rounds per second
-        GameObject round = Instantiate(enemyParams.objectToShoot, ShootPos.position, ShootPos.rotation); //create the object assigned in the enemy scriptable
-        Rigidbody rb = round.GetComponent<Rigidbody>(); //rigid body 
-        rb.velocity = playerDir * enemyParams.bulletSpeed; //give rigidbody velocity from enemy parameters
-        Destroy(round, enemyParams.DestroyTime); //destroy if no impact after scriptable time
-        shooting = false; //flip shooting flag to be able to shoot again
+        if(shooting)
+        {
+            yield return new WaitForSeconds(enemyParams.ShootRate * .45f); //rounds per second
+            GameObject round = Instantiate(enemyParams.objectToShoot, ShootPos.position, ShootPos.rotation); //create the object assigned in the enemy scriptable
+            Rigidbody rb = round.GetComponent<Rigidbody>(); //rigid body 
+            rb.velocity = playerDir * enemyParams.bulletSpeed; //give rigidbody velocity from enemy parameters
+            Destroy(round, enemyParams.DestroyTime); //destroy if no impact after scriptable time
+            yield return new WaitForSeconds(enemyParams.ShootRate * .55f); //rounds per second
+            shooting = false; //flip shooting flag to be able to shoot again
+        }
+
     }
 }

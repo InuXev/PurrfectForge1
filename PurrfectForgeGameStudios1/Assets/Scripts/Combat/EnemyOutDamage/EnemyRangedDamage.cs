@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyRangedDamage : MonoBehaviour
 {
     [SerializeField] float Damage;
+    public enum Type { Fire, Ice, Lightning }
+    public Type type;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -13,9 +15,10 @@ public class EnemyRangedDamage : MonoBehaviour
             MDamage dmg = collision.gameObject.GetComponent<MDamage>();
             if (dmg != null)
             {
-                dmg.takeMDamage(Damage); // Call the takeDamage function from the PDamage component
+                string typeName = type.ToString();
+                dmg.takeMDamage(Damage, typeName); // Call the takeDamage function from the PDamage component
+                Destroy(gameObject);
             }
         }
-        Destroy(gameObject);
     }
 }

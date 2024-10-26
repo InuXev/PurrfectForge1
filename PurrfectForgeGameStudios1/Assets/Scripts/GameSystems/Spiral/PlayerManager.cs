@@ -33,6 +33,10 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     [SerializeField] public Transform castPos;
     [SerializeField] public Transform interactionCastPos;
     [SerializeField] public Transform interactionCastGroundPos;
+
+    [SerializeField] public GameObject hitEffectFire;
+    [SerializeField] public ParticleSystem hitEffectIce;
+    [SerializeField] public ParticleSystem hitEffectLightning;
     //player info
     public int highestFloorCompleted = 0;
     public int playerLevel = 1;
@@ -389,23 +393,55 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
             DeathCheck(); //is player dead
         }
     }
-    public void takeMDamage(float damage) //take magiv damage from enemy to player
+    public void takeMDamage(float damage, string type)
     {
-        if (shieldUp) //blocking
+        Debug.Log("Damage type received: " + type); // Check if the correct type is received
+
+        if (shieldUp) // Blocking
         {
-            float damageTaken = MDamageShieldUPCalc(damage); //magic damage with shield calc
-            HP -= damageTaken; //take hp
-            Stamina -= .5F; //take stamina
+            float damageTaken = MDamageShieldUPCalc(damage); // Magic damage with shield calc
+            HP -= damageTaken;
+            Stamina -= .5F;
             StamSystem();
-            StartCoroutine(HitFlash()); //ouch flash
-            DeathCheck();//did player die
+            StartCoroutine(HitFlash()); // Flash effect
+            DeathCheck(); // Check if player died
         }
-        else //not blocking
+        else // Not blocking
         {
-            float damageTaken = DamageShieldDownCalc(damage); //noraml calc EVENTUALLY WILL BE MDEF
-            HP -= damageTaken; //take hp
-            StartCoroutine(HitFlash()); //ouch flash in ui
-            DeathCheck(); //did player die
+            // Play the appropriate particle effect based on damage type
+            switch (type)
+            {
+                case "Fire":
+                    Debug.Log("Playing fire hit effect");
+                    StartCoroutine(SpellFlash(type));
+                    //hitEffectFire.SetActive(true);
+                    break;
+                case "Ice":
+                    Debug.Log("Playing ice hit effect");
+                    hitEffectIce.Play();
+                    break;
+                case "Lightning":
+                    Debug.Log("Playing lightning hit effect");
+                    hitEffectLightning.Play();
+                    break;
+                default:
+                    Debug.LogWarning("Unknown damage type: " + type);
+                    break;
+            }
+
+            float damageTaken = DamageShieldDownCalc(damage); // Normal calculation (eventually based on MDEF)
+            HP -= damageTaken;
+            StartCoroutine(HitFlash()); // UI flash effect
+            DeathCheck(); // Check if player died
+        }
+    }
+    IEnumerator SpellFlash(string type) //when player is hit flash in UI
+    {
+        if (HP > 0) //if there is HP to take
+        {
+            hitEffectFire.SetActive(true); //turn on flash
+            yield return new WaitForSeconds(1F); //wait
+            hitEffectFire.SetActive(false); //turn on flash
         }
     }
     IEnumerator HitFlash() //when player is hit flash in UI
