@@ -16,5 +16,6 @@ public class ScriptableItems : ScriptableObject
     public GameObject eshesBuildObject;
     public GameObject loot;
     public int amountHeld;
-
+    public float dropChance;
+    public ItemData itemData;
 }

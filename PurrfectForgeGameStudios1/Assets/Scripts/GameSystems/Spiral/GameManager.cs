@@ -35,7 +35,11 @@ public class GameManager : MonoBehaviour
     public TMP_Text playerDexStat;
     public TMP_Text playerStamStat;
     public TMP_Text playerAvailableSkillPts;
-    [SerializeField] public ScriptableItems coinPurse;
+
+    public GameObject levelUpNote;
+
+
+    //[SerializeField] public ScriptableItems coinPurse;
     public TMP_Text playerCoins;
     public Image playerXP;
     public Image playerXPBar;

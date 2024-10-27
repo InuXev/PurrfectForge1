@@ -65,10 +65,13 @@ public class CameraManager : MonoBehaviour
     {
         if (playerManager.FPActive)
         {
-            float mouseY = panSpeed * Input.GetAxis("Mouse Y"); //grab y axis from mouse
-            currentXRotation -= mouseY; // Invert to match input direction
-            currentXRotation = Mathf.Clamp(currentXRotation, -45, 45);// Clamp the rotation
-            FPerson.transform.localRotation = Quaternion.Euler(currentXRotation, 0, 0); // Apply the clamped rotation
+            if (playerManager.HP > 0 && GameManager.Instance.isPaused == false)
+            {
+                float mouseY = panSpeed * Input.GetAxis("Mouse Y"); //grab y axis from mouse
+                currentXRotation -= mouseY; // Invert to match input direction
+                currentXRotation = Mathf.Clamp(currentXRotation, -10, 20);// Clamp the rotation
+                FPerson.transform.localRotation = Quaternion.Euler(currentXRotation, 0, 0); // Apply the clamped rotation
+            }
         }
     }
 

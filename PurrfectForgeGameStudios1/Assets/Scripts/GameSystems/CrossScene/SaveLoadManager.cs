@@ -54,10 +54,10 @@ public class SaveLoadManager : MonoBehaviour // Define a class inheriting from M
 
                 prefabDataList.Add(data); // Add the created data to the list
             }
-            else
-            {
-                Debug.LogWarning("ItemData component missing on GameObject: " + obj.name); // Log warning if ItemData is missing
-            }
+            //else
+            //{
+            //    Debug.LogWarning("ItemData component missing on GameObject: " + obj.name); // Log warning if ItemData is missing
+            //}
         }
 
         // Create a new PrefabList with the collected data

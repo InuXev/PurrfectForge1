@@ -551,7 +551,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741167707823749901}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7933523, z: -0, w: 0.60876274}
+  m_LocalRotation: {x: 0, y: -0.7933534, z: 0, w: 0.6087614}
   m_LocalPosition: {x: -38.8, y: 0.021400452, z: -30}
   m_LocalScale: {x: 1.05, y: 1.05, z: 1.05}
   m_ConstrainProportionsScale: 0
@@ -584,10 +584,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Key: {fileID: 0}
   enemyParams: {fileID: 11400000, guid: a6c9b4e9272983642acb3477be96ef6e, type: 2}
-  equipedWeapon: {fileID: 0}
   enemyAttack: {fileID: 9191418748650833655}
   ShootPos: {fileID: 7447542768920418803}
   anim: {fileID: 328490962143490126}
+  Coins: []
   meleeAttackRange: 0
   player: {fileID: 0}
   headPOS: {fileID: 6292572483121814255}
@@ -636,7 +636,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

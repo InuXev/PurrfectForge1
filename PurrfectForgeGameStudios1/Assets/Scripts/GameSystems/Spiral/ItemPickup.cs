@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour
 {
     [SerializeField] private ScriptableItems item; // Ensure this is private and serialized to adjust from the inspector
-
+    [SerializeField] public ItemData itemData;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))  // Check if the collider is the player
@@ -55,9 +55,14 @@ public class ItemPickup : MonoBehaviour
             if (item.type == "Coin") //coin
             {
                 Debug.Log("Coins being Added to purse");
-                item.amountHeld += 1; //increase its scriptable amountHeld by one
+                PlayerManager.Instance.playerCoin += itemData.value;
+                //item.amountHeld += 1; //increase its scriptable amountHeld by one
             }
             Destroy(gameObject); // Destroy the item after adding it to the inventory
         }
+    }
+    public void ValueCalc()
+    {
+
     }
 }

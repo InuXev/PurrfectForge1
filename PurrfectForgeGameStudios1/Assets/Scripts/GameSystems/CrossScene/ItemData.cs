@@ -8,6 +8,5 @@ public class ItemData : MonoBehaviour
     public string type;
     public string eshesBuildObjectName;
     public string description;
-    public float dropChance;
-
+    public int value;
 }

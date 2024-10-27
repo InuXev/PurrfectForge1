@@ -12,6 +12,7 @@ public class EnemyAI : MonoBehaviour, EDamage
     [SerializeField] EnemyAttack enemyAttack;
     [SerializeField] Transform ShootPos;
     [SerializeField] Animator anim;
+    [SerializeField] GameObject[] Coins;
     public bool meleeAttackRange;
     public Transform player;
     public Transform headPOS;
@@ -93,7 +94,7 @@ public class EnemyAI : MonoBehaviour, EDamage
             if (!attacked && !spinAttacking) //if we arent attacking or spinattacking
             {
 
-              StartCoroutine(BasicAttackSequence());
+                StartCoroutine(BasicAttackSequence());
 
             }
         }
@@ -203,30 +204,29 @@ public class EnemyAI : MonoBehaviour, EDamage
     {
         GameObject droppingItem; //create the gameobject holder
         droppingItem = chosenItem.loot; //assign it to the passed in Scriptable
+        droppingItem.GetComponent<ItemData>().value = Random.Range(1, (enemyParams.Level * 3));
         if (chosenItem.itemName == "Coin") //if its a coin
         {
-            for (int i = 0; i < enemyParams.Level * 3; i++) //frop 3 coins per enemy level
-            {
-                int dropLocationX = Random.Range(0, 1); //calc random X
-                int dropLocationZ = Random.Range(0, 1); //calc random z
-                float dropLocationY = Random.Range(0, .2F); //calc random y
-                Vector3 RandomVectorLocation = new Vector3(dropLocation.x + dropLocationX, dropLocation.y + 0, dropLocation.z + dropLocationZ); //randomized drop location
-                Instantiate(droppingItem, RandomVectorLocation /*dropLocation*/, transform.rotation); //drop it
-            }
+            //int coinAmount = Random.Range(0, enemyParams.Level * 3);
+            int dropLocationX = Random.Range(0, 1); //calc random X
+            int dropLocationZ = Random.Range(0, 1); //calc random z
+            float dropLocationY = Random.Range(0, .2F); //calc random y
+            Vector3 RandomVectorLocation = new Vector3(dropLocation.x + dropLocationX, dropLocation.y + 0, dropLocation.z + dropLocationZ); //randomized drop location
+            
+            Instantiate(droppingItem, RandomVectorLocation /*dropLocation*/, transform.rotation); //drop it
         }
         else //anything other than a coin
         {
             int dropLocationX = Random.Range(0, 1); //random X
             int dropLocationZ = Random.Range(0, 2); //ranfom y
-            Vector3 RandomVectorLocation = new Vector3(dropLocation.x + dropLocationX, dropLocation.y + 2, dropLocation.z + dropLocationZ);//randomized drop location
+            Vector3 RandomVectorLocation = new Vector3(dropLocation.x + dropLocationX, dropLocation.y + 1, dropLocation.z + dropLocationZ);//randomized drop location
             Instantiate(droppingItem, RandomVectorLocation, transform.rotation); //drop it
-
         }
         if (Key != null) //if a key is assigned, for floor bosses only
         {
             int dropLocationX = Random.Range(0, 1); //random x
             int dropLocationZ = Random.Range(0, 2); //random y
-            Vector3 RandomVectorLocation = new Vector3(dropLocation.x + dropLocationX, dropLocation.y + 2, dropLocation.z + dropLocationZ);//randomized drop location
+            Vector3 RandomVectorLocation = new Vector3(dropLocation.x + dropLocationX, dropLocation.y + 1, dropLocation.z + dropLocationZ);//randomized drop location
             Instantiate(Key, RandomVectorLocation, transform.rotation);//drop it
         }
 
@@ -239,7 +239,7 @@ public class EnemyAI : MonoBehaviour, EDamage
 
     IEnumerator Shoot() //shoot
     {
-        if(shooting)
+        if (shooting)
         {
             yield return new WaitForSeconds(enemyParams.ShootRate * .45f); //rounds per second
             GameObject round = Instantiate(enemyParams.objectToShoot, ShootPos.position, ShootPos.rotation); //create the object assigned in the enemy scriptable

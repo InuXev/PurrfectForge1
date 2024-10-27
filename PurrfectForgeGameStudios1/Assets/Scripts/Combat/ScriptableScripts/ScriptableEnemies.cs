@@ -12,7 +12,7 @@ public class ScriptableEnemies : ScriptableObject
     public enum Type { Normal, Ranged, Boss, Wave}
     public Type type;
     public string EnemyName;
-    public float Level;
+    public int Level;
     public float HP;
     public float Defense;
     public float LineOfSight;

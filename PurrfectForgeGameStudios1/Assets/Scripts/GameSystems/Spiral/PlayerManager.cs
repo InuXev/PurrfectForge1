@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
 {
     #region Fields/Objects
 
+
     [SerializeField] CharacterController characterControl;
     [SerializeField] GameManager gameManager;
     [SerializeField] GameObject currentWeapon;
@@ -35,8 +36,11 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     [SerializeField] public Transform interactionCastGroundPos;
 
     [SerializeField] public GameObject hitEffectFire;
-    [SerializeField] public ParticleSystem hitEffectIce;
-    [SerializeField] public ParticleSystem hitEffectLightning;
+    [SerializeField] public GameObject hitEffectIce;
+    [SerializeField] public GameObject hitEffectLightning;
+
+    [SerializeField] GameObject LevelUp;
+    [SerializeField] ScriptableItems purse;
     //player info
     public int highestFloorCompleted = 0;
     public int playerLevel = 1;
@@ -80,7 +84,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     bool swordDrawn;
     bool jumping;
     float currentSpeed;
-    
+    bool attacking;
     //skill systems
 
     public string chosenElement;
@@ -132,8 +136,19 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
 
     public void Turn() //turns First person player left right
     {
-        float x = panSpeed * Input.GetAxis("Mouse X"); //grabs left right on mouse
-        transform.Rotate(0, x, 0); //rotates player
+        if (HP > 0)
+        {
+            float x = panSpeed * Input.GetAxis("Mouse X"); //grabs left right on mouse
+            if (x < 0)
+            {
+                //turning left animation
+            }
+            if (x > 0)
+            {
+                //turning right animation
+            }
+            transform.Rotate(0, x, 0); //rotates player
+        }
     }
     public void Walk() //walks player
     {
@@ -148,17 +163,21 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
             jumping = true;
             //playerVelocity = Vector3.zero; //stop their velocity
         }
-        moveDirection = (Input.GetAxis("Horizontal") * transform.right) +
+        if (HP > 0)
+        {
+            moveDirection = (Input.GetAxis("Horizontal") * transform.right) +
             (Input.GetAxis("Vertical") * transform.forward); //set the movedirection
-        characterControl.Move(moveDirection * MoveSpeed * Time.deltaTime); //move the player that direction
+            characterControl.Move(moveDirection * MoveSpeed * Time.deltaTime); //move the player that direction
 
-        currentSpeed = moveDirection.magnitude;
+            currentSpeed = moveDirection.magnitude;
 
-        Anim.SetFloat("Speed", currentSpeed);
+            Anim.SetFloat("Speed", currentSpeed);
+        }
+
     }
     public void Dash() //multiplies movespeed
     {
-        if (Input.GetButtonDown("Dash") && !dashing && Stamina > 0) //if left shift is pressed and currently not dashing and enough stamina
+        if (Input.GetButtonDown("Dash") && !dashing && Stamina > 0 && HP > 0) //if left shift is pressed and currently not dashing and enough stamina
         {
             dashing = true; //set dashing to true
             if (currentSpeed > 0)
@@ -187,11 +206,11 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
 
             StamSystem();
         }
-    }
 
+    }
     void ChangeView() //view changer
     {
-        if (Input.GetKeyDown(KeyCode.V)) //on V key
+        if (Input.GetKeyDown(KeyCode.V) && HP > 0) //on V key
         {
             if (OverHeadCamera.isActiveAndEnabled) //Overhead cam is on
             {
@@ -208,52 +227,63 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
 
         }
     }
-    public void Jump() //to jump
+    public void Jump() // To jump
     {
-        if (Input.GetButtonDown("Jump") && jumpCounter < maxJumps && !jumping) //on space bar and jump counter is under max jumps allowed
+        if (Input.GetButtonDown("Jump") && jumpCounter < maxJumps && !jumping && HP > 0) // Space bar pressed and jump counter is under max jumps allowed
         {
             jumping = true;
             StartCoroutine(JumpTime());
-            jumpCounter++; //increase jump counter
-            Stamina -= 1; //use stamina
-            if (staminaDrainCoroutine != null) //is stamina drain corountine is not ended
-            {
-                StopCoroutine(staminaDrainCoroutine); // Stop draining stamina
-            }
-            staminaDrainCoroutine = StartCoroutine(StaminaDrain()); //start stamina drain
-            //if (staminaRefillCoroutine != null) //if refil is not ended
-            //{
-            //    StopCoroutine(staminaRefillCoroutine); //stop refill
-            //    staminaRefillCoroutine = null; //set stamina refill to null for next refill needed
-            //}
-        }
-        playerVelocity.y -= gravity * Time.deltaTime; //this applies at ALL TIMES gravity downwards
-        characterControl.Move(playerVelocity * Time.deltaTime); //move player downward if able
+            jumpCounter++; // Increase jump counter
+            Stamina -= 1; // Use stamina
 
+            if (staminaDrainCoroutine != null) // Stop draining stamina if coroutine is running
+            {
+                StopCoroutine(staminaDrainCoroutine);
+            }
+            staminaDrainCoroutine = StartCoroutine(StaminaDrain()); // Start stamina drain
+
+            if (staminaRefillCoroutine != null) // Stop refill coroutine if still running
+            {
+                StopCoroutine(staminaRefillCoroutine);
+                staminaRefillCoroutine = null; // Set to null so it can be restarted
+            }
+        }
+
+        playerVelocity.y -= gravity * Time.deltaTime; // Apply gravity downward at all times
+        characterControl.Move(playerVelocity * Time.deltaTime); // Move player downward if able
     }
     IEnumerator JumpTime()
     {
-        Anim.SetTrigger("Jump");
-        yield return new WaitForSeconds(.75f);
-        playerVelocity.y = jumpSpeed;//add upwardsd velocity to player
+        Anim.SetTrigger("Jump"); // Start jump animation
+        yield return new WaitForSeconds(0.75f); // Wait for animation timing or crouch effect
 
+        playerVelocity.y = jumpSpeed; // Apply upward jump velocity
+        jumping = false; // Allow jumping again
+
+        // Start the stamina refill if it’s not already running
+        if (staminaRefillCoroutine == null)
+        {
+            staminaRefillCoroutine = StartCoroutine(StaminaRefill());
+        }
     }
+
     #endregion
 
     #region Combat / Health Systems
 
     public void Melee()//swing a weapon
     {
-        if (currentWeapon != null && !shieldUp) //if there is a weapon and shield down
+        if (currentWeapon != null && !shieldUp && HP > 0 && !attacking) //if there is a weapon and shield down
         {
-            if (Input.GetButtonDown("Left Mouse") && !swordDrawn) //left mouse click
+            if (Input.GetButtonDown("Left Mouse") && !swordDrawn && !dashing) //left mouse click
             {
                 Anim.SetTrigger("DrawSword");
                 StartCoroutine(SwordSpawnTime());
                 swordDrawn = true;
             }
-            else if (Input.GetButtonDown("Left Mouse") && swordDrawn) //left mouse click
+            else if (Input.GetButtonDown("Left Mouse") && swordDrawn && !dashing && (Stamina - SwingCostCalc()) >= 0) //left mouse click
             {
+                attacking = true;
                 Anim.SetTrigger("Swing");
                 StartCoroutine(Swing()); //start a swing
                 Anim.SetBool("Swinging", false);
@@ -286,7 +316,6 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
             }
         }
     }
-
     public void UseSkills()
     {
         if (activeSlotOneSkill != null && !shieldUp)
@@ -418,11 +447,11 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
                     break;
                 case "Ice":
                     Debug.Log("Playing ice hit effect");
-                    hitEffectIce.Play();
+                    //hitEffectIce.Play();
                     break;
                 case "Lightning":
                     Debug.Log("Playing lightning hit effect");
-                    hitEffectLightning.Play();
+                    //hitEffectLightning.Play();
                     break;
                 default:
                     Debug.LogWarning("Unknown damage type: " + type);
@@ -457,24 +486,26 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     {
         if (Stamina >= SwingCostCalc()) //is enough stamina
         {
+
             Anim.SetBool("Swing", true);
             WeaponHitBox.SetActive(true);
             float swingCost = SwingCostCalc(); //calc swing cost
             Stamina -= swingCost; //take stamina
-            yield return new WaitForSeconds(2F);//wait
-            WeaponHitBox.SetActive(false);
-            if (staminaRefillCoroutine != null) //if refilling
+            if (staminaRefillCoroutine != null) //if refil is not ended
             {
                 StopCoroutine(staminaRefillCoroutine); //stop refill
-                staminaRefillCoroutine = null; //refill null
+                staminaRefillCoroutine = null; //set stamina refill to null for next refill needed
             }
-            if (!dashing) //if im not dashing to prevent bugs in stamina not refilling
+            if (staminaRefillCoroutine == null) //if refil is not ended
             {
-                staminaRefillCoroutine = StartCoroutine(StaminaRefill()); //start the refill
+                staminaRefillCoroutine = StartCoroutine(StaminaRefill()); //set stamina refill to null for next refill needed
             }
+            yield return new WaitForSeconds(1.25f);//wait
+            WeaponHitBox.SetActive(false);
+            attacking = false;
+
         }
     }
-
     public float MDamageShieldUPCalc(float damage) //calc magic damage
     {
         float damageOut; //holder
@@ -524,9 +555,6 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
         float stamFillAmount = Stamina / StaminaOriginal;//StaminaUpdater
         int stamPercentage = (int)(stamFillAmount * 100);//stam precent
         gameManager.playerStamBar.fillAmount = stamFillAmount; //set fill amount
-
-        playerCoin = gameManager.coinPurse.amountHeld; //set player coin amount
-
         gameManager.playerLvLText.text = playerLevel.ToString(); //set player level 
         gameManager.playerHPStat.text = HPOriginal.ToString(); // set HP stat
         gameManager.playerAttStat.text = AttackOriginal.ToString(); // set Attack stat
@@ -564,50 +592,103 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
             MoveSpeedOriginal += randBoostMoveSpeed;//apply random boost
             Stamina += randBoostStamina;//apply random boost
             StaminaOriginal += randBoostStamina;//apply random boost
+            StartCoroutine(LevelUpNotification());
             playerLevel++; //increase player level
             playerXP = 0; //reset playerXp to zero
             UpdatePlayerUI(); //update the UI with new stats
         }
     }
-
-    IEnumerator StaminaDrain() //Stamina drain 
+    IEnumerator LevelUpNotification()
     {
-        while (dashing && Stamina > 0) //if dashing and stamina is above 0
+        LevelUp.SetActive(true);
+        gameManager.levelUpNote.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        gameManager.levelUpNote.SetActive(false);
+        LevelUp.SetActive(false);
+    }
+    IEnumerator StaminaDrain() // Stamina drain 
+    {
+        while (dashing && Stamina > 0) // If dashing and stamina is above 0
         {
-            yield return new WaitForSeconds(0.1F); // Adjust time to control the drain rate
-            Stamina -= 0.1F; // Adjust the amount drained per second
-            UpdatePlayerUI(); //update as we go
-            if (Stamina <= 0) //if stamina is empty
+            yield return new WaitForSeconds(0.1f); // Adjust time to control the drain rate
+            Stamina -= 0.1f; // Adjust the amount drained per second
+            UpdatePlayerUI(); // Update as we go
+
+            if (Stamina <= 0) // If stamina is empty
             {
-                Stamina = 0; //set it to empty
-                dashing = false; //stop dashing
+                Stamina = 0; // Set it to empty
+                dashing = false; // Stop dashing
                 MoveSpeed = MoveSpeedOriginal; // Reset speed if stamina is depleted
 
-                // Stop the drain coroutine
+                // Trigger stamina system to stop draining and begin refill
                 StamSystem();
                 yield break; // Exit the coroutine as the player has no stamina left
             }
         }
     }
-
-    IEnumerator StaminaRefill() //stamina refill
+    IEnumerator StaminaRefill() // Stamina refill
     {
         Debug.Log("Starting StaminaRefill coroutine.");
 
-        while (Stamina < StaminaOriginal) // Continue refilling as long as stamina is below the maximum and not dashing
+        while (Stamina < StaminaOriginal) // Refill while stamina is below the max
         {
             // Wait for a short period before refilling
-            yield return new WaitForSeconds(0.1F); // Adjust this value to control the refill delay
+            yield return new WaitForSeconds(0.1f); // Adjust this value to control the refill delay
 
-            // Gradually refill stamina
-            Stamina += 0.1F + (Dex * .005F); // Adjust this value for desired refill speed
-            Stamina = Mathf.Clamp(Stamina, 0, StaminaOriginal); // Ensure stamina does not exceed the original amount
-            UpdatePlayerUI(); //update UI
+            // Gradually refill stamina, adjusted for player's Dexterity (Dex)
+            Stamina += 0.1f + (Dex * 0.005f); // Adjust for refill speed if needed
+            Stamina = Mathf.Clamp(Stamina, 0, StaminaOriginal); // Ensure stamina doesn’t exceed maximum
+            UpdatePlayerUI(); // Update UI
             Debug.Log($"Refilling stamina. Current stamina: {Stamina}");
         }
-        Stamina = StaminaOriginal;// Ensure stamina is capped at maximum
+
+        Stamina = StaminaOriginal; // Ensure stamina is capped at maximum
         Debug.Log("Stamina refill complete.");
         staminaRefillCoroutine = null; // Reset coroutine reference
+    }
+    public void StamSystem()
+    {
+        if (staminaDrainCoroutine != null) // If draining
+        {
+            StopCoroutine(staminaDrainCoroutine); // Stop draining
+            staminaDrainCoroutine = null; // Set to null for next usage
+        }
+        if (!dashing && staminaRefillCoroutine == null) // If refill coroutine is not running and player is not dashing
+        {
+            staminaRefillCoroutine = StartCoroutine(StaminaRefill()); // Start refill
+        }
+    }
+    void CanInteract() // Method to handle placing objects on the ground
+    {
+        RaycastHit hit; // Declare a RaycastHit variable to store information about what the ray hits
+
+        // Cast rays and store whether either hit an object
+        bool isHitPos = Physics.Raycast(interactionCastPos.position, interactionCastPos.forward, out hit);
+        bool isHitGroundPos = Physics.Raycast(interactionCastGroundPos.position, interactionCastGroundPos.forward, out hit);
+
+        // Draw the debug rays for both positions
+        Debug.DrawRay(interactionCastPos.position, interactionCastPos.forward, Color.red, 15);
+        Debug.DrawRay(interactionCastGroundPos.position, interactionCastGroundPos.forward, Color.red, 20);
+
+        GameObject hitObject = hit.collider.gameObject;
+        // If either ray hits something, check for "Interactable" tag
+        if (isHitPos || isHitGroundPos)
+        {
+            if (hit.collider != null && hit.collider.CompareTag("Interactable"))
+            {
+                Debug.Log(hit);
+                gameManager.InteractableTag.SetActive(true); // Activate the interactable tag
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Debug.Log("Interacting");
+                    hitObject.GetComponent<Interactable>().Interact();
+                }
+                return; // Exit the function once we find an interactable object
+            }
+        }
+
+        // If no hit or no "Interactable" tag, deactivate the interactable tag
+        gameManager.InteractableTag.SetActive(false);
     }
 
     #endregion
@@ -776,20 +857,9 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
             tierThreeUnlocked = true;
         }
     }
-    public void StamSystem()
-    {
-        if (staminaDrainCoroutine != null) //draing
-        {
-            StopCoroutine(staminaDrainCoroutine); //stop draining
-            staminaDrainCoroutine = null; //drain null
-        }
-        if (staminaRefillCoroutine == null) //refilling null
-        {
-            staminaRefillCoroutine = StartCoroutine(StaminaRefill()); //start refill
-        }
-    }
     public void GetPlayerPrefs() //get player SPIRAL save data
     {
+
         HPOriginal = PlayerPrefs.GetFloat("HPOringal", HPOriginal); //get stat
         HP = HPOriginal; //set player stat
         AttackOriginal = PlayerPrefs.GetFloat("AttackOriginal", AttackOriginal);//get stat
@@ -805,9 +875,8 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
         playerXP = PlayerPrefs.GetFloat("playerXP", playerXP); //get xp
         playerLevel = PlayerPrefs.GetInt("playerLevel", playerLevel); //get level
         maxJumps = PlayerPrefs.GetInt("maxJumps", maxJumps); //get max jumps
-        playerCoin = PlayerPrefs.GetInt("playerCoin", playerCoin); //get coins
+        playerCoin = purse.amountHeld;
         highestFloorCompleted = PlayerPrefs.GetInt("highestFloorCompleted", highestFloorCompleted);//save stat
-
         chosenElement = PlayerPrefs.GetString("ElementChosen", chosenElement);
         playerSkillPoints = PlayerPrefs.GetInt("PlayerSkillPoints", playerSkillPoints);
         tierOne = PlayerPrefs.GetInt("TierOne", tierOne);
@@ -818,6 +887,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     }
     public void SavePlayerPrefs() //save SPIRAL player data
     {
+
         PlayerPrefs.SetFloat("HPOringal", HPOriginal); //save stat
         PlayerPrefs.SetFloat("AttackOriginal", AttackOriginal);//save stat
         PlayerPrefs.SetFloat("DefOriginal", DefOriginal);//save stat
@@ -828,6 +898,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
         PlayerPrefs.SetInt("playerLevel", playerLevel);//save stat
         PlayerPrefs.SetInt("maxJumps", maxJumps);//save stat
         PlayerPrefs.SetInt("playerCoin", playerCoin);//save stat
+        coinsToPurse();
         PlayerPrefs.SetInt("highestFloorCompleted", highestFloorCompleted);//save stat
 
         PlayerPrefs.SetString("ElementChosen", chosenElement);
@@ -850,7 +921,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
         PlayerPrefs.SetFloat("playerXP", 0);//reset stat
         PlayerPrefs.SetInt("playerLevel", 1);//reset stat
         PlayerPrefs.SetInt("maxJumps", 1);//reset stat
-        PlayerPrefs.SetInt("playerCoin", playerCoin);//reset stat
+        PlayerPrefs.SetInt("playerCoin", 0);//reset stat
         PlayerPrefs.SetInt("highestFloorCompleted", 0);//save stat
         PlayerPrefs.SetString("ElementChosen", null);
         PlayerPrefs.SetInt("PlayerSkillPoints", 0);
@@ -861,37 +932,10 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
         PlayerPrefs.SetInt("SkillTwoLevel", 0);
     }
     #endregion
-    void CanInteract() // Method to handle placing objects on the ground
+
+    public void coinsToPurse()
     {
-        RaycastHit hit; // Declare a RaycastHit variable to store information about what the ray hits
-
-        // Cast rays and store whether either hit an object
-        bool isHitPos = Physics.Raycast(interactionCastPos.position, interactionCastPos.forward, out hit);
-        bool isHitGroundPos = Physics.Raycast(interactionCastGroundPos.position, interactionCastGroundPos.forward, out hit);
-
-        // Draw the debug rays for both positions
-        Debug.DrawRay(interactionCastPos.position, interactionCastPos.forward, Color.red, 15);
-        Debug.DrawRay(interactionCastGroundPos.position, interactionCastGroundPos.forward, Color.red, 20);
-
-        GameObject hitObject = hit.collider.gameObject;
-        // If either ray hits something, check for "Interactable" tag
-        if (isHitPos || isHitGroundPos)
-        {
-            if (hit.collider != null && hit.collider.CompareTag("Interactable"))
-            {
-                Debug.Log(hit);
-                gameManager.InteractableTag.SetActive(true); // Activate the interactable tag
-                if(Input.GetKeyDown(KeyCode.E))
-                {
-                    Debug.Log("Interacting");
-                    hitObject.GetComponent<Interactable>().Interact();
-                }
-                return; // Exit the function once we find an interactable object
-            }
-        }
-
-        // If no hit or no "Interactable" tag, deactivate the interactable tag
-        gameManager.InteractableTag.SetActive(false);
+        purse.amountHeld = playerCoin;
     }
 
 

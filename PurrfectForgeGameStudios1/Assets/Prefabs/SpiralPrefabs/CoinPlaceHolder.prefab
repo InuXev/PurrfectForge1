@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8998647417349598057}
   - component: {fileID: 954794382505993250}
   - component: {fileID: 8387593221283608758}
+  - component: {fileID: -785289179069237733}
   m_Layer: 0
   m_Name: CoinPlaceHolder
   m_TagString: Untagged
@@ -120,4 +121,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa80e71e1e3b5d459b48c2e13074160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 9e0f2682f6443a845ad83749082f5d80, type: 2}
+  item: {fileID: 11400000, guid: ad50e70b96f46814ba05e9c2a85de6a5, type: 2}
+  itemData: {fileID: -785289179069237733}
+--- !u!114 &-785289179069237733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5785603885107739423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f969bada4b90142ad6d5ac0d41074b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableItems: {fileID: 0}
+  type: 
+  eshesBuildObjectName: 
+  description: 
+  value: 0

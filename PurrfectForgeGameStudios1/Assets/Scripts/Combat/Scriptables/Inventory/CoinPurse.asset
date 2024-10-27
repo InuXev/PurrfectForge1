@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: CoinPurse
   m_EditorClassIdentifier: 
   type: Coin
-  itemName: Coin
+  itemName: Purse
   icon: {fileID: 0}
   description: 
   eshesBuildObject: {fileID: 0}
   loot: {fileID: 5785603885107739423, guid: 738ea75bd805c6c4e88d7eac9720f426, type: 3}
-  amountHeld: 3
+  amountHeld: 20
+  dropChance: 0
+  itemData: {fileID: 0}
