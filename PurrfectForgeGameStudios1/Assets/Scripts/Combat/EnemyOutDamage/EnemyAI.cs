@@ -152,7 +152,7 @@ public class EnemyAI : MonoBehaviour, EDamage
     public void EnemyDeathCheck() //checks enemy death
     {
         enemyPos = this.transform.position; //grab enemy position
-        if (enemyHP <= 0) //is enemy at 0 health
+        if (enemyHP <= 0 && !isDead) //is enemy at 0 health
         {
             agent.enabled = false;
             StartCoroutine(EnemyDeathSequence());
@@ -204,22 +204,22 @@ public class EnemyAI : MonoBehaviour, EDamage
     {
         GameObject droppingItem; //create the gameobject holder
         droppingItem = chosenItem.loot; //assign it to the passed in Scriptable
-        droppingItem.GetComponent<ItemData>().value = Random.Range(1, (enemyParams.Level * 3));
-        if (chosenItem.itemName == "Coin") //if its a coin
+        if (droppingItem.GetComponent<ItemData>() != null)
         {
-            //int coinAmount = Random.Range(0, enemyParams.Level * 3);
+            droppingItem.GetComponent<ItemData>().value = Random.Range(1, (enemyParams.Level * 3));
+            Debug.Log("Coin");
             int dropLocationX = Random.Range(0, 1); //calc random X
             int dropLocationZ = Random.Range(0, 1); //calc random z
             float dropLocationY = Random.Range(0, .2F); //calc random y
-            Vector3 RandomVectorLocation = new Vector3(dropLocation.x + dropLocationX, dropLocation.y + 0, dropLocation.z + dropLocationZ); //randomized drop location
-            
-            Instantiate(droppingItem, RandomVectorLocation /*dropLocation*/, transform.rotation); //drop it
+            Vector3 RandomVectorLocation = new Vector3(dropLocation.x, dropLocation.y, dropLocation.z); //randomized drop location
+
+            Instantiate(droppingItem, RandomVectorLocation, transform.rotation); //drop it
         }
         else //anything other than a coin
         {
             int dropLocationX = Random.Range(0, 1); //random X
             int dropLocationZ = Random.Range(0, 2); //ranfom y
-            Vector3 RandomVectorLocation = new Vector3(dropLocation.x + dropLocationX, dropLocation.y + 1, dropLocation.z + dropLocationZ);//randomized drop location
+            Vector3 RandomVectorLocation = new Vector3(dropLocation.x + dropLocationX, dropLocation.y, dropLocation.z + dropLocationZ);//randomized drop location
             Instantiate(droppingItem, RandomVectorLocation, transform.rotation); //drop it
         }
         if (Key != null) //if a key is assigned, for floor bosses only
