@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   EnemyName: Basic Enemy
-  Level: 6
+  Level: 1
   HP: 10
   Defense: 0
   LineOfSight: 12
@@ -22,8 +22,9 @@ MonoBehaviour:
   XpDrop: 25
   BossAttackPause: 0
   hitEffects:
-  - {fileID: 0}
-  deathEffects: []
+  - {fileID: 376131440763529171, guid: e1d979e55e83b114c8196a4ffa7bd2d1, type: 3}
+  deathEffects:
+  - {fileID: 6858957924087465311, guid: 2eff3107584350540a994fbf69443b22, type: 3}
   lootPool:
   - {fileID: 11400000, guid: ad50e70b96f46814ba05e9c2a85de6a5, type: 2}
   coinList:

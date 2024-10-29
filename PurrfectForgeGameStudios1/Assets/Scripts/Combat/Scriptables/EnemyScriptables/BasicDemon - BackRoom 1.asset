@@ -21,8 +21,10 @@ MonoBehaviour:
   MeleeAttackDistance: 3
   XpDrop: 25
   BossAttackPause: 0
-  hitEffects: []
-  deathEffects: []
+  hitEffects:
+  - {fileID: 376131440763529171, guid: e1d979e55e83b114c8196a4ffa7bd2d1, type: 3}
+  deathEffects:
+  - {fileID: 6858957924087465311, guid: 4f129ab672cab5f4fbfa2e1a93aac16f, type: 3}
   lootPool:
   - {fileID: 11400000, guid: b52b6bedd1696de49b65075548f1d57f, type: 2}
   - {fileID: 11400000, guid: a9513ee6645daa845a231ca7cef15eaf, type: 2}

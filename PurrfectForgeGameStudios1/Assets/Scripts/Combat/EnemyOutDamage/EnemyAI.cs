@@ -29,6 +29,7 @@ public class EnemyAI : MonoBehaviour, EDamage
     int swingCount = 0; //tracks swings to go into other modes
     bool spinAttacking = false; //tracks for spinning attack
     public GameObject[] coinList;
+
     void Start()
     {
         enemyHP = enemyParams.HP;
@@ -38,7 +39,7 @@ public class EnemyAI : MonoBehaviour, EDamage
     // Update is called once per frame
     void Update()
     {
-        EnemyDeathCheck(); //checks for enemys death
+        //EnemyDeathCheck(); //checks for enemys death
         canSeePlayer(); //checks if the player can be seen and what to do
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform; //grabs player Transform for loaction info
         float animSpeed = agent.velocity.normalized.magnitude; // Get the speed of the agent
@@ -51,9 +52,20 @@ public class EnemyAI : MonoBehaviour, EDamage
     {
         float defMod = enemyParams.Defense * .1F; //defense reduction based on 3% of def
         enemyHP -= damage + (PlayerManager.Instance.Attack * .1F) - defMod;//how much hp is lost aftertakeing into account player attack and the enemy defMod
+
         EnemyDeathCheck(); //checks to see if they died
     }
-
+    IEnumerator HitFlash() //when player is hit flash in UI
+    {
+        if (enemyHP >= 0 || enemyHP <= 0) //if there is HP to take
+        {
+            Vector3 offset = new Vector3(0, 1, 0);
+            Vector3 positionOffset = transform.position + offset;
+            GameObject hitEffect = Instantiate(enemyParams.hitEffects[0], positionOffset, Quaternion.identity, transform); // Instantiate the hit effect
+            yield return new WaitForSeconds(1F); // Wait for the effect duration
+            Destroy(hitEffect); // Destroy the effect after the duration
+        }
+    }
 
     bool canSeePlayer()
     {
@@ -151,6 +163,7 @@ public class EnemyAI : MonoBehaviour, EDamage
     public void EnemyDeathCheck() //checks enemy death
     {
         enemyPos = this.transform.position; //grab enemy position
+        StartCoroutine(HitFlash()); //flash when hit
         if (enemyHP <= 0 && !isDead) //is enemy at 0 health
         {
             agent.enabled = false;
@@ -159,15 +172,34 @@ public class EnemyAI : MonoBehaviour, EDamage
     }
     IEnumerator EnemyDeathSequence()
     {
-        isDead = true; //they dead
+        isDead = true; // mark as dead
         anim.SetTrigger("isDead");
-        yield return new WaitForSeconds(3);
-        Vector3 dropLocation = enemyPos; //set this for a itemdrop location
-        Destroy(gameObject); //destroy enemy
-        LootPicker(dropLocation); //pick and drop the item from lootpool in unity
-        XPGiver(); //call the xp give
+
+        yield return new WaitForSeconds(3); // wait before starting the death flash
+
+        StartCoroutine(DeathFlash()); // start death flash effect
+
+        Vector3 dropLocation = transform.position; // set item drop location
+        LootPicker(dropLocation); // drop item from loot pool
+        XPGiver(); // give XP reward
+        Destroy(gameObject); // destroy enemy after all processes are done
     }
 
+    IEnumerator DeathFlash()
+    {
+        Debug.Log("Death Effect"); // confirm flash is triggered
+
+        // Adjusting the position offset if needed
+        Vector3 offset = new Vector3(0, .5F, 0);
+        Vector3 positionOffset = transform.position + offset;
+
+        // Instantiate the death effect and parent it if needed
+        GameObject hitEffect = Instantiate(enemyParams.deathEffects[0], positionOffset, Quaternion.identity);
+
+        yield return new WaitForSeconds(1f); // wait for effect duration
+
+        Destroy(hitEffect); // clean up effect after duration
+    }
 
     public void LookAtPlayer() //looks at player
     {
@@ -263,7 +295,7 @@ public class EnemyAI : MonoBehaviour, EDamage
         {
             coinPrefab = enemyParams.coinList[7];
         }
-        else if (value < 150)   
+        else if (value < 150)
         {
             coinPrefab = enemyParams.coinList[8];
         }
