@@ -12,7 +12,6 @@ public class EnemyAI : MonoBehaviour, EDamage
     [SerializeField] EnemyAttack enemyAttack;
     [SerializeField] Transform ShootPos;
     [SerializeField] Animator anim;
-    [SerializeField] GameObject[] Coins;
     public bool meleeAttackRange;
     public Transform player;
     public Transform headPOS;
@@ -29,7 +28,7 @@ public class EnemyAI : MonoBehaviour, EDamage
     public bool shooting = false;
     int swingCount = 0; //tracks swings to go into other modes
     bool spinAttacking = false; //tracks for spinning attack
-
+    public GameObject[] coinList;
     void Start()
     {
         enemyHP = enemyParams.HP;
@@ -208,12 +207,8 @@ public class EnemyAI : MonoBehaviour, EDamage
         {
             droppingItem.GetComponent<ItemData>().value = Random.Range(1, (enemyParams.Level * 3));
             Debug.Log("Coin");
-            int dropLocationX = Random.Range(0, 1); //calc random X
-            int dropLocationZ = Random.Range(0, 1); //calc random z
-            float dropLocationY = Random.Range(0, .2F); //calc random y
-            Vector3 RandomVectorLocation = new Vector3(dropLocation.x, dropLocation.y, dropLocation.z); //randomized drop location
+            InstantiateCoinBasedOnValue(droppingItem.GetComponent<ItemData>().value, dropLocation);
 
-            Instantiate(droppingItem, RandomVectorLocation, transform.rotation); //drop it
         }
         else //anything other than a coin
         {
@@ -230,6 +225,54 @@ public class EnemyAI : MonoBehaviour, EDamage
             Instantiate(Key, RandomVectorLocation, transform.rotation);//drop it
         }
 
+    }
+    private void InstantiateCoinBasedOnValue(int value, Vector3 dropLocation)
+    {
+        GameObject coinPrefab = null;
+
+        // Determine which coin prefab to instantiate based on the value
+        if (value < 3)
+        {
+            coinPrefab = enemyParams.coinList[0];
+        }
+        else if (value < 10)
+        {
+            coinPrefab = enemyParams.coinList[1];
+        }
+        else if (value < 15)
+        {
+            coinPrefab = enemyParams.coinList[2];
+        }
+        else if (value < 25)
+        {
+            coinPrefab = enemyParams.coinList[3];
+        }
+        else if (value < 50)
+        {
+            coinPrefab = enemyParams.coinList[4];
+        }
+        else if (value < 75)
+        {
+            coinPrefab = enemyParams.coinList[5];
+        }
+        else if (value < 100)
+        {
+            coinPrefab = enemyParams.coinList[6];
+        }
+        else if (value < 125)
+        {
+            coinPrefab = enemyParams.coinList[7];
+        }
+        else if (value < 150)   
+        {
+            coinPrefab = enemyParams.coinList[8];
+        }
+
+        if (coinPrefab != null)
+        {
+            coinPrefab.GetComponent<ItemData>().value = value;
+            Instantiate(coinPrefab, dropLocation, Quaternion.identity);
+        }
     }
     public void XPGiver() //Gives XP to player
     {

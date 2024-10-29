@@ -61,8 +61,4 @@ public class ItemPickup : MonoBehaviour
             Destroy(gameObject); // Destroy the item after adding it to the inventory
         }
     }
-    public void ValueCalc()
-    {
-
-    }
 }

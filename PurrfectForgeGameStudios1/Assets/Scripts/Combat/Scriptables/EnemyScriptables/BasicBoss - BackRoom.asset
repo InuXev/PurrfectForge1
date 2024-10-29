@@ -21,12 +21,24 @@ MonoBehaviour:
   MeleeAttackDistance: 3
   XpDrop: 100
   BossAttackPause: 0
+  hitEffects: []
+  deathEffects: []
   lootPool:
   - {fileID: 11400000, guid: b52b6bedd1696de49b65075548f1d57f, type: 2}
   - {fileID: 11400000, guid: a9513ee6645daa845a231ca7cef15eaf, type: 2}
   - {fileID: 11400000, guid: a37107c5df7d92c4087ee346d6e95066, type: 2}
   - {fileID: 11400000, guid: a40a7972f6bc2174c87cc77348a5720f, type: 2}
   - {fileID: 11400000, guid: ad50e70b96f46814ba05e9c2a85de6a5, type: 2}
+  coinList:
+  - {fileID: 5786242260236191373, guid: e2026edfa80cb524cb4c96d07b87f0c3, type: 3}
+  - {fileID: 3075965747196742853, guid: 89e4b89ae09c5f140ae36a28eb6972d9, type: 3}
+  - {fileID: 5917656594975323762, guid: 662392f21b818bc42b9ae281c568f902, type: 3}
+  - {fileID: 7481829977899547152, guid: 2b2368e0291b246448e02d72cacbc84e, type: 3}
+  - {fileID: 6916605320555282771, guid: 2ce1a8770bfc7434185387351bd210d1, type: 3}
+  - {fileID: 5558471785998861453, guid: d6d576cd8c692a542b9ab3417f449a4c, type: 3}
+  - {fileID: 8148450894170132535, guid: 1be297c842d877e4d820317db9091ab6, type: 3}
+  - {fileID: 5009807879638422022, guid: 26b31112cd155be40afc4b85cf587621, type: 3}
+  - {fileID: 9074417603046500978, guid: 52dd39a70adc8094cac87f07cf2972f7, type: 3}
   objectToShoot: {fileID: 5611324289016691570, guid: a99e3c5e5dfec8e418f1e56e34217348, type: 3}
   bulletSpeed: 5
   DestroyTime: 0.3

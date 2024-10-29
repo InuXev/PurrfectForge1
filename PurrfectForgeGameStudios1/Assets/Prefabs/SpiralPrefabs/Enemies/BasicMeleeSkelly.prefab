@@ -587,7 +587,6 @@ MonoBehaviour:
   enemyAttack: {fileID: 9191418748650833655}
   ShootPos: {fileID: 7447542768920418803}
   anim: {fileID: 328490962143490126}
-  Coins: []
   meleeAttackRange: 0
   player: {fileID: 0}
   headPOS: {fileID: 6292572483121814255}
@@ -596,6 +595,7 @@ MonoBehaviour:
   attacked: 0
   xpDrop: 0
   shooting: 0
+  coinList: []
 --- !u!33 &9209891566635746978
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2700,11 +2700,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6566434457862090959}
   - {fileID: 7447542768920418803}
   - {fileID: 5642547395603454606}
   - {fileID: 3490142400596606645}
   - {fileID: 8617974922331245583}
-  - {fileID: 6566434457862090959}
   m_Father: {fileID: 3381914600264565062}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7385147630730357569

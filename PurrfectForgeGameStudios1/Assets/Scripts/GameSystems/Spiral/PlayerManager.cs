@@ -123,6 +123,9 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     }
     void Update()
     {
+        //if stamina reaches zero while dashing turn off the dashing anim
+
+
         if (currentSpeed < 0.01f)
         {
             Anim.SetBool("Sprinting", false);
@@ -198,7 +201,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
             }
         }
 
-        if (Input.GetButtonUp("Dash") /*&& dashing*/) //if im dashing and dashing is true
+        if (Input.GetButtonUp("Dash") || Stamina <= 0) //if im dashing and dashing is true
         {
             dashing = false; //set dashing false
             Anim.SetBool("Sprinting", false);

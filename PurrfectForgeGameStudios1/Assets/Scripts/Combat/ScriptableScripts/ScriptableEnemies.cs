@@ -19,10 +19,12 @@ public class ScriptableEnemies : ScriptableObject
     public float MeleeAttackDistance;
     public float XpDrop;
     public float BossAttackPause;
-
+    public GameObject[] hitEffects;
+    public GameObject[] deathEffects;
 
     public ScriptableItems[] lootPool;
 
+    public GameObject[] coinList;
 
 
     public GameObject objectToShoot;
