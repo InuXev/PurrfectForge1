@@ -107,7 +107,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     public ScriptableSkill activeSlotThreeSkill;
 
     [SerializeField] public List<ScriptableSkill> skillPool;
-
+    [SerializeField] public InventorySystem inventorySystem;
 
     #endregion
 
@@ -124,8 +124,6 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     void Update()
     {
         //if stamina reaches zero while dashing turn off the dashing anim
-
-
         if (currentSpeed < 0.01f)
         {
             Anim.SetBool("Sprinting", false);

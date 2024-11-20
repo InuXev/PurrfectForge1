@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -10,7 +11,8 @@ public class ButtonFunctions : MonoBehaviour
 
     [SerializeField] GameManager gameManager;
     public Button targetButton;
-
+    public string clickedButton;
+    public int pageCount;
     #endregion
 
     #region Buttons
@@ -28,9 +30,60 @@ public class ButtonFunctions : MonoBehaviour
     {
         PlayerManager.Instance.HasFloorKey = false;
         PlayerManager.Instance.HasBossKey = false;
+        PlayerManager.Instance.inventorySystem.SaveInventoryToJson();
         gameManager.SaveGame();//call from GM
         SceneManager.LoadScene("Eshes"); //load eshes
         gameManager.stateUnPaused();//call from GM
+    }
+    public void InspectorOff()
+    {
+        GameManager.Instance.inspector.SetActive(false);
+    }
+    public void InspectorOn()
+    {
+        GameObject clickButton = EventSystem.current.currentSelectedGameObject;
+        string clickedButton = clickButton.GetComponentInChildren<Transform>().name;
+        int index = int.Parse(clickedButton) + pageCount;
+
+        // Check if the slot is empty
+        if (index < 0 || index >= PlayerManager.Instance.inventorySystem.playerInventory.Count ||
+            PlayerManager.Instance.inventorySystem.playerInventory[index] == null)
+        {
+            return;
+        }
+
+        GameManager.Instance.stateUnPaused();
+        GameManager.Instance.inspector.SetActive(true);
+        GameManager.Instance.OnInspectButtonClick(PlayerManager.Instance.inventorySystem.playerInventory[index].itemName);
+        GameManager.Instance.statePaused();
+    }
+
+    public void InspectorNext()
+    {
+        pageCount += 10;
+        gameManager.inspectorPageCount += 10;
+
+        if (pageCount > 40)
+        {
+            pageCount = 0;
+            gameManager.inspectorPageCount = 0;
+        }
+
+        gameManager.InventoryUpdate();
+    }
+
+    public void InspectorBack()
+    {
+        pageCount -= 10;
+        gameManager.inspectorPageCount -= 10;
+
+        if (pageCount < 0)
+        {
+            pageCount = 40;
+            gameManager.inspectorPageCount = 40;
+        }
+
+        gameManager.InventoryUpdate();
     }
     public void FrontQuit() //main quit button
     {
@@ -353,3 +406,5 @@ public class ButtonFunctions : MonoBehaviour
     #endregion
     #endregion
 }
+//PlayerManager.Instance.inventorySystem.AddToInventory(clickButton); //add the item to the list
+//GameManager.Instance.InventoryUpdate();

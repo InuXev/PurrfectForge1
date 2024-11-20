@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 {
 
     #region Fields/Objects
-
+    [Header("Menus")]
     [SerializeField] public GameObject pauseMenu;
     [SerializeField] public GameObject loseMenu;
     [SerializeField] public GameObject playerHitFlash;
@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] InventorySystem inventorySystem;
     [SerializeField] PlayerManager playerManager;
     [SerializeField] GameObject playerDeathQuitConfirm;
+    [SerializeField] public GameObject inspector;
+
+    [Header("Basic Information")]
     public Image playerHP;
     public Image playerHPBar;
     public TMP_Text playerHPText;
@@ -35,11 +38,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text playerDexStat;
     public TMP_Text playerStamStat;
     public TMP_Text playerAvailableSkillPts;
-
     public GameObject levelUpNote;
-
-
-    //[SerializeField] public ScriptableItems coinPurse;
     public TMP_Text playerCoins;
     public Image playerXP;
     public Image playerXPBar;
@@ -50,9 +49,11 @@ public class GameManager : MonoBehaviour
     public bool isPaused;
     int spiralLevel;
 
+    public int inspectorPageCount = 0;
 
-    [SerializeField] public GameObject FireNotAvailable; 
-    [SerializeField] public GameObject IceNotAvailable; 
+    [Header("Skill Information")]
+    [SerializeField] public GameObject FireNotAvailable;
+    [SerializeField] public GameObject IceNotAvailable;
     [SerializeField] public GameObject LightningNotAvailable;
     [SerializeField] public GameObject FireLockTierTwo;
     [SerializeField] public GameObject FireLockTierThree;
@@ -60,13 +61,41 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject IceLockTierThree;
     [SerializeField] public GameObject LightningLockTierTwo;
     [SerializeField] public GameObject LightningLockTierThree;
-
     [SerializeField] public Image SkillSlotOneImage;
     [SerializeField] public Image SkillSlotTwoImage;
     [SerializeField] public Image SkillSlotThreeImage;
-
     [SerializeField] public GameObject InteractableTag;
 
+
+    [Header("Inventory Information")]
+    [SerializeField] public TMP_Text InventorySlotOne;
+    [SerializeField] public TMP_Text InventorySlotTwo;
+    [SerializeField] public TMP_Text InventorySlotThree;
+    [SerializeField] public TMP_Text InventorySlotFour;
+    [SerializeField] public TMP_Text InventorySlotFive;
+    [SerializeField] public TMP_Text InventorySlotSix;
+    [SerializeField] public TMP_Text InventorySlotSeven;
+    [SerializeField] public TMP_Text InventorySlotEight;
+    [SerializeField] public TMP_Text InventorySlotNine;
+    [SerializeField] public TMP_Text InventorySlotTen;
+    [SerializeField] public TMP_Text InventorySlotOneCount;
+    [SerializeField] public TMP_Text InventorySlotTwoCount;
+    [SerializeField] public TMP_Text InventorySlotThreeCount;
+    [SerializeField] public TMP_Text InventorySlotFourCount;
+    [SerializeField] public TMP_Text InventorySlotFiveCount;
+    [SerializeField] public TMP_Text InventorySlotSixCount;
+    [SerializeField] public TMP_Text InventorySlotSevenCount;
+    [SerializeField] public TMP_Text InventorySlotEightCount;
+    [SerializeField] public TMP_Text InventorySlotNineCount;
+    [SerializeField] public TMP_Text InventorySlotTenCount;
+    [SerializeField] public TMP_Text InspectDescription;
+    [SerializeField] public TMP_Text InspectedName;
+    [SerializeField] public TMP_Text InspectedHPStat;
+    [SerializeField] public TMP_Text InspectedAttStat;
+    [SerializeField] public TMP_Text InspectedDefStat;
+    [SerializeField] public TMP_Text InspectedDexStat;
+    [SerializeField] public TMP_Text InspectedStamStat;
+    [SerializeField] public TMP_Text InspectedValue;
     #endregion
 
     #region Processes
@@ -91,11 +120,14 @@ public class GameManager : MonoBehaviour
         {
             Cursor.visible = false; //cursor off
         }
+        inventorySystem.LoadInventoryFromJson();
+        InventoryUpdate();
     }
 
 
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Escape)) //pause menu
         {
             if (activeMenu == null) //if active menu null
@@ -128,20 +160,22 @@ public class GameManager : MonoBehaviour
             {
                 statePaused(); //pause
                 activeMenu = inventoryMenu; //inv menu active
-                inventoryMenu.SetActive(true); //turn it on
-                inventorySystem.InventoryDisplay(); //display inventory items
+                activeMenu.SetActive(true); //turn it on
+                InventoryUpdate();
             }
             else if (activeMenu != null) //if something in active
             {
+                activeMenu.SetActive(false);
+                inspector.SetActive(false);
                 stateUnPaused(); //state unpaused
             }
         }
 
-        if(activeMenu == null)
+        if (activeMenu == null)
         {
             Cursor.visible = false;
         }
-        if(playerManager.chosenElement == null)
+        if (playerManager.chosenElement == null)
         {
             IceNotAvailable.SetActive(false);
             FireNotAvailable.SetActive(false);
@@ -155,12 +189,12 @@ public class GameManager : MonoBehaviour
         }
         if (playerManager.chosenElement != null)
         {
-            if(playerManager.chosenElement == "Fire")
+            if (playerManager.chosenElement == "Fire")
             {
                 IceNotAvailable.SetActive(true);
                 FireNotAvailable.SetActive(false);
                 LightningNotAvailable.SetActive(true);
-                if(playerManager.tierTwoUnlocked)
+                if (playerManager.tierTwoUnlocked)
                 {
                     //turn off tier two fire lock
                     FireLockTierTwo.SetActive(false);
@@ -182,7 +216,7 @@ public class GameManager : MonoBehaviour
                 }
 
             }
-            else if(playerManager.chosenElement == "Ice")
+            else if (playerManager.chosenElement == "Ice")
             {
                 IceNotAvailable.SetActive(false);
                 FireNotAvailable.SetActive(true);
@@ -233,6 +267,62 @@ public class GameManager : MonoBehaviour
                     LightningLockTierThree.SetActive(true);
                     //turn on tier three fire lock
                 }
+            }
+        }
+    }
+    public void OnInspectButtonClick(string itemName)
+    {
+        ItemData item = playerManager.inventorySystem.GetItemData(itemName);
+        Debug.Log("Item: " + item.itemName);
+        if (item != null)
+        {
+            Debug.Log("Item found in inventory: " + itemName);
+            InspectDescription.text = item.description.ToString();
+            InspectedName.text = item.itemName.ToString();
+            InspectedHPStat.text = item.HpPow.ToString();
+            InspectedAttStat.text = item.AttPow.ToString();
+            InspectedDefStat.text = item.DefPow.ToString();
+            InspectedDexStat.text = item.DexPow.ToString();
+            InspectedStamStat.text = item.StaminaPow.ToString();
+            InspectedValue.text = item.value.ToString();
+        }
+        else
+        {
+            Debug.LogError("Item not found in inventory: " + itemName);
+        }
+    }
+    public void InventoryUpdate()
+    {
+        Debug.Log("Updating inventory display...");
+        TMP_Text[] inventoryDisplaySlots = {
+        InventorySlotOne, InventorySlotTwo, InventorySlotThree, InventorySlotFour,
+        InventorySlotFive, InventorySlotSix, InventorySlotSeven, InventorySlotEight,
+        InventorySlotNine, InventorySlotTen
+    };
+        TMP_Text[] inventoryDisplaySlotsCount = {
+        InventorySlotOneCount, InventorySlotTwoCount, InventorySlotThreeCount, InventorySlotFourCount,
+        InventorySlotFiveCount, InventorySlotSixCount, InventorySlotSevenCount, InventorySlotEightCount,
+        InventorySlotNineCount, InventorySlotTenCount
+    };
+
+        // Clear all slots initially
+        for (int j = 0; j < inventoryDisplaySlots.Length; j++)
+        {
+            inventoryDisplaySlots[j].text = string.Empty;
+            inventoryDisplaySlotsCount[j].text = string.Empty;
+        }
+
+        // Display items for the current page
+        for (int i = 0; i < inventoryDisplaySlots.Length; i++)
+        {
+            int inventoryIndex = i + inspectorPageCount; // Offset by current page
+
+            if (inventoryIndex < playerManager.inventorySystem.playerInventory.Count)
+            {
+                ItemData currentItem = playerManager.inventorySystem.playerInventory[inventoryIndex];
+                inventoryDisplaySlots[i].text = currentItem.itemName;
+                //inventoryDisplaySlotsCount[i].text = currentItem.amountHeld.ToString();
+                Debug.Log($"Slot {i}: {currentItem.itemName} x{currentItem.amountHeld}");
             }
         }
     }
@@ -425,5 +515,10 @@ public class GameManager : MonoBehaviour
     public void AssignSkillImageThree(ScriptableSkill skill)
     {
         SkillSlotThreeImage.sprite = skill.SkillSlotImage;
+    }
+
+    public void ClearInventory()
+    {
+        
     }
 }

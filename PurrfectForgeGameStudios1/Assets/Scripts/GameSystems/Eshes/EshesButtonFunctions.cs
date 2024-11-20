@@ -70,6 +70,7 @@ public class EshesButtonFunctions : MonoBehaviour
     public void NewGameConfirmed()
     {
         saveLoadManager.ClearSaveData();
+        saveLoadManager.ClearInventory();
         gameManager.ResetScriptables();
         gameManager.ResetCompleteFloors();
         gameManager.NewGame();

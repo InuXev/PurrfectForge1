@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
-    [SerializeField] private ScriptableItems item; // Ensure this is private and serialized to adjust from the inspector
+    [SerializeField] public ScriptableItems item; // Ensure this is private and serialized to adjust from the inspector
     [SerializeField] public ItemData itemData;
     private void OnTriggerEnter(Collider other)
     {
@@ -44,21 +44,29 @@ public class ItemPickup : MonoBehaviour
                 Debug.Log(item.itemName + " Being Added");
                 item.amountHeld += 1; //increase its scriptable amountHeld by one
             }
-            if (item.type == "InventoryItem") //Inventory Item 
-            {
-                InventorySystem inventorySystem = other.GetComponent<InventorySystem>(); //create a list
-                if (inventorySystem != null) //if the invsys is not null
-                {
-                    inventorySystem.AddToInventory(item); //add the item to the list
-                }
-            }
             if (item.type == "Coin") //coin
             {
                 Debug.Log("Coins being Added to purse");
                 PlayerManager.Instance.playerCoin += itemData.value;
-                //item.amountHeld += 1; //increase its scriptable amountHeld by one
             }
-            Destroy(gameObject); // Destroy the item after adding it to the inventory
+            if (item.type == "Weapon") //coin
+            {
+                Debug.Log("PickUp Weapon");
+                if (PlayerManager.Instance.inventorySystem != null) //if the invsys is not null
+                {
+                    Debug.Log("Added Weapon");
+                    PlayerManager.Instance.inventorySystem.AddToInventory(gameObject); //add the item to the list
+
+                }
+            }
+            if (transform.parent != null)
+            {                 
+                Destroy(transform.parent.gameObject);
+            }
+            else
+            {
+                Destroy(gameObject); // Destroy the item after adding it to the inventory
+            }
         }
     }
 }

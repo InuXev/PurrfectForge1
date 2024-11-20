@@ -9,6 +9,7 @@ using static UnityEditor.Progress;
 public class ScriptableItems : ScriptableObject
 {
     // Start is called before the first frame update
+
     public string type;
     public string itemName;
     public Sprite icon;
@@ -17,5 +18,4 @@ public class ScriptableItems : ScriptableObject
     public GameObject loot;
     public int amountHeld;
     public float dropChance;
-    public ItemData itemData;
 }
