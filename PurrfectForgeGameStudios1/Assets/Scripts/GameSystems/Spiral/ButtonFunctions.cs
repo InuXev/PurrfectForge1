@@ -12,7 +12,8 @@ public class ButtonFunctions : MonoBehaviour
     [SerializeField] GameManager gameManager;
     public Button targetButton;
     public string clickedButton;
-    public int pageCount;
+    public int pageCount = 0;
+    public int inquireIndex;
     #endregion
 
     #region Buttons
@@ -31,6 +32,7 @@ public class ButtonFunctions : MonoBehaviour
         PlayerManager.Instance.HasFloorKey = false;
         PlayerManager.Instance.HasBossKey = false;
         PlayerManager.Instance.inventorySystem.SaveInventoryToJson();
+        PlayerManager.Instance.inventorySystem.SaveEquipmentToJson();
         gameManager.SaveGame();//call from GM
         SceneManager.LoadScene("Eshes"); //load eshes
         gameManager.stateUnPaused();//call from GM
@@ -85,6 +87,55 @@ public class ButtonFunctions : MonoBehaviour
 
         gameManager.InventoryUpdate();
     }
+    public void EquipCancel()
+    {
+        gameManager.confirmEquipMenu.SetActive(false);
+    }
+    public void EquipItem()
+    {
+        gameManager.confirmEquipMenu.SetActive(true);
+        GameObject clickButton = EventSystem.current.currentSelectedGameObject;
+        string clickedButton = clickButton.GetComponentInChildren<Transform>().name;
+
+        // Try to parse the clickedButton name to an integer
+        if (!int.TryParse(clickedButton, out this.inquireIndex))
+        {
+            Debug.LogError("Button name is not a valid integer: " + clickedButton);
+            return;
+        }
+    }
+    public void ConfirmEquipItem()
+    {
+        // Check if the slot is empty
+        if (inquireIndex < 0 || inquireIndex >= PlayerManager.Instance.inventorySystem.playerInventory.Count ||
+            PlayerManager.Instance.inventorySystem.playerInventory[inquireIndex] == null)
+        {
+            return;
+        }
+
+        // Get the item to be equipped
+        ItemData itemToEquip = PlayerManager.Instance.inventorySystem.playerInventory[inquireIndex];
+
+        // Add the item to equipment and check if it was successful
+        if (PlayerManager.Instance.inventorySystem.AddToEquipment(itemToEquip))
+        {
+            // Remove the item from inventory
+            PlayerManager.Instance.inventorySystem.playerInventory.RemoveAt(inquireIndex);
+            Debug.Log(itemToEquip.itemName + " removed from inventory.");
+            gameManager.updateEquipment();
+        }
+        else
+        {
+            Debug.LogWarning("Failed to equip item: " + itemToEquip.itemName);
+        }
+
+        // Update the inventory and close the confirm equip menu
+        gameManager.InventoryUpdate();
+        gameManager.confirmEquipMenu.SetActive(false);
+        inquireIndex = 0;
+    }
+
+
     public void FrontQuit() //main quit button
     {
         gameManager.quitConfirm();//call from GM

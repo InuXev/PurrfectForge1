@@ -25,7 +25,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     [SerializeField] GameObject currentShield;
     [SerializeField] Animator Anim;
     [SerializeField] GameObject WeaponHitBox;
-
+    [SerializeField] public Transform WeaponSlot;
     [SerializeField] public Camera OverHeadCamera;
     [SerializeField] public Camera FPCamera;
     public bool FPActive;

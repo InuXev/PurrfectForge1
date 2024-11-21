@@ -10,6 +10,7 @@ public class SaveLoadManager : MonoBehaviour // Define a class inheriting from M
     public const string SaveDirectory = "/SaveData/"; // Directory path where save data will be stored
     public const string FileName = "SaveGame.save"; // Name of the save file
     public const string InvFileName = "InventorySave.save"; // Name of the save file
+    public const string EquipmentFile = "EquipmentSave.save"; // Name of the save file
 
     public void SaveEshesWorld() // Method to save the game world
     {
@@ -206,6 +207,17 @@ public class SaveLoadManager : MonoBehaviour // Define a class inheriting from M
     {
         string directoryPath = Application.persistentDataPath + SaveLoadManager.SaveDirectory;
         string savePath = Path.Combine(directoryPath, InvFileName);
+
+        if (File.Exists(savePath))
+        {
+            File.Delete(savePath);
+            Debug.Log("Inventory save file deleted: " + savePath);
+        }
+    }
+    public void ClearEquipment()
+    {
+        string directoryPath = Application.persistentDataPath + SaveLoadManager.SaveDirectory;
+        string savePath = Path.Combine(directoryPath, EquipmentFile);
 
         if (File.Exists(savePath))
         {

@@ -8,6 +8,7 @@ public class ItemData : MonoBehaviour
     [Header("Basic Information")]
     public string itemName;
     public string type;
+    public string slotType;
     public string description;
     public int amountHeld;
 

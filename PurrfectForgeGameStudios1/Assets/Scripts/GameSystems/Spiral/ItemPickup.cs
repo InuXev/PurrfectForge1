@@ -52,20 +52,23 @@ public class ItemPickup : MonoBehaviour
             if (item.type == "Weapon") //coin
             {
                 Debug.Log("PickUp Weapon");
-                if (PlayerManager.Instance.inventorySystem != null) //if the invsys is not null
+                ItemData itemData = gameObject.GetComponent<ItemData>() ?? gameObject.GetComponentInChildren<ItemData>();
+                if (itemData != null)
                 {
-                    Debug.Log("Added Weapon");
-                    PlayerManager.Instance.inventorySystem.AddToInventory(gameObject); //add the item to the list
-
+                    PlayerManager.Instance.inventorySystem.AddToInventory(itemData); // Add the item to the list
+                }
+                else
+                {
+                    Debug.LogError("ItemData not found on the GameObject.");
                 }
             }
             if (transform.parent != null)
-            {                 
-                Destroy(transform.parent.gameObject);
+            {
+                transform.parent.gameObject.SetActive(false); // Deactivate the parent object
             }
             else
             {
-                Destroy(gameObject); // Destroy the item after adding it to the inventory
+                gameObject.SetActive(false); // Destroy the item after adding it to the inventory
             }
         }
     }

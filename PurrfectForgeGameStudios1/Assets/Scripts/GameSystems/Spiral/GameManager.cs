@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject statMenu;
     [SerializeField] public GameObject inventoryMenu;
     [SerializeField] public GameObject confirmMenu;
+    [SerializeField] public GameObject confirmEquipMenu;
     [SerializeField] public TMP_Text inventoryList;
     [SerializeField] InventorySystem inventorySystem;
     [SerializeField] PlayerManager playerManager;
@@ -96,6 +97,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] public TMP_Text InspectedDexStat;
     [SerializeField] public TMP_Text InspectedStamStat;
     [SerializeField] public TMP_Text InspectedValue;
+
+    [Header("Inventory Information")]
+    [SerializeField] public TMP_Text inHeadSlot;
+    [SerializeField] public TMP_Text inChestSlot;
+    [SerializeField] public TMP_Text inHandSlot;
+    [SerializeField] public TMP_Text inLegSlot;
+    [SerializeField] public TMP_Text inFootSlot;
+    [SerializeField] public TMP_Text MainHand;
+    [SerializeField] public TMP_Text inOffHandSlot;
+    [SerializeField] public TMP_Text inAccOneSlot;
+    [SerializeField] public TMP_Text inAccTwoSlot;
+
     #endregion
 
     #region Processes
@@ -325,6 +338,19 @@ public class GameManager : MonoBehaviour
                 Debug.Log($"Slot {i}: {currentItem.itemName} x{currentItem.amountHeld}");
             }
         }
+    }
+
+    public void updateEquipment()
+    {
+        //inHeadSlot.text = playerManager.inventorySystem.GetEquipData("Head").itemName;
+        //inChestSlot.text = playerManager.inventorySystem.GetEquipData("Chest").itemName;
+        //inHandSlot.text = playerManager.inventorySystem.GetEquipData("Hand").itemName;
+        //inLegSlot.text = playerManager.inventorySystem.GetEquipData("Leg").itemName;
+        //inFootSlot.text = playerManager.inventorySystem.GetEquipData("Foot").itemName;
+        //MainHand.text = playerManager.inventorySystem.GetEquipData("MainHand").itemName;
+        //inOffHandSlot.text = playerManager.inventorySystem.GetEquipData("OffHand").itemName;
+        //inAccOneSlot.text = playerManager.inventorySystem.GetEquipData("Accesory1").itemName;
+        //inAccTwoSlot.text = playerManager.inventorySystem.GetEquipData("Accesory2").itemName;
     }
 
     #endregion

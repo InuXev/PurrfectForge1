@@ -19510,7 +19510,6 @@ GameObject:
   - component: {fileID: 4055688564259120363}
   - component: {fileID: 797790204487252767}
   - component: {fileID: 3643644138062842252}
-  - component: {fileID: 8119964559184941815}
   m_Layer: 0
   m_Name: BasicChest
   m_TagString: Interactable
@@ -19609,32 +19608,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: c81b8ecf325c3e64e8ff1eed31475146, type: 3}
---- !u!114 &8119964559184941815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5438980038398455607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f412e5917238db429b42c35db2af63c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Hinge: {fileID: 5544268980610940224}
-  playerManager: {fileID: 0}
-  Door: {fileID: 0}
-  StartPOS: {fileID: 8112581497617902006}
-  EndPOS: {fileID: 8176856493357464511}
-  Effect1: {fileID: 3947816693617602397}
-  Effect2: {fileID: 1659945142313181823}
-  Effect3: {fileID: 0}
-  Loot: {fileID: 0}
-  LootPool:
-  - {fileID: 181534, guid: 13af847dfa6dbe844ba4b7c902f98f67, type: 3}
-  - {fileID: 164688, guid: b32b49582c8c3394bbd30856fe9caee9, type: 3}
-  timeToEnd: 10
-  type: 0
 --- !u!1 &8522597453769529751
 GameObject:
   m_ObjectHideFlags: 0
@@ -19647,9 +19620,10 @@ GameObject:
   - component: {fileID: 2036525205760641692}
   - component: {fileID: 4382079247111097660}
   - component: {fileID: 2335957856010447152}
+  - component: {fileID: 3001602907816451158}
   m_Layer: 0
   m_Name: SM_Prop_Chest_Lid_01
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19741,3 +19715,29 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: c81b8ecf325c3e64e8ff1eed31475146, type: 3}
+--- !u!114 &3001602907816451158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8522597453769529751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f412e5917238db429b42c35db2af63c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hinge: {fileID: 5544268980610940224}
+  playerManager: {fileID: 0}
+  Door: {fileID: 0}
+  StartPOS: {fileID: 8112581497617902006}
+  EndPOS: {fileID: 8176856493357464511}
+  Effect1: {fileID: 3947816693617602397}
+  Effect2: {fileID: 1659945142313181823}
+  Effect3: {fileID: 0}
+  Loot: {fileID: 0}
+  LootPool:
+  - {fileID: 181534, guid: 13af847dfa6dbe844ba4b7c902f98f67, type: 3}
+  - {fileID: 164688, guid: b32b49582c8c3394bbd30856fe9caee9, type: 3}
+  timeToEnd: 10
+  type: 0
