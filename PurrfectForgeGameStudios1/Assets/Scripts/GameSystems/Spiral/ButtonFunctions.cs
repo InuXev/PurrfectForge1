@@ -104,6 +104,9 @@ public class ButtonFunctions : MonoBehaviour
             return;
         }
     }
+
+
+
     public void ConfirmEquipItem()
     {
         // Check if the slot is empty

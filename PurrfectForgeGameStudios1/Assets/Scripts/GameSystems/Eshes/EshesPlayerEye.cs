@@ -55,7 +55,7 @@ public class EshesPlayerEye : MonoBehaviour // Define the EshesPlayerEye class, 
     }
     public void Walk() // Method to handle player movement
     {
-        moveDirection = (Input.GetAxis("Horizontal") * transform.right) + (Input.GetAxis("Vertical") * transform.forward).normalized; // Calculate the movement direction based on player input
+        moveDirection = (Input.GetAxis("HorizontalMove") * transform.right) + (Input.GetAxis("VerticalMove") * transform.forward).normalized; // Calculate the movement direction based on player input
         characterControl.Move(moveDirection * moveSpeed * Time.deltaTime); // Move the player using the CharacterController component
     }
 

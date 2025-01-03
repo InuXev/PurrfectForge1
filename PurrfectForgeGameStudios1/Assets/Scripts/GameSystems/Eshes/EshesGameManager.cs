@@ -122,6 +122,7 @@ public class EshesGameManager : MonoBehaviour
     [SerializeField] public TMP_Text MayorsAmountHeld;
 
     [SerializeField] public GameObject houses;
+    [SerializeField] public GameObject housesPageTwo;
 
     [SerializeField] public ScriptableItems BaseRedHouse;
     [SerializeField] public TMP_Text BaseRedHouseAmountHeld;
@@ -161,6 +162,7 @@ public class EshesGameManager : MonoBehaviour
 
 
     [SerializeField] public GameObject misc;
+    [SerializeField] public GameObject miscPageTwo;
 
     [SerializeField] public ScriptableItems Brazier;
     [SerializeField] public TMP_Text BrazierAmountHeld;
@@ -176,24 +178,14 @@ public class EshesGameManager : MonoBehaviour
     [SerializeField] public TMP_Text CurvedChestAmountHeld;
     [SerializeField] public ScriptableItems DoubleFence;
     [SerializeField] public TMP_Text DoubleFenceAmountHeld;
-    [SerializeField] public ScriptableItems EmptyCart;
-    [SerializeField] public TMP_Text EmptyCartAmountHeld;
-    [SerializeField] public ScriptableItems FarmerCart;
-    [SerializeField] public TMP_Text FarmerCartAmountHeld;
     [SerializeField] public ScriptableItems FlatChest;
     [SerializeField] public TMP_Text FlatChestAmountHeld;
-    [SerializeField] public ScriptableItems HayCart;
-    [SerializeField] public TMP_Text HayCartAmountHeld;
     [SerializeField] public ScriptableItems LampPost;
     [SerializeField] public TMP_Text LampPostAmountHeld;
-    [SerializeField] public ScriptableItems LogPile;
-    [SerializeField] public TMP_Text LogPileAmountHeld;
     [SerializeField] public ScriptableItems MetalCrate;
     [SerializeField] public TMP_Text MetalCrateAmountHeld;
     [SerializeField] public ScriptableItems OpenCrate;
     [SerializeField] public TMP_Text OpenCrateAmountHeld;
-    [SerializeField] public ScriptableItems ProduceCart;
-    [SerializeField] public TMP_Text ProduceCartAmountHeld;
     [SerializeField] public ScriptableItems RoadSign1;
     [SerializeField] public TMP_Text RoadSign1AmountHeld;
     [SerializeField] public ScriptableItems RoadSign2;
@@ -212,12 +204,7 @@ public class EshesGameManager : MonoBehaviour
     [SerializeField] public TMP_Text TorchAmountHeld;
     [SerializeField] public ScriptableItems WaterWell;
     [SerializeField] public TMP_Text WaterWellAmountHeld;
-    [SerializeField] public ScriptableItems SmallRock;
-    [SerializeField] public TMP_Text SmallRockAmountHeld;
-    [SerializeField] public ScriptableItems MediumRock;
-    [SerializeField] public TMP_Text MediumRockAmountHeld;
-    [SerializeField] public ScriptableItems LargeRock;
-    [SerializeField] public TMP_Text LargeRockAmountHeld;
+
 
 
     //people
@@ -226,8 +213,16 @@ public class EshesGameManager : MonoBehaviour
     [SerializeField] public GameObject shopOwners;
     [SerializeField] public GameObject residents;
     [SerializeField] public GameObject pets;
-    [SerializeField] public GameObject special;
 
+    [SerializeField] public GameObject special;
+    [SerializeField] public ScriptableItems EmptyCart;
+    [SerializeField] public TMP_Text EmptyCartAmountHeld;
+    [SerializeField] public ScriptableItems HayCart;
+    [SerializeField] public TMP_Text HayCartAmountHeld;
+    [SerializeField] public ScriptableItems FarmerCart;
+    [SerializeField] public TMP_Text FarmerCartAmountHeld;
+    [SerializeField] public ScriptableItems ProduceCart;
+    [SerializeField] public TMP_Text ProduceCartAmountHeld;
 
     //geological
     [SerializeField] public GameObject geologicalTypeSelector;
@@ -235,7 +230,17 @@ public class EshesGameManager : MonoBehaviour
     [SerializeField] public GameObject rivers;
     [SerializeField] public GameObject hills;
     [SerializeField] public GameObject ditches;
+
+
     [SerializeField] public GameObject geoSpecial;
+    [SerializeField] public ScriptableItems SmallRock;
+    [SerializeField] public TMP_Text SmallRockAmountHeld;
+    [SerializeField] public ScriptableItems MediumRock;
+    [SerializeField] public TMP_Text MediumRockAmountHeld;
+    [SerializeField] public ScriptableItems LargeRock;
+    [SerializeField] public TMP_Text LargeRockAmountHeld;
+    [SerializeField] public ScriptableItems LogPile;
+    [SerializeField] public TMP_Text LogPileAmountHeld;
 
 
     public PrefabList prefabList;
@@ -332,7 +337,7 @@ public class EshesGameManager : MonoBehaviour
         buildON = false; //build set to off
         Cursor.lockState = CursorLockMode.Confined; //keep cursor in the window
         Cursor.visible = true; //show cursor
-        Time.timeScale = 0; //reset time passed to zero
+        //Time.timeScale = 0; //reset time passed to zero
     }
     public void stateUnPaused()
     {

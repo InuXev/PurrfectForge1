@@ -51,8 +51,8 @@ public class PlayerBasics : MonoBehaviour // Define the PlayerBasics class inher
         float x = panSpeed * Input.GetAxis("Mouse X"); // Get the mouse movement on the X-axis and multiply by pan speed
         transform.Rotate(0, x, 0); // Rotate the player around the Y-axis based on the mouse movement
 
-        moveDirection = (Input.GetAxis("Horizontal") * transform.right).normalized + // Calculate movement direction on the horizontal axis
-                        (Input.GetAxis("Vertical") * transform.forward).normalized; // Calculate movement direction on the vertical axis
+        moveDirection = (Input.GetAxis("HorizontalMove") * transform.right).normalized + // Calculate movement direction on the horizontal axis
+                        (Input.GetAxis("VerticalMove") * transform.forward).normalized; // Calculate movement direction on the vertical axis
         characterControl.Move(moveDirection * moveSpeed * Time.deltaTime); // Move the player based on direction and speed
 
         playerVelocity.y -= gravity * Time.deltaTime; // Apply gravity to the player's vertical velocity

@@ -44,6 +44,29 @@ public class EshesButtonFunctions : MonoBehaviour
     {
         gameManager.stateUnPaused();
     }
+
+    public void HousesPageNext()
+    {
+        gameManager.housesPageTwo.SetActive(true);
+        gameManager.houses.SetActive(false);
+    }
+    public void HousesPageBack()
+    {
+        gameManager.housesPageTwo.SetActive(false);
+        gameManager.houses.SetActive(true);
+    }
+
+    public void BuildingMiscNext()
+    {
+        gameManager.miscPageTwo.SetActive(true);
+        gameManager.misc.SetActive(false);
+    }
+    public void BuildingMiscBack()
+    {
+        gameManager.miscPageTwo.SetActive(false);
+        gameManager.misc.SetActive(true);
+    }
+
     public void restart()
     {
         //reload scene

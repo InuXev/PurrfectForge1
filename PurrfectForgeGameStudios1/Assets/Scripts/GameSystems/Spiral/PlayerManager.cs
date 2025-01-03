@@ -166,8 +166,8 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
         }
         if (HP > 0)
         {
-            moveDirection = (Input.GetAxis("Horizontal") * transform.right) +
-            (Input.GetAxis("Vertical") * transform.forward); //set the movedirection
+            moveDirection = (Input.GetAxis("HorizontalMove") * transform.right) +
+            (Input.GetAxis("VerticalMove") * transform.forward); //set the movedirection
             characterControl.Move(moveDirection * MoveSpeed * Time.deltaTime); //move the player that direction
 
             currentSpeed = moveDirection.magnitude;
