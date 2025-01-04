@@ -33,6 +33,10 @@ public class EshesGameManager : MonoBehaviour
     [SerializeField] public GameObject OverHeadToggle;
     public ScriptableItems[] scriptableList;
     public ScriptableSkill[] scriptableSkillList;
+    [SerializeField] public GameObject reticle;
+    [SerializeField] public GameObject BackPackMenu;
+    [SerializeField] public GameObject JournalMenu;
+
 
     //FloorSelection
     [SerializeField] public ScriptableLevelCompleted HighestLevel;
@@ -337,6 +341,7 @@ public class EshesGameManager : MonoBehaviour
         buildON = false; //build set to off
         Cursor.lockState = CursorLockMode.Confined; //keep cursor in the window
         Cursor.visible = true; //show cursor
+        reticle.SetActive(false); //turn off reticle
         //Time.timeScale = 0; //reset time passed to zero
     }
     public void stateUnPaused()
@@ -357,6 +362,7 @@ public class EshesGameManager : MonoBehaviour
             activeMenu.SetActive(isPaused); //what ever menu active off
             activeMenu = null; //active menu emptied
         }
+        reticle.SetActive(true); //turn off reticle
     }
     void ShutOffOverHeadCam()
     {

@@ -67,6 +67,34 @@ public class EshesButtonFunctions : MonoBehaviour
         gameManager.misc.SetActive(true);
     }
 
+    public void ToBackPack()
+    {
+        gameManager.activeMenu.SetActive(false);
+        gameManager.activeMenu = gameManager.BackPackMenu;
+        gameManager.BackPackMenu.SetActive(true);
+    }
+    public void FromBackPack()
+    {
+        gameManager.BackPackMenu.SetActive(false);
+        gameManager.activeMenu = gameManager.pauseMenu;
+        gameManager.activeMenu.SetActive(true);
+
+    }
+
+    public void ToJournal()
+    {
+        gameManager.activeMenu.SetActive(false);
+        gameManager.activeMenu = gameManager.BackPackMenu;
+        gameManager.JournalMenu.SetActive(true);
+    }
+    public void FromJournal()
+    {
+        gameManager.JournalMenu.SetActive(false);
+        gameManager.activeMenu = gameManager.pauseMenu;
+        gameManager.activeMenu.SetActive(true);
+    }
+
+
     public void restart()
     {
         //reload scene
