@@ -103,9 +103,18 @@ public class ButtonFunctions : MonoBehaviour
             Debug.LogError("Button name is not a valid integer: " + clickedButton);
             return;
         }
+
+        //equip the item to correct slot
+        //PlayerManager.Instance.currentWeapon = PlayerManager.Instance.inventorySystem.playerInventory[inquireIndex].itemName;
+        //PlayerManager.Instance.currentWeapon = PlayerManager.Instance.inventorySystem.playerInventory[inquireIndex].itemGameObject;
     }
 
-
+    public void InventoryToMenu()
+    {
+        gameManager.inventoryMenu.SetActive(false);
+        gameManager.pauseMenu.SetActive(true);
+        gameManager.activeMenu = gameManager.pauseMenu;
+    }
 
     public void ConfirmEquipItem()
     {

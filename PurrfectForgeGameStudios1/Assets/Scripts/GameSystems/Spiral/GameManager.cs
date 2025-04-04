@@ -362,7 +362,7 @@ public class GameManager : MonoBehaviour
         isPaused = true; //pause flag 
         Cursor.lockState = CursorLockMode.Confined; //keep cursor in the window
         Cursor.visible = true; //hide cursor
-        Time.timeScale = 0; //reset time passed to zero
+        //Time.timeScale = 0; //reset time passed to zero
     }
     public void stateUnPaused()
     {

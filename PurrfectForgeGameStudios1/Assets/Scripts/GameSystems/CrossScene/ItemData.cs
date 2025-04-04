@@ -7,6 +7,7 @@ public class ItemData : MonoBehaviour
 {
     [Header("Basic Information")]
     public string itemName;
+    public GameObject itemGameObject;
     public string type;
     public string slotType;
     public string description;

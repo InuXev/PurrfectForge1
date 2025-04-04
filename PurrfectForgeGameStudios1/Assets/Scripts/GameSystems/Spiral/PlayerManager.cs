@@ -18,10 +18,10 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
 {
     #region Fields/Objects
 
-
+    public static PlayerManager Instance;
     [SerializeField] CharacterController characterControl;
     [SerializeField] GameManager gameManager;
-    [SerializeField] GameObject currentWeapon;
+    [SerializeField] public GameObject currentWeapon;
     [SerializeField] GameObject currentShield;
     [SerializeField] Animator Anim;
     [SerializeField] GameObject WeaponHitBox;
@@ -30,7 +30,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     [SerializeField] public Camera FPCamera;
     public bool FPActive;
 
-    public static PlayerManager Instance;
+
     [SerializeField] public Transform castPos;
     [SerializeField] public Transform interactionCastPos;
     [SerializeField] public Transform interactionCastGroundPos;
@@ -538,7 +538,6 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     #endregion
 
     #region UI Systems
-
     public void UpdatePlayerUI() //updates everything on UI
     {
 

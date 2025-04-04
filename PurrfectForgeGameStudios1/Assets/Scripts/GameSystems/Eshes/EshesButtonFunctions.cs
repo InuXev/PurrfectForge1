@@ -44,7 +44,6 @@ public class EshesButtonFunctions : MonoBehaviour
     {
         gameManager.stateUnPaused();
     }
-
     public void HousesPageNext()
     {
         gameManager.housesPageTwo.SetActive(true);
@@ -55,7 +54,6 @@ public class EshesButtonFunctions : MonoBehaviour
         gameManager.housesPageTwo.SetActive(false);
         gameManager.houses.SetActive(true);
     }
-
     public void BuildingMiscNext()
     {
         gameManager.miscPageTwo.SetActive(true);
@@ -66,7 +64,6 @@ public class EshesButtonFunctions : MonoBehaviour
         gameManager.miscPageTwo.SetActive(false);
         gameManager.misc.SetActive(true);
     }
-
     public void ToBackPack()
     {
         gameManager.activeMenu.SetActive(false);
@@ -80,7 +77,6 @@ public class EshesButtonFunctions : MonoBehaviour
         gameManager.activeMenu.SetActive(true);
 
     }
-
     public void ToJournal()
     {
         gameManager.activeMenu.SetActive(false);
@@ -93,8 +89,6 @@ public class EshesButtonFunctions : MonoBehaviour
         gameManager.activeMenu = gameManager.pauseMenu;
         gameManager.activeMenu.SetActive(true);
     }
-
-
     public void restart()
     {
         //reload scene
@@ -136,7 +130,6 @@ public class EshesButtonFunctions : MonoBehaviour
     {
         gameManager.SpiralFloorSelection();
     }
-
     public void spiralPortConfirmed()
     {
         //reload scene
@@ -183,8 +176,6 @@ public class EshesButtonFunctions : MonoBehaviour
     {
         gameManager.FoliageTrees();
     }
-
-
     //trees
     public void SmallBirch()
     {
@@ -667,7 +658,6 @@ public class EshesButtonFunctions : MonoBehaviour
     #endregion
 
     #region SpiralFloorSelectionButtons
-
     public void FloorButton()
     {
         GameObject clickButton = EventSystem.current.currentSelectedGameObject;

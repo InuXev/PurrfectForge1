@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class InventorySystem : MonoBehaviour
 {
+
+    //MANAGES THE INVENTORY SYSTEMS//
+
+
     public List<ItemData> playerInventory; // Declare a list to store the player's inventory items
     public List<EquipmentSlot> playerEquipment; // Declare a list to store the player's inventory items
     public static InventorySystem Instance; // Singleton instance of InventorySystem
