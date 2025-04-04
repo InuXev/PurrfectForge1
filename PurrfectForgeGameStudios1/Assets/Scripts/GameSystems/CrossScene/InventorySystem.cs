@@ -219,6 +219,19 @@ public class InventorySystem : MonoBehaviour
 
     public bool AddToEquipment(ItemData itemData)
     {
+        //Debug.Log("Current Equipment Slots:");
+        //foreach (var slot in playerEquipment)
+        //{
+        //    if (slot.itemData != null)
+        //    {
+        //        Debug.Log(slot.slotName + ": " + slot.itemData.itemName);
+        //    }
+        //    else
+        //    {
+        //        Debug.Log(slot.slotName + ": Empty");
+        //    }
+        //}
+
         Debug.Log("Adding item to equipment...");
 
         if (itemData != null)
@@ -236,6 +249,7 @@ public class InventorySystem : MonoBehaviour
                     {
                         slot.itemData = itemData;
                         Debug.Log(itemData.itemName + " added to " + slot.slotName + " slot.");
+                        PlayerManager.Instance.currentWeapon = itemData.itemGameObject;
                         gameManager.InventoryUpdate();
                         return true;
                     }

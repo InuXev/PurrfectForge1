@@ -93,20 +93,20 @@ public class ButtonFunctions : MonoBehaviour
     }
     public void EquipItem()
     {
-        gameManager.confirmEquipMenu.SetActive(true);
+        //gameManager.confirmEquipMenu.SetActive(true);
         GameObject clickButton = EventSystem.current.currentSelectedGameObject;
         string clickedButton = clickButton.GetComponentInChildren<Transform>().name;
+        int index = int.Parse(clickedButton) + pageCount;
 
-        // Try to parse the clickedButton name to an integer
-        if (!int.TryParse(clickedButton, out this.inquireIndex))
+        // Check if the slot is empty
+        if (index < 0 || index >= PlayerManager.Instance.inventorySystem.playerInventory.Count ||
+            PlayerManager.Instance.inventorySystem.playerInventory[index] == null)
         {
-            Debug.LogError("Button name is not a valid integer: " + clickedButton);
             return;
         }
 
-        //equip the item to correct slot
-        //PlayerManager.Instance.currentWeapon = PlayerManager.Instance.inventorySystem.playerInventory[inquireIndex].itemName;
-        //PlayerManager.Instance.currentWeapon = PlayerManager.Instance.inventorySystem.playerInventory[inquireIndex].itemGameObject;
+        PlayerManager.Instance.inventorySystem.AddToEquipment(PlayerManager.Instance.inventorySystem.playerInventory[index]);
+        Debug.Log("Has been equipped: " + PlayerManager.Instance.currentWeapon);
     }
 
     public void InventoryToMenu()

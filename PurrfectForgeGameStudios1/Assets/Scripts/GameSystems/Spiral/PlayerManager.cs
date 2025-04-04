@@ -22,7 +22,7 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     [SerializeField] CharacterController characterControl;
     [SerializeField] GameManager gameManager;
     [SerializeField] public GameObject currentWeapon;
-    [SerializeField] GameObject currentShield;
+    [SerializeField] public GameObject currentShield;
     [SerializeField] Animator Anim;
     [SerializeField] GameObject WeaponHitBox;
     [SerializeField] public Transform WeaponSlot;
