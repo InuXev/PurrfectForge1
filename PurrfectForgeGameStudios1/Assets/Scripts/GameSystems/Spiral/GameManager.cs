@@ -1,14 +1,15 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-using JetBrains.Annotations;
-using Unity.VisualScripting;
-using UnityEngine.SceneManagement;
 //using UnityEditor.Experimental.GraphView;
 using System.Linq;
+using TMPro;
+using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+//using static System.IO.Enumeration.FileSystemEnumerable<TResult>;
 
 public class GameManager : MonoBehaviour
 {
@@ -98,13 +99,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] public TMP_Text InspectedStamStat;
     [SerializeField] public TMP_Text InspectedValue;
 
-    [Header("Inventory Information")]
+    [Header("Players Current Gear")]
     [SerializeField] public TMP_Text inHeadSlot;
     [SerializeField] public TMP_Text inChestSlot;
     [SerializeField] public TMP_Text inHandSlot;
     [SerializeField] public TMP_Text inLegSlot;
     [SerializeField] public TMP_Text inFootSlot;
-    [SerializeField] public TMP_Text MainHand;
+    [SerializeField] public TMP_Text inMainHandSlot;
     [SerializeField] public TMP_Text inOffHandSlot;
     [SerializeField] public TMP_Text inAccOneSlot;
     [SerializeField] public TMP_Text inAccTwoSlot;
@@ -340,17 +341,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void updateEquipment()
+    public void EquipWeapon(GameObject newWeaponPrefab)
     {
-        //inHeadSlot.text = playerManager.inventorySystem.GetEquipData("Head").itemName;
-        //inChestSlot.text = playerManager.inventorySystem.GetEquipData("Chest").itemName;
-        //inHandSlot.text = playerManager.inventorySystem.GetEquipData("Hand").itemName;
-        //inLegSlot.text = playerManager.inventorySystem.GetEquipData("Leg").itemName;
-        //inFootSlot.text = playerManager.inventorySystem.GetEquipData("Foot").itemName;
-        //MainHand.text = playerManager.inventorySystem.GetEquipData("MainHand").itemName;
-        //inOffHandSlot.text = playerManager.inventorySystem.GetEquipData("OffHand").itemName;
-        //inAccOneSlot.text = playerManager.inventorySystem.GetEquipData("Accesory1").itemName;
-        //inAccTwoSlot.text = playerManager.inventorySystem.GetEquipData("Accesory2").itemName;
+        // Remove the old weapon
+        if (playerManager.currentWeapon != null)
+        {
+            Destroy(playerManager.currentWeapon);
+        }
+
+        // Spawn the new one and attach to hand
+        playerManager.currentWeapon = Instantiate(
+            newWeaponPrefab,
+            playerManager.handTransform.position,
+            playerManager.handTransform.rotation,
+            playerManager.handTransform
+        );
+
+        // Disable trigger on any colliders in the equipped weapon
+        foreach (var col in playerManager.currentWeapon.GetComponentsInChildren<Collider>())
+        {
+            if (col.isTrigger)
+            {
+                col.enabled = false; // prevent OnTriggerEnter from firing
+            }
+        }
     }
 
     #endregion

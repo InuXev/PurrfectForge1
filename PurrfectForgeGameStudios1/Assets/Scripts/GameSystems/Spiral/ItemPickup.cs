@@ -49,7 +49,7 @@ public class ItemPickup : MonoBehaviour
                 Debug.Log("Coins being Added to purse");
                 PlayerManager.Instance.playerCoin += itemData.value;
             }
-            if (item.type == "Weapon") //coin
+            if (item.type == "Weapon") 
             {
                 Debug.Log("PickUp Weapon");
                 ItemData itemData = gameObject.GetComponent<ItemData>() ?? gameObject.GetComponentInChildren<ItemData>();

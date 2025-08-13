@@ -12,6 +12,7 @@ public class ItemData : MonoBehaviour
     public string slotType;
     public string description;
     public int amountHeld;
+    public GameObject HitBox;
 
     [Header("Eterius Building Information")]
     public ScriptableItems scriptableItems;

@@ -21,10 +21,11 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     public static PlayerManager Instance;
     [SerializeField] CharacterController characterControl;
     [SerializeField] GameManager gameManager;
+    [SerializeField] public Transform handTransform;
     [SerializeField] public GameObject currentWeapon;
-    [SerializeField] public GameObject currentShield;
+    [SerializeField] public GameObject currentOffHand;
     [SerializeField] Animator Anim;
-    [SerializeField] GameObject WeaponHitBox;
+    [SerializeField] public GameObject WeaponHitBox;
     [SerializeField] public Transform WeaponSlot;
     [SerializeField] public Camera OverHeadCamera;
     [SerializeField] public Camera FPCamera;
@@ -299,18 +300,18 @@ public class PlayerManager : MonoBehaviour, PDamage, MDamage, HealHit
     }
     public void Defend() //pu shield up
     {
-        if (currentShield != null) //if shield on
+        if (currentOffHand != null) //if shield on
         {
             if (Input.GetButtonDown("Right Mouse")) //on click
             {
                 Anim.SetBool("ShieldUp", true);
-                currentShield.SetActive(true); //turn on shield
+                currentOffHand.SetActive(true); //turn on shield
                 shieldUp = true; //shield flag true
                 playerShieldMod = .5F; //shield mod TO BE PULLED FROM SHIELD EVENTUALLY
             }
             if (Input.GetButtonUp("Right Mouse")) //on mouse up
             {
-                currentShield.SetActive(false); //turn shield off
+                currentOffHand.SetActive(false); //turn shield off
                 shieldUp = false; //shield flag off
                 playerShieldMod = 0; //turn defense mod off 
                 Anim.SetBool("ShieldUp", false);

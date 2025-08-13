@@ -81,6 +81,7 @@ public class InventorySystem : MonoBehaviour
     {
         return playerInventory.Find(item => item.itemName == name);
     }
+
     public void AddToInventory(ItemData itemData)
     {
         Debug.Log("Adding item to inventory...");
@@ -205,6 +206,7 @@ public class InventorySystem : MonoBehaviour
             Debug.Log("Inventory loaded successfully. Items count: " + playerInventory.Count);
         }
     }
+
     public ItemData GetEquipData(string name)
     {
         foreach (var slot in playerEquipment)
@@ -219,19 +221,6 @@ public class InventorySystem : MonoBehaviour
 
     public bool AddToEquipment(ItemData itemData)
     {
-        //Debug.Log("Current Equipment Slots:");
-        //foreach (var slot in playerEquipment)
-        //{
-        //    if (slot.itemData != null)
-        //    {
-        //        Debug.Log(slot.slotName + ": " + slot.itemData.itemName);
-        //    }
-        //    else
-        //    {
-        //        Debug.Log(slot.slotName + ": Empty");
-        //    }
-        //}
-
         Debug.Log("Adding item to equipment...");
 
         if (itemData != null)
@@ -243,20 +232,82 @@ public class InventorySystem : MonoBehaviour
             {
                 Debug.Log("Checking slot: " + slot.slotName);
 
-                if (slot.slotName == itemData.slotType)
+                switch (slot.slotName)
                 {
-                    if (slot.itemData == null)
-                    {
-                        slot.itemData = itemData;
-                        Debug.Log(itemData.itemName + " added to " + slot.slotName + " slot.");
-                        PlayerManager.Instance.currentWeapon = itemData.itemGameObject;
-                        gameManager.InventoryUpdate();
-                        return true;
-                    }
-                    else
-                    {
-                        Debug.LogWarning("Slot " + slot.slotName + " is already occupied.");
-                    }
+
+                    case "Head":
+
+                        break;
+
+                    case "Chest":
+
+                        break;
+
+                    case "Legs":
+
+                        break;
+
+                    case "Feet":
+
+                        break;
+
+                    case "Hands":
+
+                        break;
+
+                    case "MainHand":
+                        if (slot.slotName == itemData.slotType)
+                        {
+                            if (slot.itemData == null)
+                            {
+                                slot.itemData = itemData;
+                                Debug.Log(itemData.itemName + " added to " + slot.slotName + " slot.");
+                                gameManager.EquipWeapon(itemData.itemGameObject);
+                                PlayerManager.Instance.currentWeapon = itemData.itemGameObject;
+                                GameManager.Instance.inMainHandSlot.text = itemData.itemName.ToString();
+                                PlayerManager.Instance.WeaponHitBox = itemData.HitBox;
+                                //spawn the weapon into the hand
+                                return true;
+                            }
+                            else
+                            {
+                                Debug.LogWarning("Slot " + slot.slotName + " is already occupied.");
+                            }
+                        }
+                        break;
+
+                    case "Offhand":
+                        if (slot.slotName == itemData.slotType)
+                        {
+                            if (slot.itemData == null)
+                            {
+                                slot.itemData = itemData;
+                                Debug.Log(itemData.itemName + " added to " + slot.slotName + " slot.");
+                                PlayerManager.Instance.currentOffHand = itemData.itemGameObject;
+                                GameManager.Instance.inOffHandSlot.text = itemData.itemName.ToString();
+                                //PlayerManager.Instance.WeaponHitBox = itemData.HitBox;
+                                gameManager.InventoryUpdate();
+                                //spawn the weapon into the hand
+                                return true;
+                            }
+                            else
+                            {
+                                Debug.LogWarning("Slot " + slot.slotName + " is already occupied.");
+                            }
+                        }
+                        break;
+
+                    case "Accessory1":
+
+                        break;
+
+                    case "Accessory2":
+
+                        break;
+
+                    default:
+                        Debug.Log("Unknown slot: " + slot.slotName);
+                        break;
                 }
             }
         }

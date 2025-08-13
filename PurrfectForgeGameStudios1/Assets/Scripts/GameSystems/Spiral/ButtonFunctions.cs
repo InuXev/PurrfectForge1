@@ -134,7 +134,6 @@ public class ButtonFunctions : MonoBehaviour
             // Remove the item from inventory
             PlayerManager.Instance.inventorySystem.playerInventory.RemoveAt(inquireIndex);
             Debug.Log(itemToEquip.itemName + " removed from inventory.");
-            gameManager.updateEquipment();
         }
         else
         {

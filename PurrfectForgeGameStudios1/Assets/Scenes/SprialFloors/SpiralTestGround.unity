@@ -8472,6 +8472,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206719097}
   m_CullTransparentMesh: 1
+--- !u!1 &209068017 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 115976772248126031, guid: 193ef2aad5f164944adaa486d0d75fc4, type: 3}
+  m_PrefabInstance: {fileID: 359655740}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &209897715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12622,6 +12627,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 304819645}
   m_CullTransparentMesh: 1
+--- !u!4 &305345569 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4794420040973546683, guid: 111cf5686dfa89542b29e3964b9377b3, type: 3}
+  m_PrefabInstance: {fileID: 194283595410474734}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &305952054 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4518015318307650, guid: 719f872211fe4e041a3971b0713d554b, type: 3}
@@ -14886,6 +14896,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 115976772248126031, guid: 193ef2aad5f164944adaa486d0d75fc4, type: 3}
+      propertyPath: m_TagString
+      value: PickupItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 475982474299114053, guid: 193ef2aad5f164944adaa486d0d75fc4, type: 3}
+      propertyPath: AttPow
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 475982474299114053, guid: 193ef2aad5f164944adaa486d0d75fc4, type: 3}
+      propertyPath: HitBox
+      value: 
+      objectReference: {fileID: 209068017}
     - target: {fileID: 475982474299114053, guid: 193ef2aad5f164944adaa486d0d75fc4, type: 3}
       propertyPath: slotType
       value: MainHand
@@ -14897,6 +14919,10 @@ PrefabInstance:
     - target: {fileID: 972938946259296469, guid: 193ef2aad5f164944adaa486d0d75fc4, type: 3}
       propertyPath: m_Name
       value: Iron Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 972938946259296469, guid: 193ef2aad5f164944adaa486d0d75fc4, type: 3}
+      propertyPath: m_TagString
+      value: PickupItem
       objectReference: {fileID: 0}
     - target: {fileID: 7036866914539085175, guid: 193ef2aad5f164944adaa486d0d75fc4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -80470,6 +80496,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f507fc5e624d6e4aa3c2ff951f4bcf1, type: 3}
+--- !u!114 &1956658193 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8508863984969206865, guid: 111cf5686dfa89542b29e3964b9377b3, type: 3}
+  m_PrefabInstance: {fileID: 194283595410474734}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1956943849
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89176,6 +89213,10 @@ PrefabInstance:
       propertyPath: WeaponSlot
       value: 
       objectReference: {fileID: 1068724575}
+    - target: {fileID: 1127423685594342506, guid: 111cf5686dfa89542b29e3964b9377b3, type: 3}
+      propertyPath: handTransform
+      value: 
+      objectReference: {fileID: 305345569}
     - target: {fileID: 1144145501318016364, guid: 111cf5686dfa89542b29e3964b9377b3, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -89763,6 +89804,10 @@ PrefabInstance:
     - target: {fileID: 3357248826216952109, guid: 111cf5686dfa89542b29e3964b9377b3, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380992997322408552, guid: 111cf5686dfa89542b29e3964b9377b3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3401036070912229791, guid: 111cf5686dfa89542b29e3964b9377b3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -91645,6 +91690,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1119572702}
     - target: {fileID: 9187503598501003361, guid: 111cf5686dfa89542b29e3964b9377b3, type: 3}
+      propertyPath: inMainHand
+      value: 
+      objectReference: {fileID: 1956658193}
+    - target: {fileID: 9187503598501003361, guid: 111cf5686dfa89542b29e3964b9377b3, type: 3}
       propertyPath: confirmMenu
       value: 
       objectReference: {fileID: 1757016108047999137}
@@ -91664,6 +91713,10 @@ PrefabInstance:
       propertyPath: inOffHandSlot
       value: 
       objectReference: {fileID: 2010825114}
+    - target: {fileID: 9187503598501003361, guid: 111cf5686dfa89542b29e3964b9377b3, type: 3}
+      propertyPath: inMainHandSlot
+      value: 
+      objectReference: {fileID: 1956658193}
     - target: {fileID: 9187503598501003361, guid: 111cf5686dfa89542b29e3964b9377b3, type: 3}
       propertyPath: confirmEquipMenu
       value: 
